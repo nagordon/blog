@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Team Fortress 2 Server Install for Dummies - if:curious then:learn | fun with engineering and technology</title>
+    <title>engineering - if:curious then:learn | fun with engineering and technology</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -166,21 +166,16 @@ init_mathjax = function() {
 init_mathjax();
 </script>
 
-<link rel="canonical" href="http://nagordon.github.io/blog/2015/03/14/tf2-server-setup/">
 
-        <meta name="author" content="Neal Gordon" />
-        <meta name="keywords" content="video-games" />
-        <meta name="description" content="How to set up a Team Fortress 2 steam server-setup" />
+    <meta name="author" content="Neal Gordon" />
+    <meta name="keywords" content="engineering" />
 
+    <!-- Open Graph tags -->
         <meta property="og:site_name" content="if:curious then:learn | fun with engineering and technology" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Team Fortress 2 Server Install for Dummies"/>
-        <meta property="og:url" content="http://nagordon.github.io/blog/2015/03/14/tf2-server-setup/"/>
-        <meta property="og:description" content="How to set up a Team Fortress 2 steam server-setup"/>
-        <meta property="article:published_time" content="2015-03-14" />
-            <meta property="article:section" content="Tutorials" />
-            <meta property="article:tag" content="video-games" />
-            <meta property="article:author" content="Neal Gordon" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="if:curious then:learn | fun with engineering and technology"/>
+        <meta property="og:url" content="http://nagordon.github.io"/>
+        <meta property="og:description" content="if:curious then:learn | fun with engineering and technology"/>
 
 
     <!-- Bootstrap -->
@@ -216,7 +211,7 @@ if:curious then:learn | fun with engineering and technology            </a>
                         <li >
                             <a href="http://nagordon.github.io/category/about.html">About</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="http://nagordon.github.io/category/tutorials.html">Tutorials</a>
                         </li>
             </ul>
@@ -233,190 +228,13 @@ if:curious then:learn | fun with engineering and technology            </a>
     <div class="row">
         <div class="col-sm-9">
 
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="http://nagordon.github.io/blog/2015/03/14/tf2-server-setup/"
-                       rel="bookmark"
-                       title="Permalink to Team Fortress 2 Server Install for Dummies">
-                        Team Fortress 2 Server Install for Dummies
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-03-14T00:00:00-04:00"> 2015-03-14</time>
-    </span>
-
-
-
-<span class="label label-default">Tags</span>
-	<a href="http://nagordon.github.io/tag/video-games.html">video-games</a>
-    
-</footer><!-- /.post-info -->                    </div>
+            <article>
+                <h2><a href="http://nagordon.github.io/blog/2015/04/02/Abaqus-FEA-Scripting-with-python/">Abaqus FEA Scripting with python</a></h2>
+                <div class="summary"><p>Using python to learn and automate tasks in Abaqus FEA</p>
+                    <a class="btn btn-default btn-xs" href="http://nagordon.github.io/blog/2015/04/02/Abaqus-FEA-Scripting-with-python/">more ...</a>
                 </div>
-                <p>For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
-is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for online gaming, and it is way more fun to play games in the same room with your friends rather than random people online. </p>
-<p>Things have changed since those days. Internet speeds and just fine for online gaming, but I still prefer LAN games because, again, it is way more fun to game with your friends in the same room. So, I enjoy hosting LAN games, and I found setting up a local server a fun technical challenge, and If you are interested in doing the same, this should help you do it.</p>
-<p>The cool things with steam servers is you don't even need an account. You can create an anonymous server that is not affiliated with you. </p>
-<h2><strong>Step 1</strong> - Get a free operating system</h2>
-<p>Get a Debain based Linux computer. I am using an older samsung laptop (6 GB, i5 processor) running <a href="http://www.linuxmint.com/edition.php?id=172">mint-cinnamon</a></p>
-<h2><strong>Step 2</strong> - Install dependent software</h2>
-<p>Get to your linux terminal and install the required software by running this command
-<code>sudo apt-get install gdb mailutils postfix lib32gcc1</code></p>
-<h2><strong>Step 3</strong> - Create server user account</h2>
-<p>Create a user for the server admin, assign a password, and login to tf2server account</p>
-<div class="highlight"><pre>adduser tf2server
-passwd tf2server
-su tf2server
-</pre></div>
-
-
-<h2><strong>Step 4</strong> - Install steam server software</h2>
-<p>There are multiple ways of doing this. One is to follow the <a href="https://wiki.teamfortress.com/wiki/Linux_dedicated_server">steam installation</a> or another <a href="http://stevenbenner.com/2010/11/how-to-set-up-a-team-fortress-2-dedicated-server-on-ubuntu/">tutorial</a> or <a href="http://danielgibbs.co.uk/lgsm/tf2server/">another tutorial</a>, which is what I recommend and used.  </p>
-<p>This will download the script, make it executable, and execute the installation</p>
-<div class="highlight"><pre>wget http://danielgibbs.co.uk/dl/tf2server
-chmod +x tf2server
-./tf2server install
-</pre></div>
-
-
-<h2><strong>Step 5</strong> - Start the server</h2>
-<p>Go to the tf2server home directory <code>cd ~</code> which will take you to <code>/home/tf2server/</code> and use these commands to manage your server  </p>
-<div class="highlight"><pre>./tf2server start
-./tf2server stop
-./tf2server restart
-./tf2server details
-</pre></div>
-
-
-<p>Type <code>./tf2server start</code> to start the server</p>
-<h2><strong>Step 6</strong> - Connect via LAN</h2>
-<p>if you run <code>./tf2server details</code> you will see a bunch of output  </p>
-<div class="highlight"><pre>Team Fortress 2 Server Details
-================================================================================================================================================
-Server name:    tf2 server 1
-Server IP:      192.168.1.196:27015
-RCON password:  tf2server
-Status:         ONLINE
-
-Command-line Parameters
-================================================================================================================================================
-./srcds_run -game tf -strictportbind -ip 192.168.1.196 -port 27015 +clientport 27005 +tv_port 27020 -tickrate  +map pl_goldrush +servercfgfile tf2-server.cfg -maxplayers 16
-</pre></div>
-
-
-<p>what we want here is the local ip and port <code>Server IP: 192.168.1.196:27015</code></p>
-<p>Now we can connect locally by launching Team Fortress 2, hit <code>~</code> to drop down the console and type <code>connect 192.168.1.196:27015</code> and that should connect you to the server locally</p>
-<h2><strong>Step 7</strong> - Set up a Public Server</h2>
-<p>If you want to make this a public server, we need to do a few more things. First, I needed to remove the <code>-strictportbind</code> portion on the command-line properties in the file located in <code>/tf2server/tf2server</code> file so that an unused port is chosen, so when you restart the tf2server, it may choose a different port to allow for online access.</p>
-<p>After that, I access my default router IP via a web browser with <code>192.168.1.1</code> and set up a port forward on the server IP and port</p>
-<p>Now, restart the tf2server with <code>./tf2server restart</code> and go to the console <code>./tf2server console</code> and look at some of the output. Note, this script uses tmux, which allows us to log out of the server and keep the server running. Here, you can run all the comamnds to manage the server</p>
-<p>You should see somewhere in the top the public ip address of the server computer</p>
-<div class="highlight"><pre>Connection to Steam servers successful.
-   Public IP is 12.34.56.78.
-</pre></div>
-
-
-<p>and </p>
-<div class="highlight"><pre>Network: IP 192.168.1.196, mode MP, dedicated Yes, ports <span class="m">27015</span> SV / <span class="m">27005</span> CL
-</pre></div>
-
-
-<h2><strong>Step 8</strong> - Connect to your public server</h2>
-<p>Now we have all the information we need to create public server, the public IP and the SV port it selected. Finally launch Steam and do </p>
-<blockquote>
-<p>Severs -&gt; Favorites -&gt; Add a Server -&gt; enter <code>12.34.56.78:27015</code></p>
-</blockquote>
-<p>Now you have a public server!</p>
-<p>if you want to play without people, add some bots. Go to your console via <code>./tf2server console</code> and add some bots<code>tf_bot_add 4</code> change the level to <code>changelevel pl_goldrush</code></p>
-<p>I have found many maps don't work well with bots. The maps I have listed below seemed to work well.</p>
-<h2>Server Customization</h2>
-<p>To customize your server there are a few files you should edit. Make sure you make a backup of each in case it gets messed up</p>
-<p>The configuration file updates the server every time a new map loads. Here is mine.
-/home/tf2server/serverfiles/tf/cfg/tf2-server.cfg</p>
-<div class="highlight"><pre>mp_disable_respawn_times 0
-tf_bot_quota 13
-tf_bot_quota_mode &quot;fill&quot;
-tf_bot_difficulty 1
-mp_timelimit 15
-mp_maxrounds 5
-mp_winlimit 
-sv_cheats 0
-tf_bot_melee_only 0
-</pre></div>
-
-
-<p>/home/tf2server/serverfiles/tf/cfg/mapcycle_default.txt
-The mapcycle file tells the server which map to go to next. if you use <code>changelevel pl_barnblitz</code>, it will begin the cycle there</p>
-<div class="highlight"><pre>pl_badwater
-pl_goldrush
-pl_upward
-pl_barnblitz
-pl_hoodoo_final
-koth_viaduct
-koth_nucleus
-koth_harvest_final
-koth_lakeside_final
-koth_badlands
-koth_king
-plr_pipeline
-plr_hightower
-pl_thundermountain
-pl_frontier_final
-</pre></div>
-
-
-<p>If you want to use your xbox controller, from the client computer access the console via <code>~</code> and run <code>exec 260controller</code> </p>
-<p>Enjoy!</p>
-<p>Here are some links that I found helpful <br />
-https://wiki.teamfortress.com/wiki/Linux_dedicated_server<br />
-http://danielgibbs.co.uk/lgsm/tf2server/<br />
-http://stevenbenner.com/2010/11/how-to-set-up-a-team-fortress-2-dedicated-server-on-ubuntu/<br />
-https://developer.valvesoftware.com/wiki/List_of_TF2_console_commands_and_variables<br />
-https://developer.valvesoftware.com/wiki/Console_Command_List<br />
-http://steamcommunity.com/sharedfiles/filedetails/?id=250332112<br />
-https://wiki.teamfortress.com/wiki/Linux_dedicated_server<br />
-https://wiki.teamfortress.com/wiki/Bots  </p>
-            </div>
-            <!-- /.entry-content -->
-    <hr/>
-    <section class="comments" id="comments">
-        <h2>Comments</h2>
-
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
-
-                    var disqus_identifier = 'tf2-server-setup';
-                var disqus_url = 'http://nagordon.github.io/blog/2015/03/14/tf2-server-setup/';
-
-            var disqus_config = function () {
-                this.language = "en";
-            };
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function () {
-                var dsq = document.createElement('script');
-                dsq.type = 'text/javascript';
-                dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-            Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-    </section>
-        </article>
-    </section>
+            </article>
+            <hr/>
 
         </div>
         <div class="col-sm-3" id="sidebar">
