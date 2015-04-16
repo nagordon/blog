@@ -79,5 +79,9 @@ stuff, things, ideas,
 tags
 python, books, tutorials, rants, engineering, software, hardware, open-source, linux, windows, math, technology, science
 
+'if:curious then:learn | fun with engineering and technology'
+
+navigating the noosphere
+
 
 > Written with [StackEdit](https://stackedit.io/).

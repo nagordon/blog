@@ -1,12 +1,11 @@
 Title: It's About Time
 Date: 2015-02-25
 Modified: 2015-02-26
-Category: About
+Category: Random
 Tags: me
 Slug: about-me
 Authors: Neal Gordon
 Summary: About me
-
 
 I am finally getting around to creating a blog. My story is one of innovation by necessity. I have always enjoyed math, but have never been particularity good at it, but technology has allowed me to appreciate things in the world that I would have never dreamed of. Up to college, I struggled through all my math classes until I learned how handy spreadsheets are for calculating things. I considered myself handy with Excel, until I stumbled across VBA (Visual Basic for Applications). It was an eye opening experience, like a sawless carpenter discovering a serrated metal blade for the first time. I found programming to be enjoyable and extremely useful for my industrial and mechanical engineering classes. I picked up MATLAB when I actually wanted to do math, and was excellent for linear algebra and numerical methods, which are be very tedious to do by hand (and can be difficult conceptually). 
 After college, I found myself wanting to do some programming projects, but not wanting to buy a license. This led me to taking a coursera class, and fumbling through picking up python and linux, and have love (almost) every minute of it. Two years later, I started this blog, and have been a recovering MATLAB user trying to transition to the open-source world, and python has been my gateway, and I have yet to be disappointed. You want to perform engineering calculations? Build a website? Write scripts for Excel, Solidworks, CATIA, Abaqus? Smart Home/Office automation (ehem, Raspberry Pi...)? I had finally found the tool I was looking for.
