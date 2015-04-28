@@ -26,7 +26,7 @@ sudo apt-get update && sudo apt-get upgrade
 conda create -n pylican python=2.7
 source activate pylican  # or just 'activate pylican' in windows
 conda install pip
-pip install ipython==2.4.1# this is important because of liquid tags
+conda install ipython==2.4.1# this is important because of liquid tags
 conda install ipython-notebook
 pip install pelican
 pip install Markdown
@@ -71,6 +71,9 @@ Once you have your *.md, we need to generate the static html files that will be 
 pelican --help
 # generates the site
 pelican content
+
+# or specify the config file
+pelican content -s pelicanconf.py
 
 # or to generate and preview the site
 cd output

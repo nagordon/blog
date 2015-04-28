@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 import os
 
 AUTHOR = 'Neal Gordon'
-SITENAME = 'navigating the noosphere' # if curious: then: learn
+SITENAME = 'if curious: then: learn'
 SITEURL = 'http://nagordon.github.io'
 HIDE_SITENAME = False
 
