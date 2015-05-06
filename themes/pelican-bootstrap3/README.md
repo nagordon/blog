@@ -1,7 +1,7 @@
 # pelican-bootstrap3
 
-This is a Bootstrap 3 theme for Pelican. It's fully responsive. Bootstrap 3 has seen an official, final release now, so
-I don't expect any breaking changes anymore. I will try to keep it up-to-date.
+This is a Bootstrap 3 theme for Pelican. It's fully responsive. Pelican-bootstrap3 is compatible with Pelican 3.3.0 and 
+higher. I will try to regularly update this theme with new features and newer versions of Bootstrap & Bootswatch.
 
 ## CONTRIBUTING
 
@@ -123,6 +123,16 @@ If you wish to use the inverse navbar from Bootstrap, set the flag `BOOTSTRAP_NA
 
 This theme has support for the [Related Posts plugin](https://github.com/getpelican/pelican-plugins/tree/master/related_posts). All you have to do, is enable the plugin, and the theme will do the rest.
 
+### Series
+
+This theme supports the [Series plugin](https://github.com/getpelican/pelican-plugins/tree/master/series). If you enable the plugin you will find in the footer the links to the previous and next articles in the series.
+
+You may customize the header of this list setting the `SERIES_TEXT` variable, which can also include the `index` and `name` variables. The first is the index of the current article in the series (starting from 1) and the second is the name of the series. The default string is `Part %(index)s of the %(name)s series`.
+
+You may display on the sidebar the link to the previous and next article in the series setting `DISPLAY_SERIES_ON_SIDEBAR` to `True`.
+
+You may display information on the series just under the article title setting `SHOW_SERIES` to `True`.
+
 ### IPython Notebook support
 
 This theme supports including IPython notebooks through the [Liquid Tags plugin](https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags). If you enable the plugin, the theme will automatically include the right CSS/JS to make the notebooks work.
@@ -202,6 +212,13 @@ You can optionally declare a [Creative Commons license](http://creativecommons.o
 
 The license choice mirrors the [Creative Commons License Chooser](http://creativecommons.org/choose/). Source for the macro that renders the mark is at http://github.com/hlapp/cc-tools.
 
+Alternatively, if you want to use another license type, you can instead use the `CUSTOM_LICENSE` property to set a license string that will be showed at the bottom of every page.
+Raw HTML is allowed.
+As `CC_*` variables take precedence, be sure to avoid `CC_*` variables when using `CUSTOM_LICENSE`.
+
+For example, if you want to use the WTFPL license, you can set:
+`CUSTOM_LICENSE='Unless otherwise stated, all articles are published under the <a href="http://www.wtfpl.net/about/">WTFPL</a> license.'`
+
 ### GitHub
 
 The theme can show your most recently active GitHub repos in the sidebar. To enable, provide a `GITHUB_USER`. Appearance and behaviour can be controlled using the following variables:
@@ -261,8 +278,7 @@ This theme has support for the
 All you have to do, is:
 - enable the plugin, and the theme will add a search box on the right
   side of the menu
-- Add `DIRECT_TEMPLATES = (('search',))` in your `pelicanconf.py`.
-
+- Add `'search'` to the `DIRECT_TEMPLATES` in your `pelicanconf.py`. E.g. `DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search').
 
 ### Footer
 

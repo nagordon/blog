@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 import os
 
 AUTHOR = 'Neal Gordon'
-SITENAME = 'if curious: then: learn'
+SITENAME = 'if: curious then: learn'
 SITEURL = 'http://nagordon.github.io'
 HIDE_SITENAME = False
 
@@ -25,8 +25,7 @@ STATIC_PATHS = ['images', 'code', 'notebooks']
 NOTEBOOK_DIR = 'notebooks'
 #ARTICLE_PATHS = ['content']
 USE_FOLDER_AS_CATEGORY = False
-THEME = "themes/pelican-bootstrap3" 
-#THEME = 'notmyidea'
+THEME = "themes/pelican-bootstrap3" # 'notmyidea'
 
 # ipynb settings
 MARKUP = ('md')#, 'ipynb')
@@ -39,16 +38,18 @@ PLUGINS = ['liquid_tags.img',
 SUMMARY_MAX_LENGTH = 100
 USE_FOLDER_AS_CATEGORY = False
 
+
+#CUSTOM_CSS = 'static/custom.css'
+
 ################# BOOTSTRAP SETTINGS ###########################
 BANNER = 'images/banner.jpg'
 BANNER_SUBTITLE = 'fun with engineering and technology'
-#BOOTSTRAP_THEME = 'simplex'
 SHOW_ARTICLE_AUTHOR = True
 SHOW_DATE_MODIFIED = True
 BOOTSTRAP_FLUID = True
 BANNER_ALL_PAGES = False
 #SITELOGO = '/images/logo.jpg'
-SITELOGO_SIZE = 50
+SITELOGO_SIZE = 25
 DEFAULT_PAGINATION = False   #10
 DISPLAY_BREADCRUMBS = False
 HIDE_SIDEBAR  = False
@@ -59,6 +60,8 @@ DISPLAY_TAGS_INLINE = True
 DISPLAY_CATEGORIES_ON_SIDEBAR = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 RECENT_POST_COUNT = 3
+
+#BOOTSTRAP_THEME = 'simplex'# 'cosmo' # 'readable'
 
 #AVATAR = 'images/me.png'
 #ABOUT_ME = 'Here I am!'
