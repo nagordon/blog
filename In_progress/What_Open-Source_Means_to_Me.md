@@ -7,6 +7,10 @@ Slug:
 Authors: 
 Summary: 
 
+http://www.catb.org/~esr/
+
+![](catherdral_and_bazaar.jpg)
+
 # What open-source means to me
 I have a confession, the ideas expressed in this article are generally not my own, however, all the opinions are. And, those opinions are mostly a response from the book/manifesto of open-source, called The Cathedral and the Bazaar, by Eric Raymond.
 I stumbled across this book in my many random searches on the internet, and as I started reading it out of pure curiosity, and I immediately began correlating ideas behind the open software development strategies to many various activities in my life, including some epistemological interests in economics and philosophy. Being a US citizen, it is difficult to deny our ingrained capitalistic ideologies where companies are created and destroyed based on profit, and when you ask a typical person what their worth is, they often will give you a dollar value. It is a very slippery slope to think in terms of starting a company with a great idea with the hopes of one day making it big, but the open-source world says something different. It is a more humanitarian approach to creating great technology, rather than seeking fortunes through innovations. 

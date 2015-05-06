@@ -1,8 +1,6 @@
 If: curious then: learn
 fun with engineering and technology
 
-
-
 1. a starter for python notebooks
  * simple numerical method implementation
  * doing math homework
@@ -29,8 +27,6 @@ fun with engineering and technology
   * http://doaj.org/
 
 6. Facial recognition of home family videos
-
-* Abaqus FEA Software Automation with Python
 
 * coni bear lever four bar mechnical design
 
@@ -63,25 +59,7 @@ Engine RPM from audio using fft
 
 * setting up desktop email
 https://support.google.com/accounts/answer/3024195?hl=en#gmail
-  
 
-technology and engineering challenges with open-source tools
-the menial questions of life, the universe, and everything
-While: here Do: stuff
-
-Do stuff While here
-python bytes
-doing things to stuff
-
-making stuff, fixing things, creating ideas
 make fix create
-stuff, things, ideas,
 tags
-python, books, tutorials, rants, engineering, software, hardware, open-source, linux, windows, math, technology, science
-
-'if:curious then:learn | fun with engineering and technology'
-
-navigating the noosphere
-
-
-> Written with [StackEdit](https://stackedit.io/).
+python, books, tutorials, engineering, software, hardware, open-source, linux, windows, math, technology, science

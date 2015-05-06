@@ -1,25 +1,21 @@
-Title: Team Fortress 2 Server Install for Dummies
-Date: 2015-03-14
-Modified: 
-Category: Tutorials
-Tags: video-games
-Slug: tf2-server-setup
-Authors: Neal Gordon
-Summary: How to set up a Team Fortress 2 steam server-setup
 
-For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
-is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for online gaming, and it is way more fun to play games in the same room with your friends rather than random people online. 
+For those of us who remember playing games on dos, [steam](http://store.steampowered.com/)
+is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for network gaming, and it is way more fun to play games in the same room with your friends rather than random people online. 
 
 Things have changed since those days. Internet speeds and just fine for online gaming, but I still prefer LAN games because, again, it is way more fun to game with your friends in the same room. So, I enjoy hosting LAN games, and I found setting up a local server a fun technical challenge, and If you are interested in doing the same, this should help you do it.
 
 The cool things with steam servers is you don't even need an account. You can create an anonymous server that is not affiliated with you. 
+
+Full disclosure, this tutorial pulled a lot of info from [Danielgibbs](http://danielgibbs.co.uk/lgsm/tf2server/  ), a great site! 
 
 ##**Step 1** - Get a free operating system
 Get a Debain based Linux computer. I am using an older samsung laptop (6 GB, i5 processor) running [mint-cinnamon](http://www.linuxmint.com/edition.php?id=172)
 
 ##**Step 2** - Install dependent software
 Get to your linux terminal and install the required software by running this command
-```sudo apt-get install gdb mailutils postfix lib32gcc1```
+```bash
+sudo apt-get install gdb mailutils postfix lib32gcc1
+```
 
 ##**Step 3** - Create server user account
 Create a user for the server admin, assign a password, and login to tf2server account
@@ -140,15 +136,12 @@ If you want to use your xbox controller, from the client computer access the con
 Enjoy!
 
 Here are some links that I found helpful   
-https://wiki.teamfortress.com/wiki/Linux_dedicated_server  
-http://danielgibbs.co.uk/lgsm/tf2server/  
-http://stevenbenner.com/2010/11/how-to-set-up-a-team-fortress-2-dedicated-server-on-ubuntu/  
-https://developer.valvesoftware.com/wiki/List_of_TF2_console_commands_and_variables  
-https://developer.valvesoftware.com/wiki/Console_Command_List  
-http://steamcommunity.com/sharedfiles/filedetails/?id=250332112  
-https://wiki.teamfortress.com/wiki/Linux_dedicated_server  
-https://wiki.teamfortress.com/wiki/Bots  
-
-
-
+[https://wiki.teamfortress.com/wiki/Linux_dedicated_server  ](https://wiki.teamfortress.com/wiki/Linux_dedicated_server  )  
+[http://danielgibbs.co.uk/lgsm/tf2server/  ](http://danielgibbs.co.uk/lgsm/tf2server/  )  
+[http://stevenbenner.com/2010/11/how-to-set-up-a-team-fortress-2-dedicated-server-on-ubuntu/  ](http://stevenbenner.com/2010/11/how-to-set-up-a-team-fortress-2-dedicated-server-on-ubuntu/  )  
+[https://developer.valvesoftware.com/wiki/List_of_TF2_console_commands_and_variables  ](https://developer.valvesoftware.com/wiki/List_of_TF2_console_commands_and_variables  )  
+[https://developer.valvesoftware.com/wiki/Console_Command_List  ](https://developer.valvesoftware.com/wiki/Console_Command_List  )  
+[http://steamcommunity.com/sharedfiles/filedetails/?id=250332112  ](http://steamcommunity.com/sharedfiles/filedetails/?id=250332112  )  
+[https://wiki.teamfortress.com/wiki/Linux_dedicated_server  ](https://wiki.teamfortress.com/wiki/Linux_dedicated_server  )  
+[https://wiki.teamfortress.com/wiki/Bots  ](https://wiki.teamfortress.com/wiki/Bots  )  
 
