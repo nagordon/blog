@@ -164,6 +164,7 @@ init_mathjax = function() {
 }
 init_mathjax();
 </script>
+    <link href="../../../../../images/earth.png" rel="icon">
 
 <link rel="canonical" href="../../../../../blog/2015/04/02/Abaqus-FEA-Scripting-with-python/">
 
@@ -528,7 +529,7 @@ session.odbs[name].steps[name].historyRegions[name]</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="figure">
-<img src="../../../../../images/abaqus_python_console1.png" alt="abaqus_python_console1" /><p class="caption">abaqus_python_console1</p>
+<img src="../../../../../notebooks/Abaqus_FEA_Scripting_with_python/abaqus_python_console1.png" />
 </div>
 </div>
 </div>
@@ -559,9 +560,7 @@ number = <span class="dt">float</span>(getInput(<span class="st">&#39;Enter a nu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="figure">
-<img src="../../../../../images/abaqus_python_console2.png" alt="abaqus_python_console2" /><p class="caption">abaqus_python_console2</p>
-</div>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/abaqus_python_console2.png"></p>
 </div>
 </div>
 </div>
@@ -839,14 +838,22 @@ Abaqus JOB beam_tutorial COMPLETED
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now lets grab some images from the odb file and see how the simulation turned out</p>
 <p>We can load the images using markdown, such as</p>
-<pre><code>&lt;img src=&quot;images/beam_tutorial_Iso.png&quot;&gt;</code></pre>
+<pre><code>&lt;img src=&quot;/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Iso.png&quot;&gt;  
+
+which is the method I prefer because if I want to use this notebook, I can copy the entire notebook folder with all the images and not have to worry about obscure image locations that pelican requirwes otherwise.  </code></pre>
 <p>or for the blog post using pelican abaqus_python_console2</p>
-<pre><code>![beam_tutorial_Iso]({filename}/images/beam_tutorial_Iso.png)</code></pre>
+<pre><code>![beam_tutorial_Iso]({filename}/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Iso.png)
+
+</code></pre>
 <hr />
-<p>Here is an image of the undeformed plot<br /><img src="../../../../../images/beam_tutorial_Iso.png" alt="beam_tutorial_Iso" /></p>
-<p>And here is an image for <span class="math">\(U_{1}\)</span> for the last frame (indicated by -1, which in python selects the last list item)<br /><img src="../../../../../images/beam_tutorial_step-0_U_U1_Iso.png" alt="beam_tutorial_step-0_U_U1_Iso" /></p>
-<p>And here is an image for <span class="math">\(\sigma_{11}\)</span> for the last frame<br /><img src="../../../../../images/beam_tutorial_step-0_S_S11_Iso.png" alt="beam_tutorial_step-0_S_S11_Iso" /></p>
-<p>We can also plot directly in Abaqus. This is a plot of the strain energy of the entire model. <img src="../../../../../images/beam_tutorial_Xplot_step-beamLoad_x-ALLSE.png" alt="beam_tutorial_Xplot_step-beamLoad_x-ALLSE" /></p>
+<p>Here is an image of the undeformed plot</p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Iso.png"></p>
+<p>And here is an image for <span class="math">\(U_{1}\)</span> for the last frame (indicated by -1, which in python selects the last list item)</p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_U_U1_Iso.png"></p>
+<p>And here is an image for <span class="math">\(\sigma_{11}\)</span> for the last frame</p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_S_S11_Iso.png"></p>
+<p>We can also plot directly in Abaqus. This is a plot of the strain energy of the entire model.</p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Xplot_step-beamLoad_x-ALLSE.png"></p>
 <p>We can also easily create aniamtions directly from abaqus. Using a python module, we convert the avi to an animated gif</p>
 </div>
 </div>
@@ -876,9 +883,11 @@ Abaqus JOB beam_tutorial COMPLETED
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The gif file format is really handy. We can simple load the gif file just like we loaded png to show the animations</p>
 <hr />
-<p><span class="math">\(U{1}\)</span> over all frames<br /><img src="../../../../../images/beam_tutorial_step-0_U_U1_Iso.gif" alt="beam_tutorial_step-0_U_U1_Iso" /></p>
-<p><span class="math">\(\sigma_{11}\)</span> over all frames<br /><img src="../../../../../images/beam_tutorial_step-0_S_S11_Iso.gif" alt="beam_tutorial_step-0_S_S11_Iso" /></p>
-<p>Plot of the strain energy<br /><img src="../../../../../images/beam_tutorial_Xplot_step-beamLoad_x-ALLSE.gif" alt="beam_tutorial_Xplot_step-beamLoad_x-ALLSE" /></p>
+<p><span class="math">\(U{1}\)</span> over all frames</p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_U_U1_Iso.gif"></p>
+<p><span class="math">\(\sigma_{11}\)</span> over all frames<br /><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_S_S11_Iso.gif"></p>
+<p>Plot of the strain energy</p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Xplot_step-beamLoad_x-ALLSE.gif"></p>
 </div>
 </div>
 </div>

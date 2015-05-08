@@ -22,6 +22,8 @@ TAG_CLOUD_MAX_ITEMS = 15
 DISPLAY_ARTICLE_INFO_ON_INDEX = True
 PATH = 'content'
 STATIC_PATHS = ['images', 'code', 'notebooks']
+#PAGE_PATHS = ['notebooks']
+#ARTICLE_PATHS = ['notebooks']
 NOTEBOOK_DIR = 'notebooks'
 #ARTICLE_PATHS = ['content']
 USE_FOLDER_AS_CATEGORY = False
@@ -37,25 +39,26 @@ PLUGINS = ['liquid_tags.img',
 
 SUMMARY_MAX_LENGTH = 100
 USE_FOLDER_AS_CATEGORY = False
-
-
 #CUSTOM_CSS = 'static/custom.css'
 
 ################# BOOTSTRAP SETTINGS ###########################
 BANNER = 'images/banner.jpg'
+#SITELOGO = 'images/earth.png'
+SITELOGO_SIZE = 25
+FAVICON = 'images/earth.png'
+
 BANNER_SUBTITLE = 'fun with engineering and technology'
 SHOW_ARTICLE_AUTHOR = True
 SHOW_DATE_MODIFIED = True
 BOOTSTRAP_FLUID = True
 BANNER_ALL_PAGES = False
-#SITELOGO = '/images/logo.jpg'
-SITELOGO_SIZE = 25
+
 DEFAULT_PAGINATION = False   #10
 DISPLAY_BREADCRUMBS = False
 HIDE_SIDEBAR  = False
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
-#FAVICON = '/images/logo.jpg'
+
 DISPLAY_TAGS_INLINE = True
 DISPLAY_CATEGORIES_ON_SIDEBAR = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
