@@ -50,7 +50,7 @@ FAVICON = 'images/earth.png'
 BANNER_SUBTITLE = 'fun with engineering and technology'
 SHOW_ARTICLE_AUTHOR = True
 SHOW_DATE_MODIFIED = True
-BOOTSTRAP_FLUID = True
+BOOTSTRAP_FLUID = False   # set as false if you want a fixed width
 BANNER_ALL_PAGES = False
 
 DEFAULT_PAGINATION = False   #10
@@ -59,12 +59,14 @@ HIDE_SIDEBAR  = False
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
 
+
 DISPLAY_TAGS_INLINE = True
 DISPLAY_CATEGORIES_ON_SIDEBAR = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 RECENT_POST_COUNT = 3
 
-#BOOTSTRAP_THEME = 'simplex'# 'cosmo' # 'readable'
+
+#BOOTSTRAP_THEME = 'journal' #'simplex'# 'cosmo' # 'readable'
 
 #AVATAR = 'images/me.png'
 #ABOUT_ME = 'Here I am!'

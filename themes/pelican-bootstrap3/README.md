@@ -179,10 +179,14 @@ The following things can be displayed on the sidebar:
 ```
 SOCIAL = (('twitter', 'http://twitter.com/DaanDebie'),
           ('linkedin', 'http://www.linkedin.com/in/danieldebie'),
-          ('github', 'http://github.com/DandyDev'),)
+          ('github', 'http://github.com/DandyDev'),
+          ('stackoverflow', 'http://stackoverflow.com/users/872397/dandydev', 'stack-overflow')
 ```
+The first string in each item will be used for both the name as shown in the sidebar, and to determine the [FontAwesome](http://fontawesome.io/icons/)
+icon to show. You can provide an alternative icon string as the third string (as shown in the _stackoverflow_ item).
 * **Tags** will be shown if `DISPLAY_TAGS_ON_SIDEBAR` is set to _True_. Normally, tags are shown as a list.
 	* Set `DISPLAY_TAGS_INLINE` to _True_, to display the tags inline (ie. as tagcloud)
+	* Set `TAGS_URL` to the relative URL of the tags index page (typically `tags.html`)
 * **Categories** will be shown if `DISPLAY_CATEGORIES_ON_SIDEBAR` is set to _True_
 * **Recent Posts** will be shown if `DISPLAY_RECENT_POSTS_ON_SIDEBAR` is set to _True_
 	* Use `RECENT_POST_COUNT` to control the amount of recent posts. Defaults to **5**
@@ -279,10 +283,18 @@ All you have to do, is:
 - enable the plugin, and the theme will add a search box on the right
   side of the menu
 - Add `'search'` to the `DIRECT_TEMPLATES` in your `pelicanconf.py`. E.g. `DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search').
+By default, the Tipue search page is configured at "/search.html", but you can override that with the `SEARCH_URL` 
+setting, which comes in handy if you have fancy rewrite rules in your Apache or Nginx configuration.
 
 ### Footer
 
 The footer will display a copyright message using the AUTHOR variable and the year of the latest post. If a content license mark is enabled (see above), that will be shown as well.
+
+### Sidebar Images
+
+Include a series of images in the sidebar.
+
+SIDEBAR_IMAGES = ["/path/to/image1.png", "/path/to/image2.png"]
 
 ## Live example
 

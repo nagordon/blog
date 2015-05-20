@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>FEA - if: curious then: learn</title>
+    <title>if: curious then: learn</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -164,26 +164,26 @@ init_mathjax = function() {
 }
 init_mathjax();
 </script>
-    <link href="../images/earth.png" rel="icon">
+    <link href="./images/earth.png" rel="icon">
 
-
-    <meta name="author" content="Neal Gordon" />
-    <meta name="keywords" content="FEA" />
+<link rel="canonical" href=".">
+        <meta name="author" content="Neal Gordon" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="if: curious then: learn" />
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="if: curious then: learn"/>
-        <meta property="og:url" content=".."/>
+        <meta property="og:url" content="."/>
         <meta property="og:description" content="if: curious then: learn"/>
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="../theme/css/bootstrap.min.css" type="text/css"/>
-    <link href="../theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="../theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="../theme/css/style.css" type="text/css"/>
+    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link href="./static/custom.css" rel="stylesheet">
 
 
 
@@ -193,7 +193,7 @@ init_mathjax();
 <body>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
+	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -201,63 +201,87 @@ init_mathjax();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="../" class="navbar-brand">
+            <a href="./" class="navbar-brand">
 if: curious then: learn            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="../pages/about-me.html">
+                         <li><a href="./pages/about-me.html">
                              About me
                           </a></li>
                         <li >
-                            <a href="../category/tutorials.html">Tutorials</a>
+                            <a href="./category/tutorials.html">Tutorials</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="../archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+              <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
 <!-- Banner -->
-<!-- End Banner -->
-<div class="container">
+<style>
+	#banner{
+	    background-image:url("./images/banner.jpg");
+	}
+</style>
+
+<div id="banner">
+	<div class="container-fluid">
+		<div class="copy">
+			<h1>if: curious then: learn</h1>
+				<p class="intro">fun with engineering and technology</p>
+		</div>
+	</div>
+</div><!-- End Banner -->
+<div class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
+
             <article>
-                <h2><a href="../blog/2015/04/02/Abaqus-FEA-Scripting-with-python/">Abaqus FEA Scripting with python</a></h2>
+                <h2><a href="./blog/2015/03/14/tf2-server-setup/">Team Fortress 2 Server Install for Dummies</a></h2>
                     <div class="well well-sm">
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-04-02T00:00:00-04:00"> 2015-04-02</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-03-14T00:00:00-04:00"> 2015-03-14</time>
     </span>
             <span class="label label-default">Modified</span>
             <span class="modified">
-                <i class="fa fa-calendar"></i><time datetime="2015-04-14T00:00:00-04:00"> 2015-04-14</time>
+                <i class="fa fa-calendar"></i><time datetime="2015-05-20T00:00:00-04:00"> 2015-05-20</time>
             </span>
 
 
             <span class="label label-default">By</span>
-            <a href="../author/neal-gordon.html"><i class="fa fa-user"></i> Neal Gordon</a>
+            <a href="./author/neal-gordon.html"><i class="fa fa-user"></i> Neal Gordon</a>
 
 
 
 <span class="label label-default">Tags</span>
-	<a href="../tag/python.html">python</a>
-        /
-	<a href="../tag/fea.html">FEA</a>
-        /
-	<a href="../tag/engineering.html">engineering</a>
+	<a href="./tag/video-games.html">video-games</a>
     
 </footer><!-- /.post-info -->                    </div>
-                <div class="summary"><p>Using python to learn and automate tasks in Abaqus FEA</p>
-                    <a class="btn btn-default btn-xs" href="../blog/2015/04/02/Abaqus-FEA-Scripting-with-python/">more ...</a>
+                <div class="summary"><p>How to set up a Team Fortress 2 steam server-setup</p>
+                    <a class="btn btn-default btn-xs" href="./blog/2015/03/14/tf2-server-setup/">more ...</a>
                 </div>
             </article>
             <hr/>
 
+        <ul class="pagination">
+                <li class="prev"><a href="./index2.html">&laquo;</a>
+                </li>
+                    <li class=""><a
+                            href="./index.html">1</a></li>
+                    <li class=""><a
+                            href="./index2.html">2</a></li>
+                    <li class="active"><a
+                            href="./index3.html">3</a></li>
+                    <li class=""><a
+                            href="./index4.html">4</a></li>
+                <li class="next"><a
+                        href="./index4.html">&raquo;</a></li>
+        </ul>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
@@ -277,62 +301,72 @@ if: curious then: learn            </a>
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
-                        <a href="../blog/2015/04/02/Abaqus-FEA-Scripting-with-python/">
+                        <a href="./blog/2015/05/05/matlab-to-python-conversion/">
+                            MATLAB to python conversion
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./blog/2015/04/02/Abaqus-FEA-Scripting-with-python/">
                             Abaqus FEA Scripting with python
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./blog/2015/03/14/tf2-server-setup/">
+                            Team Fortress 2 Server Install for Dummies
                         </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="list-group-item"><a href="../"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
+            <li class="list-group-item"><a href="./"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
                 <ul class="list-group" id="categories">
                     <li class="list-group-item">
-                        <a href="../category/tutorials.html">
+                        <a href="./category/tutorials.html">
                             <i class="fa fa-folder-open fa-lg"></i> Tutorials
                         </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="list-group-item"><a href="../"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+            <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group list-inline tagcloud" id="tags">
                     <li class="list-group-item tag-6">
-                        <a href="../tag/engineering.html">
+                        <a href="./tag/engineering.html">
                             engineering
                         </a>
                     </li>
                     <li class="list-group-item tag-6">
-                        <a href="../tag/fea.html">
+                        <a href="./tag/fea.html">
                             FEA
                         </a>
                     </li>
                     <li class="list-group-item tag-6">
-                        <a href="../tag/matlab.html">
+                        <a href="./tag/matlab.html">
                             matlab
                         </a>
                     </li>
                     <li class="list-group-item tag-6">
-                        <a href="../tag/numerical-methods.html">
+                        <a href="./tag/numerical-methods.html">
                             numerical methods
                         </a>
                     </li>
                     <li class="list-group-item tag-6">
-                        <a href="../tag/pelican.html">
+                        <a href="./tag/pelican.html">
                             pelican
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="../tag/python.html">
+                        <a href="./tag/python.html">
                             python
                         </a>
                     </li>
                     <li class="list-group-item tag-6">
-                        <a href="../tag/tutorial.html">
+                        <a href="./tag/tutorial.html">
                             tutorial
                         </a>
                     </li>
                     <li class="list-group-item tag-6">
-                        <a href="../tag/video-games.html">
+                        <a href="./tag/video-games.html">
                             video-games
                         </a>
                     </li>
@@ -372,7 +406,7 @@ if: curious then: learn            </a>
     </div>
 </div>
 <footer>
-   <div class="container">
+   <div class="container-fluid">
       <hr>
       <div class="row">
          <div class="col-xs-10">&copy; 2015 Neal Gordon
@@ -383,22 +417,22 @@ if: curious then: learn            </a>
       </div>
    </div>
 </footer>
-<script src="../theme/js/jquery.min.js"></script>
+<script src="./theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../theme/js/bootstrap.min.js"></script>
+<script src="./theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="../theme/js/respond.min.js"></script>
+<script src="./theme/js/respond.min.js"></script>
 
-    <script src="../theme/js/bodypadding.js"></script>
+    <script src="./theme/js/bodypadding.js"></script>
     <!-- GitHub JS -->
     <script type="text/javascript">
         $(document).ready(function () {
             if (!window.jXHR) {
                 var jxhr = document.createElement('script');
                 jxhr.type = 'text/javascript';
-                jxhr.src = '../theme/js/jXHR.js';
+                jxhr.src = './theme/js/jXHR.js';
                 var s = document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(jxhr, s);
             }
@@ -411,7 +445,7 @@ if: curious then: learn            </a>
             });
         });
     </script>
-    <script src="../theme/js/github.js" type="text/javascript"></script>
+    <script src="./theme/js/github.js" type="text/javascript"></script>
     <!-- End GitHub JS Code -->
 
 </body>
