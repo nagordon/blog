@@ -25,7 +25,7 @@ CLOUDFILES_CONTAINER=my_cloudfiles_container
 
 DROPBOX_DIR=~/Dropbox/Public/
 
-GITHUB_PAGES_BRANCH=master
+GITHUB_PAGES_BRANCH=gh-pages
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
@@ -93,8 +93,7 @@ else
 endif
 
 stopserver:
-	kill -9 `cat pelican.pid`
-	kill -9 `cat srv.pid`
+	$(BASEDIR)/develop_server.sh stop
 	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
 
 publish:

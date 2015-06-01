@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 import os
 
 AUTHOR = 'Neal Gordon'
-SITENAME = 'if: curious then: learn'
+SITENAME = 'if curious: then learn'
 SITEURL = 'http://nagordon.github.io'
 HIDE_SITENAME = False
 
@@ -28,6 +28,7 @@ NOTEBOOK_DIR = 'notebooks'
 #ARTICLE_PATHS = ['content']
 USE_FOLDER_AS_CATEGORY = False
 THEME = "themes/pelican-bootstrap3" # 'notmyidea'
+DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search')
 
 # ipynb settings
 MARKUP = ('md')#, 'ipynb')
@@ -42,23 +43,22 @@ USE_FOLDER_AS_CATEGORY = False
 #CUSTOM_CSS = 'static/custom.css'
 
 ################# BOOTSTRAP SETTINGS ###########################
-BANNER = 'images/banner.jpg'
-#SITELOGO = 'images/earth.png'
-SITELOGO_SIZE = 25
-FAVICON = 'images/earth.png'
+BANNER = 'images/banner.png'
+#SITELOGO = 'images/logo.jpg'
+SITELOGO_SIZE = 20
+FAVICON = 'images/spiral.png'
 
-BANNER_SUBTITLE = 'fun with engineering and technology'
+BANNER_SUBTITLE = 'a blog of engineering and technology'
 SHOW_ARTICLE_AUTHOR = True
 SHOW_DATE_MODIFIED = True
 BOOTSTRAP_FLUID = False   # set as false if you want a fixed width
-BANNER_ALL_PAGES = False
+BANNER_ALL_PAGES = True
 
 DEFAULT_PAGINATION = False   #10
 DISPLAY_BREADCRUMBS = False
 HIDE_SIDEBAR  = False
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
-
 
 DISPLAY_TAGS_INLINE = True
 DISPLAY_CATEGORIES_ON_SIDEBAR = True
