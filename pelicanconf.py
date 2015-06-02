@@ -43,16 +43,16 @@ USE_FOLDER_AS_CATEGORY = False
 #CUSTOM_CSS = 'static/custom.css'
 
 ################# BOOTSTRAP SETTINGS ###########################
-BANNER = 'images/banner.png'
-#SITELOGO = 'images/logo.jpg'
-SITELOGO_SIZE = 20
-FAVICON = 'images/spiral.png'
+BANNER = 'images/banner.jpg'
+#SITELOGO = 'images/earth.png'
+#SITELOGO_SIZE = 40
+FAVICON = 'images/earth.png'
 
 BANNER_SUBTITLE = 'a blog of engineering and technology'
 SHOW_ARTICLE_AUTHOR = True
-SHOW_DATE_MODIFIED = True
+SHOW_DATE_MODIFIED = False
 BOOTSTRAP_FLUID = False   # set as false if you want a fixed width
-BANNER_ALL_PAGES = True
+BANNER_ALL_PAGES = False
 
 DEFAULT_PAGINATION = False   #10
 DISPLAY_BREADCRUMBS = False
