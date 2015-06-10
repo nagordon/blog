@@ -16,9 +16,10 @@ RELATIVE_URLS = True
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
 
+
 ################# Pelican SETTINGS ###########################
 DISPLAY_PAGES_ON_MENU = True
-TAG_CLOUD_STEPS = 6
+TAG_CLOUD_STEPS = 7
 TAG_CLOUD_MAX_ITEMS = 15
 DISPLAY_ARTICLE_INFO_ON_INDEX = True
 PATH = 'content'
