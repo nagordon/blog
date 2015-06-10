@@ -10,8 +10,8 @@ HIDE_SITENAME = False
 
 
 ################# DEVELOPMENT SETTINGS ###########################
-# Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+RELATIVE_URLS = False   # when deploying site
+#RELATIVE_URLS = True    # developing site 
 
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False

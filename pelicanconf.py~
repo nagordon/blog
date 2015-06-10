@@ -11,14 +11,15 @@ HIDE_SITENAME = False
 
 ################# DEVELOPMENT SETTINGS ###########################
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
 
+
 ################# Pelican SETTINGS ###########################
 DISPLAY_PAGES_ON_MENU = True
-TAG_CLOUD_STEPS = 6
+TAG_CLOUD_STEPS = 7
 TAG_CLOUD_MAX_ITEMS = 15
 DISPLAY_ARTICLE_INFO_ON_INDEX = True
 PATH = 'content'
