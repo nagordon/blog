@@ -7,4 +7,4 @@ Slug: Abaqus-FEA-Scripting-with-python
 Authors: Neal Gordon
 Summary: Using python to learn and automate tasks in Abaqus FEA 
 
-{% notebook Abaqus_FEA_Scripting_with_python.ipynb %}
+{% notebook Abaqus_FEA_Scripting_with_python/Abaqus_FEA_Scripting_with_python.ipynb %}

@@ -7,4 +7,4 @@ Slug:doconce-intro
 Authors: Neal Gordon
 Summary: Write it once, deploy it anywhere
 
-{% notebook doconce_notes/Learn Latex markdown and html with doconce.ipynb %}
+{% notebook doconce_notes/Learn-Latex-markdown-and-html-with-doconce.ipynb %}

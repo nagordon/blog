@@ -8,3 +8,5 @@ Authors: Neal Gordon
 Summary: Using python to learn and automate tasks in Abaqus FEA 
 
 {% notebook Abaqus_FEA_Scripting_with_python/Abaqus_FEA_Scripting_with_python.ipynb %}
+
+This notebook is available from github [here](https://github.com/nagordon/blog/blob/master/content/notebooks/Abaqus_FEA_Scripting_with_python/Abaqus_FEA_Scripting_with_python.ipynb)

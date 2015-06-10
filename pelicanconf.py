@@ -8,6 +8,7 @@ SITENAME = 'if curious: then learn'
 SITEURL = 'http://nagordon.github.io'
 HIDE_SITENAME = False
 
+
 ################# DEVELOPMENT SETTINGS ###########################
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
@@ -43,6 +44,7 @@ USE_FOLDER_AS_CATEGORY = False
 #CUSTOM_CSS = 'static/custom.css'
 
 DISQUS_SITENAME = 'nagordon-github'
+
 
 ################# BOOTSTRAP SETTINGS ###########################
 BANNER = 'images/banner.jpg'

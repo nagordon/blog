@@ -7,4 +7,6 @@ Slug:
 Authors: 
 Summary: 
 
-{% notebook notebook1.ipynb %}
+{% notebook Mechanical-Vibrations-with-Python.ipynb %}
+
+This notebook can be downloaded from github [here]()
