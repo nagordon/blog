@@ -16,7 +16,6 @@ RELATIVE_URLS = False   # when deploying site
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
 
-
 ################# Pelican SETTINGS ###########################
 DISPLAY_PAGES_ON_MENU = True
 TAG_CLOUD_STEPS = 7

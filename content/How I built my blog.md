@@ -26,10 +26,10 @@ sudo apt-get update && sudo apt-get upgrade
 conda create -n pylican python=2.7
 source activate pylican  # or just 'activate pylican' in windows
 conda install pip
-conda install ipython==2.4.1# this is important because of liquid tags
 conda install ipython-notebook
 pip install pelican
 pip install Markdown
+conda install ipython==2.4.1   # this is important because of liquid tags
 
 # for github blogs, this tool makes it very easy to update the blog
 pip install ghp-import
@@ -99,6 +99,8 @@ I have been using the ipynb plugin for a bit now, and it is really slick, but it
 Simply clone the plugins and add the folders to the plugins folder
 
 I have also added comment support using Disqus, as well as changing the theme to bootstrap3, which plays very well with the liquid tags plugin. Once you register on the Discus website, add a line to the pelicanconf.py file to link the service.
+
+Finally, the theme I am using here is the [pelican-bootstrap3](https://github.com/DandyDev/pelican-bootstrap3)
 
 For any questions on the layout of the page, see the [github page]( nagordon.github.io) 
  as well as a google search for ```pelican ipython notebook``` and you will find many other good examples

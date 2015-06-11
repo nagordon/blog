@@ -279,10 +279,10 @@ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
 conda create -n pylican <span class="nv">python</span><span class="o">=</span>2.7
 <span class="nb">source </span>activate pylican  <span class="c"># or just &#39;activate pylican&#39; in windows</span>
 conda install pip
-conda install <span class="nv">ipython</span><span class="o">==</span>2.4.1# this is important because of liquid tags
 conda install ipython-notebook
 pip install pelican
 pip install Markdown
+conda install <span class="nv">ipython</span><span class="o">==</span>2.4.1   <span class="c"># this is important because of liquid tags</span>
 
 <span class="c"># for github blogs, this tool makes it very easy to update the blog</span>
 pip install ghp-import
@@ -346,6 +346,7 @@ make github
 I have been using the ipynb plugin for a bit now, and it is really slick, but it doesn't render well with the CSS files, so I have switched to <a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags">liquid tags</a>
 Simply clone the plugins and add the folders to the plugins folder</p>
 <p>I have also added comment support using Disqus, as well as changing the theme to bootstrap3, which plays very well with the liquid tags plugin. Once you register on the Discus website, add a line to the pelicanconf.py file to link the service.</p>
+<p>Finally, the theme I am using here is the <a href="https://github.com/DandyDev/pelican-bootstrap3">pelican-bootstrap3</a></p>
 <p>For any questions on the layout of the page, see the <a href="nagordon.github.io">github page</a> 
  as well as a google search for <code>pelican ipython notebook</code> and you will find many other good examples</p>
 <h2>The Docs</h2>
@@ -405,6 +406,11 @@ Simply clone the plugins and add the folders to the plugins folder</p>
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://nagordon.github.io/blog/2015/06/10/catia-and-simulia-scripting-and-automation-with-python/">
+                            CATIA and SIMULIA Scripting and Automation with Python
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://nagordon.github.io/blog/2015/06/09/mechanical-vibrations-with-python/">
                             Mechanical Vibrations with Python
                         </a>
@@ -412,11 +418,6 @@ Simply clone the plugins and add the folders to the plugins folder</p>
                     <li class="list-group-item">
                         <a href="http://nagordon.github.io/blog/2015/06/06/doconce-intro/">
                             Learn Latex, markdown and html with doconce
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://nagordon.github.io/blog/2015/05/05/matlab-to-python-conversion/">
-                            MATLAB to python conversion
                         </a>
                     </li>
                 </ul>
@@ -435,6 +436,11 @@ Simply clone the plugins and add the folders to the plugins folder</p>
             <li class="list-group-item"><a href="http://nagordon.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group list-inline tagcloud" id="tags">
                     <li class="list-group-item tag-7">
+                        <a href="http://nagordon.github.io/tag/cad.html">
+                            CAD
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-7">
                         <a href="http://nagordon.github.io/tag/doconce.html">
                             doconce
                         </a>
@@ -444,7 +450,7 @@ Simply clone the plugins and add the folders to the plugins folder</p>
                             engineering
                         </a>
                     </li>
-                    <li class="list-group-item tag-7">
+                    <li class="list-group-item tag-4">
                         <a href="http://nagordon.github.io/tag/fea.html">
                             FEA
                         </a>
@@ -474,7 +480,7 @@ Simply clone the plugins and add the folders to the plugins folder</p>
                             pelican
                         </a>
                     </li>
-                    <li class="list-group-item tag-1">
+                    <li class="list-group-item tag-0">
                         <a href="http://nagordon.github.io/tag/python.html">
                             python
                         </a>
