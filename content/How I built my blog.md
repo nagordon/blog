@@ -100,6 +100,8 @@ Simply clone the plugins and add the folders to the plugins folder
 
 I have also added comment support using Disqus, as well as changing the theme to bootstrap3, which plays very well with the liquid tags plugin. Once you register on the Discus website, add a line to the pelicanconf.py file to link the service.
 
+I also recently added a custom domain name with godaddy. It cost $10 and was relativley easy. For the github user page, I recommend just following [the blog entry of andrew sturges](http://andrewsturges.com/blog/jekyll/tutorial/2014/11/06/github-and-godaddy.html).
+
 Finally, the theme I am using here is the [pelican-bootstrap3](https://github.com/DandyDev/pelican-bootstrap3)
 
 For any questions on the layout of the page, see the [github page]( nagordon.github.io) 
