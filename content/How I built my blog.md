@@ -61,6 +61,12 @@ Authors: neal gordon
 Summary: short summary
 
 This is the content of my super blog post.
+I can insert an ipython notebook using liquid tags
+
+{% notebook example_notebook1.ipynb %}
+
+Here is the end of the post!!
+
 
 ```
 The tags will automatically create groups at the top of your webpage once it is built

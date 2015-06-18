@@ -310,6 +310,11 @@ pip install ghp-import
 <span class="n">Summary</span><span class="o">:</span> <span class="n">short</span> <span class="n">summary</span>
 
 <span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="kd">super</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
+<span class="n">I</span> <span class="n">can</span> <span class="n">insert</span> <span class="n">an</span> <span class="n">ipython</span> <span class="n">notebook</span> <span class="n">using</span> <span class="n">liquid</span> <span class="n">tags</span>
+
+<span class="o">{%</span> <span class="n">notebook</span> <span class="n">example_notebook1</span><span class="o">.</span><span class="na">ipynb</span> <span class="o">%}</span>
+
+<span class="n">Here</span> <span class="k">is</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">post</span><span class="o">!!</span>
 </pre></div>
 
 
@@ -346,6 +351,7 @@ make github
 I have been using the ipynb plugin for a bit now, and it is really slick, but it doesn't render well with the CSS files, so I have switched to <a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags">liquid tags</a>
 Simply clone the plugins and add the folders to the plugins folder</p>
 <p>I have also added comment support using Disqus, as well as changing the theme to bootstrap3, which plays very well with the liquid tags plugin. Once you register on the Discus website, add a line to the pelicanconf.py file to link the service.</p>
+<p>I also recently added a custom domain name with godaddy. It cost $10 and was relativley easy. For the github user page, I recommend just following <a href="http://andrewsturges.com/blog/jekyll/tutorial/2014/11/06/github-and-godaddy.html">the blog entry of andrew sturges</a>.</p>
 <p>Finally, the theme I am using here is the <a href="https://github.com/DandyDev/pelican-bootstrap3">pelican-bootstrap3</a></p>
 <p>For any questions on the layout of the page, see the <a href="nagordon.github.io">github page</a> 
  as well as a google search for <code>pelican ipython notebook</code> and you will find many other good examples</p>
@@ -406,6 +412,11 @@ Simply clone the plugins and add the folders to the plugins folder</p>
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2015/06/18/center-of-mass/">
+                            Finding the Center of Mass from Point Masses with Python
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/06/10/catia-and-simulia-scripting-and-automation-with-python/">
                             CATIA and SIMULIA Scripting and Automation with Python
                         </a>
@@ -413,11 +424,6 @@ Simply clone the plugins and add the folders to the plugins folder</p>
                     <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/06/09/mechanical-vibrations-with-python/">
                             Mechanical Vibrations with Python
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/06/06/doconce-intro/">
-                            Learn Latex, markdown and html with doconce
                         </a>
                     </li>
                 </ul>
@@ -445,7 +451,7 @@ Simply clone the plugins and add the folders to the plugins folder</p>
                             doconce
                         </a>
                     </li>
-                    <li class="list-group-item tag-4">
+                    <li class="list-group-item tag-3">
                         <a href="http://ifcuriousthenlearn.com/tag/engineering.html">
                             engineering
                         </a>
@@ -480,12 +486,12 @@ Simply clone the plugins and add the folders to the plugins folder</p>
                             pelican
                         </a>
                     </li>
-                    <li class="list-group-item tag-0">
+                    <li class="list-group-item tag-1">
                         <a href="http://ifcuriousthenlearn.com/tag/python.html">
                             python
                         </a>
                     </li>
-                    <li class="list-group-item tag-7">
+                    <li class="list-group-item tag-4">
                         <a href="http://ifcuriousthenlearn.com/tag/tutorial.html">
                             tutorial
                         </a>

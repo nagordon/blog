@@ -9,4 +9,3 @@ Summary: Solving second-order differential equation of a mass-spring-damper syst
 
 {% notebook Mechanical-Vibrations-with-Python.ipynb %}
 
-This notebook can be downloaded from github [here]()
