@@ -43,9 +43,6 @@ SUMMARY_MAX_LENGTH = 100
 USE_FOLDER_AS_CATEGORY = False
 #CUSTOM_CSS = 'static/custom.css'
 
-DISQUS_SITENAME = 'nagordon-github'
-
-
 ################# BOOTSTRAP SETTINGS ###########################
 BANNER = 'images/banner.jpg'
 #SITELOGO = 'images/earth.png'
