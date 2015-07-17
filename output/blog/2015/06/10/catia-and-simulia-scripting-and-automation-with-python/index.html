@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>CATIA and SIMULIA Scripting and Automation with Python - if curious: then learn</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<style type="text/css">
+
+/*some stuff for output/input prompts*/
+div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}div.cell.selected{border-radius:4px;border:thin #ababab solid}
+div.cell.edit_mode{border-radius:4px;border:thin #008000 solid}
+div.cell{width:100%;padding:5px 5px 5px 0;margin:0;outline:none}
+div.prompt{min-width:11ex;padding:.4em;margin:0;font-family:monospace;text-align:right;line-height:1.21429em}
+@media (max-width:480px){div.prompt{text-align:left}}div.inner_cell{display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1}
+div.input_area{border:1px solid #cfcfcf;border-radius:4px;background:#f7f7f7;line-height:1.21429em}
+div.prompt:empty{padding-top:0;padding-bottom:0}
+div.input{page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:horizontal;-moz-box-align:stretch;display:box;box-orient:horizontal;box-align:stretch;}
+div.inner_cell{width:90%;}
+div.input_area{border:1px solid #cfcfcf;border-radius:4px;background:#f7f7f7;}
+div.input_prompt{color:navy;border-top:1px solid transparent;}
+div.output_wrapper{margin-top:5px;position:relative;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}
+div.output_scroll{height:24em;width:100%;overflow:auto;border-radius:4px;-webkit-box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);-moz-box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);}
+div.output_collapsed{margin:0px;padding:0px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}
+div.out_prompt_overlay{height:100%;padding:0px 0.4em;position:absolute;border-radius:4px;}
+div.out_prompt_overlay:hover{-webkit-box-shadow:inset 0 0 1px #000000;-moz-box-shadow:inset 0 0 1px #000000;box-shadow:inset 0 0 1px #000000;background:rgba(240, 240, 240, 0.5);}
+div.output_prompt{color:darkred;}
+
+a.anchor-link:link{text-decoration:none;padding:0px 20px;visibility:hidden;}
+h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anchor-link,h5:hover .anchor-link,h6:hover .anchor-link{visibility:visible;}
+/* end stuff for output/input prompts*/
+
+
+.highlight-ipynb .hll { background-color: #ffffcc }
+.highlight-ipynb  { background: #f8f8f8; }
+.highlight-ipynb .c { color: #408080; font-style: italic } /* Comment */
+.highlight-ipynb .err { border: 1px solid #FF0000 } /* Error */
+.highlight-ipynb .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight-ipynb .o { color: #666666 } /* Operator */
+.highlight-ipynb .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight-ipynb .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight-ipynb .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight-ipynb .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight-ipynb .gd { color: #A00000 } /* Generic.Deleted */
+.highlight-ipynb .ge { font-style: italic } /* Generic.Emph */
+.highlight-ipynb .gr { color: #FF0000 } /* Generic.Error */
+.highlight-ipynb .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight-ipynb .gi { color: #00A000 } /* Generic.Inserted */
+.highlight-ipynb .go { color: #888888 } /* Generic.Output */
+.highlight-ipynb .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight-ipynb .gs { font-weight: bold } /* Generic.Strong */
+.highlight-ipynb .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight-ipynb .gt { color: #0044DD } /* Generic.Traceback */
+.highlight-ipynb .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight-ipynb .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight-ipynb .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight-ipynb .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight-ipynb .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight-ipynb .kt { color: #B00040 } /* Keyword.Type */
+.highlight-ipynb .m { color: #666666 } /* Literal.Number */
+.highlight-ipynb .s { color: #BA2121 } /* Literal.String */
+.highlight-ipynb .na { color: #7D9029 } /* Name.Attribute */
+.highlight-ipynb .nb { color: #008000 } /* Name.Builtin */
+.highlight-ipynb .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight-ipynb .no { color: #880000 } /* Name.Constant */
+.highlight-ipynb .nd { color: #AA22FF } /* Name.Decorator */
+.highlight-ipynb .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight-ipynb .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight-ipynb .nf { color: #0000FF } /* Name.Function */
+.highlight-ipynb .nl { color: #A0A000 } /* Name.Label */
+.highlight-ipynb .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight-ipynb .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight-ipynb .nv { color: #19177C } /* Name.Variable */
+.highlight-ipynb .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight-ipynb .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight-ipynb .mf { color: #666666 } /* Literal.Number.Float */
+.highlight-ipynb .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight-ipynb .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight-ipynb .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight-ipynb .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight-ipynb .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight-ipynb .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight-ipynb .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight-ipynb .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight-ipynb .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight-ipynb .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight-ipynb .sx { color: #008000 } /* Literal.String.Other */
+.highlight-ipynb .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight-ipynb .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight-ipynb .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight-ipynb .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight-ipynb .vc { color: #19177C } /* Name.Variable.Class */
+.highlight-ipynb .vg { color: #19177C } /* Name.Variable.Global */
+.highlight-ipynb .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight-ipynb .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+div.entry-content {
+  overflow: visible;
+  padding: 8px;
+}
+.input_area {
+  padding: 0.2em;
+}
+
+a.heading-anchor {
+ white-space: normal;
+}
+
+.rendered_html
+code {
+ font-size: .8em;
+}
+
+pre.ipynb {
+  color: black;
+  background: #f7f7f7;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding: 0;
+  margin: 0px;
+  font-size: 13px;
+}
+
+/* remove the prompt div from text cells */
+div.text_cell .prompt {
+    display: none;
+}
+
+/* remove horizontal padding from text cells, */
+/* so it aligns with outer body text */
+div.text_cell_render {
+    padding: 0.5em 0em;
+}
+
+img.anim_icon{padding:0; border:0; vertical-align:middle; -webkit-box-shadow:none; -box-shadow:none}
+</style>
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+    <link href="http://ifcuriousthenlearn.com/images/earth.png" rel="icon">
+
+<link rel="canonical" href="http://ifcuriousthenlearn.com/blog/2015/06/10/catia-and-simulia-scripting-and-automation-with-python/">
+
+        <meta name="author" content="Neal Gordon" />
+        <meta name="keywords" content="python,CAD,FEA" />
+        <meta name="description" content="Script to perform finite element analysis in CATIA CAD software" />
+
+        <meta property="og:site_name" content="if curious: then learn" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="CATIA and SIMULIA Scripting and Automation with Python"/>
+        <meta property="og:url" content="http://ifcuriousthenlearn.com/blog/2015/06/10/catia-and-simulia-scripting-and-automation-with-python/"/>
+        <meta property="og:description" content="Script to perform finite element analysis in CATIA CAD software"/>
+        <meta property="article:published_time" content="2015-06-10" />
+            <meta property="article:section" content="Tutorials" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="CAD" />
+            <meta property="article:tag" content="FEA" />
+            <meta property="article:author" content="Neal Gordon" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://ifcuriousthenlearn.com/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://ifcuriousthenlearn.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://ifcuriousthenlearn.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://ifcuriousthenlearn.com/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://ifcuriousthenlearn.com/" class="navbar-brand">
+if curious: then learn            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="http://ifcuriousthenlearn.com/pages/about-me.html">
+                             About me
+                          </a></li>
+                        <li class="active">
+                            <a href="http://ifcuriousthenlearn.com/category/tutorials.html">Tutorials</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://ifcuriousthenlearn.com/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://ifcuriousthenlearn.com/blog/2015/06/10/catia-and-simulia-scripting-and-automation-with-python/"
+                       rel="bookmark"
+                       title="Permalink to CATIA and SIMULIA Scripting and Automation with Python">
+                        CATIA and SIMULIA Scripting and Automation with Python
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-06-10T00:00:00-04:00"> 2015-06-10</time>
+    </span>
+
+
+            <span class="label label-default">By</span>
+            <a href="http://ifcuriousthenlearn.com/author/neal-gordon.html"><i class="fa fa-user"></i> Neal Gordon</a>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://ifcuriousthenlearn.com/tag/python.html">python</a>
+        /
+	<a href="http://ifcuriousthenlearn.com/tag/cad.html">CAD</a>
+        /
+	<a href="http://ifcuriousthenlearn.com/tag/fea.html">FEA</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="catia-and-simulia-scripting-and-automation-with-python">CATIA and SIMULIA Scripting and Automation with Python</h1>
+<p><strong>Jun 9, 2015</strong></p>
+<h2 id="introduction">Introduction</h2>
+<div id="sec:int">
+
+</div>
+<p>CATIA is a 3D parametric modelling program that is ubiquitous in large engineering and manufacturing firms. SIMULIA is a finite element simulation package integrated into CATIA that allows for complex and powerful analysis to be performed on exiting models and assemblies with relative ease. This demonstration is two-fold. First, is to give the user an example of how a simple python script can be used to generate a solid model. The second is to use the same scripting capabilities to run a simple FEA simulation. The ideas here can be extrapolated with the assistance of the references found in (<a href="#sec:ref">References</a>). Computer aided engineering (CAE) requires a solid understanding of computer software, specifically CAD surface and solid modelling systems and FEA analysis. Not required, but highly useful is having the capability to not only read, but write computer code. An excellent language that is compatible in most operating systems, is open-source(free), and has powerful engineering libraries is python. A demonstration of python is given to show how simple tasks in CATIA can be automated to improve analysis consistency and repeatability and save time. CATIA natively uses Visual Basic for Applications (VBA) <a href="#ziethen_catia_2013">[ziethen_catia_2013]</a>. However, VBA is limited in functionality, especially when data analysis and plotting are desired. Python is a much more capable engineering language that works with many programs, such as Microsoft Excel, and many other programs to utilize VBA <a href="#hammond_python_2000">[hammond_python_2000]</a>. Finally, the demonstration here is based on an excellent site <a href="#woyand_h.b._mechanical_2015">[woyand_h.b.<em>mechanical</em>2015]</a> that has many engineering applications for python.</p>
+<h2 id="walkthrough">Walkthrough</h2>
+<div id="sec:exm">
+
+</div>
+<p>The final result will be a model that can be easily edited and simulation results where visualization that allows for a more in-depth analysis of the component.</p>
+<div id="fig:vonmises">
+
+</div>
+<p>
+Stress result of simulation
+</p>
+<p><img src="/notebooks/CATIA-and-SIMULIA-Scripting-and-Automation-with-Python/vonmises.png" width=600></p>
+<h3 id="catia-setup">CATIA Setup</h3>
+<p>To prepare CATIA for script execution, it is recommended to launch a new instance of CATIA and close any files that are automatically created, as show in .</p>
+<div id="fig:catia">
+
+</div>
+<p>
+Start CATIA with no files open
+</p>
+<p><img src="/notebooks/CATIA-and-SIMULIA-Scripting-and-Automation-with-Python/catia.png" width=600></p>
+<h3 id="python-setup">Python Setup</h3>
+<p>Python is open-source and can be freely downloaded without licensing restrictions. I recommend either <a href="http://continuum.io/downloads">Anaconda Python 2.7</a> or <a href="http://www.pyzo.org/downloads.html">Pyzo</a>. Once the software is installed, retrieve the python script at the end of this post. Now, the python script can be executed via the command line argument:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre><code>    python CATIA-and-SIMULIA-Scripting-and-Automation-with-Python.py</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="execution-and-explanation-of-the-code">Execution and explanation of the Code</h3>
+<p>The very first operation of python is to import the modules that are used. Then, the python kernal attempts to connect to the CATIA application running in windows</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># import python modules</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">win32com.client</span> <span class="kn">import</span> <span class="n">Dispatch</span>
+<span class="c"># Connecting to windows COM </span>
+<span class="n">CATIA</span> <span class="o">=</span> <span class="n">Dispatch</span><span class="p">(</span><span class="s">&#39;CATIA.Application&#39;</span><span class="p">)</span>
+<span class="c"># optional CATIA visibility</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, a <code>Part</code> and <code>Sketch</code> are created in CATIA Part Design workbench</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Create an empty part</span>
+<span class="n">partDocument1</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">Documents</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Part&quot;</span><span class="p">)</span>
+
+<span class="c"># Create the point that the plane and sketch reference</span>
+<span class="n">Xcoord</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">Ycoord</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">Zcoord</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">NewPoint</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">HybridShapeFactory</span><span class="o">.</span><span class="n">AddNewPointCoord</span><span class="p">(</span><span class="n">Xcoord</span><span class="p">,</span> <span class="n">Ycoord</span><span class="p">,</span> <span class="n">Zcoord</span><span class="p">)</span>
+<span class="n">Mainbody</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">MainBody</span>
+<span class="n">Mainbody</span><span class="o">.</span><span class="n">InsertHybridShape</span><span class="p">(</span><span class="n">NewPoint</span><span class="p">)</span>
+
+<span class="c"># Create reference plane for sketch</span>
+<span class="n">AxisXY</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">OriginElements</span><span class="o">.</span><span class="n">PlaneXY</span>
+<span class="n">Referenceplane</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">CreateReferenceFromObject</span><span class="p">(</span><span class="n">AxisXY</span><span class="p">)</span>
+<span class="n">Referencepoint</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">CreateReferenceFromObject</span><span class="p">(</span><span class="n">NewPoint</span><span class="p">)</span>
+<span class="n">NewPlane</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">HybridShapeFactory</span><span class="o">.</span><span class="n">AddNewPlaneOffsetPt</span><span class="p">(</span><span class="n">Referenceplane</span><span class="p">,</span> <span class="n">Referencepoint</span><span class="p">)</span>
+<span class="n">Mainbody</span><span class="o">.</span><span class="n">InsertHybridShape</span><span class="p">(</span><span class="n">NewPlane</span><span class="p">)</span>
+
+<span class="c"># create sketch</span>
+<span class="n">sketches1</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">Bodies</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="s">&quot;PartBody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Sketches</span>
+<span class="n">reference1</span> <span class="o">=</span> <span class="n">partDocument1</span><span class="o">.</span><span class="n">part</span><span class="o">.</span><span class="n">OriginElements</span><span class="o">.</span><span class="n">PlaneXY</span>
+<span class="n">NewSketch</span> <span class="o">=</span> <span class="n">sketches1</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">reference1</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">InWorkObject</span> <span class="o">=</span> <span class="n">NewSketch</span>
+
+<span class="c">#Drawing the sketch</span>
+<span class="n">NewSketch</span><span class="o">.</span><span class="n">OpenEdition</span><span class="p">()</span>
+<span class="c">#                                  Start (H,   V)  End(H,V)</span>
+<span class="n">NewLine1</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">0</span>  <span class="p">,</span> <span class="mi">0</span>  <span class="p">,</span> <span class="mi">0</span>   <span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">NewLine2</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">0</span>  <span class="p">,</span> <span class="mi">50</span> <span class="p">,</span> <span class="mi">50</span>  <span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">NewLine3</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span> <span class="p">,</span> <span class="mi">50</span> <span class="p">,</span> <span class="mi">50</span>  <span class="p">,</span><span class="mi">55</span><span class="p">)</span>
+<span class="n">NewLine4</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span> <span class="p">,</span> <span class="mi">55</span> <span class="p">,</span> <span class="mi">150</span> <span class="p">,</span><span class="mi">55</span><span class="p">)</span>
+<span class="n">NewLine5</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">55</span> <span class="p">,</span> <span class="mi">150</span>  <span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">NewLine6</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">,</span> <span class="mi">50</span>  <span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">NewLine7</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span> <span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">,</span> <span class="mi">75</span>  <span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">NewLine8</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">150</span> <span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">,</span> <span class="mi">125</span>  <span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">NewLine9</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">125</span> <span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">,</span> <span class="mi">125</span>  <span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">NewLine0</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">125</span> <span class="p">,</span> <span class="mi">25</span> <span class="p">,</span> <span class="mi">75</span>  <span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">NewLine11</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">75</span> <span class="p">,</span> <span class="mi">25</span> <span class="p">,</span> <span class="mi">75</span>  <span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">NewLine12</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span> <span class="p">,</span> <span class="mi">0</span>  <span class="p">,</span> <span class="mi">0</span>   <span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">NewSketch</span><span class="o">.</span><span class="n">CloseEdition</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then, a pad/extrusion operation gives the 2D sketch volume.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Create a pad from sketch</span>
+<span class="n">LengthBlock</span><span class="o">=</span><span class="mi">50</span>
+<span class="n">NewBlock</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">ShapeFactory</span><span class="o">.</span><span class="n">AddNewPad</span> <span class="p">(</span><span class="n">NewSketch</span><span class="p">,</span> <span class="n">LengthBlock</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div id="fig:sketch">
+
+</div>
+<p>
+Sketch defining the shape
+</p>
+<p><img src="/notebooks/CATIA-and-SIMULIA-Scripting-and-Automation-with-Python/sketch.png" width=600></p>
+<p>The material properties are tricky to assign via scripting, but as long as the <em>CATMaterial</em> file location is known, then it is recommended to hard code. During the python script execution, CATIA should show the activity of the script because we have the value <em>CATIA.Visible = True</em> set. When the script completes(~30 seconds), the results can be manipulated as usual in CATIA.</p>
+<table border="1">
+<thead>
+<tr><th align="center">    
+Property
+</th> <th align="center">          
+Value
+</th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   
+Material
+</td> <td align="center">   
+Steel
+</td> </tr>
+<tr><td align="center">   
+Young's modulus
+</td> <td align="center">   
+200 GPa
+</td> </tr>
+<tr><td align="center">   
+Poisson's ratio
+</td> <td align="center">   
+0.266
+</td> </tr>
+<tr><td align="center">   
+Yield strength
+</td> <td align="center">   
+250 MPa
+</td> </tr>
+<tr><td align="center">   
+Element Type
+</td> <td align="center">   
+Parabolic Tetrahedron-TE10
+</td> </tr>
+<tr><td align="center">   
+Element Count
+</td> <td align="center">   
+74671
+</td> </tr>
+<tr><td align="center">   
+Node Count
+</td> <td align="center">   
+113760
+</td> </tr>
+<tr><td align="center">   
+Number of D.O.F.
+</td> <td align="center">   
+341280
+</td> </tr>
+</tbody>
+</table>
+Table 1: Properties of the material simulated and FEA model
+<div id="tbl:props">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Assign Material</span>
+<span class="n">MatManager</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="s">&quot;CATMatManagerVBExt&quot;</span><span class="p">)</span>
+<span class="n">hk</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">MainBody</span>
+<span class="n">systempath</span><span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">SystemService</span><span class="o">.</span><span class="n">Environ</span><span class="p">(</span><span class="s">&quot;CATDocView&quot;</span><span class="p">)</span>
+<span class="n">path</span><span class="o">=</span> <span class="s">&quot;C:</span><span class="se">\\</span><span class="s">Program Files</span><span class="se">\\</span><span class="s">Dassault Systemes</span><span class="se">\\</span><span class="s">B23\win_b64</span><span class="se">\\</span><span class="s">startup</span><span class="se">\\</span><span class="s">materials</span><span class="se">\\</span><span class="s">Catalog.CATMaterial&quot;</span>
+<span class="n">MatDoc</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">Documents</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">oMaterial</span><span class="o">=</span><span class="n">MatDoc</span><span class="o">.</span><span class="n">Families</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="s">&quot;Metal&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Materials</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="s">&quot;Steel&quot;</span><span class="p">)</span>
+<span class="n">MatManager</span><span class="o">.</span><span class="n">ApplyMaterialOnBody</span> <span class="p">(</span><span class="n">hk</span><span class="p">,</span><span class="n">oMaterial</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">MatDoc</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now lets get our hands dirty with the CATIA Generative Structural Analysis (GPS) workbench. This snippet of code will allows to create our mesh from the 3D solid body we just created. The parameters for the FE model must be assigned, and SIMULIA makes meshing very easy. It done automatically and the resultant properties are shown in table</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Activate the Generative Structural Analysis (GPS) Workbench</span>
+<span class="n">PartDoc</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">StartWorkbench</span> <span class="p">(</span><span class="s">&quot;GPSCfg&quot;</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">Import</span><span class="p">(</span><span class="n">PartDoc</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">RunTransition</span> <span class="p">(</span><span class="s">&quot;CATGPSStressAnalysis_template&quot;</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveWindow</span><span class="o">.</span><span class="n">ActiveViewer</span><span class="o">.</span><span class="n">Reframe</span> <span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The mesh parameters can be adjusted to depending on the desired accuracy of the results and run-time. These default settings will take about 60 seconds to run on an i7 intel processor with 8 GB of RAM.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Create a Mesh</span>
+<span class="n">mesh</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">MeshManager</span><span class="o">.</span><span class="n">AnalysisMeshParts</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">SetGlobalSpecification</span> <span class="p">(</span><span class="s">&quot;SizeValue&quot;</span><span class="p">,</span> <span class="s">&quot;2.5 mm&quot;</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">SetGlobalSpecification</span> <span class="p">(</span><span class="s">&quot;AbsoluteSag&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">SetGlobalSpecification</span> <span class="p">(</span><span class="s">&quot;AbsoluteSagValue&quot;</span><span class="p">,</span> <span class="s">&quot;1.0 mm&quot;</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">SetGlobalSpecification</span> <span class="p">(</span><span class="s">&quot;ElementOrder&quot;</span><span class="p">,</span> <span class="s">&quot;Parabolic&quot;</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The constraints used are a clamp of one side of the body. This constrains all 6 degrees of freedom (dof) for the elements on that face. The load is a distributed force on the inside of the component</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Define Constraints</span>
+<span class="n">analysisSet1</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisCases</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisSets</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">analysisEntity1</span> <span class="o">=</span> <span class="n">analysisSet1</span><span class="o">.</span><span class="n">AnalysisEntities</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;SAMClamp&quot;</span><span class="p">)</span>
+<span class="n">reference1</span> <span class="o">=</span> <span class="n">partDocument1</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">CreateReferenceFromName</span><span class="p">(</span><span class="s">&quot;Selection_RSur:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;12)));None:();Cf11:());Pad.1_ResultOUT;Last;Z0;G4720)&quot;</span><span class="p">)</span>
+<span class="n">analysisEntity1</span><span class="o">.</span><span class="n">AddSupportFromProduct</span> <span class="p">(</span><span class="n">partDocument1</span><span class="o">.</span><span class="n">Product</span><span class="p">,</span> <span class="n">reference1</span><span class="p">)</span>
+
+<span class="c"># Defining the Load</span>
+<span class="n">analysisSet2</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisCases</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisSets</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">analysisEntity2</span> <span class="o">=</span> <span class="n">analysisSet2</span><span class="o">.</span><span class="n">AnalysisEntities</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;SAMDistributedForce&quot;</span><span class="p">)</span>
+<span class="n">reference2</span> <span class="o">=</span> <span class="n">partDocument1</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">CreateReferenceFromName</span><span class="p">(</span><span class="s">&quot;Selection_RSur:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;5)));None:();Cf11:());Pad.1_ResultOUT;Last;Z0;G4720)&quot;</span><span class="p">)</span>
+<span class="n">analysisEntity2</span><span class="o">.</span><span class="n">AddSupportFromProduct</span> <span class="p">(</span><span class="n">partDocument1</span><span class="o">.</span><span class="n">Product</span><span class="p">,</span> <span class="n">reference2</span><span class="p">)</span> <span class="c">#partDocument1 aus &quot;leeres Part erstellen&quot;</span>
+<span class="n">basicComponent1</span> <span class="o">=</span> <span class="n">analysisEntity2</span><span class="o">.</span><span class="n">BasicComponents</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="s">&quot;SAMForceAxis.1&quot;</span><span class="p">)</span>
+<span class="n">basicComponent1</span><span class="o">.</span><span class="n">SetValue</span> <span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">basicComponent2</span> <span class="o">=</span> <span class="n">analysisEntity2</span><span class="o">.</span><span class="n">BasicComponents</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="s">&quot;SAMForceVector.1&quot;</span><span class="p">)</span>
+<span class="n">basicComponent2</span><span class="o">.</span><span class="n">SetDimensions</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">basicComponent2</span><span class="o">.</span><span class="n">SetValue</span> <span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">basicComponent2</span><span class="o">.</span><span class="n">SetValue</span> <span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1500.0</span><span class="p">)</span>
+<span class="n">basicComponent2</span><span class="o">.</span><span class="n">SetValue</span> <span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To submit this finite element model for computation the following code can be executed</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Perform Calculation</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Performing Calculaution&#39;</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisCases</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Compute</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Calculaution Complete&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once the execution is complete, the CATIA graphical user interface (GUI) can be used to navigate and visualize the data fields generated, such as stress, strain, as well as displacement scalars. However, if raw data is desired, then it is relatively simple to export data to text files, which can be opened with excel, or python! Check out <a href="http://www.scipy.org/">scipy</a> for many more tools for engineering analysis using python</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Export text file with von-mises stress</span>
+<span class="n">analysisSet1</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisCases</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisSets</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">analysisImage1</span> <span class="o">=</span> <span class="n">analysisSet1</span><span class="o">.</span><span class="n">AnalysisImages</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;StressVonMises_Iso_Smooth&quot;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="n">Folder</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">FileSystem</span><span class="o">.</span><span class="n">GetFolder</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">analysisImage1</span><span class="o">.</span><span class="n">ExportDataInGlobalAxis</span><span class="p">(</span><span class="n">Folder</span><span class="p">,</span> <span class="s">&quot;mises&quot;</span><span class="p">,</span> <span class="s">&quot;txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Created stress text file&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div id="fig:vonmisesani">
+
+</div>
+<p>
+Animated stress
+</p>
+<p><img src="/notebooks/CATIA-and-SIMULIA-Scripting-and-Automation-with-Python/vonmises.gif" width=600></p>
+<p>Finally, after the computation, the von-mises stress results are shown in figure .</p>
+<h2 id="summary">Summary</h2>
+<p>A method utilizing CATIA CAD, SIMULIA FEA and python programming language is presented as a method for improving modelling and analysis by automating the steps required to acquire simulation results.</p>
+<h2 id="references">References</h2>
+<div id="sec:ref">
+
+</div>
+<ol style="list-style-type: decimal">
+<li><div id="ziethen_catia_2013">
+
+</div>
+<p><strong>D. Ziethen</strong>. <em>CATIA V5 Macro Programming With Visual Basic Script</em>, McGraw-Hill, 2013, <a href="http://www.mhprofessional.com/product.php?isbn=0071800026">http://www.mhprofessional.com/product.php?isbn=0071800026</a>.</p></li>
+<li><div id="hammond_python_2000">
+
+</div>
+<p><strong>M. Hammond and A. Robinson</strong>. <em>Python Programming on Win32</em>, O'Reilly Media, 2000, <a href="http://shop.oreilly.com/product/9781565926219.do">http://shop.oreilly.com/product/9781565926219.do</a>.</p></li>
+<li><div id="woyand_h.b._mechanical_2015">
+
+</div>
+<p><strong>H. Woyand</strong>. Mechanical Engineering Informatics, <a href="http://mbi-wiki.uni-wuppertal.de/">http://mbi-wiki.uni-wuppertal.de/</a>, 2015.</p></li>
+</ol>
+<h2 id="code">Code</h2>
+<div id="sec:cod">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%</span><span class="k">load</span> <span class="n">CATIA</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">SIMULIA</span><span class="o">-</span><span class="n">Scripting</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">Automation</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">Python</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Developed by:</span>
+<span class="sd">Neal Gordon</span>
+<span class="sd">NobleTek</span>
+<span class="sd">nealagordon@gmail.com</span>
+
+<span class="sd">Requires a CATIA license with the Generative Part Analysis (GPS) to run</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># import python modules</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">win32com.client</span> <span class="kn">import</span> <span class="n">Dispatch</span>
+
+<span class="c"># Connecting to windows COM </span>
+<span class="n">CATIA</span> <span class="o">=</span> <span class="n">Dispatch</span><span class="p">(</span><span class="s">&#39;CATIA.Application&#39;</span><span class="p">)</span>
+<span class="c"># optional CATIA visibility</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c"># Create an empty part</span>
+<span class="n">partDocument1</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">Documents</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Part&quot;</span><span class="p">)</span>
+
+<span class="c"># Create the point that the plane and sketch reference</span>
+<span class="n">Xcoord</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">Ycoord</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">Zcoord</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">NewPoint</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">HybridShapeFactory</span><span class="o">.</span><span class="n">AddNewPointCoord</span><span class="p">(</span><span class="n">Xcoord</span><span class="p">,</span> <span class="n">Ycoord</span><span class="p">,</span> <span class="n">Zcoord</span><span class="p">)</span>
+<span class="n">Mainbody</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">MainBody</span>
+<span class="n">Mainbody</span><span class="o">.</span><span class="n">InsertHybridShape</span><span class="p">(</span><span class="n">NewPoint</span><span class="p">)</span>
+
+<span class="c"># Create reference plane for sketch</span>
+<span class="n">AxisXY</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">OriginElements</span><span class="o">.</span><span class="n">PlaneXY</span>
+<span class="n">Referenceplane</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">CreateReferenceFromObject</span><span class="p">(</span><span class="n">AxisXY</span><span class="p">)</span>
+<span class="n">Referencepoint</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">CreateReferenceFromObject</span><span class="p">(</span><span class="n">NewPoint</span><span class="p">)</span>
+<span class="n">NewPlane</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">HybridShapeFactory</span><span class="o">.</span><span class="n">AddNewPlaneOffsetPt</span><span class="p">(</span><span class="n">Referenceplane</span><span class="p">,</span> <span class="n">Referencepoint</span><span class="p">)</span>
+<span class="n">Mainbody</span><span class="o">.</span><span class="n">InsertHybridShape</span><span class="p">(</span><span class="n">NewPlane</span><span class="p">)</span>
+
+<span class="c"># create sketch</span>
+<span class="n">sketches1</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">Bodies</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="s">&quot;PartBody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Sketches</span>
+<span class="n">reference1</span> <span class="o">=</span> <span class="n">partDocument1</span><span class="o">.</span><span class="n">part</span><span class="o">.</span><span class="n">OriginElements</span><span class="o">.</span><span class="n">PlaneXY</span>
+<span class="n">NewSketch</span> <span class="o">=</span> <span class="n">sketches1</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">reference1</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">InWorkObject</span> <span class="o">=</span> <span class="n">NewSketch</span>
+
+<span class="c">#Drawing the sketch</span>
+<span class="n">NewSketch</span><span class="o">.</span><span class="n">OpenEdition</span><span class="p">()</span>
+<span class="c">#                                  Start (H,   V)  End(H,V)</span>
+<span class="n">NewLine1</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">0</span>  <span class="p">,</span> <span class="mi">0</span>  <span class="p">,</span> <span class="mi">0</span>   <span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">NewLine2</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">0</span>  <span class="p">,</span> <span class="mi">50</span> <span class="p">,</span> <span class="mi">50</span>  <span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">NewLine3</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span> <span class="p">,</span> <span class="mi">50</span> <span class="p">,</span> <span class="mi">50</span>  <span class="p">,</span><span class="mi">55</span><span class="p">)</span>
+<span class="n">NewLine4</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span> <span class="p">,</span> <span class="mi">55</span> <span class="p">,</span> <span class="mi">150</span> <span class="p">,</span><span class="mi">55</span><span class="p">)</span>
+<span class="n">NewLine5</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">55</span> <span class="p">,</span> <span class="mi">150</span>  <span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">NewLine6</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">,</span> <span class="mi">50</span>  <span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">NewLine7</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span> <span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">,</span> <span class="mi">75</span>  <span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">NewLine8</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">150</span> <span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">,</span> <span class="mi">125</span>  <span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">NewLine9</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">125</span> <span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">,</span> <span class="mi">125</span>  <span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">NewLine0</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">125</span> <span class="p">,</span> <span class="mi">25</span> <span class="p">,</span> <span class="mi">75</span>  <span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">NewLine11</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">75</span> <span class="p">,</span> <span class="mi">25</span> <span class="p">,</span> <span class="mi">75</span>  <span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">NewLine12</span> <span class="o">=</span> <span class="n">NewSketch</span><span class="o">.</span><span class="n">Factory2D</span><span class="o">.</span><span class="n">CreateLine</span><span class="p">(</span><span class="mi">50</span> <span class="p">,</span> <span class="mi">0</span>  <span class="p">,</span> <span class="mi">0</span>   <span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">NewSketch</span><span class="o">.</span><span class="n">CloseEdition</span><span class="p">()</span>
+
+<span class="c"># Create a pad from sketch</span>
+<span class="n">LengthBlock</span><span class="o">=</span><span class="mi">50</span>
+<span class="n">NewBlock</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">ShapeFactory</span><span class="o">.</span><span class="n">AddNewPad</span> <span class="p">(</span><span class="n">NewSketch</span><span class="p">,</span> <span class="n">LengthBlock</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+
+<span class="c"># Assign Material</span>
+<span class="n">MatManager</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="s">&quot;CATMatManagerVBExt&quot;</span><span class="p">)</span>
+<span class="n">hk</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">MainBody</span>
+<span class="n">systempath</span><span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">SystemService</span><span class="o">.</span><span class="n">Environ</span><span class="p">(</span><span class="s">&quot;CATDocView&quot;</span><span class="p">)</span>
+<span class="n">path</span><span class="o">=</span> <span class="s">&quot;C:</span><span class="se">\\</span><span class="s">Program Files</span><span class="se">\\</span><span class="s">Dassault Systemes</span><span class="se">\\</span><span class="s">B23\win_b64</span><span class="se">\\</span><span class="s">startup</span><span class="se">\\</span><span class="s">materials</span><span class="se">\\</span><span class="s">Catalog.CATMaterial&quot;</span>
+<span class="n">MatDoc</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">Documents</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">oMaterial</span><span class="o">=</span><span class="n">MatDoc</span><span class="o">.</span><span class="n">Families</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="s">&quot;Metal&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Materials</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="s">&quot;Steel&quot;</span><span class="p">)</span>
+<span class="n">MatManager</span><span class="o">.</span><span class="n">ApplyMaterialOnBody</span> <span class="p">(</span><span class="n">hk</span><span class="p">,</span><span class="n">oMaterial</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">MatDoc</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+
+
+<span class="c"># Activate the Generative Structural Analysis (GPS) Workbench</span>
+<span class="n">PartDoc</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">StartWorkbench</span> <span class="p">(</span><span class="s">&quot;GPSCfg&quot;</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">Import</span><span class="p">(</span><span class="n">PartDoc</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">RunTransition</span> <span class="p">(</span><span class="s">&quot;CATGPSStressAnalysis_template&quot;</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveWindow</span><span class="o">.</span><span class="n">ActiveViewer</span><span class="o">.</span><span class="n">Reframe</span> <span class="p">()</span>
+
+<span class="c"># Create a Mesh</span>
+<span class="n">mesh</span><span class="o">=</span><span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">MeshManager</span><span class="o">.</span><span class="n">AnalysisMeshParts</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">SetGlobalSpecification</span> <span class="p">(</span><span class="s">&quot;SizeValue&quot;</span><span class="p">,</span> <span class="s">&quot;2.5 mm&quot;</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">SetGlobalSpecification</span> <span class="p">(</span><span class="s">&quot;AbsoluteSag&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">SetGlobalSpecification</span> <span class="p">(</span><span class="s">&quot;AbsoluteSagValue&quot;</span><span class="p">,</span> <span class="s">&quot;1.0 mm&quot;</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">SetGlobalSpecification</span> <span class="p">(</span><span class="s">&quot;ElementOrder&quot;</span><span class="p">,</span> <span class="s">&quot;Parabolic&quot;</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+
+<span class="c"># Define Constraints</span>
+<span class="n">analysisSet1</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisCases</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisSets</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">analysisEntity1</span> <span class="o">=</span> <span class="n">analysisSet1</span><span class="o">.</span><span class="n">AnalysisEntities</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;SAMClamp&quot;</span><span class="p">)</span>
+<span class="n">reference1</span> <span class="o">=</span> <span class="n">partDocument1</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">CreateReferenceFromName</span><span class="p">(</span><span class="s">&quot;Selection_RSur:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;12)));None:();Cf11:());Pad.1_ResultOUT;Last;Z0;G4720)&quot;</span><span class="p">)</span>
+<span class="n">analysisEntity1</span><span class="o">.</span><span class="n">AddSupportFromProduct</span> <span class="p">(</span><span class="n">partDocument1</span><span class="o">.</span><span class="n">Product</span><span class="p">,</span> <span class="n">reference1</span><span class="p">)</span>
+
+<span class="c"># Defining the Load</span>
+<span class="n">analysisSet2</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisCases</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisSets</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">analysisEntity2</span> <span class="o">=</span> <span class="n">analysisSet2</span><span class="o">.</span><span class="n">AnalysisEntities</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;SAMDistributedForce&quot;</span><span class="p">)</span>
+<span class="n">reference2</span> <span class="o">=</span> <span class="n">partDocument1</span><span class="o">.</span><span class="n">Part</span><span class="o">.</span><span class="n">CreateReferenceFromName</span><span class="p">(</span><span class="s">&quot;Selection_RSur:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;5)));None:();Cf11:());Pad.1_ResultOUT;Last;Z0;G4720)&quot;</span><span class="p">)</span>
+<span class="n">analysisEntity2</span><span class="o">.</span><span class="n">AddSupportFromProduct</span> <span class="p">(</span><span class="n">partDocument1</span><span class="o">.</span><span class="n">Product</span><span class="p">,</span> <span class="n">reference2</span><span class="p">)</span> <span class="c">#partDocument1 aus &quot;leeres Part erstellen&quot;</span>
+<span class="n">basicComponent1</span> <span class="o">=</span> <span class="n">analysisEntity2</span><span class="o">.</span><span class="n">BasicComponents</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="s">&quot;SAMForceAxis.1&quot;</span><span class="p">)</span>
+<span class="n">basicComponent1</span><span class="o">.</span><span class="n">SetValue</span> <span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">basicComponent2</span> <span class="o">=</span> <span class="n">analysisEntity2</span><span class="o">.</span><span class="n">BasicComponents</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="s">&quot;SAMForceVector.1&quot;</span><span class="p">)</span>
+<span class="n">basicComponent2</span><span class="o">.</span><span class="n">SetDimensions</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">basicComponent2</span><span class="o">.</span><span class="n">SetValue</span> <span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>
+<span class="n">basicComponent2</span><span class="o">.</span><span class="n">SetValue</span> <span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>
+<span class="n">basicComponent2</span><span class="o">.</span><span class="n">SetValue</span> <span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>
+
+<span class="c"># Perform Calculation</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Performing Calculaution&#39;</span><span class="p">)</span>
+<span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisCases</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Compute</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Calculaution Complete&#39;</span><span class="p">)</span>
+
+<span class="c"># Export text file with von-mises stress</span>
+<span class="n">analysisSet1</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">AnalysisModels</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisCases</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">AnalysisSets</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">analysisImage1</span> <span class="o">=</span> <span class="n">analysisSet1</span><span class="o">.</span><span class="n">AnalysisImages</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;StressVonMises_Iso_Smooth&quot;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="n">Folder</span> <span class="o">=</span> <span class="n">CATIA</span><span class="o">.</span><span class="n">FileSystem</span><span class="o">.</span><span class="n">GetFolder</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">analysisImage1</span><span class="o">.</span><span class="n">ExportDataInGlobalAxis</span><span class="p">(</span><span class="n">Folder</span><span class="p">,</span> <span class="s">&quot;mises&quot;</span><span class="p">,</span> <span class="s">&quot;txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Created stress text file&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'catia-and-simulia-scripting-and-automation-with-python';
+                var disqus_url = 'http://ifcuriousthenlearn.com/blog/2015/06/10/catia-and-simulia-scripting-and-automation-with-python/';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+                <li class="list-group-item"><a href="https://github.com/nagordon"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+                <li class="list-group-item"><a href="http://www.reddit.com/user/nagordon"><i class="fa fa-reddit-square fa-lg"></i> Reddit</a></li>
+                <li class="list-group-item"><a href="http://www.instructables.com/member/nagordon"><i class="fa fa-instructables-square fa-lg"></i> Instructables</a></li>
+                <li class="list-group-item"><a href="http://stackoverflow.com/users/2438993/nagordon"><i class="fa fa-stackoverflow-square fa-lg"></i> StackOverflow</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/">
+                            Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2015/06/18/center-of-mass/">
+                            Finding the Center of Mass from Point Masses with Python
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2015/06/10/catia-and-simulia-scripting-and-automation-with-python/">
+                            CATIA and SIMULIA Scripting and Automation with Python
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="list-group-item"><a href="http://ifcuriousthenlearn.com/"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
+                <ul class="list-group" id="categories">
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/category/tutorials.html">
+                            <i class="fa fa-folder-open fa-lg"></i> Tutorials
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="list-group-item"><a href="http://ifcuriousthenlearn.com/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                    <li class="list-group-item tag-7">
+                        <a href="http://ifcuriousthenlearn.com/tag/cad.html">
+                            CAD
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-7">
+                        <a href="http://ifcuriousthenlearn.com/tag/doconce.html">
+                            doconce
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="http://ifcuriousthenlearn.com/tag/engineering.html">
+                            engineering
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-3">
+                        <a href="http://ifcuriousthenlearn.com/tag/fea.html">
+                            FEA
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-7">
+                        <a href="http://ifcuriousthenlearn.com/tag/latex.html">
+                            latex
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-7">
+                        <a href="http://ifcuriousthenlearn.com/tag/markdown.html">
+                            markdown
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://ifcuriousthenlearn.com/tag/math.html">
+                            math
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-7">
+                        <a href="http://ifcuriousthenlearn.com/tag/matlab.html">
+                            matlab
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-7">
+                        <a href="http://ifcuriousthenlearn.com/tag/pelican.html">
+                            pelican
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="http://ifcuriousthenlearn.com/tag/python.html">
+                            python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://ifcuriousthenlearn.com/tag/tutorial.html">
+                            tutorial
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-7">
+                        <a href="http://ifcuriousthenlearn.com/tag/video-games.html">
+                            video-games
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+    <li class="list-group-item"><h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+        <div id="gh_repos">
+            <p class="list-group-item">Status updating...</p>
+        </div>
+    </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://python.org/" target="_blank">
+                Python.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://jinja.pocoo.org/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 Neal Gordon
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://ifcuriousthenlearn.com/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://ifcuriousthenlearn.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://ifcuriousthenlearn.com/theme/js/respond.min.js"></script>
+
+    <script src="http://ifcuriousthenlearn.com/theme/js/bodypadding.js"></script>
+    <!-- GitHub JS -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!window.jXHR) {
+                var jxhr = document.createElement('script');
+                jxhr.type = 'text/javascript';
+                jxhr.src = 'http://ifcuriousthenlearn.com/theme/js/jXHR.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(jxhr, s);
+            }
+
+            github.showRepos({
+                user: 'nagordon',
+                count: 5,
+                skip_forks: false,
+                target: '#gh_repos'
+            });
+        });
+    </script>
+    <script src="http://ifcuriousthenlearn.com/theme/js/github.js" type="text/javascript"></script>
+    <!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+
+</body>
+</html>

@@ -23,7 +23,7 @@ DELETE_OUTPUT_DIRECTORY = True
 
 
 DISQUS_SITENAME = 'nagordon-github'  # disqus shortname
-GOOGLE_ANALYTICS = 'UA-65004709-1'
+GOOGLE_ANALYTICS = 'UA-65272251-1'
 
 
 

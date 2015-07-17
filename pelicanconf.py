@@ -47,7 +47,7 @@ DISQUS_SITENAME = 'nagordon-github'
 
 
 ################# BOOTSTRAP SETTINGS ###########################
-BANNER = 'images/banner.png'
+BANNER = 'images/banner.jpg'
 #SITELOGO = 'images/earth.png'
 #SITELOGO_SIZE = 40
 FAVICON = 'images/earth.png'
