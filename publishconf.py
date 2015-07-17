@@ -21,7 +21,8 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-DISQUS_SITENAME = 'nagordon-github'
+
+DISQUS_SITENAME = 'nagordon-github'  # disqus shortname
 GOOGLE_ANALYTICS = 'UA-65004709-1'
 
 

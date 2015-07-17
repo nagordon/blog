@@ -43,8 +43,11 @@ SUMMARY_MAX_LENGTH = 100
 USE_FOLDER_AS_CATEGORY = False
 #CUSTOM_CSS = 'static/custom.css'
 
+DISQUS_SITENAME = 'nagordon-github'
+
+
 ################# BOOTSTRAP SETTINGS ###########################
-BANNER = 'images/banner.jpg'
+BANNER = 'images/banner.png'
 #SITELOGO = 'images/earth.png'
 #SITELOGO_SIZE = 40
 FAVICON = 'images/earth.png'
@@ -102,4 +105,3 @@ SOCIAL = (('LinkedIn', 'https://www.linkedin.com/profile/public-profile-settings
 		  ('Reddit','http://www.reddit.com/user/nagordon'),
 		  ('Instructables','http://www.instructables.com/member/nagordon'),
 		  ('StackOverflow','http://stackoverflow.com/users/2438993/nagordon'),)
-
