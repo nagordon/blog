@@ -5,13 +5,13 @@ import os
 
 AUTHOR = 'Neal Gordon'
 SITENAME = 'if curious: then learn'
-SITEURL = 'http://ifcuriousthenlearn.com'
+SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' #'http://ifcuriousthenlearn.com'
 HIDE_SITENAME = False
 
 
 ################# DEVELOPMENT SETTINGS ###########################
-#RELATIVE_URLS = False   # when deploying site
-RELATIVE_URLS = True    # developing site 
+RELATIVE_URLS = False   # when deploying site
+#RELATIVE_URLS = True    # developing site 
 
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
@@ -38,7 +38,8 @@ PLUGIN_PATHS = ['plugins']
 PLUGINS = ['liquid_tags.img', 
            'liquid_tags.youtube', 
            'liquid_tags.include_code', 
-	   'liquid_tags.notebook',		'ipynb']
+	       'liquid_tags.notebook',	
+		   'ipynb']
 
 SUMMARY_MAX_LENGTH = 100
 USE_FOLDER_AS_CATEGORY = False

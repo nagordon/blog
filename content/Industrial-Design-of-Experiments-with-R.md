@@ -6,8 +6,7 @@ Tags: R, statistics, DOE
 Slug: Industrial-Design-of-Experiments-with-r
 Authors: Neal Gordon
 Summary: A introduction presenting the R programming lanuage and an open-source solution for designing and analzying Design of Experiements (DOE)
-
-
+ 
 #Motivation
 Python is my favorite lanugauge. But, I also practice polyglottery(using multiple languages...I know, I had to use that word!). For the years of using python, I have rarely come across a problem that I haven't been able to solve or hasn't been solved yet in python. Well, today is the day. 
 
