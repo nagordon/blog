@@ -7,7 +7,6 @@ Slug: my-first-blog
 Authors: Neal Gordon
 Summary: How the heck I built a blog
 
-
 My first whimsical thought of creating a blog was, how hard can it be? Well, as it turns out, I found it it is harder than expected. But, here it is, and here I am. This is a rough outline to how I got my blog working and how I update. I started with a github page using jekyll, but decided that I really would like ipython notebook support, so that left me with [Nickola](http://getnikola.com/) or [Pelican](http://docs.getpelican.com/en/3.5.0/#). I thought the Pelican documentation looked easier, so I went with it
 
 ## setup

@@ -6,7 +6,7 @@ Tags: video-games
 Slug: tf2-server-setup
 Authors: Neal Gordon
 Summary: How to set up a Team Fortress 2 steam server-setup
-
+ 
 For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
 is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for online gaming, and it is way more fun to play games in the same room with your friends rather than random people online. 
 

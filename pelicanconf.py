@@ -32,12 +32,13 @@ THEME = "themes/pelican-bootstrap3" # 'notmyidea'
 DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search')
 
 # ipynb settings
-MARKUP = ('md')#, 'ipynb')
+IPYNB_USE_META_SUMMARY = True
+MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['liquid_tags.img', 
            'liquid_tags.youtube', 
            'liquid_tags.include_code', 
-	   'liquid_tags.notebook']#		'ipynb', 'render_math']
+	   'liquid_tags.notebook',		'ipynb']
 
 SUMMARY_MAX_LENGTH = 100
 USE_FOLDER_AS_CATEGORY = False

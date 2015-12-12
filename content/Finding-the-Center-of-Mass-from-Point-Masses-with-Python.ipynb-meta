@@ -1,0 +1,8 @@
+Title: Finding the Center of Mass from Point Masses with Python
+Date: 2015-6-18
+Modified: 
+Category: Tutorials
+Tags: tutorial, python, engineering
+Slug: center-of-mass
+Authors: Neal Gordon
+Summary: Using python math and matplotlib plotting to determine the center of mass for a 1,2 and 3 dimension point mass cloud

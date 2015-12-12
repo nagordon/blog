@@ -6,7 +6,7 @@ Tags: Linux, Virtualization
 Slug: vagrant-linux
 Authors: Neal Gordon
 Summary: An guide for intermediate Windows users looking to start using Linux.
-
+ 
 ## Introduction and Motivation
 This article is written for Windows users that would like to extend their skill-set to Linux and assumes you are comfortable with the command line. Go brush up before reading this if you are unsure what a command line is:)
 

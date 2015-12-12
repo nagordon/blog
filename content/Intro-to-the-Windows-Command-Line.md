@@ -6,9 +6,9 @@ Tags: windows, batch, commandline
 Slug: intro-to-the-windows-command-line  
 Authors: Neal Gordon  
 Summary: Getting started with the windows command line to be able to do more with Windows.   
-
+    
 ## Introduction
-
+   
 Side Note - I've searched online to find info on many things related to technology. A typical search will yield a lot of blogs and tutorials, and way down the list there is documentation from the company/team that created the product. All this is OK, but i've found if you really want to learn something, the best way is a good old-fashioned book (pdf or print). The ideas are whole and complete, and the quality is much higher than a typical blog post (..yea, I know, this is a blog, and no it is not as good as a book). 
 And now for the big surprise. Most of my content is from books. I did not invent this stuff. And I think it is important to give credit where credit is due. For more information, check out an  A+ certification book (I got mine from goodwill for 3 bucks, isnb-9780071745154). 
 
