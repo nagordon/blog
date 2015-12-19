@@ -7,6 +7,9 @@ git push origin --delete gh-pages
 # delete local branch 
 git branch -D gh-pages
 
+# force a push
+git push origin master --force
+
 
 ### generate site
 pelican content -s pelicanconf.py
@@ -36,7 +39,8 @@ for k in cmds:
 """
 
 import os
-
 pelican content -o output -s pelicanconf.py
 ghp-import output
-git push origin gh-pages	
+git push --all origin
+#git push origin master
+#git push origin gh-pages	

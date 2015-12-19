@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>My First Blog [Updated] - if curious: then learn</title>
+    <title>My First Blog - if curious: then learn</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -174,7 +174,7 @@ init_mathjax();
 
         <meta property="og:site_name" content="if curious: then learn" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="My First Blog [Updated]"/>
+        <meta property="og:title" content="My First Blog"/>
         <meta property="og:url" content="http://ifcuriousthenlearn.com/blog/2015/02/25/my-first-blog/"/>
         <meta property="og:description" content="How the heck I built a blog"/>
         <meta property="article:published_time" content="2015-02-25" />
@@ -238,8 +238,8 @@ if curious: then learn            </a>
                 <h1>
                     <a href="http://ifcuriousthenlearn.com/blog/2015/02/25/my-first-blog/"
                        rel="bookmark"
-                       title="Permalink to My First Blog [Updated]">
-                        My First Blog [Updated]
+                       title="Permalink to My First Blog">
+                        My First Blog
                     </a>
                 </h1>
             </header>
@@ -267,35 +267,42 @@ if curious: then learn            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>My first whimsical thought of creating a blog was, how hard can it be? Well, as it turns out, I found it it is harder than expected. But, here it is, and here I am. This is a rough outline to how I got my blog working and how I update. I started with a github page using jekyll, but decided that I really would like ipython notebook support, so that left me with <a href="http://getnikola.com/">Nickola</a> or <a href="http://docs.getpelican.com/en/3.5.0/#">Pelican</a>. I thought the Pelican documentation looked easier, so I went with it</p>
+                <p>My first whimsical thought of creating a blog was, how hard can it be? Well, as it turns out, I found it it is harder than expected. But, here it is, and here I am. This is a rough outline to how I got my blog working and how I update. I started with a github page using jekyll, but decided that I really would like ipython notebook support, so that left me with <a href="http://getnikola.com/">Nickola</a> or <a href="http://docs.getpelican.com/en/3.5.0/#">Pelican</a>. I thought the Pelican documentation looked easier, so I went with it. I have also changed my blog to be a github project page rather than a user page. This changed my workflow so I have updated to reflect that.</p>
 <h2>setup</h2>
-<p>I am running a windows 8 laptop with a  <a href="http://www.linuxmint.com/">Linux-Mint</a> virtual machine using <a href="https://www.virtualbox.org/">VirtualBox </a></p>
-<p>Once your virtual machine is running, open a terminal and run the following commands in bash</p>
-<p>install <a href="http://conda.pydata.org/miniconda.html">miniconda</a> distro of python. Great package management</p>
+<p>I am running a windows 8 laptop with a  <a href="http://www.linuxmint.com/">Linux-Mint</a> virtual machine using <a href="https://www.virtualbox.org/">VirtualBox </a>. </p>
+<p>Lets update all the software on our virtual machine with </p>
 <div class="highlight"><pre><span class="c"># updates</span>
 sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
 
-<span class="c"># create a virtual environment &#39;pylican&#39;</span>
-conda create -n pylican <span class="nv">python</span><span class="o">=</span>2.7
-<span class="nb">source </span>activate pylican  <span class="c"># or just &#39;activate pylican&#39; in windows</span>
-conda install pip
-conda install ipython-notebook
-pip install pelican
-pip install Markdown
-conda install <span class="nv">ipython</span><span class="o">==</span>2.4.1   <span class="c"># this is important because of liquid tags</span>
+<span class="c"># we need git to use github</span>
+sudo apt-get install git
+</pre></div>
 
+
+<p>Now lets install python 3.x. I really like using miniconda for my python management. You can install it with the following commands.</p>
+<div class="highlight"><pre>wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+<span class="c"># follow the commands to install</span>
+</pre></div>
+
+
+<p>Restart the terminal and try running '''ipython'''. If it doesn't work, then figure out why before continuing.</p>
+<p>Next, lets install the software we need to build the blog. I have decided to work with python 3.x, which limits some of the plugins, but I try to develop in python as much as possible.</p>
+<div class="highlight"><pre>conda install pip, ipython-notebook
+pip install pelican, Markdown
 <span class="c"># for github blogs, this tool makes it very easy to update the blog</span>
 pip install ghp-import
 </pre></div>
 
 
-<p>Now we need a github account and create a website <a href="https://github.com/nagordon/nagordon.github.io">repository</a></p>
-<p>in the bash terminal, clone the github repository to your local computer </p>
-<div class="highlight"><pre>git clone https://github.com/nagordon/nagordon.github.io.git
+<p><a href="https://github.com/davisp/ghp-import">ghp-import</a> is a great too for building blogs on github. For project pages(if you don't know what this is, go find out because you may have trouble posting your blog to github). Basically, the <code>master</code> branch stores the content of the blog and the <code>gh-pages</code> stores the actual site being hosted. 
+Now we need a github account and a repository to host our site and source content, <a href="https://github.com/nagordon/ifcuriousthenlearn">repository</a>. We can roll out a site immediately with githubs automatic site building tools that utilize ruby. Unless I add a custom url (see below), the site will be hosted at http://nagordon.github.io/ifcuriousthenlearn</p>
+<p>Once you have created a repository on github, in the bash terminal, clone the github repository to your local computer </p>
+<div class="highlight"><pre>git clone https://github.com/nagordon/ifcuriousthenlearn.git
 </pre></div>
 
 
-<p>this will create a directory <code>nagordon.github.io</code> that will have all the website content</p>
+<p>this will create a directory <code>ifcuriousthenlearn</code> that will have all the website content. The <a href="http://docs.getpelican.com/en/3.6.3/quickstart.html">pelican quickstart</a> is great for playing around with new sites. </p>
 <h1>notes on my blog site</h1>
 <p>when I want to add a page, create a file in the content directory</p>
 <p>/content/new_blog_post.md</p>
@@ -310,54 +317,44 @@ pip install ghp-import
 <span class="n">Summary</span><span class="o">:</span> <span class="n">short</span> <span class="n">summary</span>
 
 <span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="kd">super</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
-<span class="n">I</span> <span class="n">can</span> <span class="n">insert</span> <span class="n">an</span> <span class="n">ipython</span> <span class="n">notebook</span> <span class="n">using</span> <span class="n">liquid</span> <span class="n">tags</span>
-
-<span class="o">{%</span> <span class="n">notebook</span> <span class="n">example_notebook1</span><span class="o">.</span><span class="na">ipynb</span> <span class="o">%}</span>
-
 <span class="n">Here</span> <span class="k">is</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">post</span><span class="o">!!</span>
 </pre></div>
 
 
 <p>The tags will automatically create groups at the top of your webpage once it is built</p>
-<p>Once you have your *.md, we need to generate the static html files that will be the blog -s </p>
-<div class="highlight"><pre><span class="c"># if any troubles arise</span>
-pelican --help
-<span class="c"># generates the site</span>
-pelican content
-
-<span class="c"># or specify the config file</span>
-pelican content -s pelicanconf.py
-
-<span class="c"># or to generate and preview the site</span>
-<span class="nb">cd </span>output
-<span class="c"># or a simple python webserver</span>
-python -m SimpleHTTPServer
-
-<span class="c"># a really handy tool to tweaking the look of your page to constantly update</span>
+<p>Once you have your *.md, we need to generate the static html files that will be the blog</p>
+<div class="highlight"><pre><span class="c"># I first use this to tweak the site and it constantly updates my changes locally</span>
 make devserver
-
 <span class="c"># and to stop</span>
 ./develop_server.sh stop
 
-<span class="c"># finally, if you did not receive any errors, push your freshly made blog to your github account, get a cup of coffee, and a few minutes later your updates should be live on the web</span>
-make github
-<span class="c"># enter github credentials</span>
+<span class="c">#once the site is how you like it run these commands to push to github.</span>
+pelican content -o output -s pelicanconf.py
+ghp-import output
+git push --all origin
 </pre></div>
 
 
 <h2>Next Steps</h2>
-<p>One of the things I really like about pelican is I can embed <a href="http://nbviewer.ipython.org/">ipython notebooks</a> into the blog post. To do so, just check out this <a href="https://github.com/danielfrg/pelican-ipynb">plugin</a></p>
-<p><strong>Update</strong>
-I have been using the ipynb plugin for a bit now, and it is really slick, but it doesn't render well with the CSS files, so I have switched to <a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags">liquid tags</a>
-Simply clone the plugins and add the folders to the plugins folder</p>
+<p>One of the things I really like about pelican is I can embed <a href="http://nbviewer.ipython.org/">ipython notebooks</a> into the blog post. To do so, just check out this <a href="https://github.com/danielfrg/pelican-ipynb">plugin</a>. This allows my to store each post in a notebook, and use python 3.</p>
 <p>I have also added comment support using Disqus, as well as changing the theme to bootstrap3, which plays very well with the liquid tags plugin. Once you register on the Discus website, add a line to the pelicanconf.py file to link the service.</p>
-<p>I also recently added a custom domain name with godaddy. It cost $10 and was relativley easy. For the github user page, I recommend just following <a href="http://andrewsturges.com/blog/jekyll/tutorial/2014/11/06/github-and-godaddy.html">the blog entry of andrew sturges</a>.</p>
 <p>Finally, the theme I am using here is the <a href="https://github.com/DandyDev/pelican-bootstrap3">pelican-bootstrap3</a></p>
 <p>For any questions on the layout of the page, see the <a href="nagordon.github.io">github page</a> 
  as well as a google search for <code>pelican ipython notebook</code> and you will find many other good examples</p>
+<h2>Custom URL</h2>
+<p>I also added a custom domain name with godaddy. It cost $10 and was relativley easy. For github project pages, here is a general process for setting that up. </p>
+<p>Set up godaddy.
+<img alt="" src="/fig/godaddy_github_pages_setup.png" title="Setting up godaddy" /></p>
+<p>Add '''content/extra/CNAME''' file to website source code and add  the url you want. In this case the file contents are <code>ifcuriousthenlearn.com</code></p>
+<p>Now add the configurations to the <code>pelicanconf.py</code></p>
+<div class="highlight"><pre>STATIC_PATHS = [&#39;extra/CNAME&#39;]
+EXTRA_PATH_METADATA = {&#39;extra/CNAME&#39;: {&#39;path&#39;: &#39;CNAME&#39;},}
+SITEURL = &#39;http://ifcuriousthenlearn.com&#39;
+</pre></div>
+
+
 <h2>The Docs</h2>
-<p><a href="http://docs.getpelican.com/en/3.4.0/index.html">pelican</a> and <a href="http://blog.getpelican.com/">this</a><br />
-<a href="https://github.com/davisp/ghp-import">ghp-import</a>  </p>
+<p><a href="http://docs.getpelican.com/en/3.4.0/index.html">pelican</a> and <a href="http://blog.getpelican.com/">this</a>  </p>
             </div>
             <!-- /.entry-content -->
     <hr/>
