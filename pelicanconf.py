@@ -5,7 +5,8 @@ import os
 
 AUTHOR = 'Neal Gordon'
 SITENAME = 'if curious: then learn'
-SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' #'http://ifcuriousthenlearn.com'
+#SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
+SITEURL = 'http://ifcuriousthenlearn.com'
 HIDE_SITENAME = False
 
 
