@@ -35,12 +35,18 @@ cmds = ["git checkout gh-pages",
 for k in cmds:
 	os.system(k)
 	
-	
-"""
-
-import os
 pelican content -o output -s pelicanconf.py
 ghp-import output
 git push --all origin
 #git push origin master
 #git push origin gh-pages	
+	
+"""
+
+import os
+
+os.system("pelican content")
+os.system("ghp-import output")
+os.system("git add --all")
+os.system("git commit -m 'added new content to blog'")
+os.system('git push --all origin')
