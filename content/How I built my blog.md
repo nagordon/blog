@@ -17,7 +17,6 @@ Lets update all the software on our virtual machine with
 ```bash
 # updates
 sudo apt-get update && sudo apt-get upgrade
-
 # we need git to use github
 sudo apt-get install git
 ```
@@ -30,7 +29,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 # follow the commands to install
 ```
 
-Restart the terminal and try running '''ipython'''. If it doesn't work, then figure out why before continuing.
+Restart the terminal and try running ```$ ipython```. If it doesn't work, then figure out why before continuing.
 
 Next, lets install the software we need to build the blog. I have decided to work with python 3.x, which limits some of the plugins, but I try to develop in python as much as possible.
 
@@ -52,9 +51,9 @@ git clone https://github.com/nagordon/ifcuriousthenlearn.git
 this will create a directory ```ifcuriousthenlearn``` that will have all the website content. The [pelican quickstart](http://docs.getpelican.com/en/3.6.3/quickstart.html) is great for playing around with new sites. 
 
 # notes on my blog site
-when I want to add a page, create a file in the content directory
+when I want to add a markdown page, create a file in the content directory
 
-/content/new_blog_post.md
+```/content/new_blog_post.md```
 
 Each file should start like this.
 ```
@@ -73,6 +72,8 @@ Here is the end of the post!!
 ```
 The tags will automatically create groups at the top of your webpage once it is built
 
+If you want to create a blog post from an ipython notebook, follow the instructions from the github page (https://github.com/danielfrg/pelican-ipynb)
+
 Once you have your *.md, we need to generate the static html files that will be the blog
 ```bash
 
@@ -82,12 +83,13 @@ make devserver
 ./develop_server.sh stop
 
 #once the site is how you like it run these commands to push to github.
-pelican content -o output -s pelicanconf.py
+pelican content
 ghp-import output
+git add --all
+git commit -m 'added new content to blog'
 git push --all origin
 
 ```
-
 
 ## Next Steps
 One of the things I really like about pelican is I can embed [ipython notebooks](http://nbviewer.ipython.org/) into the blog post. To do so, just check out this [plugin](https://github.com/danielfrg/pelican-ipynb). This allows my to store each post in a notebook, and use python 3.
@@ -103,10 +105,13 @@ For any questions on the layout of the page, see the [github page]( nagordon.git
 
 I also added a custom domain name with godaddy. It cost $10 and was relativley easy. For github project pages, here is a general process for setting that up. 
 
-Set up godaddy.
-![](/fig/godaddy_github_pages_setup.png "Setting up godaddy")
+![Setting up godaddy](/fig/godaddy_github_pages_setup.png "Setting up godaddy")
 
-Add '''content/extra/CNAME''' file to website source code and add  the url you want. In this case the file contents are ```ifcuriousthenlearn.com```
+Add ```content/extra/CNAME``` file to website source code and add  the url you want. In this case the file contents are 
+
+```
+ifcuriousthenlearn.com
+```
 
 Now add the configurations to the ```pelicanconf.py```
 
@@ -120,5 +125,5 @@ SITEURL = 'http://ifcuriousthenlearn.com'
 
 ## The Docs
 [pelican](http://docs.getpelican.com/en/3.4.0/index.html) and [this](http://blog.getpelican.com/)  
-
+[pelican custom url](http://docs.getpelican.com/en/3.6.3/tips.html)
 

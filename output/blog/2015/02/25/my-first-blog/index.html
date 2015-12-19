@@ -273,7 +273,6 @@ if curious: then learn            </a>
 <p>Lets update all the software on our virtual machine with </p>
 <div class="highlight"><pre><span class="c"># updates</span>
 sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
-
 <span class="c"># we need git to use github</span>
 sudo apt-get install git
 </pre></div>
@@ -286,7 +285,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 </pre></div>
 
 
-<p>Restart the terminal and try running '''ipython'''. If it doesn't work, then figure out why before continuing.</p>
+<p>Restart the terminal and try running <code>$ ipython</code>. If it doesn't work, then figure out why before continuing.</p>
 <p>Next, lets install the software we need to build the blog. I have decided to work with python 3.x, which limits some of the plugins, but I try to develop in python as much as possible.</p>
 <div class="highlight"><pre>conda install pip, ipython-notebook
 pip install pelican, Markdown
@@ -304,8 +303,8 @@ Now we need a github account and a repository to host our site and source conten
 
 <p>this will create a directory <code>ifcuriousthenlearn</code> that will have all the website content. The <a href="http://docs.getpelican.com/en/3.6.3/quickstart.html">pelican quickstart</a> is great for playing around with new sites. </p>
 <h1>notes on my blog site</h1>
-<p>when I want to add a page, create a file in the content directory</p>
-<p>/content/new_blog_post.md</p>
+<p>when I want to add a markdown page, create a file in the content directory</p>
+<p><code>/content/new_blog_post.md</code></p>
 <p>Each file should start like this.</p>
 <div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="n">MyFirstReview</span>
 <span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span>
@@ -322,6 +321,7 @@ Now we need a github account and a repository to host our site and source conten
 
 
 <p>The tags will automatically create groups at the top of your webpage once it is built</p>
+<p>If you want to create a blog post from an ipython notebook, follow the instructions from the github page (https://github.com/danielfrg/pelican-ipynb)</p>
 <p>Once you have your *.md, we need to generate the static html files that will be the blog</p>
 <div class="highlight"><pre><span class="c"># I first use this to tweak the site and it constantly updates my changes locally</span>
 make devserver
@@ -329,8 +329,10 @@ make devserver
 ./develop_server.sh stop
 
 <span class="c">#once the site is how you like it run these commands to push to github.</span>
-pelican content -o output -s pelicanconf.py
+pelican content
 ghp-import output
+git add --all
+git commit -m <span class="s1">&#39;added new content to blog&#39;</span>
 git push --all origin
 </pre></div>
 
@@ -343,9 +345,12 @@ git push --all origin
  as well as a google search for <code>pelican ipython notebook</code> and you will find many other good examples</p>
 <h2>Custom URL</h2>
 <p>I also added a custom domain name with godaddy. It cost $10 and was relativley easy. For github project pages, here is a general process for setting that up. </p>
-<p>Set up godaddy.
-<img alt="" src="/fig/godaddy_github_pages_setup.png" title="Setting up godaddy" /></p>
-<p>Add '''content/extra/CNAME''' file to website source code and add  the url you want. In this case the file contents are <code>ifcuriousthenlearn.com</code></p>
+<p><img alt="Setting up godaddy" src="/fig/godaddy_github_pages_setup.png" title="Setting up godaddy" /></p>
+<p>Add <code>content/extra/CNAME</code> file to website source code and add  the url you want. In this case the file contents are </p>
+<div class="highlight"><pre>ifcuriousthenlearn.com
+</pre></div>
+
+
 <p>Now add the configurations to the <code>pelicanconf.py</code></p>
 <div class="highlight"><pre>STATIC_PATHS = [&#39;extra/CNAME&#39;]
 EXTRA_PATH_METADATA = {&#39;extra/CNAME&#39;: {&#39;path&#39;: &#39;CNAME&#39;},}
@@ -354,7 +359,8 @@ SITEURL = &#39;http://ifcuriousthenlearn.com&#39;
 
 
 <h2>The Docs</h2>
-<p><a href="http://docs.getpelican.com/en/3.4.0/index.html">pelican</a> and <a href="http://blog.getpelican.com/">this</a>  </p>
+<p><a href="http://docs.getpelican.com/en/3.4.0/index.html">pelican</a> and <a href="http://blog.getpelican.com/">this</a><br />
+<a href="http://docs.getpelican.com/en/3.6.3/tips.html">pelican custom url</a></p>
             </div>
             <!-- /.entry-content -->
     <hr/>
