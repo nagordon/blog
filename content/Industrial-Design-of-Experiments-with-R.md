@@ -1,7 +1,7 @@
 Title: Industrial Design of Experiments with R
 Date: 2015-9-1
 Modified: 
-Category: Tutorials
+Category: Engineering
 Tags: R, statistics, DOE
 Slug: Industrial-Design-of-Experiments-with-r
 Authors: Neal Gordon

@@ -1,7 +1,7 @@
 Title: The Fastest Way To Linux on Windows using Vagrant
 Date: 2015-8-18
 Modified: 
-Category: Tutorials
+Category: Computing
 Tags: Linux, Virtualization
 Slug: vagrant-linux
 Authors: Neal Gordon

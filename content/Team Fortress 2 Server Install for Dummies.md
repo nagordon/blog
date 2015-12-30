@@ -1,7 +1,7 @@
 Title: Team Fortress 2 Server Install for Dummies
 Date: 2015-03-14
 Modified: 
-Category: Tutorials
+Category: Computing
 Tags: video-games
 Slug: tf2-server-setup
 Authors: Neal Gordon

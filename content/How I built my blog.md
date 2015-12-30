@@ -1,7 +1,7 @@
 Title: My First Blog
 Date: 2015-02-25
 Modified: 2015-12-19
-Category: Tutorials
+Category: Computing
 Tags: tutorial, python, pelican
 Slug: my-first-blog
 Authors: Neal Gordon

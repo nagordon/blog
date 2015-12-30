@@ -3,19 +3,18 @@
 from __future__ import unicode_literals
 import os
 
-AUTHOR = 'Neal Gordon'
-SITENAME = 'if curious: then learn'
-#SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
-SITEURL = 'http://ifcuriousthenlearn.com'
-HIDE_SITENAME = False
-
-
 ################# DEVELOPMENT SETTINGS ###########################
 RELATIVE_URLS = False   # when deploying site
 #RELATIVE_URLS = True    # developing site 
 
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
+################# SITE SETTINGS ###########################
+AUTHOR = 'Neal Gordon'
+SITENAME = 'if curious: then learn'
+#SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
+SITEURL = 'http://ifcuriousthenlearn.com'
+HIDE_SITENAME = False
 
 ################# Pelican SETTINGS ###########################
 DISPLAY_PAGES_ON_MENU = True

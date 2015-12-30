@@ -1,7 +1,7 @@
 Title: Automating Website Downloads with wget  
 Date: 2015-08-19  
 Modified:  
-Category: Tutorials  
+Category: Computing  
 Tags: Linux, webscraping, automation  
 Slug: wget-downloads  
 Authors: Neal Gordon  

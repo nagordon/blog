@@ -44,9 +44,9 @@ git push --all origin
 """
 
 import os
-
 os.system("pelican content")
 os.system("ghp-import output")
 os.system("git add --all")
 os.system("git commit -m 'added new content to blog'")
 os.system('git push --all origin')
+

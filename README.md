@@ -3,5 +3,5 @@ My raw blog content for the blog [ifcuriousthenlearn.com](ifcuriousthenlearn.com
 Default url is 
 http://nagordon.github.io/ifcuriousthenlearn
 
-custom url is
-ifcuriousthenlearn.com
+Custom url is
+http://ifcuriousthenlearn.com

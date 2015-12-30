@@ -1,7 +1,7 @@
 Title: Intro to the Windows Command Line  
 Date: 2015-8-28  
 Modified:   
-Category: Tutorials  
+Category: Computing  
 Tags: windows, batch, commandline  
 Slug: intro-to-the-windows-command-line  
 Authors: Neal Gordon  
