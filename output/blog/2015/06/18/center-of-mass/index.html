@@ -284,8 +284,10 @@ if curious: then learn            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -340,13 +342,12 @@ if curious: then learn            </a>
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<div class="cell border-box-sizing text_cell rendered">
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions">Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions<a class="anchor-link" href="#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions">&#182;</a></h1>
+<h1 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions">Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions<a class="anchor-link" href="#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions">¶</a></h1>
 </div>
 </div>
 </div>
@@ -356,24 +357,21 @@ if curious: then learn            </a>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>First, import python modules and set up the plotting</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -381,45 +379,40 @@ if curious: then learn            </a>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>When using ipython notebooks, plotting inline can be achieved by execute the matplotlib magic function</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c">#set plot sizes</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c"># (width, height)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;legend.fontsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="c1">#set plot sizes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># (width, height)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'font.size'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'legend.fontsize'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="First,-lets-determine-the-CG-of-a-1D-space">First, lets determine the CG of a 1D space<a class="anchor-link" href="#First,-lets-determine-the-CG-of-a-1D-space">&#182;</a></h2>
+<h2 id="First,-lets-determine-the-CG-of-a-1D-space">First, lets determine the CG of a 1D space<a class="anchor-link" href="#First,-lets-determine-the-CG-of-a-1D-space">¶</a></h2>
 </div>
 </div>
 </div>
@@ -429,28 +422,23 @@ if curious: then learn            </a>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lets randomly assign an x coordinate value for the point mass from [-50, 50] with n=20</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">n</span><span class="o">=</span><span class="mi">20</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">x</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[ 10 -39  11  -5 -28 -39 -38 -35  43  -9  13  15  44 -49 -35  17   1  28
@@ -458,10 +446,8 @@ if curious: then learn            </a>
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -469,27 +455,22 @@ if curious: then learn            </a>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, assign 20 random mass's to the x points on a line from [1, 100]</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">m</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[114  46 153 111 185  40  48 132 194  67  47  38  23  81  44 143 149  89
@@ -497,10 +478,8 @@ if curious: then learn            </a>
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -508,22 +487,19 @@ if curious: then learn            </a>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since this is a 1 dimensional problem, y is the same for all x coordinates</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -541,60 +517,47 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In python, this can be represented as</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">cgx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">m</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;The center of mass in x is </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">cgx</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">'The center of mass in x is </span><span class="si">%f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">cgx</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>The center of mass in x is -2.000000
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">m</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgx</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;|&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">1e4</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgx</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'|'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">1e4</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>  <span class="p">;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;1 Dimensional Center of Gravity&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'1 Dimensional Center of Gravity'</span><span class="p">);</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlsAAACtCAYAAACHkbpcAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XecHVX9//HXJ8lusiVVAqEjGLoKIh1DaPJVlCZNaSEq
@@ -783,37 +746,31 @@ bJlDuLI1st55648DoYF2V5G63AU8mDLfboSru/MJV2WfBE6jjKu8Gkruj07yrmyp3KtWvmsBP4kx
 yYoYo9wCfDCL8s70ypaIiIjImi7LBvIiIiIiazwFWyIiIiIZUrAlIiIikiEFWyIiIiIZUrAlIiIi
 kiEFWyIiIiIZUrAlIiIikiEFWyIiIiIZUrAlIiIikiEFWyIiIiIZ+v82m0sJnWZQ4wAAAABJRU5E
 rkJggg==
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Now,-lets-determine-the-CG-of-a-2D-space">Now, lets determine the CG of a 2D space<a class="anchor-link" href="#Now,-lets-determine-the-CG-of-a-2D-space">&#182;</a></h2><p>Lets add a 2nd dimension, on the y axis</p>
-
+<h2 id="Now,-lets-determine-the-CG-of-a-2D-space">Now, lets determine the CG of a 2D space<a class="anchor-link" href="#Now,-lets-determine-the-CG-of-a-2D-space">¶</a></h2><p>Lets add a 2nd dimension, on the y axis</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -827,54 +784,42 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">cgy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="n">m</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;The center of mass in y is </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">cgy</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">'The center of mass in y is </span><span class="si">%f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">cgy</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>The center of mass in y is 93.000000
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c"># (width, height)</span>
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># (width, height)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">m</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgx</span><span class="p">,</span> <span class="n">cgy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;+&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">1e4</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;2 Dimensional Center of Gravity&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgx</span><span class="p">,</span> <span class="n">cgy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'+'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">1e4</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'2 Dimensional Center of Gravity'</span><span class="p">);</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaEAAAJrCAYAAABJMyyNAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XecJHWd//HXZ+PszCYQSSogKBjOhKcCKix4YsAzB9Q7
@@ -1214,65 +1159,53 @@ uZPNbHKprDb6JG2PX4M74iOdx/FptS/i5/SrZnZXoX4+bbk9dj94/L3xaZ1X8FHRAuAaSmFfSm3G
 UXWOuoEZFe1G4qPc1/HR6RN4RIJeR7udcCTdq6iIHVc3ffiG1Z+mPnFF6iOnAZ/uJG21HgkFQRAE
 9abOCxOCIAiCmhNOKAiCIMhGOKEgCIIgG+GEgiAIgmyEEwqCIAiyEU4oCIIgyEY4oSAIgiAb4YSC
 IAiCbIQTCoIgCLIRTigIgiDIxn8B7TXfhJ+DflUAAAAASUVORK5CYII=
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Finally,-lets-determine-the-CG-of-a-3D-space">Finally, lets determine the CG of a 3D space<a class="anchor-link" href="#Finally,-lets-determine-the-CG-of-a-3D-space">&#182;</a></h2><p>Lets add a 3rd dimension, on the z axis.</p>
-
+<h2 id="Finally,-lets-determine-the-CG-of-a-3D-space">Finally, lets determine the CG of a 3D space<a class="anchor-link" href="#Finally,-lets-determine-the-CG-of-a-3D-space">¶</a></h2><p>Lets add a 3rd dimension, on the z axis.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">cgz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="n">m</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;The center of mass is </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">cgz</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">'The center of mass is </span><span class="si">%f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">cgz</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>The center of mass is 15.000000
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1280,47 +1213,38 @@ IAiCbIQTCoIgCLIRTigIgiDIxn8B7TXfhJ+DflUAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>execute <code>%matplotlib qt</code> if you want to view an interactive 3d plot</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># %matplotlib qt</span>
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="c1"># %matplotlib qt</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">'3d'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">m</span><span class="p">);</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgx</span><span class="p">,</span> <span class="n">cgy</span><span class="p">,</span> <span class="n">cgz</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;+&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">1e4</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;3 Dimensional Center of Gravity&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgx</span><span class="p">,</span> <span class="n">cgy</span><span class="p">,</span> <span class="n">cgz</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'+'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">1e4</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'3 Dimensional Center of Gravity'</span><span class="p">);</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAY8AAAI8CAYAAAAJLCehAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXfYHNV59/852/eRhECIsvSOKaZ3Y3o1xvRmiIONa4xj
@@ -2838,27 +2762,22 @@ KyQH4vMQhKJlMfSW0WXR/BHQkVeAdoSH+gPRHdgh6fes4pR+F5ITMR6CUISYrap3oPMzBoSfI6I2
 ANpCq/O+Z5pnQYfV3kZEDcL6lgfwrPnx1UKetiCchGSYC0IRQ0TnQQsMng+9stgAvf3UCdq/cBsz
 /yesf0doI3IEWo4kUvq9W5E+gCBAjIcgFAsml2MYtBE4B9oxvgLACGb+NEr/ZgCGQosohgsjjmP5
 IxaKATEegiAIQp4Rn4cgCIKQZ8R4CIIgCHlGjIcgCIKQZ/4f0pR+e64jL54AAAAASUVORK5CYII=
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre> 
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
@@ -2942,18 +2861,18 @@ IxaKATEegiAIQp4Rn4cgCIKQZ8R4CIIgCHlGjIcgCIKQZ/4f0pR+e64jL54AAAAASUVORK5CYII=
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/22/USMC-Pilot-Ground-School/">
+                            US Marine Corps Private Pilot Ground School
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/17/weight-balance-cherokee-140/">
+                            Weight and Balance Calculations for a Piper Cherokee 140
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/12/29/weight-balance-cessna-175/">
                             Weight and Balance Calculations for a Cessna 175
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/09/01/Industrial-Design-of-Experiments-with-r/">
-                            Industrial Design of Experiments with R
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/08/28/intro-to-the-windows-command-line/">
-                            Intro to the Windows Command Line
                         </a>
                     </li>
                 </ul>
@@ -3020,7 +2939,7 @@ IxaKATEegiAIQp4Rn4cgCIKQZ8R4CIIgCHlGjIcgCIKQZ/4f0pR+e64jL54AAAAASUVORK5CYII=
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Neal Gordon
+         <div class="col-xs-10">&copy; 2016 Neal Gordon
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

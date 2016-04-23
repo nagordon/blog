@@ -281,8 +281,10 @@ if curious: then learn            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -337,65 +339,58 @@ if curious: then learn            </a>
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<div class="cell border-box-sizing text_cell rendered">
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Composites-Design-and-FEA-Analysis-with-CATIA-and-SIMULIA">Composites Design and FEA Analysis with CATIA and SIMULIA<a class="anchor-link" href="#Composites-Design-and-FEA-Analysis-with-CATIA-and-SIMULIA">&#182;</a></h1><p><strong>Summary.</strong> This example utilizes the CATIA Composites Design workbench and the Elfini workbench to create a composite part with material properties, ply stacking, and ply orientation and perform a ply level stress analysis to determine at which pressure and location failure is expected.</p>
-<h2 id="Defining-the-Composite-Panel">Defining the Composite Panel<a class="anchor-link" href="#Defining-the-Composite-Panel">&#182;</a></h2><div id="sec:def"></div>
+<h1 id="Composites-Design-and-FEA-Analysis-with-CATIA-and-SIMULIA">Composites Design and FEA Analysis with CATIA and SIMULIA<a class="anchor-link" href="#Composites-Design-and-FEA-Analysis-with-CATIA-and-SIMULIA">¶</a></h1><p><strong>Summary.</strong> This example utilizes the CATIA Composites Design workbench and the Elfini workbench to create a composite part with material properties, ply stacking, and ply orientation and perform a ply level stress analysis to determine at which pressure and location failure is expected.</p>
+<h2 id="Defining-the-Composite-Panel">Defining the Composite Panel<a class="anchor-link" href="#Defining-the-Composite-Panel">¶</a></h2><div id="sec:def"></div>
 
 The panel ([figure](#fig:panel)) is a composite laminate composed of two seperate materials. The panel is clamped on all four edges, eliminating the rotational and translational degrees of freedom, and a pressure is applied normal to the undeformed surface. It is expected that the elongated hole will likely be a stress concentration of the panel, but it is not clear what pressure the laminate is capable of supporting. However, this information will be ascertained by performing the analysis using the Elfini Finite Element workbench in CATIA. From these results, the location and plies that are at highest risk of failure will be identified using the tsai-hill composite failure criterion, and with that information, design changes can be implemented to reduce the stress and risk of failure. 
 
-<div id="fig:panel"></div><p><p>Panel Used in this Example</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/panel.png" width="650"></p>
+<div id="fig:panel"></div><p></p><p>Panel Used in this Example</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/panel.png" width="650" />
 <p>In CATIA, the Composites Design Workbench allows us to create surfaces and assign the parameters defining the composite (<a href="#fig:params">figure</a>), as well as easily validating the producibility of the part based on the curvature of the part. All the material properties, and composite parameters, such as ply thickness, orientation, material type, weight, etc are stored in the <em>CATPart</em> file created in the CPD workbench (<a href="#fig:params">figure</a>).</p>
 <div id="fig:params"></div>
-
 <p>Composite Parameters</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/composite-parameters.png" width="650">
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/composite-parameters.png" width="650" />
 
 
 
 The choice of material can be changed in the *CATMaterial* file if multiple materials are used, such as carbon fiber, fiberglass, epoxy, etc. 
 
 One of the challenges when designing with composites is that, due to the typical complexity of a composite part, the part design and simulation results can be difficult to visualize, and choosing the correct design parameters required to properly define the part is often unclear. A ply table is a simple way to understand how the composite is constructed. The table shown in ([figure](#fig:plytable)) shows how the composite is organized with ply number, material, and orientation. The ply table can be used interactively with the 3D model to look at the ply properties. The plys of interest for this example are highlighted in orange. These plys are on the top and bottom and cover the entire composite and make up the elongated hole, which is the expected maximum stress of the laminate. There are a total of 5 plies that make up the elongated hole, 3 on top (Ply.37,35,36)  and 2 on the bottom (Ply.33,34)
-<div id="fig:plytable"></div><p><p>Ply Table</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply-table-model.png" width="650"></p>
+<div id="fig:plytable"></div><p></p><p>Ply Table</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply-table-model.png" width="650" />
 <p>If we want to see the actual shape and stacking of a ply, we can navigate to the CATIA tree in <em>Stacking Engineering</em> (<a href="#fig:ply12">figure</a>), and we see Ply.37 is glass and Ply.35 is S1454-G803</p>
 <div id="fig:ply12"></div>
-
 <p>Ply 1 and 2</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply1-2.png" width="650">
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply1-2.png" width="650" />
 
 
 
 Another useful visualization is the ply exploder. The ply exploder generates a 3D visual of the individual ply stacks based on the color defined for that ply.
 
-<div id="fig:plyexplode"></div><p><p>Ply Exploder</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply-exploder.png" width="650"></p>
-<h2 id="Simulation-Pre-Processing">Simulation Pre-Processing<a class="anchor-link" href="#Simulation-Pre-Processing">&#182;</a></h2><div id="sec:pre"></div>
+<div id="fig:plyexplode"></div><p></p><p>Ply Exploder</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply-exploder.png" width="650" />
+<h2 id="Simulation-Pre-Processing">Simulation Pre-Processing<a class="anchor-link" href="#Simulation-Pre-Processing">¶</a></h2><div id="sec:pre"></div>
 
 In the CATIA CPD (Composites Part Design) workbench, we define many of the properties that we need for a finite element simulation. The material properties and orientation can be time-consuming when pre-processing models, but in Simulia, the process is streamlined due to the workbenches being well-integrated, eg the interactive ply table. 
 
 ### Loads and Boundary Conditions
 The boundary conditions are clamped edges, which constrains all 6 degrees of freedom for the surface edge (rotation and translation). The load applied is initially a $10\ KPa$ pressure applied normal to the undeformed panel surface, indicated by the yellow arrows ([figure](#fig:feasetup)).
 
-<div id="fig:feasetup"></div><p><p>FEA Setup</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/fea-setup.png" width="650"></p>
+<div id="fig:feasetup"></div><p></p><p>FEA Setup</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/fea-setup.png" width="650" />
 <p>Within the Elfini workbench, additional visualization tools are available. This allows the engineer/designer to confirm designs are correct as well as making communication much easier for assembly or if modifications are necessary. One of such tools is the thickness fringe plot (<a href="#fig:fringe">figure</a>) and the ply angle plot (<a href="#fig:angleply">figure</a>).</p>
 <div id="fig:fringe"></div>
-
 <p>Thickness Fringe</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/thickness-fringe.png" width="650">
-
-
-
-<div id="fig:angleply"></div><p><p>Lamina 4 angle plot</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/lamina-3-angle.png" width="650"></p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/thickness-fringe.png" width="650" />
+<div id="fig:angleply"></div><p></p><p>Lamina 4 angle plot</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/lamina-3-angle.png" width="650" />
 <p>Once we have the boundary conditions and loads applied, we can compute the model. After about 20 seconds, we have our displacement, strain, and stress calculations for each ply.</p>
-<h2 id="Post-Processing">Post-Processing<a class="anchor-link" href="#Post-Processing">&#182;</a></h2><div id="sec:post"></div>
+<h2 id="Post-Processing">Post-Processing<a class="anchor-link" href="#Post-Processing">¶</a></h2><div id="sec:post"></div>
 
 The simulation generates a large amount of data that can be cumbersome to digest, but using tools, such as specialized composites failure criteria, can make the analysis much easier and more robust. A summary of the important material properties (modulus of elasticity and material ultimate strength in compression and tension) are shown as a reference to the calculations. The complete material properties are shown in the Appendix in section ([Appendix](#sec:app)).
 
@@ -414,15 +409,14 @@ The simulation generates a large amount of data that can be cumbersome to digest
 </table>
 The availability of the field outputs is based on what the user requested in the pre-processing step. This example shows contour plots of stress, displacement, and the tsai-hill failure criterion. The mesh has been created relatively coarse for speedy calculations, but an actual engineering application should have a higher element density. Some examples of displacement visualizations are shown in figure  and . In the figure , the displacement contour lines are overlaid on a deformed model mesh based on the the 3-dimensional displacement values.
 
-<div id="fig:meshdisp"></div><p><p>Deformed mesh displacement plot of ply.37</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/mesh-displacement.png" width="650"></p>
+<div id="fig:meshdisp"></div><p></p><p>Deformed mesh displacement plot of ply.37</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/mesh-displacement.png" width="650" />
 <p>The discontinuous contour plot in figure  with deformation is a simple-to-interpret visual to the analyst on the validity of the results as well seeing the large deformation areas of the structure due to the various locality of plies with the relative cumulative thickness.</p>
-<p><div id="fig:contdisp"></div></p>
-<p><p>Deformed contour displacement plot of ply.37</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/displacement-ply-exploded.png" width="650"></p>
+<p></p><div id="fig:contdisp"></div>
+<p></p><p>Deformed contour displacement plot of ply.37</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/displacement-ply-exploded.png" width="650" />
 <p>Stress is the measurement that is most important because our failure metric is defined as a experimentally pre-determine stress. To properly investigate this composite, each ply should be reviewed after the simulation is complete.</p>
 <p>After a load of $P_{applied}=10\ kPa$ is applied to the panel, the von-mises stress ($\sigma_{v}$) with the fiber orientation shows that, in figure  ply.34 has the largest von-mises stress.</p>
-
 </div>
 </div>
 </div>
@@ -432,7 +426,7 @@ The availability of the field outputs is based on what the user requested in the
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!-- Equation labels as ordinary links --></p>
-<p><div id="vonmises"></div></p>
+<p></p><div id="vonmises"></div>
 $$
 \begin{equation}
 \sigma_v = \sqrt{ \sigma_{1}^{2} + \sigma_{2}^{2} - \sigma_{1}\sigma_{2}}    \label{vonmises} \tag{1} 
@@ -448,18 +442,16 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since this is a linear FEA problem, the results are only likely valid for small deformations, and so, the relationship between applied load and stress should be linear. Also, a common assumption in composite analysis is assuming that out-of-plane stress is 0, known as plane stress ($\sigma_{3}=0$). With these assumption, we can assume that ply.34 will be the highest risk ply, and by inspection, ply.34 does indeed have the highest stress of all the plies. The von-mises stress is a handy scalar stress equivalent due to its ease to interpret results. (although other stresses, such as principal stresses should be observed to confirm validity of results). The plots here show the mean ply stress as well as the fiber orientation of the ply.</p>
 <div id="fig:vonmises"></div>
-
 <p>Von-Mises Stress</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/von-mises.png" width="650">
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/von-mises.png" width="650" />
 
 
 
 The stress state of Ply.34 is show in an undeformed state with a contour plot of von-mises stress . When looking at the entire composite, the stress concentration is where it was expected to be, in the elongated hole. 
 
-<div id="fig:ply34stress"></div><p><p>Exploded plys with von-mises ply stress of ply.34</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/stress-ply-exploded.png" width="650"></p>
+<div id="fig:ply34stress"></div><p></p><p>Exploded plys with von-mises ply stress of ply.34</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/stress-ply-exploded.png" width="650" />
 <p>When performing a stress analysis of a composite, iterations of the calculation of stiffness must be made to calculate the global structure stiffness. Once the global stiffness is calculated, the global displacement, strain and stress is determined. However, failure of a composite often occurs first to a ply, and since plies can have various stresses due to potentially differing material properties and loading states, the local ply stress must be determined and corroborated to the material strength to determine if ply failure is anticipated. The failure criterion commonly used for composites is the tsai-hill <a href="#Daniel2006">[Daniel2006]</a>. The tsai-hill criterion is adapted from the von-mises criterion, which is defined as failure when the material yields. Typically, long-fiber composites are transversely isotropic. With this assumption, we can write the tsai-Hill criterion here <a href="#eqn:tsaihill">(2)</a>. Once this value exceeds 1, the ply is expected to fail</p>
-
 </div>
 </div>
 </div>
@@ -469,7 +461,7 @@ The stress state of Ply.34 is show in an undeformed state with a contour plot of
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!-- Equation labels as ordinary links --></p>
-<p><div id="eqn:tsaihill"></div></p>
+<p></p><div id="eqn:tsaihill"></div>
 $$
 \begin{equation}
 1 =  \left(\frac{\sigma_{1}}{\sigma_{1u}}\right)^{2} + \left(\frac{\sigma_{2}}{\sigma_{2u}}\right)^{2}  +  \left(\frac{\tau_{12}}{\tau_{12u}}\right)^{2}  - \left(\frac{\sigma_{1} \sigma_{2}} {\sigma_{1u} }\right) \label{eqn:tsaihill} \tag{2}  
@@ -484,11 +476,10 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The tsai-hill criterion is easily accessible in Simulia to determine if failure is expected. The contour plots in <a href="#fig:tsaihill">figure</a> is for our initial loading case of $10\ KPa$, which is well below 1, indicating that our composite part is not likely to fail. Also of importance is ply.34, which has the largest tsai-hill parameter, or nearest to failure, which agrees with our linear stress-load assumption.</p>
-<p><div id="fig:tsaihill"></div></p>
-<p><p>Tsai-Hill Failure Criterion</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/tsai-hill.png" width="650"></p>
+<p></p><div id="fig:tsaihill"></div>
+<p></p><p>Tsai-Hill Failure Criterion</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/tsai-hill.png" width="650" />
 <p>For this component, the pressure it must withstand is 125 kPa, so if we increase the pressure load, the tsai-hill failure criterion exceeds 1.0 and failure is expected in ply.34. The principal local stress were observed to be:</p>
-
 </div>
 </div>
 </div>
@@ -520,7 +511,6 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>An example calculation of the von-mises stress agrees well with what the model</p>
-
 </div>
 </div>
 </div>
@@ -541,7 +531,6 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If we use these values with the strength values defined previously, we find that the hand calculation of the tsai-hill parameter is near $1.0$, and the Simulia tsai-hill parameter exceeds 1 at 1.05 as shown in the image below. Also, we provided the failure stress in the material properties as $\sigma_{ut}=700 Mpa$ and $\sigma_{uc}=500 MPa$</p>
-
 </div>
 </div>
 </div>
@@ -563,33 +552,31 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This discrepancy is difficult to prescribe, but it is likely due to the coarseness of the mesh. The hand-calculation versus the Simulia value is a considerable difference, so a finer mesh should be used. But, no failure criterion is deterministic, so the value being relatively close to 1 would indicate that failure is probable and a redesign should be implemented.</p>
 <div id="fig:finalfail"></div>
-
 <p>Final Failure of the composite is ply 34</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/final-failure.png" width="650">
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/final-failure.png" width="650" />
 
 
 
 ## Summary
 <div id="sec:sum"></div><p>An example of a composite stress analysis using CATIA-Simulia was shown. The composite properties were defined in CATIA's composite part design (CPD) workbench, and imported into Simulia FEA and solved using the Elfini FEA workbench as a 2D, plane stress surface. The tsai-hill criterion was used to evaluate each ply and it's severity of stress relative to the strength. Ply.34 was found to be at the highest risk of failure and future designs of this panel should use this information to improve the strength, minimize the deformation, utilize different materials and layups. 
 The files to execute this example can be freely obtained from the author if requested.</p>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
+<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><ol>
 <li><div id="Daniel2006"></div> <strong>I. M. Daniel and O. Ishai</strong>. 
 <em>Engineering Mechanics of Composite Materials</em>,
 2nd edition,
 Oxford University Press,
 2006.</li>
 </ol>
-<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h2><div id="sec:app"></div>
+<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">¶</a></h2><div id="sec:app"></div>
 
 The glass material properties, which refers to an epoxy, with $E=4\ GPA$, and $\sigma_{ult}=60 MPa$
 
-<div id="fig:glass"></div><p><p>Glass Properties</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/glass.png" width="650"></p>
+<div id="fig:glass"></div><p></p><p>Glass Properties</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/glass.png" width="650" />
 <p>and the fiber material, with $E=60\ GPA$ and a $\sigma_{ult}=700 MPa$. This is the strength that we will use for our failure criteria. The constitutive properties are isotropic, however the tensile/compressive strength vary, which will ultimately determine the maximum pressure that can be applied.</p>
-<p><div id="fig:fiber"></div></p>
-<p><p>Lamina Properties</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/S1454-G803.png" width="650"></p>
-
+<p></p><div id="fig:fiber"></div>
+<p></p><p>Lamina Properties</p>
+<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/S1454-G803.png" width="650" />
 </div>
 </div>
 </div>
@@ -675,18 +662,18 @@ The glass material properties, which refers to an epoxy, with $E=4\ GPA$, and $\
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/22/USMC-Pilot-Ground-School/">
+                            US Marine Corps Private Pilot Ground School
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/17/weight-balance-cherokee-140/">
+                            Weight and Balance Calculations for a Piper Cherokee 140
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/12/29/weight-balance-cessna-175/">
                             Weight and Balance Calculations for a Cessna 175
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/09/01/Industrial-Design-of-Experiments-with-r/">
-                            Industrial Design of Experiments with R
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/08/28/intro-to-the-windows-command-line/">
-                            Intro to the Windows Command Line
                         </a>
                     </li>
                 </ul>
@@ -753,7 +740,7 @@ The glass material properties, which refers to an epoxy, with $E=4\ GPA$, and $\
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Neal Gordon
+         <div class="col-xs-10">&copy; 2016 Neal Gordon
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

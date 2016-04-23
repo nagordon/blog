@@ -284,8 +284,10 @@ if curious: then learn            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -340,43 +342,37 @@ if curious: then learn            </a>
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<div class="cell border-box-sizing text_cell rendered">
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Abaqus_FEA_Scripting">Abaqus_FEA_Scripting<a class="anchor-link" href="#Abaqus_FEA_Scripting">&#182;</a></h1><p>Abaqus uses python as its native macro/scripting language, which makes it easy to develop powerful tools that utilize the robustness and simplicity of the python programming language.<br>
+<h1 id="Abaqus_FEA_Scripting">Abaqus_FEA_Scripting<a class="anchor-link" href="#Abaqus_FEA_Scripting">¶</a></h1><p>Abaqus uses python as its native macro/scripting language, which makes it easy to develop powerful tools that utilize the robustness and simplicity of the python programming language.<br />
 This file is generated using an ipython notebook, which can be easily installed using Anaconda (see the installation section for more detail)</p>
-<p><strong>Content Overview</strong><br>
-<a href="#General_Abaqus_Overview">General Abaqus Overview</a><br>
-<a href="#Abaqus-CAE_python_console">Abaqus-CAE python console</a><br>
-<a href="#Beam_Example">Beam Example</a><br>
-<a href="#Beam_Example_Results">Beam Example Results</a><br>
+<p><strong>Content Overview</strong><br />
+<a href="#General_Abaqus_Overview">General Abaqus Overview</a><br />
+<a href="#Abaqus-CAE_python_console">Abaqus-CAE python console</a><br />
+<a href="#Beam_Example">Beam Example</a><br />
+<a href="#Beam_Example_Results">Beam Example Results</a><br />
 <a href="#Beam_Example_Code">Beam Example Code</a></p>
-<hr>
+<hr />
 <p>Also, I use <code>!</code> to execute console or terminal commands directly in the notebook here.
 So for example, in windows we can run <code>dir</code> on windows or <code>ls</code> on linux to show the directory contents</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">!</span>dir
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre> Volume in drive C has no label.
@@ -400,17 +396,6 @@ So for example, in windows we can run <code>dir</code> on windows or <code>ls</c
 </pre>
 </div>
 </div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="General_Abaqus_Overview">General_Abaqus_Overview<a class="anchor-link" href="#General_Abaqus_Overview">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -419,8 +404,17 @@ So for example, in windows we can run <code>dir</code> on windows or <code>ls</c
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2><h3 id="Operating-System">Operating System<a class="anchor-link" href="#Operating-System">&#182;</a></h3><p>I am using windows 7 operating system for work with Abaqus, and I use Linux Mint for generating the blog page</p>
-<h3 id="Python">Python<a class="anchor-link" href="#Python">&#182;</a></h3><p>To install a minimal python, I recommend <a href="http://conda.pydata.org/miniconda.html">miniconda</a> as a package maanger. Once miniconda or  is installed, install these packages by running these commands in a windows console and following the prompts. Packages that a needed to replicate my results are included in the article when they are needed.</p>
+<h1 id="General_Abaqus_Overview">General_Abaqus_Overview<a class="anchor-link" href="#General_Abaqus_Overview">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">¶</a></h2><h3 id="Operating-System">Operating System<a class="anchor-link" href="#Operating-System">¶</a></h3><p>I am using windows 7 operating system for work with Abaqus, and I use Linux Mint for generating the blog page</p>
+<h3 id="Python">Python<a class="anchor-link" href="#Python">¶</a></h3><p>To install a minimal python, I recommend <a href="http://conda.pydata.org/miniconda.html">miniconda</a> as a package maanger. Once miniconda or  is installed, install these packages by running these commands in a windows console and following the prompts. Packages that a needed to replicate my results are included in the article when they are needed.</p>
 <div class="highlight"><pre>conda install numpy  
 conda install <span class="nv">matplotlib</span><span class="o">=</span>1.4.3
 conda install pandas
@@ -430,13 +424,13 @@ conda install pandas
 <li><a href="http://continuum.io/downloads">Anaconda</a> for Linux and Windows  </li>
 <li><a href="http://winpython.sourceforge.net/">winpython</a> for Windows  </li>
 </ul>
-<h3 id="Abaqus">Abaqus<a class="anchor-link" href="#Abaqus">&#182;</a></h3><p>A commercial license is prohibitvley expensing, but for students out there a nearly full functioning student edition is available <a href="http://academy.3ds.com/software/simulia/abaqus-student-edition/">here</a>, but is limited by node count and no user subroutines.</p>
-<hr>
-<h2 id="Some-of-the-abaqus-file-types">Some of the abaqus file types<a class="anchor-link" href="#Some-of-the-abaqus-file-types">&#182;</a></h2><h3 id="files-generated-by-created-and-analyzing-a-model">files generated by created and analyzing a model<a class="anchor-link" href="#files-generated-by-created-and-analyzing-a-model">&#182;</a></h3><ul>
+<h3 id="Abaqus">Abaqus<a class="anchor-link" href="#Abaqus">¶</a></h3><p>A commercial license is prohibitvley expensing, but for students out there a nearly full functioning student edition is available <a href="http://academy.3ds.com/software/simulia/abaqus-student-edition/">here</a>, but is limited by node count and no user subroutines.</p>
+<hr />
+<h2 id="Some-of-the-abaqus-file-types">Some of the abaqus file types<a class="anchor-link" href="#Some-of-the-abaqus-file-types">¶</a></h2><h3 id="files-generated-by-created-and-analyzing-a-model">files generated by created and analyzing a model<a class="anchor-link" href="#files-generated-by-created-and-analyzing-a-model">¶</a></h3><ul>
 <li><strong>rpy</strong> -  replay file , all modeling operation commands executed during a session, are saved in this file</li>
 <li><strong>cae</strong>  - model database, contains models and analysis jobs</li>
 <li><strong>jnl</strong> - journal python file, all commands necessary to recreate the most current save model database</li>
-<li><strong>rec</strong> - recover file contains commands to replicate the version of the model database in memory<br>
+<li><strong>rec</strong> - recover file contains commands to replicate the version of the model database in memory<br />
 ### files created when a job is submitted  </li>
 <li><strong>inp</strong> - abaqus config file that is created when a job is submitted. contains all the information necessary to run a analysis</li>
 <li><strong>odb</strong> - output database containing results from completed simulation. Use the step module output request manager to choose variables are saved at what rate. viewed in the visualization module </li>
@@ -452,7 +446,7 @@ conda install pandas
 <li><strong>sta</strong> - summary of job info</li>
 <li><strong>lck</strong> - a file that indicates that the odb file is open and cannot be edited if opened by another user</li>
 </ul>
-<h2 id="Outputs">Outputs<a class="anchor-link" href="#Outputs">&#182;</a></h2><ul>
+<h2 id="Outputs">Outputs<a class="anchor-link" href="#Outputs">¶</a></h2><ul>
 <li>defaults set in the environment file</li>
 <li>typical outputs<ul>
 <li>E - strain</li>
@@ -467,23 +461,22 @@ conda install pandas
 </li>
 </ul>
 <p>Abaqus Scripting User's Guide - 5.2.2</p>
-<h2 id="field-output">field output<a class="anchor-link" href="#field-output">&#182;</a></h2><ul>
+<h2 id="field-output">field output<a class="anchor-link" href="#field-output">¶</a></h2><ul>
 <li>typically requested for the entire model, often only at selected elements</li>
 <li>used for creating contour, deformed shape, and symbol plots</li>
 <li>Can be used as a source for x-y plots, but history is better</li>
 <li>intended for infrequent requests for large portions of model  data, such as 3d mesh contour plots</li>
 <li>can specify output frequency or time intervals</li>
 </ul>
-
 <pre><code>import odbAccess
 session.odbs[name].steps[name].frames[i].fieldOutputs[name]
 # or 
 sdat=session.odbs['customBeamExample/customBeamExample.odb'].steps['beamLoad'].frames[-1].fieldOutputs['S']
 integrationPointData = sdat.getSubset(position=INTEGRATION_POINT)
 invariantsData = sdat.validInvariants</code></pre>
-<p>Abaqus Scripting User's Guide - 9.3.2<br>
+<p>Abaqus Scripting User's Guide - 9.3.2<br />
 Field output is intended for infrequent requests for a large portion of the model and can be used to generate contour plots, animations, symbol plots, and displaced shape plots in the Visualization module of Abaqus/CAE. You can also use field output to generate an X–Y data plot. Only complete sets of basic variables (for example, all the stress or strain components) can be requested as field output. Field output is composed of a “cloud of data values” (e.g., stress tensors at each integration point for all elements). Each data value has a location, type, and value. You use the regions defined in the model data, such as an element set, to access subsets of the field output data. Figure 9–3 shows the field output data object model within an output database.</p>
-<h2 id="history-output">history output<a class="anchor-link" href="#history-output">&#182;</a></h2><ul>
+<h2 id="history-output">history output<a class="anchor-link" href="#history-output">¶</a></h2><ul>
 <li>requested for a small subset of the model</li>
 <li>typically requested at every increment during the anaylsis</li>
 <li>used to generate xy plots by step and time</li>
@@ -492,7 +485,7 @@ Field output is intended for infrequent requests for a large portion of the mode
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">odbAccess</span>
 <span class="n">session</span><span class="o">.</span><span class="n">odbs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">historyRegions</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
 </pre></div>
-<p>Abaqus Scripting User's Guide - 9.3.2<br>
+<p>Abaqus Scripting User's Guide - 9.3.2<br />
 History output is output defined for a single point or for values calculated for a portion of the model as a whole, such as energy. History output is intended for relatively frequent output requests for small portions of the model and can be displayed in the form of X–Y data plots in the Visualization module of Abaqus/CAE. Individual variables (such as a particular stress component) can be requested.
 Depending on the type of output expected, a HistoryRegion object can be defined for one of the following:</p>
 <ul>
@@ -502,8 +495,8 @@ Depending on the type of output expected, a HistoryRegion object can be defined 
 <li>the whole model</li>
 </ul>
 <p>The output from all history requests that relate to a particular point or region is then collected in one HistoryRegion object. Figure 9–4 shows the history output data object model within an output database. In contrast to field output, which is associated with a frame, history output is associated with a step.</p>
-<hr>
-<h2 id="Basic-Checklist-for-generating-an-Abaqus-simulation">Basic Checklist for generating an Abaqus simulation<a class="anchor-link" href="#Basic-Checklist-for-generating-an-Abaqus-simulation">&#182;</a></h2><ol>
+<hr />
+<h2 id="Basic-Checklist-for-generating-an-Abaqus-simulation">Basic Checklist for generating an Abaqus simulation<a class="anchor-link" href="#Basic-Checklist-for-generating-an-Abaqus-simulation">¶</a></h2><ol>
 <li>Parts</li>
 <li>Materials</li>
 <li>Sections</li>
@@ -515,55 +508,55 @@ Depending on the type of output expected, a HistoryRegion object can be defined 
 <li>Mesh</li>
 <li>Jobs</li>
 </ol>
-<h2 id="Using-abaqus-from-the-command-line">Using abaqus from the command line<a class="anchor-link" href="#Using-abaqus-from-the-command-line">&#182;</a></h2><div class="highlight"><pre>abaqus  
+<h2 id="Using-abaqus-from-the-command-line">Using abaqus from the command line<a class="anchor-link" href="#Using-abaqus-from-the-command-line">¶</a></h2><div class="highlight"><pre>abaqus  
 abq6132se  
 abaqus doc  
-abaqus pde      <span class="c"># launches only PDE (python development environment) for abaqus  </span>
-abaqus cae -pde <span class="c"># launches PDE and abaqus cae  </span>
-abaqus cae      <span class="c"># launches abaqus cae  </span>
-abaqus viewer   <span class="c"># launhces abaqus viewer</span>
+abaqus pde      <span class="c1"># launches only PDE (python development environment) for abaqus  </span>
+abaqus cae -pde <span class="c1"># launches PDE and abaqus cae  </span>
+abaqus cae      <span class="c1"># launches abaqus cae  </span>
+abaqus viewer   <span class="c1"># launhces abaqus viewer</span>
 </pre></div>
 <p>Execute an existing script or open a file</p>
-<div class="highlight"><pre>abaqus python odb_to_txt.py test1.odb       <span class="c"># runs a abaqus python script with input &#39;test1.odb&#39;</span>
-abaqus cae <span class="nv">script</span><span class="o">=</span>myscript.py               <span class="c"># launches cae and runs script</span>
-abaqus cae <span class="nv">database</span><span class="o">=</span>filename.cae            <span class="c"># opens an odb file in cae</span>
-abaqus viewer <span class="nv">script</span><span class="o">=</span>myscript.py            <span class="c"># launches viewer and executes script</span>
-abaqus viewer <span class="nv">database</span><span class="o">=</span>cantilever           <span class="c"># opens a odb file in the viewer</span>
-abaqus cae <span class="nv">noGUI</span><span class="o">=</span>myscript.py                <span class="c"># launches cae and runs script</span>
-abaqus viewer <span class="nv">noGUI</span><span class="o">=</span>myscript.py             <span class="c"># launches viewer and executes script</span>
-abaqus <span class="nv">job</span><span class="o">=</span>my_sample_job interactive        <span class="c"># executes *.inp file</span>
-abaqus <span class="nv">job</span><span class="o">=</span>my_sample_job <span class="nv">cpus</span><span class="o">=</span><span class="m">8</span> interactive <span class="c"># executes *.inp file and utilizes 8 cpu cores</span>
+<div class="highlight"><pre>abaqus python odb_to_txt.py test1.odb       <span class="c1"># runs a abaqus python script with input 'test1.odb'</span>
+abaqus cae <span class="nv">script</span><span class="o">=</span>myscript.py               <span class="c1"># launches cae and runs script</span>
+abaqus cae <span class="nv">database</span><span class="o">=</span>filename.cae            <span class="c1"># opens an odb file in cae</span>
+abaqus viewer <span class="nv">script</span><span class="o">=</span>myscript.py            <span class="c1"># launches viewer and executes script</span>
+abaqus viewer <span class="nv">database</span><span class="o">=</span>cantilever           <span class="c1"># opens a odb file in the viewer</span>
+abaqus cae <span class="nv">noGUI</span><span class="o">=</span>myscript.py                <span class="c1"># launches cae and runs script</span>
+abaqus viewer <span class="nv">noGUI</span><span class="o">=</span>myscript.py             <span class="c1"># launches viewer and executes script</span>
+abaqus <span class="nv">job</span><span class="o">=</span>my_sample_job interactive        <span class="c1"># executes *.inp file</span>
+abaqus <span class="nv">job</span><span class="o">=</span>my_sample_job <span class="nv">cpus</span><span class="o">=</span><span class="m">8</span> interactive <span class="c1"># executes *.inp file and utilizes 8 cpu cores</span>
 </pre></div>
 <p>Executing an abaqus python script passing in variables</p>
 <div class="highlight"><pre>abaqus cae <span class="nv">noGUI</span><span class="o">=</span>myscript.py -- variable1 variable2
 </pre></div>
 <p>Fetch demos</p>
-<div class="highlight"><pre>abaqus fetch <span class="nv">job</span><span class="o">=</span>beamExample   <span class="c"># fetches the beamExample.py file</span>
+<div class="highlight"><pre>abaqus fetch <span class="nv">job</span><span class="o">=</span>beamExample   <span class="c1"># fetches the beamExample.py file</span>
 abaqus fetch <span class="nv">job</span><span class="o">=</span>gsi_frame_caemodel.py     
 abaqus cae <span class="nv">script</span><span class="o">=</span>gsi_frame_caemodel.py
 </pre></div>
-<h2 id="Common-Abaqus/CAE-User-interface-activities">Common Abaqus/CAE User interface activities<a class="anchor-link" href="#Common-Abaqus/CAE-User-interface-activities">&#182;</a></h2><h3 id="Accessing-the-help-documentation">Accessing the help documentation<a class="anchor-link" href="#Accessing-the-help-documentation">&#182;</a></h3><ul>
+<h2 id="Common-Abaqus/CAE-User-interface-activities">Common Abaqus/CAE User interface activities<a class="anchor-link" href="#Common-Abaqus/CAE-User-interface-activities">¶</a></h2><h3 id="Accessing-the-help-documentation">Accessing the help documentation<a class="anchor-link" href="#Accessing-the-help-documentation">¶</a></h3><ul>
 <li>Help -&gt; Search and Browse Guides</li>
 <li>or type 'abaqus doc' in console</li>
 </ul>
-<h3 id="execute-a-abaqus/python-script">execute a abaqus/python script<a class="anchor-link" href="#execute-a-abaqus/python-script">&#182;</a></h3><ul>
+<h3 id="execute-a-abaqus/python-script">execute a abaqus/python script<a class="anchor-link" href="#execute-a-abaqus/python-script">¶</a></h3><ul>
 <li>File -&gt; Run Script  </li>
 </ul>
-<h3 id="record-a-abaqus/python-macro">record a abaqus/python macro<a class="anchor-link" href="#record-a-abaqus/python-macro">&#182;</a></h3><ul>
+<h3 id="record-a-abaqus/python-macro">record a abaqus/python macro<a class="anchor-link" href="#record-a-abaqus/python-macro">¶</a></h3><ul>
 <li>File -&gt; Macro Manager</li>
 <li>files stored in users home directory in abaqusMacros.py</li>
 </ul>
-<h3 id="edit-and-execute-a-abaqus-python-script-in-using-the-provided-python-development-environment-(PDE)">edit and execute a abaqus python script in using the provided python development environment (PDE)<a class="anchor-link" href="#edit-and-execute-a-abaqus-python-script-in-using-the-provided-python-development-environment-(PDE)">&#182;</a></h3><ul>
+<h3 id="edit-and-execute-a-abaqus-python-script-in-using-the-provided-python-development-environment-(PDE)">edit and execute a abaqus python script in using the provided python development environment (PDE)<a class="anchor-link" href="#edit-and-execute-a-abaqus-python-script-in-using-the-provided-python-development-environment-(PDE)">¶</a></h3><ul>
 <li>File -&gt; Abaqus PDE...</li>
 </ul>
-<h3 id="plugins">plugins<a class="anchor-link" href="#plugins">&#182;</a></h3><p>abaqus_plugins\reportGenerator\htmlReportGeneratorForm.pyc</p>
-<h3 id="Change-font-of-legend">Change font of legend<a class="anchor-link" href="#Change-font-of-legend">&#182;</a></h3><p>Click on "Viewport" in the top Menu Bar
+<h3 id="plugins">plugins<a class="anchor-link" href="#plugins">¶</a></h3><p>abaqus_plugins\reportGenerator\htmlReportGeneratorForm.pyc</p>
+<h3 id="Change-font-of-legend">Change font of legend<a class="anchor-link" href="#Change-font-of-legend">¶</a></h3><p>Click on "Viewport" in the top Menu Bar
 Select "Viewport Annotation Options"
 Click on the "Triad" tab
 Click on the "Set Font..." button to adjust the font
 You can even change all 3 at once by checking on the "Legend",  "Title Block", or "State Block" check boxes under the "Apply To" heading</p>
-<hr>
-<h1 id="Abaqus/Python-Scripting">Abaqus/Python Scripting<a class="anchor-link" href="#Abaqus/Python-Scripting">&#182;</a></h1><h2 id="Abaqus-specific-Python-modules-imports">Abaqus specific Python modules imports<a class="anchor-link" href="#Abaqus-specific-Python-modules-imports">&#182;</a></h2><ul>
+<hr />
+<h1 id="Abaqus/Python-Scripting">Abaqus/Python Scripting<a class="anchor-link" href="#Abaqus/Python-Scripting">¶</a></h1><h2 id="Abaqus-specific-Python-modules-imports">Abaqus specific Python modules imports<a class="anchor-link" href="#Abaqus-specific-Python-modules-imports">¶</a></h2><ul>
 <li>Module - Abaqus/CAE functionality  </li>
 <li>assembly - The Assembly module  </li>
 <li>datum - The Datum toolset  </li>
@@ -580,7 +573,6 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 <li>visualization - The Visualization module  </li>
 <li>xyPlot - The X–Y toolset  </li>
 </ul>
-
 </div>
 </div>
 </div>
@@ -589,7 +581,7 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Examples">Examples<a class="anchor-link" href="#Examples">&#182;</a></h1>
+<h1 id="Examples">Examples<a class="anchor-link" href="#Examples">¶</a></h1>
 </div>
 </div>
 </div>
@@ -598,8 +590,7 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Abaqus-CAE_python_console">Abaqus-CAE_python_console<a class="anchor-link" href="#Abaqus-CAE_python_console">&#182;</a></h2><p>We can run these commands from the abaqus/CAE python console at the bottom of the screen</p>
-
+<h2 id="Abaqus-CAE_python_console">Abaqus-CAE_python_console<a class="anchor-link" href="#Abaqus-CAE_python_console">¶</a></h2><p>We can run these commands from the abaqus/CAE python console at the bottom of the screen</p>
 </div>
 </div>
 </div>
@@ -608,9 +599,8 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
@@ -619,8 +609,7 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/abaqus_python_console1.png"></p>
-
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/abaqus_python_console1.png" /></p>
 </div>
 </div>
 </div>
@@ -630,7 +619,6 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This python snippet will show a user dialog box asking for a number and it will calculate the square root of it</p>
-
 </div>
 </div>
 </div>
@@ -641,10 +629,9 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">abaqus</span> <span class="kn">import</span> <span class="n">getInput</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="n">number</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">getInput</span><span class="p">(</span><span class="s">&#39;Enter a number:&#39;</span><span class="p">))</span>
+<span class="n">number</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">getInput</span><span class="p">(</span><span class="s1">'Enter a number:'</span><span class="p">))</span>
 <span class="k">print</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
@@ -653,8 +640,7 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/abaqus_python_console2.png"></p>
-
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/abaqus_python_console2.png" /></p>
 </div>
 </div>
 </div>
@@ -664,7 +650,6 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>VOILA!</p>
-
 </div>
 </div>
 </div>
@@ -674,7 +659,6 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see that the version of python that abaqus uses is older, but has most of the modules we need</p>
-
 </div>
 </div>
 </div>
@@ -683,79 +667,67 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Abaqus-python">Abaqus python<a class="anchor-link" href="#Abaqus-python">&#182;</a></h3>
+<h3 id="Abaqus-python">Abaqus python<a class="anchor-link" href="#Abaqus-python">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="o">!</span>python -c <span class="s2">&quot;import sys; print(sys.version)&quot;</span>
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">!</span>python -c <span class="s2">"import sys; print(sys.version)"</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>2.7.8 |Anaconda 2.1.0 (64-bit)| (default, Jul  2 2014, 15:12:11) [MSC v.1500 64 bit (AMD64)]
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="My-system-python">My system python<a class="anchor-link" href="#My-system-python">&#182;</a></h3>
+<h3 id="My-system-python">My system python<a class="anchor-link" href="#My-system-python">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="o">!</span>abaqus python -c <span class="s2">&quot;import sys; print(sys.version)&quot;</span>
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">!</span>abaqus python -c <span class="s2">"import sys; print(sys.version)"</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>2.6.2 for Abaqus 6.13-2 (r262:71600, Jul 27 2013, 13:44:36) [MSC v.1600 64 bit (AMD64)]
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Beam_Example">Beam_Example<a class="anchor-link" href="#Beam_Example">&#182;</a></h2>
+<h2 id="Beam_Example">Beam_Example<a class="anchor-link" href="#Beam_Example">¶</a></h2>
 </div>
 </div>
 </div>
@@ -765,38 +737,28 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>print the current working directory to ensure that all the output will be in one file</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">pwd</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>u&apos;C:\\Users\\ngordon\\VirtualBox VMs\\mint-cin\\share\\nagordon.github.io\\content&apos;</pre>
-</div>
-
-</div>
-
+<pre>u'C:\\Users\\ngordon\\VirtualBox VMs\\mint-cin\\share\\nagordon.github.io\\content'</pre>
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -804,26 +766,21 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Use 'fetch' to retrieve an abaqus example python script. The code can be found here</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">!</span>abaqus fetch <span class="nv">job</span><span class="o">=</span>beamExample
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Abaqus FETCH job beamExample
@@ -831,10 +788,8 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -842,26 +797,21 @@ You can even change all 3 at once by checking on the "Legend",  "Title Block", o
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To execute the beamExample script we just fetched, run</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">!</span>abaqus cae <span class="nv">noGUI</span><span class="o">=</span>beamExample.py
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Abaqus JOB beam_tutorial
@@ -880,10 +830,8 @@ Abaqus JOB beam_tutorial COMPLETED
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -891,7 +839,6 @@ Abaqus JOB beam_tutorial COMPLETED
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Excellent, now we have some output. Let have a look at what we have</p>
-
 </div>
 </div>
 </div>
@@ -900,22 +847,20 @@ Abaqus JOB beam_tutorial COMPLETED
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Beam_Example_Results">Beam_Example_Results<a class="anchor-link" href="#Beam_Example_Results">&#182;</a></h3>
+<h3 id="Beam_Example_Results">Beam_Example_Results<a class="anchor-link" href="#Beam_Example_Results">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">!</span>abaqus cae <span class="nv">noGUI</span><span class="o">=</span>abaqus_read_odb.py
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -924,45 +869,40 @@ Abaqus JOB beam_tutorial COMPLETED
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now lets grab some images from the odb file and see how the simulation turned out</p>
 <p>We can load the images using markdown, such as</p>
-
 <pre><code>&lt;img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Iso.png"&gt;  
 
 which is the method I prefer because if I want to use this notebook, I can copy the entire notebook folder with all the images and not have to worry about obscure image locations that pelican requirwes otherwise.</code></pre>
 <p>or for the blog post using pelican
 abaqus_python_console2</p>
-
 <pre><code>![beam_tutorial_Iso]({filename}/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Iso.png)</code></pre>
-<hr>
+<hr />
 <p>Here is an image of the undeformed plot</p>
-<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Iso.png"></p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Iso.png" /></p>
 <p>And here is an image for $U_{1}$ for the last frame (indicated by -1, which in python selects the last list item)</p>
-<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_U_U1_Iso.png"></p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_U_U1_Iso.png" /></p>
 <p>And here is an image for $\sigma_{11}$ for the last frame</p>
-<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_S_S11_Iso.png"></p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_S_S11_Iso.png" /></p>
 <p>We can also plot directly in Abaqus. This is a plot of the strain energy of the entire model.</p>
-<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Xplot_step-beamLoad_x-ALLSE.png"></p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Xplot_step-beamLoad_x-ALLSE.png" /></p>
 <p>We can also easily create aniamtions directly from abaqus. Using a python module,  we convert the avi to an animated gif</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">moviepy.editor</span> <span class="k">import</span> <span class="n">VideoFileClip</span>
 <span class="kn">import</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">os</span>
-<span class="n">avinames</span><span class="o">=</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.avi&#39;</span><span class="p">)</span>
+<span class="n">avinames</span><span class="o">=</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.avi'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">aviname</span> <span class="ow">in</span> <span class="n">avinames</span><span class="p">:</span>
-    <span class="n">VideoFileClip</span><span class="p">(</span><span class="n">aviname</span><span class="p">)</span><span class="o">.</span><span class="n">write_gif</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">aviname</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s">&#39;.gif&#39;</span><span class="p">)</span>
-    <span class="c"># os.remove(aviname)   ### if you want to remove the avi file</span>
+    <span class="n">VideoFileClip</span><span class="p">(</span><span class="n">aviname</span><span class="p">)</span><span class="o">.</span><span class="n">write_gif</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">aviname</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">'.gif'</span><span class="p">)</span>
+    <span class="c1"># os.remove(aviname)   ### if you want to remove the avi file</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -970,14 +910,13 @@ abaqus_python_console2</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The gif file format is really handy. We can simple load the gif file just like we loaded png to show the animations</p>
-<hr>
+<hr />
 <p>$U{1}$ over all frames</p>
-<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_U_U1_Iso.gif"></p>
-<p>$\sigma_{11}$ over all frames<br>
-<img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_S_S11_Iso.gif"></p>
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_U_U1_Iso.gif" /></p>
+<p>$\sigma_{11}$ over all frames<br />
+<img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_step-0_S_S11_Iso.gif" /></p>
 <p>Plot of the strain energy</p>
-<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Xplot_step-beamLoad_x-ALLSE.gif"></p>
-
+<p><img src="/notebooks/Abaqus_FEA_Scripting_with_python/beam_tutorial_Xplot_step-beamLoad_x-ALLSE.gif" /></p>
 </div>
 </div>
 </div>
@@ -987,7 +926,6 @@ abaqus_python_console2</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is handy, but the real problem at hand is accessiblity. Abaqus is good software, but expense. Some short-term goals I have is to look into some open-source pacakges that I can run some more complex models in. <a href="http://download.gna.org/getfem/html/homepage/index.html#what-is-getfem">GetFEM++</a> looks fun and I will be trying it out soon, so stay tuned!</p>
-
 </div>
 </div>
 </div>
@@ -996,7 +934,7 @@ abaqus_python_console2</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Beam_Example_Code">Beam_Example_Code<a class="anchor-link" href="#Beam_Example_Code">&#182;</a></h3>
+<h3 id="Beam_Example_Code">Beam_Example_Code<a class="anchor-link" href="#Beam_Example_Code">¶</a></h3>
 </div>
 </div>
 </div>
@@ -1005,10 +943,9 @@ abaqus_python_console2</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>All the code can be downloaded here<br>
-<a href="http://ifcuriousthenlearn.com/code/abaqus_read_odb.py">abaqus_read_odb</a><br>
+<p>All the code can be downloaded here<br />
+<a href="http://ifcuriousthenlearn.com/code/abaqus_read_odb.py">abaqus_read_odb</a><br />
 <a href="http://ifcuriousthenlearn.com/code/beamExample.py">beamExample</a></p>
-
 </div>
 </div>
 </div>
@@ -1020,198 +957,195 @@ abaqus_python_console2</p>
 <p>To view the file we can use an ipython magic function prefixed with %</p>
 <div class="highlight"><pre><span class="o">%</span><span class="n">load</span> <span class="n">code</span><span class="o">/</span><span class="n">beamExample</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># %load code.beamExample.py</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># %load code.beamExample.py</span>
+<span class="sd">"""</span>
 <span class="sd">beamExample.py</span>
 
 <span class="sd">Reproduce the cantilever beam example from the</span>
 <span class="sd">Appendix of the Getting Started with</span>
 <span class="sd">Abaqus: Interactive Edition Manual.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="kn">from</span> <span class="nn">abaqus</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">abaqusConstants</span> <span class="k">import</span> <span class="o">*</span>
-<span class="n">backwardCompatibility</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">includeDeprecated</span><span class="o">=</span><span class="k">True</span><span class="p">,</span>
-                                <span class="n">reportDeprecated</span><span class="o">=</span><span class="k">False</span><span class="p">)</span>
+<span class="n">backwardCompatibility</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">includeDeprecated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">reportDeprecated</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="c"># Create a model.</span>
+<span class="c1"># Create a model.</span>
 
-<span class="n">myModel</span> <span class="o">=</span> <span class="n">mdb</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Beam&#39;</span><span class="p">)</span>
+<span class="n">myModel</span> <span class="o">=</span> <span class="n">mdb</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Beam'</span><span class="p">)</span>
 
-<span class="c"># Create a new viewport in which to display the model</span>
-<span class="c"># and the results of the analysis.</span>
+<span class="c1"># Create a new viewport in which to display the model</span>
+<span class="c1"># and the results of the analysis.</span>
 
-<span class="n">myViewport</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Viewport</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Cantilever Beam Example&#39;</span><span class="p">,</span>
+<span class="n">myViewport</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Viewport</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Cantilever Beam Example'</span><span class="p">,</span>
     <span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
     
-<span class="c">#-----------------------------------------------------</span>
+<span class="c1">#-----------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">part</span>
 
-<span class="c"># Create a sketch for the base feature.</span>
+<span class="c1"># Create a sketch for the base feature.</span>
 
-<span class="n">mySketch</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">ConstrainedSketch</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;beamProfile&#39;</span><span class="p">,</span>
+<span class="n">mySketch</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">ConstrainedSketch</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'beamProfile'</span><span class="p">,</span>
     <span class="n">sheetSize</span><span class="o">=</span><span class="mf">250.</span><span class="p">)</span>
 
-<span class="c"># Create the rectangle.</span>
+<span class="c1"># Create the rectangle.</span>
 
 <span class="n">mySketch</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">point1</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">point2</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">))</span>
 
-<span class="c"># Create a three-dimensional, deformable part.</span>
+<span class="c1"># Create a three-dimensional, deformable part.</span>
 
-<span class="n">myBeam</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">Part</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Beam&#39;</span><span class="p">,</span> <span class="n">dimensionality</span><span class="o">=</span><span class="n">THREE_D</span><span class="p">,</span>
+<span class="n">myBeam</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">Part</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Beam'</span><span class="p">,</span> <span class="n">dimensionality</span><span class="o">=</span><span class="n">THREE_D</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="n">DEFORMABLE_BODY</span><span class="p">)</span>
 
-<span class="c"># Create the part&#39;s base feature by extruding the sketch </span>
-<span class="c"># through a distance of 25.0.</span>
+<span class="c1"># Create the part's base feature by extruding the sketch </span>
+<span class="c1"># through a distance of 25.0.</span>
 
 <span class="n">myBeam</span><span class="o">.</span><span class="n">BaseSolidExtrude</span><span class="p">(</span><span class="n">sketch</span><span class="o">=</span><span class="n">mySketch</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mf">25.0</span><span class="p">)</span>
 
-<span class="c">#-----------------------------------------------------</span>
+<span class="c1">#-----------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">material</span>
 
-<span class="c"># Create a material.</span>
+<span class="c1"># Create a material.</span>
 
-<span class="n">mySteel</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">Material</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Steel&#39;</span><span class="p">)</span>
+<span class="n">mySteel</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">Material</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Steel'</span><span class="p">)</span>
 
-<span class="c"># Create the elastic properties: youngsModulus is 209.E3</span>
-<span class="c"># and poissonsRatio is 0.3</span>
+<span class="c1"># Create the elastic properties: youngsModulus is 209.E3</span>
+<span class="c1"># and poissonsRatio is 0.3</span>
 
 <span class="n">elasticProperties</span> <span class="o">=</span> <span class="p">(</span><span class="mf">209.E3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
 <span class="n">mySteel</span><span class="o">.</span><span class="n">Elastic</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="p">(</span><span class="n">elasticProperties</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
 
-<span class="c">#-------------------------------------------------------</span>
+<span class="c1">#-------------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">section</span>
 
-<span class="c"># Create the solid section.</span>
+<span class="c1"># Create the solid section.</span>
 
-<span class="n">mySection</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">HomogeneousSolidSection</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;beamSection&#39;</span><span class="p">,</span>
-    <span class="n">material</span><span class="o">=</span><span class="s">&#39;Steel&#39;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">mySection</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">HomogeneousSolidSection</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'beamSection'</span><span class="p">,</span>
+    <span class="n">material</span><span class="o">=</span><span class="s1">'Steel'</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
-<span class="c"># Assign the section to the region. The region refers </span>
-<span class="c"># to the single cell in this model.</span>
+<span class="c1"># Assign the section to the region. The region refers </span>
+<span class="c1"># to the single cell in this model.</span>
 
 <span class="n">region</span> <span class="o">=</span> <span class="p">(</span><span class="n">myBeam</span><span class="o">.</span><span class="n">cells</span><span class="p">,)</span>
 <span class="n">myBeam</span><span class="o">.</span><span class="n">SectionAssignment</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-    <span class="n">sectionName</span><span class="o">=</span><span class="s">&#39;beamSection&#39;</span><span class="p">)</span>
+    <span class="n">sectionName</span><span class="o">=</span><span class="s1">'beamSection'</span><span class="p">)</span>
 
-<span class="c">#-------------------------------------------------------</span>
+<span class="c1">#-------------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">assembly</span>
 
-<span class="c"># Create a part instance.</span>
+<span class="c1"># Create a part instance.</span>
 
 <span class="n">myAssembly</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">rootAssembly</span>
-<span class="n">myInstance</span> <span class="o">=</span> <span class="n">myAssembly</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;beamInstance&#39;</span><span class="p">,</span>
+<span class="n">myInstance</span> <span class="o">=</span> <span class="n">myAssembly</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'beamInstance'</span><span class="p">,</span>
     <span class="n">part</span><span class="o">=</span><span class="n">myBeam</span><span class="p">,</span> <span class="n">dependent</span><span class="o">=</span><span class="n">OFF</span><span class="p">)</span>
 
-<span class="c">#-------------------------------------------------------</span>
+<span class="c1">#-------------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">step</span>
 
-<span class="c"># Create a step. The time period of the static step is 1.0, </span>
-<span class="c"># and the initial incrementation is 0.1; the step is created</span>
-<span class="c"># after the initial step. </span>
+<span class="c1"># Create a step. The time period of the static step is 1.0, </span>
+<span class="c1"># and the initial incrementation is 0.1; the step is created</span>
+<span class="c1"># after the initial step. </span>
 
-<span class="n">myModel</span><span class="o">.</span><span class="n">StaticStep</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;beamLoad&#39;</span><span class="p">,</span> <span class="n">previous</span><span class="o">=</span><span class="s">&#39;Initial&#39;</span><span class="p">,</span>
+<span class="n">myModel</span><span class="o">.</span><span class="n">StaticStep</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'beamLoad'</span><span class="p">,</span> <span class="n">previous</span><span class="o">=</span><span class="s1">'Initial'</span><span class="p">,</span>
     <span class="n">timePeriod</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">initialInc</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s">&#39;Load the top of the beam.&#39;</span><span class="p">)</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">'Load the top of the beam.'</span><span class="p">)</span>
 
-<span class="c">#-------------------------------------------------------</span>
+<span class="c1">#-------------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">load</span>
 
-<span class="c"># Find the end face using coordinates.</span>
+<span class="c1"># Find the end face using coordinates.</span>
 
 <span class="n">endFaceCenter</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">12.5</span><span class="p">)</span>
 <span class="n">endFace</span> <span class="o">=</span> <span class="n">myInstance</span><span class="o">.</span><span class="n">faces</span><span class="o">.</span><span class="n">findAt</span><span class="p">((</span><span class="n">endFaceCenter</span><span class="p">,)</span> <span class="p">)</span>
 
-<span class="c"># Create a boundary condition that encastres one end</span>
-<span class="c"># of the beam.</span>
+<span class="c1"># Create a boundary condition that encastres one end</span>
+<span class="c1"># of the beam.</span>
 
 <span class="n">endRegion</span> <span class="o">=</span> <span class="p">(</span><span class="n">endFace</span><span class="p">,)</span>
-<span class="n">myModel</span><span class="o">.</span><span class="n">EncastreBC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Fixed&#39;</span><span class="p">,</span><span class="n">createStepName</span><span class="o">=</span><span class="s">&#39;beamLoad&#39;</span><span class="p">,</span>
+<span class="n">myModel</span><span class="o">.</span><span class="n">EncastreBC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Fixed'</span><span class="p">,</span><span class="n">createStepName</span><span class="o">=</span><span class="s1">'beamLoad'</span><span class="p">,</span>
     <span class="n">region</span><span class="o">=</span><span class="n">endRegion</span><span class="p">)</span>
 
-<span class="c"># Find the top face using coordinates.</span>
+<span class="c1"># Find the top face using coordinates.</span>
 
 <span class="n">topFaceCenter</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">12.5</span><span class="p">)</span>
 <span class="n">topFace</span> <span class="o">=</span> <span class="n">myInstance</span><span class="o">.</span><span class="n">faces</span><span class="o">.</span><span class="n">findAt</span><span class="p">((</span><span class="n">topFaceCenter</span><span class="p">,)</span> <span class="p">)</span>
 
-<span class="c"># Create a pressure load on the top face of the beam.</span>
+<span class="c1"># Create a pressure load on the top face of the beam.</span>
 
 <span class="n">topSurface</span> <span class="o">=</span> <span class="p">((</span><span class="n">topFace</span><span class="p">,</span> <span class="n">SIDE1</span><span class="p">),</span> <span class="p">)</span>
-<span class="n">myModel</span><span class="o">.</span><span class="n">Pressure</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Pressure&#39;</span><span class="p">,</span> <span class="n">createStepName</span><span class="o">=</span><span class="s">&#39;beamLoad&#39;</span><span class="p">,</span>
+<span class="n">myModel</span><span class="o">.</span><span class="n">Pressure</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Pressure'</span><span class="p">,</span> <span class="n">createStepName</span><span class="o">=</span><span class="s1">'beamLoad'</span><span class="p">,</span>
     <span class="n">region</span><span class="o">=</span><span class="n">topSurface</span><span class="p">,</span> <span class="n">magnitude</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="c">#-------------------------------------------------------</span>
+<span class="c1">#-------------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">mesh</span>
 
-<span class="c"># Assign an element type to the part instance.</span>
+<span class="c1"># Assign an element type to the part instance.</span>
 
 <span class="n">region</span> <span class="o">=</span> <span class="p">(</span><span class="n">myInstance</span><span class="o">.</span><span class="n">cells</span><span class="p">,)</span>
 <span class="n">elemType</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">ElemType</span><span class="p">(</span><span class="n">elemCode</span><span class="o">=</span><span class="n">C3D8I</span><span class="p">,</span> <span class="n">elemLibrary</span><span class="o">=</span><span class="n">STANDARD</span><span class="p">)</span>
 <span class="n">myAssembly</span><span class="o">.</span><span class="n">setElementType</span><span class="p">(</span><span class="n">regions</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">elemTypes</span><span class="o">=</span><span class="p">(</span><span class="n">elemType</span><span class="p">,))</span>
 
-<span class="c"># Seed the part instance.</span>
+<span class="c1"># Seed the part instance.</span>
 
 <span class="n">myAssembly</span><span class="o">.</span><span class="n">seedPartInstance</span><span class="p">(</span><span class="n">regions</span><span class="o">=</span><span class="p">(</span><span class="n">myInstance</span><span class="p">,),</span> <span class="n">size</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 
-<span class="c"># Mesh the part instance.</span>
+<span class="c1"># Mesh the part instance.</span>
 
 <span class="n">myAssembly</span><span class="o">.</span><span class="n">generateMesh</span><span class="p">(</span><span class="n">regions</span><span class="o">=</span><span class="p">(</span><span class="n">myInstance</span><span class="p">,))</span>
 
-<span class="c"># Display the meshed beam.</span>
+<span class="c1"># Display the meshed beam.</span>
 
 <span class="n">myViewport</span><span class="o">.</span><span class="n">assemblyDisplay</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="n">ON</span><span class="p">)</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">assemblyDisplay</span><span class="o">.</span><span class="n">meshOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">meshTechnique</span><span class="o">=</span><span class="n">ON</span><span class="p">)</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">displayedObject</span><span class="o">=</span><span class="n">myAssembly</span><span class="p">)</span>
 
-<span class="c">#-------------------------------------------------------</span>
+<span class="c1">#-------------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">job</span>
 
-<span class="c"># Create an analysis job for the model and submit it.</span>
+<span class="c1"># Create an analysis job for the model and submit it.</span>
 
-<span class="n">jobName</span> <span class="o">=</span> <span class="s">&#39;beam_tutorial&#39;</span>
-<span class="n">myJob</span> <span class="o">=</span> <span class="n">mdb</span><span class="o">.</span><span class="n">Job</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">jobName</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s">&#39;Beam&#39;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s">&#39;Cantilever beam tutorial&#39;</span><span class="p">)</span>
+<span class="n">jobName</span> <span class="o">=</span> <span class="s1">'beam_tutorial'</span>
+<span class="n">myJob</span> <span class="o">=</span> <span class="n">mdb</span><span class="o">.</span><span class="n">Job</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">jobName</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">'Beam'</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">'Cantilever beam tutorial'</span><span class="p">)</span>
 
-<span class="c"># Wait for the job to complete.</span>
+<span class="c1"># Wait for the job to complete.</span>
 
 <span class="n">myJob</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span>
 <span class="n">myJob</span><span class="o">.</span><span class="n">waitForCompletion</span><span class="p">()</span>
 
-<span class="c">#-------------------------------------------------------</span>
+<span class="c1">#-------------------------------------------------------</span>
 
 <span class="kn">import</span> <span class="nn">visualization</span>
 
-<span class="c"># Open the output database and display a</span>
-<span class="c"># default contour plot.</span>
+<span class="c1"># Open the output database and display a</span>
+<span class="c1"># default contour plot.</span>
 
-<span class="n">myOdb</span> <span class="o">=</span> <span class="n">visualization</span><span class="o">.</span><span class="n">openOdb</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">jobName</span> <span class="o">+</span> <span class="s">&#39;.odb&#39;</span><span class="p">)</span>
+<span class="n">myOdb</span> <span class="o">=</span> <span class="n">visualization</span><span class="o">.</span><span class="n">openOdb</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">jobName</span> <span class="o">+</span> <span class="s1">'.odb'</span><span class="p">)</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">displayedObject</span><span class="o">=</span><span class="n">myOdb</span><span class="p">)</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">plotState</span><span class="o">=</span><span class="n">CONTOURS_ON_DEF</span><span class="p">)</span>
 
 <span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">commonOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">renderStyle</span><span class="o">=</span><span class="n">FILLED</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1220,25 +1154,24 @@ abaqus_python_console2</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span class="o">%</span><span class="n">load</span> <span class="n">abaqus_read_odb</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># %load code/abaqus_read_odb.py</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># %load code/abaqus_read_odb.py</span>
+<span class="sd">"""</span>
 <span class="sd">Neal Gordon</span>
 <span class="sd">Abaqus Scripting</span>
 <span class="sd">http://nagordon.github.io/</span>
 <span class="sd">2015-04-2</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
-<span class="c"># Import abaqus modules</span>
+<span class="c1"># Import abaqus modules</span>
 <span class="kn">from</span> <span class="nn">abaqus</span> <span class="k">import</span> <span class="n">session</span>
 <span class="kn">import</span> <span class="nn">visualization</span>
 <span class="kn">import</span> <span class="nn">xyPlot</span>
@@ -1248,89 +1181,89 @@ abaqus_python_console2</p>
                             <span class="n">TIME_HISTORY</span><span class="p">,</span> <span class="n">UNLIMITED</span><span class="p">,</span> <span class="n">UNDEFORMED</span><span class="p">,</span> \
                             <span class="n">SCALE_FACTOR</span><span class="p">,</span> <span class="n">NODAL</span><span class="p">,</span> <span class="n">LARGE</span>
 
-<span class="c"># load odb file</span>
-<span class="n">myViewport</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Viewport</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;myViewport&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-<span class="n">myOdb</span> <span class="o">=</span> <span class="n">visualization</span><span class="o">.</span><span class="n">openOdb</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s">&#39;beam_tutorial.odb&#39;</span><span class="p">)</span>
+<span class="c1"># load odb file</span>
+<span class="n">myViewport</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Viewport</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'myViewport'</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">myOdb</span> <span class="o">=</span> <span class="n">visualization</span><span class="o">.</span><span class="n">openOdb</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">'beam_tutorial.odb'</span><span class="p">)</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">displayedObject</span><span class="o">=</span><span class="n">myOdb</span><span class="p">)</span>
 
-<span class="c"># set viewport settings</span>
-<span class="n">v</span> <span class="o">=</span> <span class="s">&#39;Iso&#39;</span>
+<span class="c1"># set viewport settings</span>
+<span class="n">v</span> <span class="o">=</span> <span class="s1">'Iso'</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">views</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">maximize</span><span class="p">()</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">fitView</span><span class="p">()</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">basicOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">coordSystemDisplay</span><span class="o">=</span><span class="n">OFF</span><span class="p">,</span> <span class="n">translucencySort</span><span class="o">=</span><span class="n">ON</span><span class="p">)</span>
-<span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">commonOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">visibleEdges</span><span class="o">=</span><span class="n">FEATURE</span><span class="p">)</span>  <span class="c"># NONE</span>
-<span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">contourOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">contourStyle</span><span class="o">=</span><span class="n">CONTINUOUS</span><span class="p">)</span> <span class="c"># DISCRETE CONTINUOUS</span>
-<span class="c">#myViewport.odbDisplay.contourOptions.setValues(showMinLocation=ON,showMaxLocation=ON)</span>
-<span class="c">#myViewport.odbDisplay.contourOptions.setValues(numIntervals=6)</span>
+<span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">commonOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">visibleEdges</span><span class="o">=</span><span class="n">FEATURE</span><span class="p">)</span>  <span class="c1"># NONE</span>
+<span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">contourOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">contourStyle</span><span class="o">=</span><span class="n">CONTINUOUS</span><span class="p">)</span> <span class="c1"># DISCRETE CONTINUOUS</span>
+<span class="c1">#myViewport.odbDisplay.contourOptions.setValues(showMinLocation=ON,showMaxLocation=ON)</span>
+<span class="c1">#myViewport.odbDisplay.contourOptions.setValues(numIntervals=6)</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">viewportAnnotationOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">triad</span><span class="o">=</span><span class="n">OFF</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">OFF</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">ON</span><span class="p">,</span>  <span class="n">compass</span><span class="o">=</span><span class="n">OFF</span><span class="p">,</span>
                                               <span class="n">legend</span><span class="o">=</span><span class="n">ON</span><span class="p">,</span> <span class="n">legendPosition</span><span class="o">=</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">95</span><span class="p">),</span> <span class="n">legendBox</span><span class="o">=</span><span class="n">OFF</span><span class="p">,</span>
-                                              <span class="n">legendFont</span><span class="o">=</span><span class="s">&#39;-*-verdana-medium-r-normal-*-*-120-*-*-p-*-*-*&#39;</span><span class="p">,</span>
+                                              <span class="n">legendFont</span><span class="o">=</span><span class="s1">'-*-verdana-medium-r-normal-*-*-120-*-*-p-*-*-*'</span><span class="p">,</span>
                                               <span class="n">statePosition</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
-                                              <span class="n">titleFont</span><span class="o">=</span><span class="s">&#39;-*-verdana-medium-r-normal-*-*-120-*-*-p-*-*-*&#39;</span><span class="p">,</span>
-                                              <span class="n">stateFont</span><span class="o">=</span><span class="s">&#39;-*-verdana-medium-r-normal-*-*-120-*-*-p-*-*-*&#39;</span><span class="p">)</span>
+                                              <span class="n">titleFont</span><span class="o">=</span><span class="s1">'-*-verdana-medium-r-normal-*-*-120-*-*-p-*-*-*'</span><span class="p">,</span>
+                                              <span class="n">stateFont</span><span class="o">=</span><span class="s1">'-*-verdana-medium-r-normal-*-*-120-*-*-p-*-*-*'</span><span class="p">)</span>
 
 
-<span class="c"># saving undeformed image</span>
+<span class="c1"># saving undeformed image</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">plotState</span><span class="o">=</span><span class="p">(</span><span class="n">UNDEFORMED</span><span class="p">,</span> <span class="p">))</span>
-<span class="n">path_filename</span> <span class="o">=</span> <span class="s">&#39;%s_%s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">myOdb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;.odb&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">),</span><span class="n">v</span><span class="p">)</span>
+<span class="n">path_filename</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">myOdb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.odb'</span><span class="p">,</span><span class="s1">''</span><span class="p">),</span><span class="n">v</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">session</span><span class="o">.</span><span class="n">printToFile</span><span class="p">(</span><span class="n">path_filename</span><span class="p">,</span> <span class="n">PNG</span><span class="p">,</span> <span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s">&#39;saving %s&#39;</span> <span class="o">%</span> <span class="n">path_filename</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'saving </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">path_filename</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
 
-<span class="c"># save stress plots</span>
-<span class="n">v</span> <span class="o">=</span> <span class="s">&#39;Iso&#39;</span> <span class="p">;</span> <span class="n">o</span> <span class="o">=</span> <span class="s">&#39;S&#39;</span> <span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="s">&#39;S11&#39;</span> <span class="p">;</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">f</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="c1"># save stress plots</span>
+<span class="n">v</span> <span class="o">=</span> <span class="s1">'Iso'</span> <span class="p">;</span> <span class="n">o</span> <span class="o">=</span> <span class="s1">'S'</span> <span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">'S11'</span> <span class="p">;</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">f</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">plotState</span><span class="o">=</span><span class="p">(</span><span class="n">CONTOURS_ON_DEF</span><span class="p">,</span> <span class="p">))</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">setFrame</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
 
 <span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">setPrimaryVariable</span><span class="p">(</span><span class="n">variableLabel</span><span class="o">=</span><span class="n">o</span><span class="p">,</span><span class="n">outputPosition</span><span class="o">=</span><span class="n">INTEGRATION_POINT</span><span class="p">,</span><span class="n">refinement</span><span class="o">=</span><span class="p">(</span><span class="n">COMPONENT</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="p">)</span>
-<span class="n">path_filename</span> <span class="o">=</span> <span class="s">&#39;%s_step-%s_%s_%s_%s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">myOdb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;.odb&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">),</span><span class="n">s</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+<span class="n">path_filename</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%s</span><span class="s1">_step-</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">myOdb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.odb'</span><span class="p">,</span><span class="s1">''</span><span class="p">),</span><span class="n">s</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">myViewport</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">fitView</span><span class="p">()</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">printToFile</span><span class="p">(</span><span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.png&#39;</span><span class="p">,</span> <span class="n">PNG</span><span class="p">,</span> <span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s">&#39;saving %s&#39;</span> <span class="o">%</span> <span class="n">path_filename</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">printToFile</span><span class="p">(</span><span class="n">path_filename</span><span class="o">+</span><span class="s1">'.png'</span><span class="p">,</span> <span class="n">PNG</span><span class="p">,</span> <span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'saving </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">path_filename</span><span class="p">)</span>
     
     <span class="n">myViewport</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">fitView</span><span class="p">()</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">animationType</span><span class="o">=</span><span class="n">TIME_HISTORY</span><span class="p">,</span> <span class="n">viewports</span><span class="o">=</span><span class="p">(</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">))</span>    <span class="c"># SCALE_FACTOR   TIME_HISTORY                              </span>
+    <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">animationType</span><span class="o">=</span><span class="n">TIME_HISTORY</span><span class="p">,</span> <span class="n">viewports</span><span class="o">=</span><span class="p">(</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">))</span>    <span class="c1"># SCALE_FACTOR   TIME_HISTORY                              </span>
     <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">UNLIMITED</span><span class="p">)</span>
     <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">animationOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">frameRate</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>         
-    <span class="n">session</span><span class="o">.</span><span class="n">writeImageAnimation</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.avi&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">AVI</span><span class="p">,</span> <span class="n">canvasObjects</span><span class="o">=</span><span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s">&#39;saving %s&#39;</span> <span class="o">%</span> <span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.avi&#39;</span><span class="p">)</span>    
+    <span class="n">session</span><span class="o">.</span><span class="n">writeImageAnimation</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="n">path_filename</span><span class="o">+</span><span class="s1">'.avi'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">AVI</span><span class="p">,</span> <span class="n">canvasObjects</span><span class="o">=</span><span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'saving </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">path_filename</span><span class="o">+</span><span class="s1">'.avi'</span><span class="p">)</span>    
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
        
-<span class="c"># save displacement plots</span>
-<span class="n">v</span> <span class="o">=</span> <span class="s">&#39;Iso&#39;</span> <span class="p">;</span> <span class="n">o</span> <span class="o">=</span> <span class="s">&#39;U&#39;</span> <span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="s">&#39;U1&#39;</span> <span class="p">;</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">f</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="c1"># save displacement plots</span>
+<span class="n">v</span> <span class="o">=</span> <span class="s1">'Iso'</span> <span class="p">;</span> <span class="n">o</span> <span class="o">=</span> <span class="s1">'U'</span> <span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">'U1'</span> <span class="p">;</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">f</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">odbDisplay</span><span class="o">.</span><span class="n">setPrimaryVariable</span><span class="p">(</span><span class="n">variableLabel</span><span class="o">=</span><span class="n">o</span><span class="p">,</span><span class="n">outputPosition</span><span class="o">=</span><span class="n">NODAL</span><span class="p">,</span><span class="n">refinement</span><span class="o">=</span><span class="p">(</span><span class="n">COMPONENT</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="p">)</span>
 
-<span class="n">path_filename</span> <span class="o">=</span> <span class="s">&#39;%s_step-%s_%s_%s_%s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">myOdb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;.odb&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">),</span><span class="n">s</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+<span class="n">path_filename</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%s</span><span class="s1">_step-</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">myOdb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.odb'</span><span class="p">,</span><span class="s1">''</span><span class="p">),</span><span class="n">s</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">myViewport</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">fitView</span><span class="p">()</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">printToFile</span><span class="p">(</span><span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.png&#39;</span><span class="p">,</span> <span class="n">PNG</span><span class="p">,</span> <span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s">&#39;saved %s&#39;</span> <span class="o">%</span> <span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.png&#39;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">printToFile</span><span class="p">(</span><span class="n">path_filename</span><span class="o">+</span><span class="s1">'.png'</span><span class="p">,</span> <span class="n">PNG</span><span class="p">,</span> <span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'saved </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">path_filename</span><span class="o">+</span><span class="s1">'.png'</span><span class="p">)</span>
     
     <span class="n">myViewport</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">fitView</span><span class="p">()</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">animationType</span><span class="o">=</span><span class="n">TIME_HISTORY</span><span class="p">,</span> <span class="n">viewports</span><span class="o">=</span><span class="p">(</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">))</span>    <span class="c"># SCALE_FACTOR   TIME_HISTORY                              </span>
+    <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">animationType</span><span class="o">=</span><span class="n">TIME_HISTORY</span><span class="p">,</span> <span class="n">viewports</span><span class="o">=</span><span class="p">(</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">))</span>    <span class="c1"># SCALE_FACTOR   TIME_HISTORY                              </span>
     <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">UNLIMITED</span><span class="p">)</span>
     <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">animationOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">frameRate</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>       
-    <span class="n">session</span><span class="o">.</span><span class="n">writeImageAnimation</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.avi&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">AVI</span><span class="p">,</span> <span class="n">canvasObjects</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">viewports</span><span class="p">[</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s">&#39;saved %s&#39;</span> <span class="o">%</span> <span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.avi&#39;</span><span class="p">)</span>    
+    <span class="n">session</span><span class="o">.</span><span class="n">writeImageAnimation</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="n">path_filename</span><span class="o">+</span><span class="s1">'.avi'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">AVI</span><span class="p">,</span> <span class="n">canvasObjects</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">viewports</span><span class="p">[</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'saved </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">path_filename</span><span class="o">+</span><span class="s1">'.avi'</span><span class="p">)</span>    
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
 
-<span class="c"># PLotting </span>
-<span class="n">xyp</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">XYPlot</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;XYPlot-1&#39;</span><span class="p">)</span>
-<span class="c">## can be run multiple times but the line &gt;&gt;&gt;session.xyPlots[&#39;XYPlot-1&#39;] , can only be run once &gt;&gt;&gt;ession.XYPlot(&#39;XYPlot-1&#39;)</span>
+<span class="c1"># PLotting </span>
+<span class="n">xyp</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">XYPlot</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'XYPlot-1'</span><span class="p">)</span>
+<span class="c1">## can be run multiple times but the line &gt;&gt;&gt;session.xyPlots['XYPlot-1'] , can only be run once &gt;&gt;&gt;ession.XYPlot('XYPlot-1')</span>
 <span class="n">chartName</span> <span class="o">=</span> <span class="n">xyp</span><span class="o">.</span><span class="n">charts</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">chart</span> <span class="o">=</span> <span class="n">xyp</span><span class="o">.</span><span class="n">charts</span><span class="p">[</span><span class="n">chartName</span><span class="p">]</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="k">False</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">titleStyle</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s">&#39;-*-verdana-medium-r-normal-*-*-240-*-*-p-*-*-*&#39;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">gridArea</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="k">False</span><span class="p">)</span>
-<span class="n">xyp</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s">&#39;-*-arial-medium-r-normal-*-*-240-*-*-p-*-*-*&#39;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">titleStyle</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s1">'-*-verdana-medium-r-normal-*-*-240-*-*-p-*-*-*'</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">gridArea</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">xyp</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s1">'-*-arial-medium-r-normal-*-*-240-*-*-p-*-*-*'</span><span class="p">)</span>
         
-<span class="n">x</span> <span class="o">=</span> <span class="s">&#39;Strain energy: ALLSE for Whole Model&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="s1">'Strain energy: ALLSE for Whole Model'</span>
 <span class="n">sName</span> <span class="o">=</span> <span class="n">myOdb</span><span class="o">.</span><span class="n">steps</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="n">s</span><span class="p">]</span>
 <span class="n">xy1</span> <span class="o">=</span> <span class="n">xyPlot</span><span class="o">.</span><span class="n">XYDataFromHistory</span><span class="p">(</span><span class="n">odb</span><span class="o">=</span><span class="n">myOdb</span><span class="p">,</span> <span class="n">outputVariableName</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="p">(</span><span class="n">sName</span><span class="p">,</span> <span class="p">),</span> <span class="p">)</span>
 <span class="n">c1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Curve</span><span class="p">(</span><span class="n">xyData</span><span class="o">=</span><span class="n">xy1</span><span class="p">)</span>
@@ -1338,26 +1271,24 @@ abaqus_python_console2</p>
 <span class="n">myViewport</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">displayedObject</span><span class="o">=</span><span class="n">xyp</span><span class="p">)</span>
 <span class="n">chartName</span> <span class="o">=</span> <span class="n">xyp</span><span class="o">.</span><span class="n">charts</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">chart</span> <span class="o">=</span> <span class="n">xyp</span><span class="o">.</span><span class="n">charts</span><span class="p">[</span><span class="n">chartName</span><span class="p">]</span>
-<span class="n">path_filename</span> <span class="o">=</span> <span class="s">&#39;%s_Xplot_step-%s_x-%s&#39;</span> <span class="o">%</span> \
-    <span class="p">(</span><span class="n">myOdb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;.odb&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">),</span> <span class="n">sName</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">path_filename</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%s</span><span class="s1">_Xplot_step-</span><span class="si">%s</span><span class="s1">_x-</span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> \
+    <span class="p">(</span><span class="n">myOdb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.odb'</span><span class="p">,</span><span class="s1">''</span><span class="p">),</span> <span class="n">sName</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">':'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">myViewport</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">fitView</span><span class="p">()</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">printToFile</span><span class="p">(</span><span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.png&#39;</span><span class="p">,</span> <span class="n">PNG</span><span class="p">,</span> <span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">printToFile</span><span class="p">(</span><span class="n">path_filename</span><span class="o">+</span><span class="s1">'.png'</span><span class="p">,</span> <span class="n">PNG</span><span class="p">,</span> <span class="p">(</span><span class="n">myViewport</span><span class="p">,))</span>
 
     <span class="n">myViewport</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">fitView</span><span class="p">()</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">animationType</span><span class="o">=</span><span class="n">TIME_HISTORY</span><span class="p">,</span> <span class="n">viewports</span><span class="o">=</span><span class="p">(</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">))</span>    <span class="c"># SCALE_FACTOR   TIME_HISTORY                              </span>
+    <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">animationType</span><span class="o">=</span><span class="n">TIME_HISTORY</span><span class="p">,</span> <span class="n">viewports</span><span class="o">=</span><span class="p">(</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">))</span>    <span class="c1"># SCALE_FACTOR   TIME_HISTORY                              </span>
     <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">UNLIMITED</span><span class="p">)</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">animationOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">xyShowSymbol</span><span class="o">=</span><span class="k">True</span><span class="p">,</span> <span class="n">xySymbolSize</span><span class="o">=</span><span class="n">LARGE</span><span class="p">)</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">writeImageAnimation</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.avi&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">AVI</span><span class="p">,</span> <span class="n">canvasObjects</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">viewports</span><span class="p">[</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s">&#39;saved %s&#39;</span> <span class="o">%</span> <span class="n">path_filename</span><span class="o">+</span><span class="s">&#39;.avi&#39;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">animationController</span><span class="o">.</span><span class="n">animationOptions</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">xyShowSymbol</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xySymbolSize</span><span class="o">=</span><span class="n">LARGE</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">writeImageAnimation</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="n">path_filename</span><span class="o">+</span><span class="s1">'.avi'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">AVI</span><span class="p">,</span> <span class="n">canvasObjects</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">viewports</span><span class="p">[</span><span class="n">myViewport</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'saved </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">path_filename</span><span class="o">+</span><span class="s1">'.avi'</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1365,7 +1296,6 @@ abaqus_python_console2</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="#Abaqus_FEA_Scripting">top</a></p>
-
 </div>
 </div>
 </div>
@@ -1451,18 +1381,18 @@ abaqus_python_console2</p>
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/22/USMC-Pilot-Ground-School/">
+                            US Marine Corps Private Pilot Ground School
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/17/weight-balance-cherokee-140/">
+                            Weight and Balance Calculations for a Piper Cherokee 140
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/12/29/weight-balance-cessna-175/">
                             Weight and Balance Calculations for a Cessna 175
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/09/01/Industrial-Design-of-Experiments-with-r/">
-                            Industrial Design of Experiments with R
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/08/28/intro-to-the-windows-command-line/">
-                            Intro to the Windows Command Line
                         </a>
                     </li>
                 </ul>
@@ -1529,7 +1459,7 @@ abaqus_python_console2</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Neal Gordon
+         <div class="col-xs-10">&copy; 2016 Neal Gordon
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

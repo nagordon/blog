@@ -287,8 +287,10 @@ if curious: then learn            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -343,16 +345,15 @@ if curious: then learn            </a>
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<div class="cell border-box-sizing text_cell rendered">
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Neals-First-DocOnce-Publication">Neals First DocOnce Publication<a class="anchor-link" href="#Neals-First-DocOnce-Publication">&#182;</a></h1><p><strong>Jun 4, 2015</strong></p>
+<h1 id="Neals-First-DocOnce-Publication">Neals First DocOnce Publication<a class="anchor-link" href="#Neals-First-DocOnce-Publication">¶</a></h1><p><strong>Jun 4, 2015</strong></p>
 <p><strong>Summary.</strong> My goal here is to learn the package <a href="http://hplgit.github.io/doconce/doc/web/index.html">doconce</a>, which is a markup syntax for creating scientific documents with many different types of outputs, including markdown, html, ipython notebooks, pdfs, and docx files. What's wrong with markdown? The short answer is nothing, it is great and important to know, however, some features that a needed for more advanced features, like figure/equation references, as well as including citations is needed, and haven't any good solution for that. 
 All the up-to-date source code and various document formats can be found on the <a href="https://github.com/nagordon/technotes/tree/master/doconce">github repository</a>.</p>
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><div id="sec:intro"></div>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><div id="sec:intro"></div>
 
 DocOnce is a lightweight markup language that is pure python, tso that it will work on any OS
 the source markdown files have extension *.do.txt
@@ -368,7 +369,6 @@ The main goal here is to generate an example document to help me learn and show 
 
 ## Headings, Labels, and References
 <div id="sec:hlr"></div><p>For simple documents, chapters are not necessary, so only 7= are necessary to create a header for the section.</p>
-
 </div>
 </div>
 </div>
@@ -377,7 +377,6 @@ The main goal here is to generate an example document to help me learn and show 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    chapter             ========= Heading ========= (9 =)
     section             ======= Heading ======= (7 =)
     subsection         ===== Heading ===== (5 =)
@@ -386,7 +385,6 @@ The main goal here is to generate an example document to help me learn and show 
     abstract         __Abstract.__ Running text...
     appendix         ======= Appendix: heading ======= (7 =)
     appendix         ===== Appendix: heading ===== (5 =)</code></pre>
-
 </div>
 </div>
 </div>
@@ -397,7 +395,6 @@ The main goal here is to generate an example document to help me learn and show 
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Labels are created with any text in curly braces and prefixed with label and then referenced with prefix ref. The ref must be enclosed with paranthesis. References can be made within the document with (<a href="#sec:intro">Introduction</a>). Figures are referenced using , and to reference a section of the document like the code the section <a href="#sec:code">Code</a>  or the bibliography can be created using the prefix cite. One example of what doconce can be used for is an entire book <a href="#Langtangen">[Langtangen]</a>. Also, equations can be referenced in a similar fashion, such as <a href="#eqn:tsaihill">(1)</a>.</p>
 <p>Index of keywords can be defined with</p>
-
 </div>
 </div>
 </div>
@@ -406,9 +403,7 @@ The main goal here is to generate an example document to help me learn and show 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    index{name}</code></pre>
-
 </div>
 </div>
 </div>
@@ -418,7 +413,6 @@ The main goal here is to generate an example document to help me learn and show 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>so that we have index{testindex}, and my favorite language index{python}</p>
-
 </div>
 </div>
 </div>
@@ -427,7 +421,6 @@ The main goal here is to generate an example document to help me learn and show 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    # define location label
     \label{sec:intro}
 
@@ -436,7 +429,6 @@ The main goal here is to generate an example document to help me learn and show 
 
     # reference citations
     cite{Langtangen}</code></pre>
-
 </div>
 </div>
 </div>
@@ -445,13 +437,11 @@ The main goal here is to generate an example document to help me learn and show 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="my-subheading">my subheading<a class="anchor-link" href="#my-subheading">&#182;</a></h3><p>testing the subheading</p>
-<h4 id="my-subsubheading">my subsubheading<a class="anchor-link" href="#my-subsubheading">&#182;</a></h4><p>finally, the smallest heading we can have</p>
+<h3 id="my-subheading">my subheading<a class="anchor-link" href="#my-subheading">¶</a></h3><p>testing the subheading</p>
+<h4 id="my-subsubheading">my subsubheading<a class="anchor-link" href="#my-subsubheading">¶</a></h4><p>finally, the smallest heading we can have</p>
 <!-- Lines beginning with # are comment lines -->
-
-<h2 id="Code">Code<a class="anchor-link" href="#Code">&#182;</a></h2><p><div id="sec:code"></div></p>
+<h2 id="Code">Code<a class="anchor-link" href="#Code">¶</a></h2><p></p><div id="sec:code"></div>
 <p>Code can be identified in the text by enclosing the text in single back quotes, as in</p>
-
 </div>
 </div>
 </div>
@@ -460,9 +450,7 @@ The main goal here is to generate an example document to help me learn and show 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    'sudo apt-get install numpy'</code></pre>
-
 </div>
 </div>
 </div>
@@ -472,24 +460,21 @@ The main goal here is to generate an example document to help me learn and show 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And an inline rendering of that is <code>sudo apt-get install numpy</code>. Which is handy when you do not want to start a new line everytime.</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># a comment in my python code</span>
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="c1"># a comment in my python code</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">x</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -497,29 +482,26 @@ The main goal here is to generate an example document to help me learn and show 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Also code can be inserted with this <code>@@@CODE src/hiwrld.py</code></p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># Here is an example python program</span>
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="c1"># Here is an example python program</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="s">&#39;hi doconce world&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="s1">'hi doconce world'</span>
 
 <span class="k">def</span> <span class="nf">hiworld</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="c"># thats all</span>
+<span class="c1"># thats all</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -528,7 +510,6 @@ The main goal here is to generate an example document to help me learn and show 
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This way, all the code can be kept in a usable form or in inserted easily if changes</p>
 <p>Here is the bash file that is used to generate all the various kinds of output files</p>
-
 </div>
 </div>
 </div>
@@ -537,7 +518,6 @@ The main goal here is to generate an example document to help me learn and show 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    #!/bin/sh
 
 
@@ -627,7 +607,6 @@ The main goal here is to generate an example document to help me learn and show 
 
     # removes the trash directory
     rm -R Trash</code></pre>
-
 </div>
 </div>
 </div>
@@ -636,7 +615,7 @@ The main goal here is to generate an example document to help me learn and show 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Lists">Lists<a class="anchor-link" href="#Lists">&#182;</a></h2><p>Here are some examples of lists directly from the <a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html">documentation</a></p>
+<h2 id="Lists">Lists<a class="anchor-link" href="#Lists">¶</a></h2><p>Here are some examples of lists directly from the <a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html">documentation</a></p>
 <p>Here is a bullet list:</p>
 <ul>
 <li><p>item1</p>
@@ -677,18 +656,18 @@ multiple lines</p>
 </ol>
 <p>And finally a description list:</p>
 <p>keyword1:
-  :<br>
+  :<br />
    followed by
    some text
    over multiple
    lines</p>
 <p>keyword2:
-  :<br>
+  :<br />
    followed by text on the next line</p>
 <p>keyword3:
-  :<br>
+  :<br />
    and its description may fit on one line</p>
-<h2 id="Comments-and-Footnotes">Comments and Footnotes<a class="anchor-link" href="#Comments-and-Footnotes">&#182;</a></h2><div id="sec:com"></div>
+<h2 id="Comments-and-Footnotes">Comments and Footnotes<a class="anchor-link" href="#Comments-and-Footnotes">¶</a></h2><div id="sec:com"></div>
 
 Creating comments in the text is a handy way to supplement with optional information, one way is to use an inline comment such as [hpl 1: here I will make some
 remarks to the text]. Another way to add content is to add a footnote [^footnote] is also possible.
@@ -699,7 +678,6 @@ remarks to the text]. Another way to add content is to add a footnote [^footnote
 <div id="sec:math"></div><p>inline latex can look like this 
 $x = a_0 + \frac{1}{\displaystyle a_1 + \frac{1}{\displaystyle a_2 + \frac{1}{\displaystyle a_3 + a_4}}}$
 and another block</p>
-
 </div>
 </div>
 </div>
@@ -721,7 +699,6 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>and some inline latex,  $\frac{\partial y}{\partial x}$ everybody loves partial differentiation</p>
 <p>and finally equations, can have a label such as</p>
-
 </div>
 </div>
 </div>
@@ -731,7 +708,7 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!-- Equation labels as ordinary links --></p>
-<p><div id="eqn:tsaihill"></div></p>
+<p></p><div id="eqn:tsaihill"></div>
 $$
 \begin{equation}
 1 =  \left(\frac{\sigma_{1}}{\sigma_{1u}}\right)^{2} + \left(\frac{\sigma_{2}}{\sigma_{2u}}\right)^{2}  +  \left(\frac{\tau_{12}}{\tau_{12u}}\right)^{2}  - \left(\frac{\sigma_{1} \sigma_{2}} {\sigma_{1u} }\right) \label{eqn:tsaihill} \tag{1}  
@@ -745,18 +722,17 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Images">Images<a class="anchor-link" href="#Images">&#182;</a></h2><div id="sec:img"></div>
+<h2 id="Images">Images<a class="anchor-link" href="#Images">¶</a></h2><div id="sec:img"></div>
 
 This section explains how to create images. The size can be adjusted with frac and the width adjusts the width when exporting to html
 
 for a really tiny image, we can use
-<div id="fig:myfig1"></div><p><p>My favorite linux desktop with frac-0.1.</p>
-<img src="/notebooks/doconce_notes/fig/mint.png" width="650"></p>
+<div id="fig:myfig1"></div><p></p><p>My favorite linux desktop with frac-0.1.</p>
+<img src="/notebooks/doconce_notes/fig/mint.png" width="650" />
 <p>and for a figure that is a bit bigger, we can increase the fraction size</p>
 <div id="fig:myfig2"></div>
-
 <p>My favorite linux desktop with frac-0.9.</p>
-<img src="/notebooks/doconce_notes/fig/mint.png" width="650">
+<img src="/notebooks/doconce_notes/fig/mint.png" width="650" />
 
 
 
@@ -764,7 +740,6 @@ for a really tiny image, we can use
 
 ## File Structure
 <div id="sec:fil"></div><p>each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings</p>
-
 </div>
 </div>
 </div>
@@ -773,7 +748,6 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    doconce_notes.do.txt
     doconce_notes.md
     doconce_notes.pdf
@@ -782,7 +756,6 @@ for a really tiny image, we can use
     make.sh
     test.do.txt
     test.pdf</code></pre>
-
 </div>
 </div>
 </div>
@@ -791,8 +764,8 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Help">Help<a class="anchor-link" href="#Help">&#182;</a></h2><p>help can be gotten from <code>doconce format --help</code></p>
-<h2 id="Coverting-Files">Coverting Files<a class="anchor-link" href="#Coverting-Files">&#182;</a></h2>
+<h2 id="Help">Help<a class="anchor-link" href="#Help">¶</a></h2><p>help can be gotten from <code>doconce format --help</code></p>
+<h2 id="Coverting-Files">Coverting Files<a class="anchor-link" href="#Coverting-Files">¶</a></h2>
 </div>
 </div>
 </div>
@@ -801,14 +774,12 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    doconce format html test  # creates an html document
     doconce format pandoc test   # creates markdown
     doconce format latex test   # creates latex document
     doconce format ipynb mydoc  # results in mydoc.ipynb
     doconce format mwiki mydoc.do.txt  # creates a wiki page
     doconce format ipynb test.do  # ipython notebook</code></pre>
-
 </div>
 </div>
 </div>
@@ -818,7 +789,6 @@ for a really tiny image, we can use
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="http://pandoc.org/index.html">Pandoc</a> is a very powerful converter that can be used with doconce</p>
-
 </div>
 </div>
 </div>
@@ -827,13 +797,11 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    #From markdown to docx
     pandoc -s -S doconce_notes.md -o doconce_notes.md.docx
 
     #From markdown to PDF:
     pandoc doconce_notes.md -o doconce_notes.md.pdf</code></pre>
-
 </div>
 </div>
 </div>
@@ -844,7 +812,6 @@ for a really tiny image, we can use
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For compiling and document creation, please reference the <em>make.sh</em> file in this repository</p>
 <p>When running the make file, make sure it is executable and run it with</p>
-
 </div>
 </div>
 </div>
@@ -853,10 +820,8 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    chmod +x make.sh
     ./make.sh</code></pre>
-
 </div>
 </div>
 </div>
@@ -865,12 +830,11 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2><p><div id="sec:install"></div></p>
+<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">¶</a></h2><p></p><div id="sec:install"></div>
 <p>I am using a Windows 7 laptop with</p>
 <p><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>
 <a href="http://www.linuxmint.com/edition.php?id=172">Linux Mint 17.1</a></p>
 <p>Make sure your machine is up to date</p>
-
 </div>
 </div>
 </div>
@@ -879,9 +843,7 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    sudo apt-get update &amp;&amp; sudo apt-get upgrade</code></pre>
-
 </div>
 </div>
 </div>
@@ -891,7 +853,6 @@ for a really tiny image, we can use
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Then, install python. A barebones python install with IMHO, the best python package maanger conda, the <a href="http://conda.pydata.org/miniconda.html">miniconda package</a> is easy and <a href="https://github.com/conda/conda">open-source</a></p>
-
 </div>
 </div>
 </div>
@@ -900,7 +861,6 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    # download
     wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
     # make sure shell file is excutable
@@ -908,7 +868,6 @@ for a really tiny image, we can use
 
     # Execute
     ./Miniconda-latest-Linux-x86_64.sh  </code></pre>
-
 </div>
 </div>
 </div>
@@ -918,7 +877,6 @@ for a really tiny image, we can use
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I've gotten an error in the past with Linux Mint that conda command does not exist. This should fix it by creating a link with conda to the bin directory.</p>
-
 </div>
 </div>
 </div>
@@ -927,9 +885,7 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    sudo ln ~/anaconda/bin/conda /usr/local/bin/</code></pre>
-
 </div>
 </div>
 </div>
@@ -939,7 +895,6 @@ for a really tiny image, we can use
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If miniconda is used, be sure to install the ipython notebook if you plan on using it</p>
-
 </div>
 </div>
 </div>
@@ -948,9 +903,7 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    conda install ipython-notebook</code></pre>
-
 </div>
 </div>
 </div>
@@ -960,7 +913,6 @@ for a really tiny image, we can use
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, make sure all the dependecies are installed. Latex is an integral part of doconce, as well as pandoc for converting markdown files and the like</p>
-
 </div>
 </div>
 </div>
@@ -969,10 +921,8 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    sudo apt-get install texlive-full
     sudo apt-get install pandoc</code></pre>
-
 </div>
 </div>
 </div>
@@ -982,7 +932,6 @@ for a really tiny image, we can use
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Finally, we are ready to install doconce. There is a conda package that makes the installation very easy.</p>
-
 </div>
 </div>
 </div>
@@ -991,9 +940,7 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    conda install --channel johannr doconce</code></pre>
-
 </div>
 </div>
 </div>
@@ -1003,7 +950,6 @@ for a really tiny image, we can use
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Another option is to download a bash script <a href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh">here</a> and use it to install</p>
-
 </div>
 </div>
 </div>
@@ -1012,10 +958,8 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>    chmod +x install_doconce.sh  
     ./bash install_doconce.sh</code></pre>
-
 </div>
 </div>
 </div>
@@ -1024,13 +968,13 @@ for a really tiny image, we can use
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sundries">Sundries<a class="anchor-link" href="#Sundries">&#182;</a></h2><p>DO NOT USE UNDERSCORES IN ANY PART OF YOUR DOCUMENT, ONLY FOR MARKDOWN.</p>
-<h2 id="Handy-Links">Handy Links<a class="anchor-link" href="#Handy-Links">&#182;</a></h2><div id="sec:links"></div>
+<h2 id="Sundries">Sundries<a class="anchor-link" href="#Sundries">¶</a></h2><p>DO NOT USE UNDERSCORES IN ANY PART OF YOUR DOCUMENT, ONLY FOR MARKDOWN.</p>
+<h2 id="Handy-Links">Handy Links<a class="anchor-link" href="#Handy-Links">¶</a></h2><div id="sec:links"></div>
 
 Examples of a couple of the output files can be found here
 [doconcenotes1colpdf](https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.1col.pdf) , [doconcenotes2colpdf](https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.2col.pdf) , [htmlblack](https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.html.pdf), [htmlipynb](https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.ipynb.pdf), and, although not great, [doconcedocx](https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.md.docx).
 
-main site <https: github.com hplgit doconce>
+main site <https:>
 
 [tutorial](http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html)  
 
@@ -1055,8 +999,7 @@ Springer,
 2014,
 <a href="http://www.springer.com/us/book/9783642549588">http://www.springer.com/us/book/9783642549588</a>.</li>
 </ol>
-
-</div>
+</https:></div>
 </div>
 </div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -1141,18 +1084,18 @@ Springer,
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/22/USMC-Pilot-Ground-School/">
+                            US Marine Corps Private Pilot Ground School
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/17/weight-balance-cherokee-140/">
+                            Weight and Balance Calculations for a Piper Cherokee 140
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/12/29/weight-balance-cessna-175/">
                             Weight and Balance Calculations for a Cessna 175
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/09/01/Industrial-Design-of-Experiments-with-r/">
-                            Industrial Design of Experiments with R
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/08/28/intro-to-the-windows-command-line/">
-                            Intro to the Windows Command Line
                         </a>
                     </li>
                 </ul>
@@ -1219,7 +1162,7 @@ Springer,
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Neal Gordon
+         <div class="col-xs-10">&copy; 2016 Neal Gordon
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

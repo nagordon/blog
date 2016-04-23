@@ -277,9 +277,9 @@ if curious: then learn            </a>
 <h2>setup</h2>
 <p>I am running a windows 8 laptop with a  <a href="http://www.linuxmint.com/">Linux-Mint</a> virtual machine using <a href="https://www.virtualbox.org/">VirtualBox </a>. </p>
 <p>Lets update all the software on our virtual machine with </p>
-<div class="highlight"><pre><span class="c"># updates</span>
+<div class="highlight"><pre><span class="c1"># updates</span>
 sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
-<span class="c"># we need git to use github</span>
+<span class="c1"># we need git to use github</span>
 sudo apt-get install git
 </pre></div>
 
@@ -287,7 +287,7 @@ sudo apt-get install git
 <p>Now lets install python 3.x. I really like using miniconda for my python management. You can install it with the following commands.</p>
 <div class="highlight"><pre>wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
-<span class="c"># follow the commands to install</span>
+<span class="c1"># follow the commands to install</span>
 </pre></div>
 
 
@@ -295,7 +295,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 <p>Next, lets install the software we need to build the blog. I have decided to work with python 3.x, which limits some of the plugins, but I try to develop in python as much as possible.</p>
 <div class="highlight"><pre>conda install pip, ipython-notebook
 pip install pelican, Markdown
-<span class="c"># for github blogs, this tool makes it very easy to update the blog</span>
+<span class="c1"># for github blogs, this tool makes it very easy to update the blog</span>
 pip install ghp-import
 </pre></div>
 
@@ -329,12 +329,12 @@ Now we need a github account and a repository to host our site and source conten
 <p>The tags will automatically create groups at the top of your webpage once it is built</p>
 <p>If you want to create a blog post from an ipython notebook, follow the instructions from the github page (https://github.com/danielfrg/pelican-ipynb)</p>
 <p>Once you have your *.md, we need to generate the static html files that will be the blog</p>
-<div class="highlight"><pre><span class="c"># I first use this to tweak the site and it constantly updates my changes locally</span>
+<div class="highlight"><pre><span class="c1"># I first use this to tweak the site and it constantly updates my changes locally</span>
 make devserver
-<span class="c"># and to stop</span>
+<span class="c1"># and to stop</span>
 ./develop_server.sh stop
 
-<span class="c">#once the site is how you like it run these commands to push to github.</span>
+<span class="c1">#once the site is how you like it run these commands to push to github.</span>
 pelican content
 ghp-import output
 git add --all
@@ -421,18 +421,18 @@ SITEURL = &#39;http://ifcuriousthenlearn.com&#39;
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/22/USMC-Pilot-Ground-School/">
+                            US Marine Corps Private Pilot Ground School
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/17/weight-balance-cherokee-140/">
+                            Weight and Balance Calculations for a Piper Cherokee 140
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/12/29/weight-balance-cessna-175/">
                             Weight and Balance Calculations for a Cessna 175
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/09/01/Industrial-Design-of-Experiments-with-r/">
-                            Industrial Design of Experiments with R
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/08/28/intro-to-the-windows-command-line/">
-                            Intro to the Windows Command Line
                         </a>
                     </li>
                 </ul>
@@ -499,7 +499,7 @@ SITEURL = &#39;http://ifcuriousthenlearn.com&#39;
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Neal Gordon
+         <div class="col-xs-10">&copy; 2016 Neal Gordon
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

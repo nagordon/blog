@@ -284,8 +284,10 @@ if curious: then learn            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -340,29 +342,27 @@ if curious: then learn            </a>
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<div class="cell border-box-sizing text_cell rendered">
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Mechanical-Vibrations-with-Python">Mechanical Vibrations with Python<a class="anchor-link" href="#Mechanical-Vibrations-with-Python">&#182;</a></h1><p>Solving second-order differential equations is a common problem in mechanical engineering, and although it is improtant to understand how to solve these problems analytically, using software to solve them is mor practical, especially when considering the parameters are often unknown and need to be tested.</p>
+<h1 id="Mechanical-Vibrations-with-Python">Mechanical Vibrations with Python<a class="anchor-link" href="#Mechanical-Vibrations-with-Python">¶</a></h1><p>Solving second-order differential equations is a common problem in mechanical engineering, and although it is improtant to understand how to solve these problems analytically, using software to solve them is mor practical, especially when considering the parameters are often unknown and need to be tested.</p>
 <p>This is a simple example of solving a second-order differential equation representing a spring-damper system with python programming language. Python is a powerful tool for science and engineering and is relativley easy to use and free!</p>
 <p>The system that this is modeling is based on a spring and damper in parallel attached to a mass.</p>
-<p><img src="http://upload.wikimedia.org/wikipedia/en/7/79/Mass_spring_damper.png" alt=""></p>
+<p><img alt="" src="http://upload.wikimedia.org/wikipedia/en/7/79/Mass_spring_damper.png" /></p>
 <p>Since python is a generic programming language, certain specialized modules need to be imported for math operations and plotting</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">pylab</span>
 
-<span class="c"># forces plots to appear in the ipython notebook</span>
+<span class="c1"># forces plots to appear in the ipython notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
@@ -370,11 +370,9 @@ if curious: then learn            </a>
 
 <span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">arange</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">array</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -382,17 +380,16 @@ if curious: then learn            </a>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The system is represented as a python function, <code>MassSpringDamper</code>. The parameters can be easily adjusted to by changing the variables within this function</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">MassSpringDamper</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+    <span class="sd">'''</span>
 <span class="sd">    k=spring constant, Newtons per metre</span>
 <span class="sd">    m=mass, Kilograms</span>
 <span class="sd">    c=dampign coefficient, Newton*second / meter    </span>
@@ -403,26 +400,24 @@ if curious: then learn            </a>
 <span class="sd">        xdd = -k*x/m -c*xd-g</span>
 <span class="sd">    for a mass, spring, dmaper with forcing function</span>
 <span class="sd">        xdd = -k*x/m -c*xd-g + cos(4*t-pi/4)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
   
-    <span class="n">k</span><span class="o">=</span><span class="mf">124e3</span>  <span class="c"># spring constant, kN/m</span>
-    <span class="n">m</span><span class="o">=</span><span class="mf">64.2</span> <span class="c"># mass, Kg</span>
-    <span class="n">c</span><span class="o">=</span><span class="mi">3</span>  <span class="c"># damping coefficient </span>
-    <span class="c"># unpack the state vector</span>
-    <span class="n">x</span><span class="p">,</span><span class="n">xd</span> <span class="o">=</span> <span class="n">state</span> <span class="c"># displacement,x and velocity x&#39;</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span> <span class="c"># metres per second**2</span>
-    <span class="c"># compute acceleration xdd = x&#39;&#39;</span>
-    <span class="n">omega</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c"># frequency</span>
-    <span class="n">phi</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c"># phase shift</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c"># amplitude</span>
+    <span class="n">k</span><span class="o">=</span><span class="mf">124e3</span>  <span class="c1"># spring constant, kN/m</span>
+    <span class="n">m</span><span class="o">=</span><span class="mf">64.2</span> <span class="c1"># mass, Kg</span>
+    <span class="n">c</span><span class="o">=</span><span class="mi">3</span>  <span class="c1"># damping coefficient </span>
+    <span class="c1"># unpack the state vector</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">xd</span> <span class="o">=</span> <span class="n">state</span> <span class="c1"># displacement,x and velocity x'</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span> <span class="c1"># metres per second**2</span>
+    <span class="c1"># compute acceleration xdd = x''</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># frequency</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># phase shift</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c1"># amplitude</span>
     <span class="n">xdd</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="n">m</span> <span class="o">-</span><span class="n">c</span><span class="o">*</span><span class="n">xd</span><span class="o">-</span><span class="n">g</span> <span class="o">+</span> <span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="n">phi</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">xd</span><span class="p">,</span> <span class="n">xdd</span><span class="p">]</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -430,29 +425,26 @@ if curious: then learn            </a>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The initial displacement and velocity conditions are defined in the varaible <code>state0</code></p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">state0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]</span>  <span class="c">#initial conditions [x0 , v0]  [m, m/sec] </span>
-<span class="n">ti</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c"># initial time</span>
-<span class="n">tf</span> <span class="o">=</span> <span class="mf">4.0</span>  <span class="c"># final time</span>
-<span class="n">step</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c"># step</span>
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">state0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]</span>  <span class="c1">#initial conditions [x0 , v0]  [m, m/sec] </span>
+<span class="n">ti</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># initial time</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="mf">4.0</span>  <span class="c1"># final time</span>
+<span class="n">step</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># step</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
 <span class="n">state</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">MassSpringDamper</span><span class="p">,</span> <span class="n">state0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">state</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">]])</span>
 <span class="n">xd</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">state</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">]])</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -460,43 +452,36 @@ if curious: then learn            </a>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Solving a differential equation is challenging enough, but for me, it isn't all that useful unless you have some nice plots to visualize the results</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># Plotting displacement and velocity</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="c1"># Plotting displacement and velocity</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'font.size'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s">r&#39;$x (mm)$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xd</span><span class="p">,</span><span class="s">&#39;g--&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s">r&#39;$\dot{x} (m/sec)$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span><span class="s1">'b'</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">r'$x (mm)$'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xd</span><span class="p">,</span><span class="s1">'g--'</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">r'$\dot{x} (m/sec)$'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'lower right'</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;time , sec&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;disp (mm)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;velocity (m/s)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Mass-Spring System with $V_0=1.2 </span><span class="se">\f</span><span class="s">rac{m}{s}$ and $\delta_{max}=22.9mm$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'time , sec'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'disp (mm)'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'velocity (m/s)'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'g'</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Mass-Spring System with $V_0=1.2 </span><span class="se">\f</span><span class="s1">rac{m}{s}$ and $\delta_{max}=22.9mm$'</span><span class="p">)</span>
 <span class="n">pylab</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area"><div class="prompt"></div>
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA9QAAALvCAYAAACEHo1eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xe8ZGV9+PHPd3ulVwEhoIAYu9iwgERNRI0tYuwaURNL
@@ -1950,27 +1935,22 @@ hF8BfBE4axbNf2C7vXqGesuBjwPPopk7/QDgWuArwIeq6g8d7Vqa5DLgrcDrgQfRXIm+FHgPcH1H
 3TOTPA14F8187AcCfwDOAy6aRfslSVrpeB9qSZIWgCSnAdvQ3A97usXQJEnSiHiFWpKkeS7JasAu
 wL4m05IkzR9eoZYkSZIkqQeu8i1JkiRJUg9MqCVJkiRJ6oEJtSRJkiRJPTChliRJkiSpBybUkiRJ
 kiT1wIRakiRJkqQemFBLkiRJktSD/wcEcMekSr0N4gAAAABJRU5ErkJggg==
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython2"><pre> 
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
@@ -2054,18 +2034,18 @@ kiT1wIRakiRJkqQemFBLkiRJktSD/wcEcMekSr0N4gAAAABJRU5ErkJggg==
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/22/USMC-Pilot-Ground-School/">
+                            US Marine Corps Private Pilot Ground School
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/17/weight-balance-cherokee-140/">
+                            Weight and Balance Calculations for a Piper Cherokee 140
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/12/29/weight-balance-cessna-175/">
                             Weight and Balance Calculations for a Cessna 175
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/09/01/Industrial-Design-of-Experiments-with-r/">
-                            Industrial Design of Experiments with R
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/08/28/intro-to-the-windows-command-line/">
-                            Intro to the Windows Command Line
                         </a>
                     </li>
                 </ul>
@@ -2132,7 +2112,7 @@ kiT1wIRakiRJkqQemFBLkiRJktSD/wcEcMekSr0N4gAAAABJRU5ErkJggg==
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Neal Gordon
+         <div class="col-xs-10">&copy; 2016 Neal Gordon
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

@@ -305,40 +305,40 @@ And lastly, after that nice explanation, don't use windows command line, use pow
 <p>To make future deployments fast lets grab a base image of Linux Ubuntu 14.04. Go to your windows desktop and launch a windows command line as described previously, or, I prefer using gitbash. Note, comments in gitbash are #, so do not type those</p>
 <p>Lets add Ubuntu Server 14.04 LTS 62-bit image to our local vagrant images. Or browse the <a href="https://atlas.hashicorp.com/boxes/search">catalog</a> for your preferred image </p>
 <div class="highlight"><pre>vagrant box add ubuntu/trusty64
-<span class="c"># or hashicorp/precise64 for a 12.04 LTS 64 machine</span>
-<span class="c"># or chef/ubuntu-14.04  for a base 14.04 LTS 64 ubuntu machine</span>
+<span class="c1"># or hashicorp/precise64 for a 12.04 LTS 64 machine</span>
+<span class="c1"># or chef/ubuntu-14.04  for a base 14.04 LTS 64 ubuntu machine</span>
 </pre></div>
 
 
 <h3>3. Set up a work folder</h3>
 <p>This will take some time to download, but once complete. The rest of the operations are a matter of seconds.</p>
-<div class="highlight"><pre><span class="c"># make a new folder called vagrant_test</span>
+<div class="highlight"><pre><span class="c1"># make a new folder called vagrant_test</span>
 mkdir vagrant_test
 
-<span class="c"># change directory to vagrant test</span>
-<span class="nb">cd </span>vagrant_test
+<span class="c1"># change directory to vagrant test</span>
+<span class="nb">cd</span> vagrant_test
 
-<span class="c"># print working directory to check the file path</span>
+<span class="c1"># print working directory to check the file path</span>
 <span class="nb">pwd</span>
 </pre></div>
 
 
 <h3>4. Initialize a new Vagrant project</h3>
 <p>Now we have everything we need to start. After running the following commands, a config text file <em>Vagrantfile</em> will be created with a hidden file <em>.vagrant</em></p>
-<div class="highlight"><pre><span class="c"># initializes this vagrant session with the image we downloaded </span>
+<div class="highlight"><pre><span class="c1"># initializes this vagrant session with the image we downloaded </span>
 vagrant init ubuntu/trusty64
 
-<span class="c"># starts the virtual machine</span>
+<span class="c1"># starts the virtual machine</span>
 vagrant up
 </pre></div>
 
 
 <p>Once the box is set up, make sure you have git install to access the MINGGW32 bash terminal in windows. From the <em>git bash</em> found when you right-click in an empty space in your <em>vagrant_test</em> folder, type</p>
 <h3>5. Access your brand new Linux machine on Windows!</h3>
-<div class="highlight"><pre><span class="c"># using ssh to access the shell of your machine</span>
+<div class="highlight"><pre><span class="c1"># using ssh to access the shell of your machine</span>
 vagrant ssh
 
-<span class="c"># and when finished exit ssh</span>
+<span class="c1"># and when finished exit ssh</span>
 <span class="nb">exit</span>
 </pre></div>
 
@@ -355,13 +355,13 @@ echo &quot;testing the files sync in a vagrant VM&quot; &gt;&gt; /vagrant/test/t
 
 
 <h3>7. Reloading, Stopping, and Starting</h3>
-<div class="highlight"><pre><span class="c"># To reload a VM and reload any new changes in the Vagrantfile config run </span>
+<div class="highlight"><pre><span class="c1"># To reload a VM and reload any new changes in the Vagrantfile config run </span>
 vagrant reload
 
-<span class="c"># When complete and want to exit, run</span>
+<span class="c1"># When complete and want to exit, run</span>
 vagrant halt
 
-<span class="c"># When you are ready to start working again and starting fresh </span>
+<span class="c1"># When you are ready to start working again and starting fresh </span>
 vagrant up
 </pre></div>
 
@@ -377,23 +377,23 @@ dos2unix script.sh
 <h4>Installing python</h4>
 <p>There are many ways to install python, but I really appreciate how well conda works. It has all the packages I want, and they just work. To get conda either install the full package <a href="http://continuum.io/downloads#all">anaconda</a> or, I prefer <a href="http://conda.pydata.org/miniconda.html">miniconda</a> because my internet is slow. Also, I attempted to create a silent install script but was not successful, so if anyone knows how to perform a silent install of miniconda on a vagrant machine, please let me know! </p>
 <div class="highlight"><pre>git clone https://github.com/nagordon/vagrant-miniconda.git
-<span class="nb">cd </span>vagrant-miniconda
+<span class="nb">cd</span> vagrant-miniconda
 vagrant up
 vagrant ssh
 </pre></div>
 
 
 <p>copy and paste these commands line by line into the vagrant shell to manually install miniconda</p>
-<div class="highlight"><pre><span class="c"># downloads miniconda</span>
+<div class="highlight"><pre><span class="c1"># downloads miniconda</span>
 wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
 
-<span class="c"># makes the miniconda installation executable</span>
+<span class="c1"># makes the miniconda installation executable</span>
 chmod +x Miniconda-latest-Linux-x86_64.sh
 
-<span class="c"># installs miniconda manually. Make sure you select yes for adding the path. Also spacebar to skip the documentation at the beginning</span>
+<span class="c1"># installs miniconda manually. Make sure you select yes for adding the path. Also spacebar to skip the documentation at the beginning</span>
 bash Miniconda-latest-Linux-x86_64.sh
 
-<span class="c"># remove the downloaded fil</span>
+<span class="c1"># remove the downloaded fil</span>
 rm Miniconda-latest-Linux-x86_64.sh
 </pre></div>
 
@@ -473,18 +473,18 @@ conda install ipython-notebook -y
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/22/USMC-Pilot-Ground-School/">
+                            US Marine Corps Private Pilot Ground School
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/17/weight-balance-cherokee-140/">
+                            Weight and Balance Calculations for a Piper Cherokee 140
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/12/29/weight-balance-cessna-175/">
                             Weight and Balance Calculations for a Cessna 175
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/09/01/Industrial-Design-of-Experiments-with-r/">
-                            Industrial Design of Experiments with R
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/08/28/intro-to-the-windows-command-line/">
-                            Intro to the Windows Command Line
                         </a>
                     </li>
                 </ul>
@@ -551,7 +551,7 @@ conda install ipython-notebook -y
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Neal Gordon
+         <div class="col-xs-10">&copy; 2016 Neal Gordon
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

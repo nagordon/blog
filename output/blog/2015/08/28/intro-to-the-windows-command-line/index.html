@@ -287,26 +287,26 @@ And now for the big surprise. Most of my content is from books. I did not invent
 <p>Now, lets get our keyboard hands "dirty". </p>
 <h2>File Information</h2>
 <p>The first command is <strong>dir</strong>. This shows the content of the directory (dir) you are in.</p>
-<div class="highlight"><pre><span class="p">&gt;</span> <span class="n">dir</span>
+<div class="highlight"><pre><span class="p">&gt;</span> dir
 
  Volume in drive C has no label.
- Volume Serial Number is <span class="m">5033-5</span>C<span class="m">23</span>
+ Volume Serial Number is 5033-5C23
 
  Directory of C:\Users\ngordon\Desktop\test
 
-<span class="m">08</span><span class="n">/28/2015</span>  <span class="m">07</span><span class="nl">:44</span> AM    <span class="p">&lt;</span><span class="n">DIR</span>&gt;          .
-<span class="m">08</span><span class="n">/28/2015</span>  <span class="m">07</span><span class="nl">:44</span> AM    <span class="p">&lt;</span><span class="n">DIR</span>&gt;          ..
-<span class="m">08</span><span class="n">/28/2015</span>  <span class="m">07</span><span class="nl">:44</span> AM    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">another</span>-test
-<span class="m">08</span><span class="n">/28/2015</span>  <span class="m">07</span><span class="nl">:44</span> AM                 <span class="m">0</span> file<span class="m">1</span>.txt
-<span class="m">08</span><span class="n">/28/2015</span>  <span class="m">07</span><span class="nl">:44</span> AM             <span class="m">8</span><span class="p">,</span><span class="m">746</span> file<span class="m">2</span>.xlsx
-<span class="m">08</span><span class="n">/28/2015</span>  <span class="m">07</span><span class="nl">:44</span> AM                <span class="m">72</span> tmp.txt
-               <span class="m">3</span> File(s)          <span class="m">8</span><span class="p">,</span><span class="m">818</span> bytes
-               <span class="m">3</span> Dir(s)  <span class="m">38</span><span class="p">,</span><span class="m">038</span><span class="p">,</span><span class="m">937</span><span class="p">,</span><span class="m">600</span> bytes free
+08/28/2015  07:44 AM    <span class="p">&lt;</span>DIR<span class="p">&gt;</span>          .
+08/28/2015  07:44 AM    <span class="p">&lt;</span>DIR<span class="p">&gt;</span>          ..
+08/28/2015  07:44 AM    <span class="p">&lt;</span>DIR<span class="p">&gt;</span>          another-test
+08/28/2015  07:44 AM                 0 file1.txt
+08/28/2015  07:44 AM             8,746 file2.xlsx
+08/28/2015  07:44 AM                72 tmp.txt
+               3 File(s)          8,818 bytes
+               3 Dir(s)  38,038,937,600 bytes free
 </pre></div>
 
 
 <p>This is an easy way to see all the files and folders in our current directory. If you want to preserve this information, we can redirect the output to a file <em>tmp.txt</em> with </p>
-<div class="highlight"><pre>dir <span class="p">&gt;</span> <span class="n">tmp</span>.txt
+<div class="highlight"><pre><span class="k">dir</span> <span class="p">&gt;</span> tmp.txt
 </pre></div>
 
 
@@ -508,7 +508,7 @@ echo this is the third line &gt;&gt; file8.txt
 
 <h2>Automating commands with a batch file</h2>
 <p>A batch file (*.bat) is a simple windows script that can automate simple tasks. </p>
-<div class="highlight"><pre><span class="k">echo</span> <span class="k">echo</span> hi there <span class="p">&gt;</span> <span class="n">hello</span>.bat
+<div class="highlight"><pre><span class="k">echo</span> echo hi there <span class="p">&gt;</span> hello.bat
 </pre></div>
 
 
@@ -642,18 +642,18 @@ tracert www.ifcuriousthenlearn.com
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/22/USMC-Pilot-Ground-School/">
+                            US Marine Corps Private Pilot Ground School
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://ifcuriousthenlearn.com/blog/2016/04/17/weight-balance-cherokee-140/">
+                            Weight and Balance Calculations for a Piper Cherokee 140
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://ifcuriousthenlearn.com/blog/2015/12/29/weight-balance-cessna-175/">
                             Weight and Balance Calculations for a Cessna 175
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/09/01/Industrial-Design-of-Experiments-with-r/">
-                            Industrial Design of Experiments with R
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://ifcuriousthenlearn.com/blog/2015/08/28/intro-to-the-windows-command-line/">
-                            Intro to the Windows Command Line
                         </a>
                     </li>
                 </ul>
@@ -720,7 +720,7 @@ tracert www.ifcuriousthenlearn.com
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Neal Gordon
+         <div class="col-xs-10">&copy; 2016 Neal Gordon
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
