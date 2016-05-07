@@ -7,6 +7,7 @@ import os
 RELATIVE_URLS = False   # when deploying site
 #RELATIVE_URLS = True    # developing site 
 
+
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
 ################# SITE SETTINGS ###########################
@@ -42,7 +43,7 @@ PLUGINS = ['liquid_tags.img',
 	       'liquid_tags.notebook',	
 		   'ipynb']
 
-SUMMARY_MAX_LENGTH = 100
+SUMMARY_MAX_LENGTH = 200
 USE_FOLDER_AS_CATEGORY = False
 #CUSTOM_CSS = 'static/custom.css'
 
@@ -70,7 +71,7 @@ DISPLAY_CATEGORIES_ON_MENU = True
 DISPLAY_TAGS_INLINE = True
 DISPLAY_CATEGORIES_ON_SIDEBAR = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
-RECENT_POST_COUNT = 3
+RECENT_POST_COUNT = 5
 
 
 #BOOTSTRAP_THEME = 'journal' #'simplex'# 'cosmo' # 'readable'
