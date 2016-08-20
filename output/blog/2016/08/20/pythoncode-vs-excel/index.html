@@ -392,7 +392,7 @@ payments due at the end of the period</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [36]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="c1">############# define input variables #############</span>
@@ -421,7 +421,7 @@ $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [37]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="c1"># monthly payments assuming compounding interest</span>
@@ -433,7 +433,7 @@ $$
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[37]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>-1069.0098055421547</pre>
 </div>
@@ -472,13 +472,13 @@ $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [39]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="c1">############# import python libraries #############</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">date_range</span><span class="p">,</span> <span class="n">set_option</span>
-<span class="n">set_option</span><span class="p">(</span><span class="s1">'precision'</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">date_range</span><span class="p">,</span> <span class="n">set_option</span><span class="p">,</span> <span class="n">options</span>
+<span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">'${:10,.2f}'</span><span class="o">.</span><span class="n">format</span>
 </pre></div>
 </div>
 </div>
@@ -486,7 +486,7 @@ $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [40]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="c1">############# calculate output #############</span>
@@ -494,7 +494,7 @@ $$
 <span class="n">payment</span> <span class="o">=</span>          <span class="n">pmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly payment</span>
 <span class="n">interestpayment</span> <span class="o">=</span>  <span class="n">ipmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">per</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly interest</span>
 <span class="n">principalpayment</span> <span class="o">=</span> <span class="n">ppmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">per</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly principal</span>
-<span class="n">balance</span> <span class="o">=</span>          <span class="n">baseloan</span> <span class="o">-</span> <span class="n">downpayment</span> <span class="o">+</span> <span class="n">per</span><span class="o">*</span><span class="n">payment</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">payment</span><span class="p">)</span> <span class="c1"># monthly balance</span>
+<span class="n">balance</span> <span class="o">=</span>          <span class="n">PV</span> <span class="o">+</span> <span class="n">per</span><span class="o">*</span><span class="n">payment</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">interestpayment</span><span class="p">)</span> <span class="c1"># monthly balance</span>
 <span class="n">dates</span> <span class="o">=</span>            <span class="n">date_range</span><span class="p">(</span><span class="s1">'20160101'</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">'M'</span><span class="p">)</span>
 
 <span class="c1">############# create a table with the output #############</span>
@@ -523,31 +523,31 @@ $$
 <pre> monthly payment     = -1069.009806
  total interest cost = -656.235333
 
-         date  month   balance  payment  interest  principal
-0  2016-01-31      1  25000.00 -1069.01    -52.08   -1016.93
-1  2016-02-29      2  23930.99 -1069.01    -49.96   -1019.05
-2  2016-03-31      3  22861.98 -1069.01    -47.84   -1021.17
-3  2016-04-30      4  21792.97 -1069.01    -45.71   -1023.30
-4  2016-05-31      5  20723.96 -1069.01    -43.58   -1025.43
-5  2016-06-30      6  19654.95 -1069.01    -41.45   -1027.56
-6  2016-07-31      7  18585.94 -1069.01    -39.31   -1029.70
-7  2016-08-31      8  17516.93 -1069.01    -37.16   -1031.85
-8  2016-09-30      9  16447.92 -1069.01    -35.01   -1034.00
-9  2016-10-31     10  15378.91 -1069.01    -32.86   -1036.15
-10 2016-11-30     11  14309.90 -1069.01    -30.70   -1038.31
-11 2016-12-31     12  13240.89 -1069.01    -28.53   -1040.48
-12 2017-01-31     13  12171.88 -1069.01    -26.37   -1042.64
-13 2017-02-28     14  11102.87 -1069.01    -24.19   -1044.82
-14 2017-03-31     15  10033.86 -1069.01    -22.02   -1046.99
-15 2017-04-30     16   8964.85 -1069.01    -19.84   -1049.17
-16 2017-05-31     17   7895.84 -1069.01    -17.65   -1051.36
-17 2017-06-30     18   6826.83 -1069.01    -15.46   -1053.55
-18 2017-07-31     19   5757.82 -1069.01    -13.27   -1055.74
-19 2017-08-31     20   4688.81 -1069.01    -11.07   -1057.94
-20 2017-09-30     21   3619.80 -1069.01     -8.86   -1060.15
-21 2017-10-31     22   2550.79 -1069.01     -6.65   -1062.36
-22 2017-11-30     23   1481.78 -1069.01     -4.44   -1064.57
-23 2017-12-31     24    412.77 -1069.01     -2.22   -1066.79
+         date  month     balance     payment    interest   principal
+0  2016-01-31      1 $ 24,587.23 $ -1,069.01 $    -52.08 $ -1,016.93
+1  2016-02-29      2 $ 23,518.22 $ -1,069.01 $    -49.96 $ -1,019.05
+2  2016-03-31      3 $ 22,449.21 $ -1,069.01 $    -47.84 $ -1,021.17
+3  2016-04-30      4 $ 21,380.20 $ -1,069.01 $    -45.71 $ -1,023.30
+4  2016-05-31      5 $ 20,311.19 $ -1,069.01 $    -43.58 $ -1,025.43
+5  2016-06-30      6 $ 19,242.18 $ -1,069.01 $    -41.45 $ -1,027.56
+6  2016-07-31      7 $ 18,173.17 $ -1,069.01 $    -39.31 $ -1,029.70
+7  2016-08-31      8 $ 17,104.16 $ -1,069.01 $    -37.16 $ -1,031.85
+8  2016-09-30      9 $ 16,035.15 $ -1,069.01 $    -35.01 $ -1,034.00
+9  2016-10-31     10 $ 14,966.14 $ -1,069.01 $    -32.86 $ -1,036.15
+10 2016-11-30     11 $ 13,897.13 $ -1,069.01 $    -30.70 $ -1,038.31
+11 2016-12-31     12 $ 12,828.12 $ -1,069.01 $    -28.53 $ -1,040.48
+12 2017-01-31     13 $ 11,759.11 $ -1,069.01 $    -26.37 $ -1,042.64
+13 2017-02-28     14 $ 10,690.10 $ -1,069.01 $    -24.19 $ -1,044.82
+14 2017-03-31     15 $  9,621.09 $ -1,069.01 $    -22.02 $ -1,046.99
+15 2017-04-30     16 $  8,552.08 $ -1,069.01 $    -19.84 $ -1,049.17
+16 2017-05-31     17 $  7,483.07 $ -1,069.01 $    -17.65 $ -1,051.36
+17 2017-06-30     18 $  6,414.06 $ -1,069.01 $    -15.46 $ -1,053.55
+18 2017-07-31     19 $  5,345.05 $ -1,069.01 $    -13.27 $ -1,055.74
+19 2017-08-31     20 $  4,276.04 $ -1,069.01 $    -11.07 $ -1,057.94
+20 2017-09-30     21 $  3,207.03 $ -1,069.01 $     -8.86 $ -1,060.15
+21 2017-10-31     22 $  2,138.02 $ -1,069.01 $     -6.65 $ -1,062.36
+22 2017-11-30     23 $  1,069.01 $ -1,069.01 $     -4.44 $ -1,064.57
+23 2017-12-31     24 $      0.00 $ -1,069.01 $     -2.22 $ -1,066.79
 </pre>
 </div>
 </div>
