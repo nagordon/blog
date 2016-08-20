@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA - if curious: then learn</title>
+    <title>Logical Indexing with Python and Excel - if curious: then learn</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -166,21 +166,21 @@ init_mathjax();
 </script>
     <link href="http://ifcuriousthenlearn.com/images/earth.png" rel="icon">
 
-<link rel="canonical" href="http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/">
+<link rel="canonical" href="http://ifcuriousthenlearn.com/blog/2016/08/14/logical-indexing-with-python-excel/">
 
         <meta name="author" content="Neal Gordon" />
-        <meta name="keywords" content="engineering,FEA" />
-        <meta name="description" content="A brief tutorial using CATIA and FEA code to perform a laminate composite analysis" />
+        <meta name="keywords" content="python,excel" />
+        <meta name="description" content="Using python logical indexing to sort data and comparing to similar functionality in Excel" />
 
         <meta property="og:site_name" content="if curious: then learn" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA"/>
-        <meta property="og:url" content="http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/"/>
-        <meta property="og:description" content="A brief tutorial using CATIA and FEA code to perform a laminate composite analysis"/>
-        <meta property="article:published_time" content="2015-07-13" />
-            <meta property="article:section" content="Engineering" />
-            <meta property="article:tag" content="engineering" />
-            <meta property="article:tag" content="FEA" />
+        <meta property="og:title" content="Logical Indexing with Python and Excel"/>
+        <meta property="og:url" content="http://ifcuriousthenlearn.com/blog/2016/08/14/logical-indexing-with-python-excel/"/>
+        <meta property="og:description" content="Using python logical indexing to sort data and comparing to similar functionality in Excel"/>
+        <meta property="article:published_time" content="2016-08-14" />
+            <meta property="article:section" content="computing" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="excel" />
             <meta property="article:author" content="Neal Gordon" />
 
 
@@ -218,10 +218,10 @@ if curious: then learn            </a>
                         <li >
                             <a href="http://ifcuriousthenlearn.com/category/aviation.html">Aviation</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="http://ifcuriousthenlearn.com/category/computing.html">Computing</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="http://ifcuriousthenlearn.com/category/engineering.html">Engineering</a>
                         </li>
                         <li >
@@ -244,10 +244,10 @@ if curious: then learn            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/"
+                    <a href="http://ifcuriousthenlearn.com/blog/2016/08/14/logical-indexing-with-python-excel/"
                        rel="bookmark"
-                       title="Permalink to Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA">
-                        Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA
+                       title="Permalink to Logical Indexing with Python and Excel">
+                        Logical Indexing with Python and Excel
                     </a>
                 </h1>
             </header>
@@ -257,7 +257,7 @@ if curious: then learn            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-07-13T00:00:00-04:00"> 2015-07-13</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-08-14T00:00:00-04:00"> 2016-08-14</time>
     </span>
 
 
@@ -267,9 +267,9 @@ if curious: then learn            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="http://ifcuriousthenlearn.com/tag/engineering.html">engineering</a>
+	<a href="http://ifcuriousthenlearn.com/tag/python.html">python</a>
         /
-	<a href="http://ifcuriousthenlearn.com/tag/fea.html">FEA</a>
+	<a href="http://ifcuriousthenlearn.com/tag/excel.html">excel</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
@@ -347,79 +347,231 @@ if curious: then learn            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Composites-Design-and-FEA-Analysis-with-CATIA-and-SIMULIA">Composites Design and FEA Analysis with CATIA and SIMULIA<a class="anchor-link" href="#Composites-Design-and-FEA-Analysis-with-CATIA-and-SIMULIA">¶</a></h1><p><strong>Summary.</strong> This example utilizes the CATIA Composites Design workbench and the Elfini workbench to create a composite part with material properties, ply stacking, and ply orientation and perform a ply level stress analysis to determine at which pressure and location failure is expected.</p>
-<h2 id="Defining-the-Composite-Panel">Defining the Composite Panel<a class="anchor-link" href="#Defining-the-Composite-Panel">¶</a></h2><div id="sec:def"></div>
-
-The panel ([figure](#fig:panel)) is a composite laminate composed of two seperate materials. The panel is clamped on all four edges, eliminating the rotational and translational degrees of freedom, and a pressure is applied normal to the undeformed surface. It is expected that the elongated hole will likely be a stress concentration of the panel, but it is not clear what pressure the laminate is capable of supporting. However, this information will be ascertained by performing the analysis using the Elfini Finite Element workbench in CATIA. From these results, the location and plies that are at highest risk of failure will be identified using the tsai-hill composite failure criterion, and with that information, design changes can be implemented to reduce the stress and risk of failure. 
-
-<div id="fig:panel"></div><p></p><p>Panel Used in this Example</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/panel.png" width="650" />
-<p>In CATIA, the Composites Design Workbench allows us to create surfaces and assign the parameters defining the composite (<a href="#fig:params">figure</a>), as well as easily validating the producibility of the part based on the curvature of the part. All the material properties, and composite parameters, such as ply thickness, orientation, material type, weight, etc are stored in the <em>CATPart</em> file created in the CPD workbench (<a href="#fig:params">figure</a>).</p>
-<div id="fig:params"></div>
-<p>Composite Parameters</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/composite-parameters.png" width="650" />
-
-
-
-The choice of material can be changed in the *CATMaterial* file if multiple materials are used, such as carbon fiber, fiberglass, epoxy, etc. 
-
-One of the challenges when designing with composites is that, due to the typical complexity of a composite part, the part design and simulation results can be difficult to visualize, and choosing the correct design parameters required to properly define the part is often unclear. A ply table is a simple way to understand how the composite is constructed. The table shown in ([figure](#fig:plytable)) shows how the composite is organized with ply number, material, and orientation. The ply table can be used interactively with the 3D model to look at the ply properties. The plys of interest for this example are highlighted in orange. These plys are on the top and bottom and cover the entire composite and make up the elongated hole, which is the expected maximum stress of the laminate. There are a total of 5 plies that make up the elongated hole, 3 on top (Ply.37,35,36)  and 2 on the bottom (Ply.33,34)
-<div id="fig:plytable"></div><p></p><p>Ply Table</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply-table-model.png" width="650" />
-<p>If we want to see the actual shape and stacking of a ply, we can navigate to the CATIA tree in <em>Stacking Engineering</em> (<a href="#fig:ply12">figure</a>), and we see Ply.37 is glass and Ply.35 is S1454-G803</p>
-<div id="fig:ply12"></div>
-<p>Ply 1 and 2</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply1-2.png" width="650" />
-
-
-
-Another useful visualization is the ply exploder. The ply exploder generates a 3D visual of the individual ply stacks based on the color defined for that ply.
-
-<div id="fig:plyexplode"></div><p></p><p>Ply Exploder</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply-exploder.png" width="650" />
-<h2 id="Simulation-Pre-Processing">Simulation Pre-Processing<a class="anchor-link" href="#Simulation-Pre-Processing">¶</a></h2><div id="sec:pre"></div>
-
-In the CATIA CPD (Composites Part Design) workbench, we define many of the properties that we need for a finite element simulation. The material properties and orientation can be time-consuming when pre-processing models, but in Simulia, the process is streamlined due to the workbenches being well-integrated, eg the interactive ply table. 
-
-### Loads and Boundary Conditions
-The boundary conditions are clamped edges, which constrains all 6 degrees of freedom for the surface edge (rotation and translation). The load applied is initially a $10\ KPa$ pressure applied normal to the undeformed panel surface, indicated by the yellow arrows ([figure](#fig:feasetup)).
-
-<div id="fig:feasetup"></div><p></p><p>FEA Setup</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/fea-setup.png" width="650" />
-<p>Within the Elfini workbench, additional visualization tools are available. This allows the engineer/designer to confirm designs are correct as well as making communication much easier for assembly or if modifications are necessary. One of such tools is the thickness fringe plot (<a href="#fig:fringe">figure</a>) and the ply angle plot (<a href="#fig:angleply">figure</a>).</p>
-<div id="fig:fringe"></div>
-<p>Thickness Fringe</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/thickness-fringe.png" width="650" />
-<div id="fig:angleply"></div><p></p><p>Lamina 4 angle plot</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/lamina-3-angle.png" width="650" />
-<p>Once we have the boundary conditions and loads applied, we can compute the model. After about 20 seconds, we have our displacement, strain, and stress calculations for each ply.</p>
-<h2 id="Post-Processing">Post-Processing<a class="anchor-link" href="#Post-Processing">¶</a></h2><div id="sec:post"></div>
-
-The simulation generates a large amount of data that can be cumbersome to digest, but using tools, such as specialized composites failure criteria, can make the analysis much easier and more robust. A summary of the important material properties (modulus of elasticity and material ultimate strength in compression and tension) are shown as a reference to the calculations. The complete material properties are shown in the Appendix in section ([Appendix](#sec:app)).
-
-<table border="1">
+<p>A powerful data sorting method called logical indexing can be a great way to clean up huge datasets. Programming languages Octave/MATLAB, python, and R to name a few all are capable of logical indexing.</p>
+<p>All the rules of booleans apply to logical indexing, such as stringing conditionals <code>and, or, nand, nor</code>, etc</p>
+<p>To get an idea of what I'm talking about, let's do a quick example. First let's generate an array of random numbers, and then sort for the numbers less than 0.5 and greater than 0.1</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># import python function random from the numpy library</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># generate 10 random numbers</span>
+<span class="n">randnums</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">randnums</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.08547725,  0.27999385,  0.74051157,  0.77153143,  0.50921916,
+        0.02230907,  0.63186024,  0.89142272,  0.0963861 ,  0.66311151])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># generate the boolnea logical index of the numbers that meet our criteria</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">randnums</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">randnums</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ind</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([False,  True, False, False, False, False, False, False, False, False], dtype=bool)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># return an array of numbers with our new criteria</span>
+<span class="n">newnumbers</span> <span class="o">=</span> <span class="n">randnums</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+<span class="n">newnumbers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.27999385])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, this seems somewhat simple to do with a modern programming language such as python, but to this this in a spreadsheet where many of my day-to-day tasks are done is a little trickier. Since Excel doesn't have an explicit logical index function, similar functionality can be worked out, at some cost of clarity that a code solution has.</p>
+<p>Since everything in Excel (lets forget about VBA scripting for this tutorial) is represented in the spreadsheet and functions or values, creating arrays must be done as a new column. With python, we can either create a 2D array or have multiple variables. Creating new columns in Excel is fine, but sometimes can be difficult to understand the sorting logic. For simple analysis and data storage, spreadsheets are great, but as analysis methods become more complex (digital signal processing, mathematics, machine learning, etc) and datasets become large (gigabytes), spreadsheets just don't cut it.</p>
+<p>This tutorial is a demo of logical indexing in python using the pandas module and comparing to the simpliest solution I could figure out in excel, which isn't really logical index, but more of a multi-criteria function search. This is similar to vlookup, which is a handy Excel function, but is limited to a single return value as opposed to a logical index array. The approach here in Excel allows for multiple criteria to be met, but alas, only one return value. This still offers substantially more functionality than vlookup.</p>
+<p>To get python, I'd recommend using the <a href="https://www.continuum.io/downloads">Anaconda Python 3.5 distribution</a>, although many others will work fine. Here is the silly example data that I will be manipulating.</p>
+<p>Here is the spreadsheet that will be my example.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><iframe frameborder="0" height="347" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2125836&amp;authkey=AJQnOLPVsE7IS2A&amp;em=2&amp;AllowTyping=True&amp;Item=&#x27;Sheet1&#x27;!B2%3AL16&amp;wdHideGridlines=True&amp;wdDownloadButton=True" width="700"></iframe></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since python is a general programming language, we need to import the libraries we need. <a href="http://xlwings.org/">xlwings  </a> is an awesome library!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">xlwings</span> <span class="k">as</span> <span class="nn">xw</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we will use the xlwings library to load the Excel file into a dataframe where we will employ our logical indexing methods of data sorting</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># load excel file and turn into a pandas dataframe</span>
+<span class="n">xw</span><span class="o">.</span><span class="n">Book</span><span class="p">(</span><span class="s1">r'excel_logical_indexing.xlsx'</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">xw</span><span class="o">.</span><span class="n">sheets</span><span class="p">(</span><span class="s1">'Sheet1'</span><span class="p">)</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">"C6:E15"</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
 <thead>
-<tr><th align="center">       Property      </th> <th align="center">S1454-G803</th> <th align="center">Glass </th> </tr>
+<tr style="text-align: right;">
+<th></th>
+<th>Color</th>
+<th>Animal</th>
+<th>Awesomeness</th>
+</tr>
 </thead>
 <tbody>
-<tr><td align="center">   $E_{x}$                  </td> <td align="center">   60 GPa        </td> <td align="center">   4 GPa     </td> </tr>
-<tr><td align="center">   $E_{y}$                  </td> <td align="center">   60 GPa        </td> <td align="center">   4 GPa     </td> </tr>
-<tr><td align="center">   $\sigma_{x-comp-ult}$    </td> <td align="center">   500 MPa       </td> <td align="center">   40 MPa    </td> </tr>
-<tr><td align="center">   $\sigma_{y-comp-ult}$    </td> <td align="center">   500 MPa       </td> <td align="center">   40 MPa    </td> </tr>
-<tr><td align="center">   $\sigma_{x-ten-ult}$     </td> <td align="center">   700 MPa       </td> <td align="center">   60 MPa    </td> </tr>
-<tr><td align="center">   $\sigma_{y-ten-ult}$     </td> <td align="center">   700 MPa       </td> <td align="center">   60 MPa    </td> </tr>
+<tr>
+<th>0</th>
+<td>green</td>
+<td>dog</td>
+<td>75.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>blue</td>
+<td>dog</td>
+<td>95.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>black</td>
+<td>dog</td>
+<td>62.0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>green</td>
+<td>dog</td>
+<td>23.0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>blue</td>
+<td>cat</td>
+<td>90.0</td>
+</tr>
+<tr>
+<th>5</th>
+<td>black</td>
+<td>cat</td>
+<td>39.0</td>
+</tr>
+<tr>
+<th>6</th>
+<td>green</td>
+<td>cat</td>
+<td>22.0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>blue</td>
+<td>cat</td>
+<td>59.0</td>
+</tr>
+<tr>
+<th>8</th>
+<td>black</td>
+<td>cat</td>
+<td>12.0</td>
+</tr>
 </tbody>
 </table>
-The availability of the field outputs is based on what the user requested in the pre-processing step. This example shows contour plots of stress, displacement, and the tsai-hill failure criterion. The mesh has been created relatively coarse for speedy calculations, but an actual engineering application should have a higher element density. Some examples of displacement visualizations are shown in figure  and . In the figure , the displacement contour lines are overlaid on a deformed model mesh based on the the 3-dimensional displacement values.
-
-<div id="fig:meshdisp"></div><p></p><p>Deformed mesh displacement plot of ply.37</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/mesh-displacement.png" width="650" />
-<p>The discontinuous contour plot in figure  with deformation is a simple-to-interpret visual to the analyst on the validity of the results as well seeing the large deformation areas of the structure due to the various locality of plies with the relative cumulative thickness.</p>
-<p></p><div id="fig:contdisp"></div>
-<p></p><p>Deformed contour displacement plot of ply.37</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/displacement-ply-exploded.png" width="650" />
-<p>Stress is the measurement that is most important because our failure metric is defined as a experimentally pre-determine stress. To properly investigate this composite, each ply should be reviewed after the simulation is complete.</p>
-<p>After a load of $P_{applied}=10\ kPa$ is applied to the panel, the von-mises stress ($\sigma_{v}$) with the fiber orientation shows that, in figure  ply.34 has the largest von-mises stress.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -428,13 +580,89 @@ The availability of the field outputs is based on what the user requested in the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><!-- Equation labels as ordinary links --></p>
-<p></p><div id="vonmises"></div>
-$$
-\begin{equation}
-\sigma_v = \sqrt{ \sigma_{1}^{2} + \sigma_{2}^{2} - \sigma_{1}\sigma_{2}}    \label{vonmises} \tag{1} 
-\end{equation}
-$$
+<p>As a warm up, lets use a logical index to find all green items, and show only those values whose color is green</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">i</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Color'</span><span class="p">]</span><span class="o">==</span><span class="s1">'green'</span>
+<span class="n">i</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>0     True
+1    False
+2    False
+3     True
+4    False
+5    False
+6     True
+7    False
+8    False
+Name: Color, dtype: bool</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># here are the filtered results from the dataframe</span>
+<span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Color</th>
+<th>Animal</th>
+<th>Awesomeness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>green</td>
+<td>dog</td>
+<td>75.0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>green</td>
+<td>dog</td>
+<td>23.0</td>
+</tr>
+<tr>
+<th>6</th>
+<td>green</td>
+<td>cat</td>
+<td>22.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -443,18 +671,70 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since this is a linear FEA problem, the results are only likely valid for small deformations, and so, the relationship between applied load and stress should be linear. Also, a common assumption in composite analysis is assuming that out-of-plane stress is 0, known as plane stress ($\sigma_{3}=0$). With these assumption, we can assume that ply.34 will be the highest risk ply, and by inspection, ply.34 does indeed have the highest stress of all the plies. The von-mises stress is a handy scalar stress equivalent due to its ease to interpret results. (although other stresses, such as principal stresses should be observed to confirm validity of results). The plots here show the mean ply stress as well as the fiber orientation of the ply.</p>
-<div id="fig:vonmises"></div>
-<p>Von-Mises Stress</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/von-mises.png" width="650" />
-
-
-
-The stress state of Ply.34 is show in an undeformed state with a contour plot of von-mises stress . When looking at the entire composite, the stress concentration is where it was expected to be, in the elongated hole. 
-
-<div id="fig:ply34stress"></div><p></p><p>Exploded plys with von-mises ply stress of ply.34</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/stress-ply-exploded.png" width="650" />
-<p>When performing a stress analysis of a composite, iterations of the calculation of stiffness must be made to calculate the global structure stiffness. Once the global stiffness is calculated, the global displacement, strain and stress is determined. However, failure of a composite often occurs first to a ply, and since plies can have various stresses due to potentially differing material properties and loading states, the local ply stress must be determined and corroborated to the material strength to determine if ply failure is anticipated. The failure criterion commonly used for composites is the tsai-hill <a href="#Daniel2006">[Daniel2006]</a>. The tsai-hill criterion is adapted from the von-mises criterion, which is defined as failure when the material yields. Typically, long-fiber composites are transversely isotropic. With this assumption, we can write the tsai-Hill criterion here <a href="#eqn:tsaihill">(2)</a>. Once this value exceeds 1, the ply is expected to fail</p>
+<p>The advantage here is that using logical indexing filtering methods can easily be automated. For our next task, we will apply the logical values directly into the dataframe instead of making a index variable. This will index of all awesomeness levels greater than 40</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Awesomeness</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Color</th>
+<th>Animal</th>
+<th>Awesomeness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>green</td>
+<td>dog</td>
+<td>75.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>blue</td>
+<td>dog</td>
+<td>95.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>black</td>
+<td>dog</td>
+<td>62.0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>blue</td>
+<td>cat</td>
+<td>90.0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>blue</td>
+<td>cat</td>
+<td>59.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -463,13 +743,76 @@ The stress state of Ply.34 is show in an undeformed state with a contour plot of
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><!-- Equation labels as ordinary links --></p>
-<p></p><div id="eqn:tsaihill"></div>
-$$
-\begin{equation}
-1 =  \left(\frac{\sigma_{1}}{\sigma_{1u}}\right)^{2} + \left(\frac{\sigma_{2}}{\sigma_{2u}}\right)^{2}  +  \left(\frac{\tau_{12}}{\tau_{12u}}\right)^{2}  - \left(\frac{\sigma_{1} \sigma_{2}} {\sigma_{1u} }\right) \label{eqn:tsaihill} \tag{2}  
-\end{equation}
-$$
+<p>Other handy features with logical indexing is we can sort by what the cells start with, in this case any color that starts with 'b'</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Color</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'b'</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Color</th>
+<th>Animal</th>
+<th>Awesomeness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1</th>
+<td>blue</td>
+<td>dog</td>
+<td>95.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>black</td>
+<td>dog</td>
+<td>62.0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>blue</td>
+<td>cat</td>
+<td>90.0</td>
+</tr>
+<tr>
+<th>5</th>
+<td>black</td>
+<td>cat</td>
+<td>39.0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>blue</td>
+<td>cat</td>
+<td>59.0</td>
+</tr>
+<tr>
+<th>8</th>
+<td>black</td>
+<td>cat</td>
+<td>12.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -478,11 +821,74 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The tsai-hill criterion is easily accessible in Simulia to determine if failure is expected. The contour plots in <a href="#fig:tsaihill">figure</a> is for our initial loading case of $10\ KPa$, which is well below 1, indicating that our composite part is not likely to fail. Also of importance is ply.34, which has the largest tsai-hill parameter, or nearest to failure, which agrees with our linear stress-load assumption.</p>
-<p></p><div id="fig:tsaihill"></div>
-<p></p><p>Tsai-Hill Failure Criterion</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/tsai-hill.png" width="650" />
-<p>For this component, the pressure it must withstand is 125 kPa, so if we increase the pressure load, the tsai-hill failure criterion exceeds 1.0 and failure is expected in ply.34. The principal local stress were observed to be:</p>
+<p>For our final task as shown in a similar fashion in excel, we need to find all colors with green and animals that are dogs. This is the syntax, which is not completley obvious, but once you have it, it is your's to use. Once we have our new dataset, we can choose the first row or index and return the same value that our Excel spreadsheet did</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Color</span> <span class="o">==</span> <span class="s1">'green'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Animal</span> <span class="o">==</span> <span class="s1">'dog'</span><span class="p">)</span> <span class="p">]</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Color</th>
+<th>Animal</th>
+<th>Awesomeness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>green</td>
+<td>dog</td>
+<td>75.0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>green</td>
+<td>dog</td>
+<td>23.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># and use the first index 0 to return the first value</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">Awesomeness</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>75.0</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -491,95 +897,9 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$
-\sigma_{1}=572\ MPa\  (tension)
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$
-\sigma_{2} = -137\ MPa\ (compression)
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>An example calculation of the von-mises stress agrees well with what the model</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$
-\sigma_v = \sqrt{ (5.72)^{2} + (-1.37)^{2} - (-1.37)(5.72)} = 6.514 MPa
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>If we use these values with the strength values defined previously, we find that the hand calculation of the tsai-hill parameter is near $1.0$, and the Simulia tsai-hill parameter exceeds 1 at 1.05 as shown in the image below. Also, we provided the failure stress in the material properties as $\sigma_{ut}=700 Mpa$ and $\sigma_{uc}=500 MPa$</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$
-\left(\frac{572}{700}\right)^{2} + \left(\frac{-137}{500}\right)^{2} - \frac{572(-137)} {700^{2} }\approx0.903
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This discrepancy is difficult to prescribe, but it is likely due to the coarseness of the mesh. The hand-calculation versus the Simulia value is a considerable difference, so a finer mesh should be used. But, no failure criterion is deterministic, so the value being relatively close to 1 would indicate that failure is probable and a redesign should be implemented.</p>
-<div id="fig:finalfail"></div>
-<p>Final Failure of the composite is ply 34</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/final-failure.png" width="650" />
-
-
-
-## Summary
-<div id="sec:sum"></div><p>An example of a composite stress analysis using CATIA-Simulia was shown. The composite properties were defined in CATIA's composite part design (CPD) workbench, and imported into Simulia FEA and solved using the Elfini FEA workbench as a 2D, plane stress surface. The tsai-hill criterion was used to evaluate each ply and it's severity of stress relative to the strength. Ply.34 was found to be at the highest risk of failure and future designs of this panel should use this information to improve the strength, minimize the deformation, utilize different materials and layups. 
-The files to execute this example can be freely obtained from the author if requested.</p>
-<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><ol>
-<li><div id="Daniel2006"></div> <strong>I. M. Daniel and O. Ishai</strong>. 
-<em>Engineering Mechanics of Composite Materials</em>,
-2nd edition,
-Oxford University Press,
-2006.</li>
-</ol>
-<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">¶</a></h2><div id="sec:app"></div>
-
-The glass material properties, which refers to an epoxy, with $E=4\ GPA$, and $\sigma_{ult}=60 MPa$
-
-<div id="fig:glass"></div><p></p><p>Glass Properties</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/glass.png" width="650" />
-<p>and the fiber material, with $E=60\ GPA$ and a $\sigma_{ult}=700 MPa$. This is the strength that we will use for our failure criteria. The constitutive properties are isotropic, however the tensile/compressive strength vary, which will ultimately determine the maximum pressure that can be applied.</p>
-<p></p><div id="fig:fiber"></div>
-<p></p><p>Lamina Properties</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/S1454-G803.png" width="650" />
+<p>This was a simple intro into python's logical indexing functionality which cannot be easily replicated in Excel, but this shows that the <code>index</code> and <code>match</code> function in Excel can get you some of the way there.</p>
+<p>Excel is great for some things, python is great for others. It is handy to know what tools are out there and when to use which one. Some other great resources for using python and Excel are the book <a href="https://automatetheboringstuff.com/chapter12/">automatetheboringstuff</a> and a greate blog <a href="http://pbpython.com/">Practical Business Python</a></p>
+<p>Stay curious!</p>
 </div>
 </div>
 </div>
@@ -622,8 +942,8 @@ The glass material properties, which refers to an epoxy, with $E=4\ GPA$, and $\
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
 
-                    var disqus_identifier = 'cpd-fea-catia';
-                var disqus_url = 'http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/';
+                    var disqus_identifier = 'logical-indexing-with-python-excel';
+                var disqus_url = 'http://ifcuriousthenlearn.com/blog/2016/08/14/logical-indexing-with-python-excel/';
 
             var disqus_config = function () {
                 this.language = "en";

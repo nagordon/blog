@@ -7,6 +7,7 @@ Slug: sage-embed
 Authors: Neal Gordon
 Summary: Interactive Sage Cell
 
+I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation [here](http://www.sagemath.org/) or try out the cloud service [here](https://cloud.sagemath.com/)
 
 <script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
 <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>

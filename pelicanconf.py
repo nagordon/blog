@@ -7,7 +7,6 @@ import os
 RELATIVE_URLS = False   # when deploying site
 #RELATIVE_URLS = True    # developing site 
 
-
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
 ################# SITE SETTINGS ###########################
@@ -101,6 +100,7 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
+		 ('Scipy.org','https://www.scipy.org/'),
          ('Jinja2', 'http://jinja.pocoo.org/'),)
 
 # Social widget

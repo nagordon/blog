@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA - if curious: then learn</title>
+    <title>Calculations with Python Code or Excel Spreadsheets - if curious: then learn</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -166,21 +166,21 @@ init_mathjax();
 </script>
     <link href="http://ifcuriousthenlearn.com/images/earth.png" rel="icon">
 
-<link rel="canonical" href="http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/">
+<link rel="canonical" href="http://ifcuriousthenlearn.com/blog/2016/08/20/pythoncode-vs-excel/">
 
         <meta name="author" content="Neal Gordon" />
-        <meta name="keywords" content="engineering,FEA" />
-        <meta name="description" content="A brief tutorial using CATIA and FEA code to perform a laminate composite analysis" />
+        <meta name="keywords" content="python,excel" />
+        <meta name="description" content="Comparing a code based problem solving approach to using a spreadsheet" />
 
         <meta property="og:site_name" content="if curious: then learn" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA"/>
-        <meta property="og:url" content="http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/"/>
-        <meta property="og:description" content="A brief tutorial using CATIA and FEA code to perform a laminate composite analysis"/>
-        <meta property="article:published_time" content="2015-07-13" />
-            <meta property="article:section" content="Engineering" />
-            <meta property="article:tag" content="engineering" />
-            <meta property="article:tag" content="FEA" />
+        <meta property="og:title" content="Calculations with Python Code or Excel Spreadsheets"/>
+        <meta property="og:url" content="http://ifcuriousthenlearn.com/blog/2016/08/20/pythoncode-vs-excel/"/>
+        <meta property="og:description" content="Comparing a code based problem solving approach to using a spreadsheet"/>
+        <meta property="article:published_time" content="2016-08-20" />
+            <meta property="article:section" content="computing" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="excel" />
             <meta property="article:author" content="Neal Gordon" />
 
 
@@ -218,10 +218,10 @@ if curious: then learn            </a>
                         <li >
                             <a href="http://ifcuriousthenlearn.com/category/aviation.html">Aviation</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="http://ifcuriousthenlearn.com/category/computing.html">Computing</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="http://ifcuriousthenlearn.com/category/engineering.html">Engineering</a>
                         </li>
                         <li >
@@ -244,10 +244,10 @@ if curious: then learn            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/"
+                    <a href="http://ifcuriousthenlearn.com/blog/2016/08/20/pythoncode-vs-excel/"
                        rel="bookmark"
-                       title="Permalink to Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA">
-                        Composites Design and Finite Element Analysis (FEA) with CATIA and SIMULIA
+                       title="Permalink to Calculations with Python Code or Excel Spreadsheets">
+                        Calculations with Python Code or Excel Spreadsheets
                     </a>
                 </h1>
             </header>
@@ -257,7 +257,7 @@ if curious: then learn            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-07-13T00:00:00-04:00"> 2015-07-13</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-08-20T00:00:00-04:00"> 2016-08-20</time>
     </span>
 
 
@@ -267,9 +267,9 @@ if curious: then learn            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="http://ifcuriousthenlearn.com/tag/engineering.html">engineering</a>
+	<a href="http://ifcuriousthenlearn.com/tag/python.html">python</a>
         /
-	<a href="http://ifcuriousthenlearn.com/tag/fea.html">FEA</a>
+	<a href="http://ifcuriousthenlearn.com/tag/excel.html">excel</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
@@ -347,79 +347,63 @@ if curious: then learn            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Composites-Design-and-FEA-Analysis-with-CATIA-and-SIMULIA">Composites Design and FEA Analysis with CATIA and SIMULIA<a class="anchor-link" href="#Composites-Design-and-FEA-Analysis-with-CATIA-and-SIMULIA">¶</a></h1><p><strong>Summary.</strong> This example utilizes the CATIA Composites Design workbench and the Elfini workbench to create a composite part with material properties, ply stacking, and ply orientation and perform a ply level stress analysis to determine at which pressure and location failure is expected.</p>
-<h2 id="Defining-the-Composite-Panel">Defining the Composite Panel<a class="anchor-link" href="#Defining-the-Composite-Panel">¶</a></h2><div id="sec:def"></div>
-
-The panel ([figure](#fig:panel)) is a composite laminate composed of two seperate materials. The panel is clamped on all four edges, eliminating the rotational and translational degrees of freedom, and a pressure is applied normal to the undeformed surface. It is expected that the elongated hole will likely be a stress concentration of the panel, but it is not clear what pressure the laminate is capable of supporting. However, this information will be ascertained by performing the analysis using the Elfini Finite Element workbench in CATIA. From these results, the location and plies that are at highest risk of failure will be identified using the tsai-hill composite failure criterion, and with that information, design changes can be implemented to reduce the stress and risk of failure. 
-
-<div id="fig:panel"></div><p></p><p>Panel Used in this Example</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/panel.png" width="650" />
-<p>In CATIA, the Composites Design Workbench allows us to create surfaces and assign the parameters defining the composite (<a href="#fig:params">figure</a>), as well as easily validating the producibility of the part based on the curvature of the part. All the material properties, and composite parameters, such as ply thickness, orientation, material type, weight, etc are stored in the <em>CATPart</em> file created in the CPD workbench (<a href="#fig:params">figure</a>).</p>
-<div id="fig:params"></div>
-<p>Composite Parameters</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/composite-parameters.png" width="650" />
-
-
-
-The choice of material can be changed in the *CATMaterial* file if multiple materials are used, such as carbon fiber, fiberglass, epoxy, etc. 
-
-One of the challenges when designing with composites is that, due to the typical complexity of a composite part, the part design and simulation results can be difficult to visualize, and choosing the correct design parameters required to properly define the part is often unclear. A ply table is a simple way to understand how the composite is constructed. The table shown in ([figure](#fig:plytable)) shows how the composite is organized with ply number, material, and orientation. The ply table can be used interactively with the 3D model to look at the ply properties. The plys of interest for this example are highlighted in orange. These plys are on the top and bottom and cover the entire composite and make up the elongated hole, which is the expected maximum stress of the laminate. There are a total of 5 plies that make up the elongated hole, 3 on top (Ply.37,35,36)  and 2 on the bottom (Ply.33,34)
-<div id="fig:plytable"></div><p></p><p>Ply Table</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply-table-model.png" width="650" />
-<p>If we want to see the actual shape and stacking of a ply, we can navigate to the CATIA tree in <em>Stacking Engineering</em> (<a href="#fig:ply12">figure</a>), and we see Ply.37 is glass and Ply.35 is S1454-G803</p>
-<div id="fig:ply12"></div>
-<p>Ply 1 and 2</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply1-2.png" width="650" />
-
-
-
-Another useful visualization is the ply exploder. The ply exploder generates a 3D visual of the individual ply stacks based on the color defined for that ply.
-
-<div id="fig:plyexplode"></div><p></p><p>Ply Exploder</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/ply-exploder.png" width="650" />
-<h2 id="Simulation-Pre-Processing">Simulation Pre-Processing<a class="anchor-link" href="#Simulation-Pre-Processing">¶</a></h2><div id="sec:pre"></div>
-
-In the CATIA CPD (Composites Part Design) workbench, we define many of the properties that we need for a finite element simulation. The material properties and orientation can be time-consuming when pre-processing models, but in Simulia, the process is streamlined due to the workbenches being well-integrated, eg the interactive ply table. 
-
-### Loads and Boundary Conditions
-The boundary conditions are clamped edges, which constrains all 6 degrees of freedom for the surface edge (rotation and translation). The load applied is initially a $10\ KPa$ pressure applied normal to the undeformed panel surface, indicated by the yellow arrows ([figure](#fig:feasetup)).
-
-<div id="fig:feasetup"></div><p></p><p>FEA Setup</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/fea-setup.png" width="650" />
-<p>Within the Elfini workbench, additional visualization tools are available. This allows the engineer/designer to confirm designs are correct as well as making communication much easier for assembly or if modifications are necessary. One of such tools is the thickness fringe plot (<a href="#fig:fringe">figure</a>) and the ply angle plot (<a href="#fig:angleply">figure</a>).</p>
-<div id="fig:fringe"></div>
-<p>Thickness Fringe</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/thickness-fringe.png" width="650" />
-<div id="fig:angleply"></div><p></p><p>Lamina 4 angle plot</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/lamina-3-angle.png" width="650" />
-<p>Once we have the boundary conditions and loads applied, we can compute the model. After about 20 seconds, we have our displacement, strain, and stress calculations for each ply.</p>
-<h2 id="Post-Processing">Post-Processing<a class="anchor-link" href="#Post-Processing">¶</a></h2><div id="sec:post"></div>
-
-The simulation generates a large amount of data that can be cumbersome to digest, but using tools, such as specialized composites failure criteria, can make the analysis much easier and more robust. A summary of the important material properties (modulus of elasticity and material ultimate strength in compression and tension) are shown as a reference to the calculations. The complete material properties are shown in the Appendix in section ([Appendix](#sec:app)).
-
-<table border="1">
-<thead>
-<tr><th align="center">       Property      </th> <th align="center">S1454-G803</th> <th align="center">Glass </th> </tr>
-</thead>
-<tbody>
-<tr><td align="center">   $E_{x}$                  </td> <td align="center">   60 GPa        </td> <td align="center">   4 GPa     </td> </tr>
-<tr><td align="center">   $E_{y}$                  </td> <td align="center">   60 GPa        </td> <td align="center">   4 GPa     </td> </tr>
-<tr><td align="center">   $\sigma_{x-comp-ult}$    </td> <td align="center">   500 MPa       </td> <td align="center">   40 MPa    </td> </tr>
-<tr><td align="center">   $\sigma_{y-comp-ult}$    </td> <td align="center">   500 MPa       </td> <td align="center">   40 MPa    </td> </tr>
-<tr><td align="center">   $\sigma_{x-ten-ult}$     </td> <td align="center">   700 MPa       </td> <td align="center">   60 MPa    </td> </tr>
-<tr><td align="center">   $\sigma_{y-ten-ult}$     </td> <td align="center">   700 MPa       </td> <td align="center">   60 MPa    </td> </tr>
-</tbody>
-</table>
-The availability of the field outputs is based on what the user requested in the pre-processing step. This example shows contour plots of stress, displacement, and the tsai-hill failure criterion. The mesh has been created relatively coarse for speedy calculations, but an actual engineering application should have a higher element density. Some examples of displacement visualizations are shown in figure  and . In the figure , the displacement contour lines are overlaid on a deformed model mesh based on the the 3-dimensional displacement values.
-
-<div id="fig:meshdisp"></div><p></p><p>Deformed mesh displacement plot of ply.37</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/mesh-displacement.png" width="650" />
-<p>The discontinuous contour plot in figure  with deformation is a simple-to-interpret visual to the analyst on the validity of the results as well seeing the large deformation areas of the structure due to the various locality of plies with the relative cumulative thickness.</p>
-<p></p><div id="fig:contdisp"></div>
-<p></p><p>Deformed contour displacement plot of ply.37</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/displacement-ply-exploded.png" width="650" />
-<p>Stress is the measurement that is most important because our failure metric is defined as a experimentally pre-determine stress. To properly investigate this composite, each ply should be reviewed after the simulation is complete.</p>
-<p>After a load of $P_{applied}=10\ kPa$ is applied to the panel, the von-mises stress ($\sigma_{v}$) with the fiber orientation shows that, in figure  ply.34 has the largest von-mises stress.</p>
+<h1 id="To-code-or-not-to-code">To code or not to code<a class="anchor-link" href="#To-code-or-not-to-code">¶</a></h1><p>When faced with a technical challenge or problem solving, conceptual understanding is an important first step, and I almost always start with hand calculations. Once I feel that I have a grasp of the concept, then I turn to a digital approach which often involves using excel or python and running some numbers, and re-running them, and fiddling until I really understand. I always feel like, especially in engineering, that using the right tool for the right job can make a big difference in the results. <a href="https://products.office.com/en-us/excel">Microsoft Excel</a> or <a href="https://www.libreoffice.org/discover/calc/">Libre Calc</a> spreadsheet programs are a great way to plug some numbers in and perform simple calculations with nearly no learning curve to get an answer. But as the complexity and quantity of the data and compuation increases, spreadsheets start to not make sense. That's where I feel a code based calculation method is important tool in everyones analysis toolbox. Classicaly, good old pencil and paper was the only way to model and work out problems. But, with the availability of the personal computer, software has allowed us to do more work with less effort. I find it very fascinating to see how people solve problems. This post will explore that idea and hopefully give you an idea to go beyond excel the next time you need to run some numbers.</p>
+<p>There are many ways to solve engineering problems. The main tools that I have found critical  are:</p>
+<ul>
+<li><strong>hand calculations</strong> <ul>
+<li>no learning curve</li>
+<li>low cost</li>
+<li>slow, tedious and can be error prone (me and algebra :( )</li>
+<li>forces you to understand </li>
+</ul>
+</li>
+<li><strong>spreadsheets</strong> <ul>
+<li>medium learning curve</li>
+<li>great at simple data storage</li>
+<li>great for simple calcualtions</li>
+<li>non-linear / confusing thought process</li>
+<li>not great at large scale date storage </li>
+<li>not repeatable</li>
+</ul>
+</li>
+<li><strong>code</strong> <ul>
+<li>linear thought process (usually)</li>
+<li>most powerful for calculations </li>
+<li>not great at simple data storage</li>
+<li>great for large scale data storage and processing </li>
+<li>powerful version control (<a href="https://git-scm.com/">git</a>)</li>
+<li>very repeatable</li>
+</ul>
+</li>
+</ul>
+<p>These are a few methods for solving computational problems. Each one has a time and place, but recognizing when you are trying to put a square peg in a round hole can help keep you sane.</p>
+<h1 id="An-Example---python-and-Excel-to-understand-loans">An Example - python and Excel to understand loans<a class="anchor-link" href="#An-Example---python-and-Excel-to-understand-loans">¶</a></h1><p>OK, so we discussed some different approaches to problem solving. Lets look at an example of using an spreadsheet and python code to understand and determine the cost of an loan. Some terms are listed below if you aren't familiar with a compound interest loan.</p>
+<blockquote><p>apr - annual percentage rate<br />
+r   - monthly percentge rate, apr/12<br />
+per - the peroid for which you want to find an interest<br />
+nper - number of payment<br />
+pv - present value, the loan amount
+pmt - payment for a loan<br />
+payments due at the end of the period</p>
+</blockquote>
+<p>Let's throw some numbers at this. Here I will define some variables that define our loan parameters</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [36]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1">############# define input variables #############</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">24</span>   <span class="c1"># term in months</span>
+<span class="n">apr</span> <span class="o">=</span> <span class="mf">0.0250</span>   <span class="c1"># annual percentage rate</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">apr</span><span class="o">/</span><span class="mi">12</span>     <span class="c1"># monthly percentage rate</span>
+<span class="n">baseloan</span> <span class="o">=</span> <span class="mi">30000</span>   <span class="c1"># principal amount of loan</span>
+<span class="n">downpayment</span> <span class="o">=</span> <span class="mi">5000</span> 
+<span class="n">PV</span> <span class="o">=</span> <span class="n">baseloan</span> <span class="o">-</span> <span class="n">downpayment</span>  <span class="c1"># present value of the loan</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -428,13 +412,32 @@ The availability of the field outputs is based on what the user requested in the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><!-- Equation labels as ordinary links --></p>
-<p></p><div id="vonmises"></div>
+<h2 id="Hand-Calculation">Hand Calculation<a class="anchor-link" href="#Hand-Calculation">¶</a></h2><p>If we are to hand calculate our loan payments, we can use the following equation (found in Engineering Economy, Blank et al, pg 58)</p>
 $$
-\begin{equation}
-\sigma_v = \sqrt{ \sigma_{1}^{2} + \sigma_{2}^{2} - \sigma_{1}\sigma_{2}}    \label{vonmises} \tag{1} 
-\end{equation}
+payment = PV \bigg[  \frac{r(1+r)^n}{(1+r)^n-1} \bigg]
 $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [37]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1"># monthly payments assuming compounding interest</span>
+<span class="n">payment</span> <span class="o">=</span> <span class="o">-</span><span class="n">PV</span><span class="o">*</span><span class="p">((</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">payment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">Out[37]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>-1069.0098055421547</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -443,46 +446,111 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since this is a linear FEA problem, the results are only likely valid for small deformations, and so, the relationship between applied load and stress should be linear. Also, a common assumption in composite analysis is assuming that out-of-plane stress is 0, known as plane stress ($\sigma_{3}=0$). With these assumption, we can assume that ply.34 will be the highest risk ply, and by inspection, ply.34 does indeed have the highest stress of all the plies. The von-mises stress is a handy scalar stress equivalent due to its ease to interpret results. (although other stresses, such as principal stresses should be observed to confirm validity of results). The plots here show the mean ply stress as well as the fiber orientation of the ply.</p>
-<div id="fig:vonmises"></div>
-<p>Von-Mises Stress</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/von-mises.png" width="650" />
+<p>Easy enough, but what if you want to make a payment table, it would be very tedious by hand. Fortuantley, we have a computer. Since I understand the equation being used, I have no issues with automating this a little more. We can make an spreadsheet table. which is nice visually, didn't take very much time, and allows me to change some parameters.</p>
+<h2 id="Spreadsheet">Spreadsheet<a class="anchor-link" href="#Spreadsheet">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><iframe frameborder="0" height="807" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2125844&amp;authkey=AMSdq_7Zcg_mK_g&amp;em=2&amp;wdAllowInteractivity=False&amp;AllowTyping=True&amp;ActiveCell=&#x27;loan&#x27;!E2&amp;Item=&#x27;loan&#x27;!A1%3AI38&amp;wdHideGridlines=True&amp;wdDownloadButton=True" width="700"></iframe></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But, if we want to change, say the term length, well then we have to change the layout of the table and mess with it, so the spreadsheet isn't as robust as we had hoped. How about a code solution? Here are the steps to get some python code going to do the same exact calcuation, and being very robust, and can be used for many different finanical applications.</p>
+<h2 id="Code">Code<a class="anchor-link" href="#Code">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [39]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1">############# import python libraries #############</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">date_range</span><span class="p">,</span> <span class="n">set_option</span>
+<span class="n">set_option</span><span class="p">(</span><span class="s1">'precision'</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [40]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c1">############# calculate output #############</span>
+<span class="n">per</span> <span class="o">=</span>              <span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># months</span>
+<span class="n">payment</span> <span class="o">=</span>          <span class="n">pmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly payment</span>
+<span class="n">interestpayment</span> <span class="o">=</span>  <span class="n">ipmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">per</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly interest</span>
+<span class="n">principalpayment</span> <span class="o">=</span> <span class="n">ppmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">per</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly principal</span>
+<span class="n">balance</span> <span class="o">=</span>          <span class="n">baseloan</span> <span class="o">-</span> <span class="n">downpayment</span> <span class="o">+</span> <span class="n">per</span><span class="o">*</span><span class="n">payment</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">payment</span><span class="p">)</span> <span class="c1"># monthly balance</span>
+<span class="n">dates</span> <span class="o">=</span>            <span class="n">date_range</span><span class="p">(</span><span class="s1">'20160101'</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">'M'</span><span class="p">)</span>
 
+<span class="c1">############# create a table with the output #############</span>
+<span class="c1"># create a dataframe for simple data management and output</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s1">'date'</span><span class="p">:</span><span class="n">dates</span><span class="p">,</span>
+                <span class="s1">'month'</span><span class="p">:</span><span class="n">per</span><span class="p">,</span>
+                <span class="s1">'balance'</span><span class="p">:</span><span class="n">balance</span><span class="p">,</span>
+                <span class="s1">'payment'</span><span class="p">:</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">per</span><span class="p">))</span><span class="o">*</span><span class="n">payment</span><span class="p">,</span>
+                <span class="s1">'interest'</span><span class="p">:</span><span class="n">interestpayment</span><span class="p">,</span>
+                <span class="s1">'principal'</span><span class="p">:</span><span class="n">principalpayment</span><span class="p">})</span>
+<span class="c1"># reorder the columns to match the spreadsheet</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'date'</span><span class="p">,</span><span class="s1">'month'</span><span class="p">,</span><span class="s1">'balance'</span><span class="p">,</span><span class="s1">'payment'</span><span class="p">,</span><span class="s1">'interest'</span><span class="p">,</span><span class="s1">'principal'</span><span class="p">]]</span>
 
+<span class="c1">############# print output #############</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">' monthly payment     = </span><span class="si">%f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">payment</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">' total interest cost = </span><span class="si">%f</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">sum</span><span class="p">(</span><span class="n">interestpayment</span><span class="p">))</span>   
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> monthly payment     = -1069.009806
+ total interest cost = -656.235333
 
-The stress state of Ply.34 is show in an undeformed state with a contour plot of von-mises stress . When looking at the entire composite, the stress concentration is where it was expected to be, in the elongated hole. 
-
-<div id="fig:ply34stress"></div><p></p><p>Exploded plys with von-mises ply stress of ply.34</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/stress-ply-exploded.png" width="650" />
-<p>When performing a stress analysis of a composite, iterations of the calculation of stiffness must be made to calculate the global structure stiffness. Once the global stiffness is calculated, the global displacement, strain and stress is determined. However, failure of a composite often occurs first to a ply, and since plies can have various stresses due to potentially differing material properties and loading states, the local ply stress must be determined and corroborated to the material strength to determine if ply failure is anticipated. The failure criterion commonly used for composites is the tsai-hill <a href="#Daniel2006">[Daniel2006]</a>. The tsai-hill criterion is adapted from the von-mises criterion, which is defined as failure when the material yields. Typically, long-fiber composites are transversely isotropic. With this assumption, we can write the tsai-Hill criterion here <a href="#eqn:tsaihill">(2)</a>. Once this value exceeds 1, the ply is expected to fail</p>
+         date  month   balance  payment  interest  principal
+0  2016-01-31      1  25000.00 -1069.01    -52.08   -1016.93
+1  2016-02-29      2  23930.99 -1069.01    -49.96   -1019.05
+2  2016-03-31      3  22861.98 -1069.01    -47.84   -1021.17
+3  2016-04-30      4  21792.97 -1069.01    -45.71   -1023.30
+4  2016-05-31      5  20723.96 -1069.01    -43.58   -1025.43
+5  2016-06-30      6  19654.95 -1069.01    -41.45   -1027.56
+6  2016-07-31      7  18585.94 -1069.01    -39.31   -1029.70
+7  2016-08-31      8  17516.93 -1069.01    -37.16   -1031.85
+8  2016-09-30      9  16447.92 -1069.01    -35.01   -1034.00
+9  2016-10-31     10  15378.91 -1069.01    -32.86   -1036.15
+10 2016-11-30     11  14309.90 -1069.01    -30.70   -1038.31
+11 2016-12-31     12  13240.89 -1069.01    -28.53   -1040.48
+12 2017-01-31     13  12171.88 -1069.01    -26.37   -1042.64
+13 2017-02-28     14  11102.87 -1069.01    -24.19   -1044.82
+14 2017-03-31     15  10033.86 -1069.01    -22.02   -1046.99
+15 2017-04-30     16   8964.85 -1069.01    -19.84   -1049.17
+16 2017-05-31     17   7895.84 -1069.01    -17.65   -1051.36
+17 2017-06-30     18   6826.83 -1069.01    -15.46   -1053.55
+18 2017-07-31     19   5757.82 -1069.01    -13.27   -1055.74
+19 2017-08-31     20   4688.81 -1069.01    -11.07   -1057.94
+20 2017-09-30     21   3619.80 -1069.01     -8.86   -1060.15
+21 2017-10-31     22   2550.79 -1069.01     -6.65   -1062.36
+22 2017-11-30     23   1481.78 -1069.01     -4.44   -1064.57
+23 2017-12-31     24    412.77 -1069.01     -2.22   -1066.79
+</pre>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><!-- Equation labels as ordinary links --></p>
-<p></p><div id="eqn:tsaihill"></div>
-$$
-\begin{equation}
-1 =  \left(\frac{\sigma_{1}}{\sigma_{1u}}\right)^{2} + \left(\frac{\sigma_{2}}{\sigma_{2u}}\right)^{2}  +  \left(\frac{\tau_{12}}{\tau_{12u}}\right)^{2}  - \left(\frac{\sigma_{1} \sigma_{2}} {\sigma_{1u} }\right) \label{eqn:tsaihill} \tag{2}  
-\end{equation}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The tsai-hill criterion is easily accessible in Simulia to determine if failure is expected. The contour plots in <a href="#fig:tsaihill">figure</a> is for our initial loading case of $10\ KPa$, which is well below 1, indicating that our composite part is not likely to fail. Also of importance is ply.34, which has the largest tsai-hill parameter, or nearest to failure, which agrees with our linear stress-load assumption.</p>
-<p></p><div id="fig:tsaihill"></div>
-<p></p><p>Tsai-Hill Failure Criterion</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/tsai-hill.png" width="650" />
-<p>For this component, the pressure it must withstand is 125 kPa, so if we increase the pressure load, the tsai-hill failure criterion exceeds 1.0 and failure is expected in ply.34. The principal local stress were observed to be:</p>
 </div>
 </div>
 </div>
@@ -491,95 +559,15 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$
-\sigma_{1}=572\ MPa\  (tension)
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$
-\sigma_{2} = -137\ MPa\ (compression)
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>An example calculation of the von-mises stress agrees well with what the model</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$
-\sigma_v = \sqrt{ (5.72)^{2} + (-1.37)^{2} - (-1.37)(5.72)} = 6.514 MPa
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>If we use these values with the strength values defined previously, we find that the hand calculation of the tsai-hill parameter is near $1.0$, and the Simulia tsai-hill parameter exceeds 1 at 1.05 as shown in the image below. Also, we provided the failure stress in the material properties as $\sigma_{ut}=700 Mpa$ and $\sigma_{uc}=500 MPa$</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$
-\left(\frac{572}{700}\right)^{2} + \left(\frac{-137}{500}\right)^{2} - \frac{572(-137)} {700^{2} }\approx0.903
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This discrepancy is difficult to prescribe, but it is likely due to the coarseness of the mesh. The hand-calculation versus the Simulia value is a considerable difference, so a finer mesh should be used. But, no failure criterion is deterministic, so the value being relatively close to 1 would indicate that failure is probable and a redesign should be implemented.</p>
-<div id="fig:finalfail"></div>
-<p>Final Failure of the composite is ply 34</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/final-failure.png" width="650" />
-
-
-
-## Summary
-<div id="sec:sum"></div><p>An example of a composite stress analysis using CATIA-Simulia was shown. The composite properties were defined in CATIA's composite part design (CPD) workbench, and imported into Simulia FEA and solved using the Elfini FEA workbench as a 2D, plane stress surface. The tsai-hill criterion was used to evaluate each ply and it's severity of stress relative to the strength. Ply.34 was found to be at the highest risk of failure and future designs of this panel should use this information to improve the strength, minimize the deformation, utilize different materials and layups. 
-The files to execute this example can be freely obtained from the author if requested.</p>
-<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><ol>
-<li><div id="Daniel2006"></div> <strong>I. M. Daniel and O. Ishai</strong>. 
-<em>Engineering Mechanics of Composite Materials</em>,
-2nd edition,
-Oxford University Press,
-2006.</li>
-</ol>
-<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">¶</a></h2><div id="sec:app"></div>
-
-The glass material properties, which refers to an epoxy, with $E=4\ GPA$, and $\sigma_{ult}=60 MPa$
-
-<div id="fig:glass"></div><p></p><p>Glass Properties</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/glass.png" width="650" />
-<p>and the fiber material, with $E=60\ GPA$ and a $\sigma_{ult}=700 MPa$. This is the strength that we will use for our failure criteria. The constitutive properties are isotropic, however the tensile/compressive strength vary, which will ultimately determine the maximum pressure that can be applied.</p>
-<p></p><div id="fig:fiber"></div>
-<p></p><p>Lamina Properties</p>
-<img src="/notebooks/Composites-Design-and-Finite-Element-Analysis-with-CATIA-and-SIMULIA/fig/S1454-G803.png" width="650" />
+<p>Assuming the user has a basic understanding of how to write a computer program, code is(should be) very straightforward to read. Spreadsheets, like the one shown above can be nebulus and requires a fair bit of digging to see what calcualtions are being made. 
+If you need any help with the functions, use the help function to show the inputs</p>
+<div class="highlight"><pre><span class="n">help</span><span class="p">(</span><span class="n">pmt</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">ipmt</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">ppmt</span><span class="p">)</span>
+</pre></div>
+<p>Try playing around with the code and see what happens when the terms of the loan are changed. The code is more robust to changes, where the spreadsheet has to be reworked</p>
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h1><p>A simple demo compared spreadsheets versus code with an example of a common calcualtion problem, loans! When pursuing future projects, think about what tools would be the best for the given problem, as well as you, and possibly your team.</p>
+<p>Stay curious!</p>
 </div>
 </div>
 </div>
@@ -622,8 +610,8 @@ The glass material properties, which refers to an epoxy, with $E=4\ GPA$, and $\
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
 
-                    var disqus_identifier = 'cpd-fea-catia';
-                var disqus_url = 'http://ifcuriousthenlearn.com/blog/2015/07/13/cpd-fea-catia/';
+                    var disqus_identifier = 'pythoncode-vs-excel';
+                var disqus_url = 'http://ifcuriousthenlearn.com/blog/2016/08/20/pythoncode-vs-excel/';
 
             var disqus_config = function () {
                 this.language = "en";
