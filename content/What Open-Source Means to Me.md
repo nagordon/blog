@@ -1,6 +1,5 @@
 Title: Understanding and using technology
 Date: 2016-05-07
-Modified: 
 Category: Computing
 Tags: opensource
 Slug: what-open-source-means
@@ -9,13 +8,13 @@ Summary: My review of a book The Catherdral and Bazaar, some thoughts, and how y
 
 The book [The Cathedral and the Bazaar](http://www.catb.org/~esr/)
 
-![]({filename}/fig/cathedralandbazaar.jpg)
+![cathedralandbazaar]({filename}/fig/cathedralandbazaar.jpg)
 
 # What open-source means to me
 The ideas expressed in this article are generally not my own, however, all the opinions are. And, those opinions are mostly a response from the book/manifesto of open-source, called The Cathedral and the Bazaar, by Eric Raymond.
-I stumbled across this book in my many random searches on the internet, and as I started reading it out of pure curiosity, and I immediately began correlating ideas behind the open software development strategies to many various activities in my life, including some epistemological interests in economics and philosophy. Being a US citizen, it is difficult to deny our ingrained capitalistic ideologies where companies are created and destroyed based on profit, and when you ask a typical person what their worth is, they often will give you a dollar value. It is a very slippery slope to think in terms of starting a company with a great idea with the hopes of one day making it big, but the open-source world says something different. It is a more humanitarian approach to creating great technology, rather than seeking fortunes through innovations. 
+I stumbled across this book in my many random searches on the internet, and as I started reading it out of pure curiosity, and I immediately began correlating ideas behind the open software development strategies to many various activities in my life, including some epistemological interests in economics and philosophy. Being a US citizen, it is difficult to deny our ingrained capitalistic ideologies where companies are created and destroyed based on profit, and when you ask a typical person what their worth is, they often will give you a dollar value. It is a very slippery slope to think in terms of starting a company with a great idea with the hopes of one day making it big, but the open-source world says something different. It is a more humanitarian approach to creating great technology, rather than seeking fortunes through innovations.
 
-Let me side-track for a moment to address the obvious opposite to the open-source ideology , closed-source, enter Bill Gates. In his book, "The Road Ahead", his insatiable hunger for technology, and how the lack on innovation and implementation in the electronics industry drove him to share his interests with the world by providing software to make computers more accessible to the not-so-tech-savvy. His business model was to make software, and sell it. The world at that time needed someone with the impetus of profit to get the ball rolling. Although, I do not think there are more people interested in technology now than there were in the 1970's, but technology is certainly more accessible, and learning has never been easier (although motivation is still hard for everyone to find). Don't get me wrong, Microsoft has fine products, but they just don't serve society the way we need. 
+Let me side-track for a moment to address the obvious opposite to the open-source ideology , closed-source, enter Bill Gates. In his book, "The Road Ahead", his insatiable hunger for technology, and how the lack on innovation and implementation in the electronics industry drove him to share his interests with the world by providing software to make computers more accessible to the not-so-tech-savvy. His business model was to make software, and sell it. The world at that time needed someone with the impetus of profit to get the ball rolling. Although, I do not think there are more people interested in technology now than there were in the 1970's, but technology is certainly more accessible, and learning has never been easier (although motivation is still hard for everyone to find). Don't get me wrong, Microsoft has fine products, but they just don't serve society the way we need.
 
 The fundamental flaw with closed-source software is that it inherently forces the user to be a pure consumer, rather than a consumer *and* creator. This, unfortunately, leaves us in a world where the hottest pieces of software are apps that blindly allow us to seemingly(and laughably) "hide" our data. The only solution to securing your data is to understand, and you cannot understand if what you seek is not accessible. It is in societies' best interest that users stay curious, and the demand to understand persists.
 
@@ -49,12 +48,12 @@ Be willing and happy to change things when you can and still have motivation, be
 Don't hesitate to throw away features, just keep the essentials and do them well
 
 >14) Any tool should be useful in the expected way, but a truly great tool lends itself to unexpected uses
- 
+
  Whatever you set out to do, it *must* work how you intended it to, and if you did it well enough, it will work for many other things as well. That is a great feeling!
 
 >18) To solve an interesting problem, start with a problem that is interesting to you
 
-# How to begin to learn about 21st century technology. 
+# How to begin to learn about 21st century technology.
 As I mentioned, in order to really understand the technology that runs our modern world, it needs to be open-source, so that the curious seeking can dig as deep as they need to appreciate what is happening. Be forewarned, following this list may show you the light, but possibly at great expense to your time(but that doesn't matter, because we are having fun!) So, leads us to my first point.
 >1) Learn an open-source operating system, such as linux
 
@@ -63,14 +62,14 @@ There are so many options when it comes to interacting with your computer check 
 
 Everything you do in linux can be done through the terminal, but the opposite it not true for the user-interface. Although the terminal has a much steeper learning curve, it is the segue to picking up a scripting/programming language, which is my next point.
 
->3) Learn a programming language. 
+>3) Learn a programming language.
 
 I don't want to overstate this, but nearly every job you will ever have can utilize this skill and it can be fun! I first learned visual basic because I wanted to roll a dice 1000 times but didn't want to take all day to do it.
 
 >4) Embrace open-source when you use software *and* when you create it
 
 I have had my share of downloading shady windows programs to do silly tasks (eg music organization) and caught a virus along the way. Once I discovered the open-source community, I get better software, without malware that I can customize however I want. It is a beautiful thing.
-I cannot stress enough how important I have found it to eliminate my ego as a science enthusiast and and remove territories from my ideas and share with the communities of the for peer-review and sharing my thoughts. That is the number one reason that I wanted to create this blog (the other is to help me write more, which is pleasantly cathartic for me and keeps my wandering brain on task, rather than keeping a personal journal (check out [Red Notebook](http://rednotebook.sourceforge.net/), which I would recommend, but doesn't have the accountability a published blog does.)
+I cannot stress enough how important I have found it to eliminate my ego as a science enthusiast and remove territories from my ideas and share with the communities of the for peer-review and sharing my thoughts. That is the number one reason that I wanted to create this blog (the other is to help me write more, which is pleasantly cathartic for me and keeps my wandering brain on task, rather than keeping a personal journal (check out [Red Notebook](http://rednotebook.sourceforge.net/), which I would recommend, but doesn't have the accountability a published blog does.)
 
 I hope you get a chance to explore the ideas of open-source, because they go well beyond just computing.
 

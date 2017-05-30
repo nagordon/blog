@@ -1,15 +1,14 @@
 Title: Windows package management with Chocolatey
-Date: 2016-05-06 
-Modified:  
+Date: 2016-05-06
 Category: Computing  
 Tags: Windows, software
 Slug: windows-chocolatey
 Authors: Neal Gordon  
 Summary: Easy software installation and updates in Windows.
 
-For most of us, using software is an everyday activity. Many of us use lots of different packages of software, especially those that does not come pre-installed, like notepad++, chrome or firefox, ebook managers, your favorite video player, etc. Installing that software every time you get a new computer or keeping all those packages up-to-date can be a challenge. Being a Windows user for most of my life, I've accepted the tedious, risky business of finding, installing and not getting viruses from Windows software. Not until I started using Linux did I realize that it can be easier and safer. Linux uses package management, that changes from distribution, but the popular Debian based Linux uses ```apt-get``` to install software from the command line. Installing software can be as easy as ```apt-get install firefox```, and updating all software on the computing can be done with ```apt-get update```. Really easy right? 
+For most of us, using software is an everyday activity. Many of us use lots of different packages of software, especially those that does not come pre-installed, like notepad++, chrome or firefox, ebook managers, your favorite video player, etc. Installing that software every time you get a new computer or keeping all those packages up-to-date can be a challenge. Being a Windows user for most of my life, I've accepted the tedious, risky business of finding, installing and not getting viruses from Windows software. Not until I started using Linux did I realize that it can be easier and safer. Linux uses package management, that changes from distribution, but the popular Debian based Linux uses ```apt-get``` to install software from the command line. Installing software can be as easy as ```apt-get install firefox```, and updating all software on the computing can be done with ```apt-get update```. Really easy right?
 
-Well, I still use Windows a lot, and installating and managaing software on Windows can be be much easier using [chocolatey](https://github.com/chocolatey/choco/wiki). Chocolatey is a Windows command line tool to manage software, including searching, installing, updataing and removing. 
+Well, I still use Windows a lot, and installating and managing software on Windows can be be much easier using [chocolatey](https://github.com/chocolatey/choco/wiki). Chocolatey is a Windows command line tool to manage software, including searching, installing, updataing and removing.
 
 Installation is a cinch. Copy and paste this code into a windows command line access by searching for ```cmd``` in the windows start. If possible, run as administrator (cmd, right-click, run as administrator)
 ```

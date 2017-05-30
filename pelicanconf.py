@@ -5,15 +5,15 @@ import os
 
 ################# DEVELOPMENT SETTINGS ###########################
 RELATIVE_URLS = False   # when deploying site
-#RELATIVE_URLS = True    # developing site 
+#RELATIVE_URLS = True    # developing site
 
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
 ################# SITE SETTINGS ###########################
 AUTHOR = 'Neal Gordon'
 SITENAME = 'if curious: then learn'
-#SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
-SITEURL = 'http://ifcuriousthenlearn.com'
+#SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn'
+SITEURL = 'http://localhost:8000'
 HIDE_SITENAME = False
 
 ################# Pelican SETTINGS ###########################
@@ -35,18 +35,19 @@ DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search')
 # ipynb settings
 IPYNB_USE_META_SUMMARY = True
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATHS = ['plugins']
-PLUGINS = ['liquid_tags.img', 
-           'liquid_tags.youtube', 
-           'liquid_tags.include_code', 
-	       'liquid_tags.notebook',	
-		   'ipynb']
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['ipynb.markup', 'i18n_subsites', ]
+
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n'],
+}
 
 SUMMARY_MAX_LENGTH = 200
 USE_FOLDER_AS_CATEGORY = False
 #CUSTOM_CSS = 'static/custom.css'
 
 DISQUS_SITENAME = 'nagordon-github'
+
 
 
 ################# BOOTSTRAP SETTINGS ###########################
@@ -73,7 +74,7 @@ DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 RECENT_POST_COUNT = 5
 
 
-#BOOTSTRAP_THEME = 'journal' #'simplex'# 'cosmo' # 'readable'
+BOOTSTRAP_THEME = 'journal' #'simplex'# 'cosmo' # 'readable'
 
 #AVATAR = 'images/me.png'
 #ABOUT_ME = 'Here I am!'
@@ -106,6 +107,4 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 # Social widget
 SOCIAL = (('LinkedIn', 'https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile'),
           ('GitHub', 'https://github.com/nagordon'),
-		  ('Reddit','http://www.reddit.com/user/nagordon'),
-		  ('Instructables','http://www.instructables.com/member/nagordon'),
 		  ('StackOverflow','http://stackoverflow.com/users/2438993/nagordon'),)

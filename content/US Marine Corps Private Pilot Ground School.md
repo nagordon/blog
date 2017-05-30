@@ -1,6 +1,5 @@
 Title: US Marine Corps Private Pilot Ground School
 Date: 2016-04-22
-Modified: 
 Category: Aviation
 Tags: Aviation
 Slug: USMC-Pilot-Ground-School

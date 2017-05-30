@@ -1,18 +1,17 @@
 Title: Team Fortress 2 Server Install for Dummies
 Date: 2015-03-14
-Modified: 
 Category: Computing
 Tags: video-games
 Slug: tf2-server-setup
 Authors: Neal Gordon
 Summary: How to set up a Team Fortress 2 steam server-setup
- 
+
 For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
-is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for online gaming, and it is way more fun to play games in the same room with your friends rather than random people online. 
+is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for online gaming, and it is way more fun to play games in the same room with your friends rather than random people online.
 
 Things have changed since those days. Internet speeds and just fine for online gaming, but I still prefer LAN games because, again, it is way more fun to game with your friends in the same room. So, I enjoy hosting LAN games, and I found setting up a local server a fun technical challenge, and If you are interested in doing the same, this should help you do it.
 
-The cool things with steam servers is you don't even need an account. You can create an anonymous server that is not affiliated with you. 
+The cool things with steam servers is you don't even need an account. You can create an anonymous server that is not affiliated with you.
 
 ##**Step 1** - Get a free operating system
 Get a Debain based Linux computer. I am using an older samsung laptop (6 GB, i5 processor) running [mint-cinnamon](http://www.linuxmint.com/edition.php?id=172)
@@ -83,14 +82,14 @@ Connection to Steam servers successful.
    Public IP is 12.34.56.78.
 ```
 
-and 
+and
 
 ```bash
 Network: IP 192.168.1.196, mode MP, dedicated Yes, ports 27015 SV / 27005 CL
 ```
 
-##**Step 8** - Connect to your public server 
-Now we have all the information we need to create public server, the public IP and the SV port it selected. Finally launch Steam and do 
+##**Step 8** - Connect to your public server
+Now we have all the information we need to create public server, the public IP and the SV port it selected. Finally launch Steam and do
 >Severs -> Favorites -> Add a Server -> enter ```12.34.56.78:27015```
 
 Now you have a public server!
@@ -111,7 +110,7 @@ tf_bot_quota_mode "fill"
 tf_bot_difficulty 1
 mp_timelimit 15
 mp_maxrounds 5
-mp_winlimit 
+mp_winlimit
 sv_cheats 0
 tf_bot_melee_only 0
 ```
@@ -135,7 +134,7 @@ plr_hightower
 pl_thundermountain
 pl_frontier_final
 ```
-If you want to use your xbox controller, from the client computer access the console via ```~``` and run ```exec 260controller``` 
+If you want to use your xbox controller, from the client computer access the console via ```~``` and run ```exec 260controller```
 
 Enjoy!
 
@@ -148,7 +147,3 @@ https://developer.valvesoftware.com/wiki/Console_Command_List
 http://steamcommunity.com/sharedfiles/filedetails/?id=250332112  
 https://wiki.teamfortress.com/wiki/Linux_dedicated_server  
 https://wiki.teamfortress.com/wiki/Bots  
-
-
-
-

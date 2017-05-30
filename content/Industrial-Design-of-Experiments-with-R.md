@@ -1,16 +1,16 @@
 Title: Industrial Design of Experiments with R
 Date: 2015-9-1
-Modified: 
+Modified: 2017-05-29
 Category: Engineering
 Tags: R, statistics, DOE
 Slug: Industrial-Design-of-Experiments-with-r
 Authors: Neal Gordon
-Summary: A introduction presenting the R programming lanuage and an open-source solution for designing and analzying Design of Experiements (DOE)
- 
-#Motivation
-Python is my favorite lanugauge. But, I also practice polyglottery(using multiple languages...I know, I had to use that word!). For the years of using python, I have rarely come across a problem that I haven't been able to solve or hasn't been solved yet in python. Well, today is the day. 
+Summary: A introduction presenting the R programming language and an open-source solution for designing and analyzing Design of Experiments (DOE)
 
-I enjoy statistics, and a very useful tool in the statisticians toolbox is the Experimental Design, or DOE (Design of Experiments). I searched for hours trying to find an open-source alternative to the Minitab DOE package, which is nice if you have a license, and found limited options. I evaluted [pyDOE](http://pythonhosted.org/pyDOE/), but it only designs experiments, not analyzes them. There are a couple open-source statistics packages, such as [sofa](http://www.sofastatistics.com/home.php), but why would you use anything other than R? Yes, I know the answer, because it is a programming lanugage, not a nice GUI. Well, I encourage you to make the plunge, because I haven't been impressed with a programming language in a long time, and R has impressed me. 
+#Motivation
+Python is my favorite language. But, I also practice polyglottery(using multiple languages...I know, I had to use that word!). For the years of using python, I have rarely come across a problem that I haven't been able to solve or hasn't been solved yet in python. Well, today is the day.
+
+I enjoy statistics, and a very useful tool in the statisticians toolbox is the Experimental Design, or DOE (Design of Experiments). I searched for hours trying to find an open-source alternative to the Minitab DOE package, which is nice if you have a license, and found limited options. I evaluated [pyDOE](http://pythonhosted.org/pyDOE/), but it only designs experiments, not analyzes them. There are a couple open-source statistics packages, such as [sofa](http://www.sofastatistics.com/home.php), but why would you use anything other than R? Yes, I know the answer, because it is a programming language, not a nice GUI. Well, I encourage you to make the plunge, because I haven't been impressed with a programming language in a long time, and R has impressed me.
 
 I assume you are familiar with DOE principles. If not, check out a [R-DOE-book](https://www.crcpress.com/Design-and-Analysis-of-Experiments-with-R/Lawson/9781439868133  
 ) or for theory, [Design and Analysis of Experiments by Montgomery](http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP002024.html) is a classic. As for R, you don't need to be an expert, but it helps to play around with it, perhaps some [golf](http://codegolf.stackexchange.com/questions/tagged/r).
@@ -18,7 +18,7 @@ I assume you are familiar with DOE principles. If not, check out a [R-DOE-book](
 # Installation
 
 ## R Base install and RStudio
-To get started, I am using Windows 7. To install R, check out [R-Base Package](https://cran.r-project.org/bin/windows/base/). 
+To get started, I am using Windows 7. To install R, check out [R-Base Package](https://cran.r-project.org/bin/windows/base/).
 
 R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension ***.r**
 
@@ -28,7 +28,7 @@ Fortunately some awesome GUI's already exist. [rkward](https://rkward.kde.org/) 
 
 ![R_Studio](/notebooks/Industrial-Design-of-Experiments-with-R/fig/R_Studio.png "Awesome RGUI RStudio")
 
-For more information on the R DOE package we will be using, check out [Prof. Dr. Ulrike Grömpings page](http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/). The walk-through here is derived from [this document](http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf). 
+For more information on the R DOE package we will be using, check out [Prof. Dr. Ulrike Grömpings page](http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/). The walk-through here is derived from [this document](http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf).
 
 Open up RStudio and familiarze yourself with the tools. I am really impressed with all the extra features with reporting and html/markdown exporting, and am excited to check those features out in the future.
 I found three hotkeys that I use all the time are:  
@@ -40,9 +40,9 @@ If the installtion gives you trouble, or you want to start using R immediatley, 
 
 ## R Packages
 
-Custom R packages are really easy to install if you know how. The packages are stored and managed by users in the CRAN(The Comprehensive R Archive Network). For example, the [DOE Package](https://cran.r-project.org/web/views/ExperimentalDesign.html) website shows information on the package. Luckily, we don't need to read all of that. We can install all the packages from our R program. 
+Custom R packages are really easy to install if you know how. The packages are stored and managed by users in the CRAN(The Comprehensive R Archive Network). For example, the [DOE Package](https://cran.r-project.org/web/views/ExperimentalDesign.html) website shows information on the package. Luckily, we don't need to read all of that. We can install all the packages from our R program.
 
-For the DOE we will create and analze, we need to first install the required packages. I don't know if all these packages are needed, but I pulled these from the CRAN site. Once you have RStudio open, copy and paste these install commands in a new script and hit **ctrl+alt+r** 
+For the DOE we will create and analze, we need to first install the required packages. I don't know if all these packages are needed, but I pulled these from the CRAN site. Once you have RStudio open, copy and paste these install commands in a new script and hit **ctrl+alt+r**
 
 ```r
 install.packages("DoE.base")
@@ -56,7 +56,7 @@ install.packages("RcmdrPlugin.IPSUR") # Introduction to Probability and Statisti
 install.packages("RcmdrPlugin.SurvivalT") # Rcmdr Survival Plug-In
 install.packages("RcmdrPlugin.TeachingDemos") # Rcmdr Teaching Demos Plug-In
 install.packages("RcmdrPlugin.epack") # Rcmdr plugin for time series
-install.packages("RcmdrPlugin.orloca") # orloca Rcmdr Plug-in 
+install.packages("RcmdrPlugin.orloca") # orloca Rcmdr Plug-in
 install.packages("Rcmdr") # at the R prompt
 install.packages("conf.design")
 install.packages("lhs")
@@ -90,7 +90,7 @@ The general workflow (with menu paths) when doing experiments in R is:
  * Set Name, number of runs, factors, and factor details
 * Select Button View data set and review the experiment
 * **Design -> Export -> Export Experiment**
- * Export a rda, html, and csv file. 
+ * Export a rda, html, and csv file.
 * In a spreadsheet application, eg [Libreoffice](https://www.libreoffice.org/download/libreoffice-fresh/), add a column to the csv file with the response variable(s)
 * **Design -> Re-import experiment from csv and rda**
  * perform analysis and generate plots and report
@@ -104,7 +104,7 @@ Now we can start our DOE! We can do everything with the R command line or a scri
 require(RcmdrPlugin.DoE)
 ```
 
-This should launch RCommander, which will run alongside RStudio and use the console for output. 
+This should launch RCommander, which will run alongside RStudio and use the console for output.
 
 ![Rcmdr](/notebooks/Industrial-Design-of-Experiments-with-R/fig/Rcmdr.png "Rcommander DOE interface")
 
@@ -116,22 +116,22 @@ From the interface here, filling the information manually or use the provided cs
 
 ![doe_setup](/notebooks/Industrial-Design-of-Experiments-with-R/fig/doe_setup.png "DOE Setup")
 
-This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details. 
+This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.
 
-| Run  | AirVolume | Valve | Barrel | Angle | Pressure | WadType | Voltage | BallType |e1 | e2	| e3 | distance| 
-|------|-----------|-------|--------|-------|----------|---------|---------|----------|---|-----|----|---------| 
-| 1    | 198       | 2     | 4ft    | 60    | 40       | paper   | 27      | pink     |-1 | -1	|  1 | 203.771 | 
-| 2    | 672       | 1     | 6ft    | 60    | 20       | paper   | 27      | pink     |-1 |  1	| -1 | 140.046 | 
-| 3    | 672       | 2     | 4ft    | 45    | 40       | paper   | 27      | white    | 1 |  1	| -1 | 424.479 | 
-| 4    | 198       | 1     | 4ft    | 45    | 20       | cloth   | 27      | pink     | 1 |  1	|  1 | 127.875 | 
-| 5    | 198       | 2     | 6ft    | 60    | 20       | cloth   | 27      | white    | 1 | -1	| -1 | 78.667  | 
-| 6    | 672       | 2     | 6ft    | 45    | 20       | paper   | 9       | pink     | 1 | -1	|  1 | 167.979 | 
-| 7    | 198       | 1     | 4ft    | 45    | 20       | paper   | 9       | white    |-1 | -1	| -1 | 85.521  | 
-| 8    | 198       | 1     | 6ft    | 60    | 40       | paper   | 9       | white    | 1 |  1	|  1 | 208     | 
-| 9    | 198       | 2     | 6ft    | 45    | 40       | cloth   | 9       | pink     |-1 |  1	| -1 | 313.813 | 
-| 10   | 672       | 2     | 4ft    | 60    | 20       | cloth   | 9       | white    |-1 |  1	|  1 | 166.021 | 
-| 11   | 672       | 1     | 6ft    | 45    | 40       | cloth   | 27      | white    |-1 | -1	|  1 | 466.771 | 
-| 12   | 672       | 1     | 4ft    | 60    | 40       | cloth   | 9       | pink     | 1 | -1	| -1 | 389.958 | 
+| Run  | AirVolume | Valve | Barrel | Angle | Pressure | WadType | Voltage | BallType |e1 | e2	| e3 | distance|
+|------|-----------|-------|--------|-------|----------|---------|---------|----------|---|-----|----|---------|
+| 1    | 198       | 2     | 4ft    | 60    | 40       | paper   | 27      | pink     |-1 | -1	|  1 | 203.771 |
+| 2    | 672       | 1     | 6ft    | 60    | 20       | paper   | 27      | pink     |-1 |  1	| -1 | 140.046 |
+| 3    | 672       | 2     | 4ft    | 45    | 40       | paper   | 27      | white    | 1 |  1	| -1 | 424.479 |
+| 4    | 198       | 1     | 4ft    | 45    | 20       | cloth   | 27      | pink     | 1 |  1	|  1 | 127.875 |
+| 5    | 198       | 2     | 6ft    | 60    | 20       | cloth   | 27      | white    | 1 | -1	| -1 | 78.667  |
+| 6    | 672       | 2     | 6ft    | 45    | 20       | paper   | 9       | pink     | 1 | -1	|  1 | 167.979 |
+| 7    | 198       | 1     | 4ft    | 45    | 20       | paper   | 9       | white    |-1 | -1	| -1 | 85.521  |
+| 8    | 198       | 1     | 6ft    | 60    | 40       | paper   | 9       | white    | 1 |  1	|  1 | 208     |
+| 9    | 198       | 2     | 6ft    | 45    | 40       | cloth   | 9       | pink     |-1 |  1	| -1 | 313.813 |
+| 10   | 672       | 2     | 4ft    | 60    | 20       | cloth   | 9       | white    |-1 |  1	|  1 | 166.021 |
+| 11   | 672       | 1     | 6ft    | 45    | 40       | cloth   | 27      | white    |-1 | -1	|  1 | 466.771 |
+| 12   | 672       | 1     | 4ft    | 60    | 40       | cloth   | 9       | pink     | 1 | -1	| -1 | 389.958 |
 
 ## DOE Experiment
 
@@ -142,17 +142,17 @@ To run your experiment, go through each run, set-up the system as prescribed by 
 
 The visualizations that are generated using R for DOE are great! The results should tell us which factors should be studied with higher fidelity, and which factors are not necessary to continue studying.
 
-Without going into great detail, here are some examples. 
+Without going into great detail, here are some examples.
 
 ###Half-Normal Plot
 **Design -> Analyze design -> Effects (Half) Normal Plots**  
 
 Ensure the dummy factors e1,e2,e3 are included
 ![half-normal-plot](/notebooks/Industrial-Design-of-Experiments-with-R/fig/half-normal-plot.png "half-normal-plot")
-Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley 
+Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley
 
 
-###Linear-Model 
+###Linear-Model
 **Design -> Analyze design -> Default Linear Model**  
 
 Ensure the dummy factors e1,e2,e3 are removed
@@ -164,7 +164,7 @@ Coefficients:
 AirVolume1    61.467      4.583  13.413 0.000896 ***
 Valve1        -5.287      4.583  -1.154 0.332219    
 Barrel1       -1.862      4.583  -0.406 0.711701    
-Angle1       -33.331      4.583  -7.273 0.005364 ** 
+Angle1       -33.331      4.583  -7.273 0.005364 **
 Pressure1    103.390      4.583  22.561 0.000191 ***
 WadType1      26.109      4.583   5.697 0.010722 *  
 Voltage1       9.193      4.583   2.006 0.138514    
@@ -173,7 +173,7 @@ BallType1     -7.168      4.583  -1.564 0.215736
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 15.87 on 3 degrees of freedom
-Multiple R-squared:  0.9962,	Adjusted R-squared:  0.986 
+Multiple R-squared:  0.9962,	Adjusted R-squared:  0.986
 F-statistic: 97.78 on 8 and 3 DF,  p-value: 0.001539
 ```
 
@@ -192,6 +192,3 @@ A simple example was shown how to use an open-source solution for creating and a
 Running experiments with DOE methods can be a great tool to have in nearly any industry. My background in Industrial and Systems Engineering exposed me to DOE for traditional manufacturing studies, but the concepts can be used in nearly any situation where understand of cause-and-effect is desired.
 
 Stay Curious!
-
-
-    
