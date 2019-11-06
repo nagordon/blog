@@ -1,13 +1,12 @@
 Title: Automating Website Downloads with wget  
 Date: 2015-08-19  
-Modified:  
 Category: Computing  
 Tags: Linux, webscraping, automation  
 Slug: wget-downloads  
 Authors: Neal Gordon  
 Summary: If you like a website, download and keep it forever. Or, if there are a bunch of files, say pictures or pdfs you want on a website, don't click to download all of them. Scrap it!
 
-Have you ever been browsing the internet and found a really cool website that has a bunch of files that you want, say pdfs or mp3s? In Windows it can be a pain to scrape through the site and download all the files. You may be able to write a slick python script to acomplish this, but why reinvent the wheel? Native in Linux is the program wget, which can also be used in windows, [GNU wget](http://www.gnu.org/software/wget/). 
+Have you ever been browsing the internet and found a really cool website that has a bunch of files that you want, say pdfs or mp3s? In Windows it can be a pain to scrape through the site and download all the files. You may be able to write a slick python script to acomplish this, but why reinvent the wheel? Native in Linux is the program wget, which can also be used in windows, [GNU wget](http://www.gnu.org/software/wget/).
 
 To get started, on a Linux computer, open your terminal and type
 
@@ -31,7 +30,7 @@ And this downloads the pdf from the url. Wow, can it really be this easy? YES, y
 Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  
 
 ```bash
-wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/ 
+wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
 ```
 The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called ```--domains```, we limit the command to the domain of the main site.
 

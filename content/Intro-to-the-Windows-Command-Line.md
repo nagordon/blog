@@ -1,16 +1,15 @@
 Title: Intro to the Windows Command Line  
-Date: 2015-8-28  
-Modified:   
+Date: 2015-8-28   
 Category: Computing  
 Tags: windows, batch, commandline  
 Slug: intro-to-the-windows-command-line  
 Authors: Neal Gordon  
 Summary: Getting started with the windows command line to be able to do more with Windows.   
-    
+
 ## Introduction
-   
-Side Note - I've searched online to find info on many things related to technology. A typical search will yield a lot of blogs and tutorials, and way down the list there is documentation from the company/team that created the product. All this is OK, but i've found if you really want to learn something, the best way is a good old-fashioned book (pdf or print). The ideas are whole and complete, and the quality is much higher than a typical blog post (..yea, I know, this is a blog, and no it is not as good as a book). 
-And now for the big surprise. Most of my content is from books. I did not invent this stuff. And I think it is important to give credit where credit is due. For more information, check out an  A+ certification book (I got mine from goodwill for 3 bucks, isnb-9780071745154). 
+
+Side Note - I've searched online to find info on many things related to technology. A typical search will yield a lot of blogs and tutorials, and way down the list there is documentation from the company/team that created the product. All this is OK, but i've found if you really want to learn something, the best way is a good old-fashioned book (pdf or print). The ideas are whole and complete, and the quality is much higher than a typical blog post (..yea, I know, this is a blog, and no it is not as good as a book).
+And now for the big surprise. Most of my content is from books. I did not invent this stuff. And I think it is important to give credit where credit is due. For more information, check out an  A+ certification book (I got mine from goodwill for 3 bucks, isnb-9780071745154).
 
 
 Ok, on to the post. This tutorial only applies to the windows command line, not powershell. To start out, I am not a huge Windows fan. It is expensive, and I am often disappointed in the stability. But, most of us use it at work and home, so we should be using to the best of our ability. So this should help extend your skills at doing basic stuff. There are a few things that I will show you that I prefer to use a mouse and keyboard with, but there are a few things I would rather use the command line with (eg, moving files, mouse, finding the ip address of the computer, keyboard). Also, I am using Windows 7.
@@ -26,7 +25,7 @@ help
 ```
 
 
-Now, lets get our keyboard hands "dirty". 
+Now, lets get our keyboard hands "dirty".
 
 ## File Information
 The first command is **dir**. This shows the content of the directory (dir) you are in.
@@ -50,7 +49,7 @@ The first command is **dir**. This shows the content of the directory (dir) you 
 
 ```
 
-This is an easy way to see all the files and folders in our current directory. If you want to preserve this information, we can redirect the output to a file *tmp.txt* with 
+This is an easy way to see all the files and folders in our current directory. If you want to preserve this information, we can redirect the output to a file *tmp.txt* with
 ```bat
 dir > tmp.txt
 ```
@@ -154,7 +153,7 @@ A            C:\Users\ngordon\Desktop\test\tmp
 A            C:\Users\ngordon\Desktop\test\tmp.txt
 ```
 
-## Navigating 
+## Navigating
 
 If you want to navigate your system, the cd command is the ticket, to go towards the root of the drive, use **cd**
 ```
@@ -171,7 +170,7 @@ cd ..\..
 
 ```
 
-and to go into another folder use 
+and to go into another folder use
 ```
 cd test
 
@@ -205,7 +204,7 @@ md newfolder
 :: destory an empty directory
 rd newfolder
 
-:: BE CAREFUL - recursively destroy directory, and all files and subfolders 
+:: BE CAREFUL - recursively destroy directory, and all files and subfolders
 rd newfolder /S
 
 ```
@@ -278,7 +277,7 @@ notepad file8.txt
 
 ## Automating commands with a batch file
 
-A batch file (*.bat) is a simple windows script that can automate simple tasks. 
+A batch file (*.bat) is a simple windows script that can automate simple tasks.
 
 ```bat
 echo echo hi there > hello.bat
@@ -340,7 +339,7 @@ Now lets test and make sure the system knows where to look for my custom batch s
 hi there
 ```
 
-Excellent. We have covered the basics. 
+Excellent. We have covered the basics.
 
 ## Networking Information
 I have found myself using the command line alot when learning about networking. Here are some commands to help you get started with networking info.
@@ -363,6 +362,6 @@ tracert www.ifcuriousthenlearn.com
 ```
 
 ## Summary
-We have covered the basics to operate a windows command line. For a lot of work, it is faster than clicking a mouse around, but it takes some practice. There are also some great fundamental tools available found at the command line nearest you. Understanding what is going on in a computer is much easier when you can operate the command lines, as it is an integral part of any operating system. I hope you found this useful, and please comment with any suggestions. 
+We have covered the basics to operate a windows command line. For a lot of work, it is faster than clicking a mouse around, but it takes some practice. There are also some great fundamental tools available found at the command line nearest you. Understanding what is going on in a computer is much easier when you can operate the command lines, as it is an integral part of any operating system. I hope you found this useful, and please comment with any suggestions.
 
 Stay Curious!  

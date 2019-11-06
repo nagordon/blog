@@ -1,6 +1,5 @@
 Title: Sage Math Tool
 Date: 2016-06-05
-Modified: 
 Category: Tools
 Tags: python, Sage, Math
 Slug: sage-embed

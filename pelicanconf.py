@@ -12,7 +12,7 @@ LOAD_CONTENT_CACHE = False
 ################# SITE SETTINGS ###########################
 AUTHOR = 'Neal Gordon'
 SITENAME = 'if curious: then learn'
-SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
+SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn'
 #SITEURL = 'http://ifcuriousthenlearn.com'
 HIDE_SITENAME = False
 

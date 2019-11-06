@@ -1,6 +1,5 @@
 Title: Pyver, Version Control For Dummies
 Date: 2016-05-06
-Modified: 
 Category: Computing
 Tags: Computing
 Slug: pyver-version-control
@@ -8,7 +7,7 @@ Authors: Neal Gordon
 Summary: My simple version control system for storing binary files
 
 ## Why pyver?  
-The movtiation behind pyver, which is to creating a version control method which is very, very simple to track the history of files. The work-flow of pyver is something I do anyway when working on something simple that uses binary files, especially ones that are linked through the software that is required to read them (eg CAD designs). I will create multiple directories, eg v1, v2 and copy the entire contents of my in-progress files in it that I want to preserve the history. The issue with this is that when file names are changed, it can break links to dependent files, so keeping a file identical is important for tracking files. It was also a goal to use this tool over a network drive where multiple users can archive files as they wish 
+The movtiation behind pyver, which is to creating a version control method which is very, very simple to track the history of files. The work-flow of pyver is something I do anyway when working on something simple that uses binary files, especially ones that are linked through the software that is required to read them (eg CAD designs). I will create multiple directories, eg v1, v2 and copy the entire contents of my in-progress files in it that I want to preserve the history. The issue with this is that when file names are changed, it can break links to dependent files, so keeping a file identical is important for tracking files. It was also a goal to use this tool over a network drive where multiple users can archive files as they wish
 There are a couple of other excellent options, but have a steep learning curve and some do not perform well with large binary files. Also, most version control systems are designed for code or text files, not large binanry files, like word documents or cad files. If you need more functionality, I'd recommend checking out these programs in order os simplicity. [boar VCS](https://bitbucket.org/mats_ekberg/boar/wiki/Home), [mercurial SCM](https://www.mercurial-scm.org/), [git](https://git-scm.com/) with the [large file extension](https://git-lfs.github.com/)
 
 ## The basic operation of this program goes like this
@@ -20,13 +19,13 @@ There are a couple of other excellent options, but have a steep learning curve a
 ### Criteria for design
 * Simplicity is your friend, obscurity is your enemy
 * It is unacceptable to rename files to track versions. This accomplishes this by putting the files in different directories and keep your current file with the desired, persistent filename
-* Can be used over a network drive. Does not require a central server. 
+* Can be used over a network drive. Does not require a central server.
 * Be OS agnostic (written in Python)
 * know when the changes were made, with a comment and who did it
 
 # Tutorial
 To get started, lets do a quick demo in windows. Brace yourself, you are going to have to use the command line. In your current directory with the pyver.py file, open a command line with ```shift+right_click``` and in the menu select ```Open command window here```. Another way to get a command window in your current directory is to type ```alt+D``` and type ```powershell``` or ```cmd```.
-Now type 
+Now type
 ```
 python pyver.py
 ```
@@ -34,7 +33,7 @@ python pyver.py
 Done. That's it. We have created a pyver repository and made a backup of all the files in our current directory in an archive naming year-month-day-hour-minute-second. Anytime we need to make another backup, just repeat the last step.
 
 OK, lets add a bit more work upfront to save us some typing for years to come. I would recommend having a windows folder that is added to the user PATH system variable where you can keep test or production scripts that you want to access from the command line. For example, I have ```C:\Users\Neal\bin``` that is in the system PATH variable which I can dump python scripts with the *.bat file. Now, all we have to type is ```pyver``` to get the same result as ```python pyver.py```
-To add this path variable, type 
+To add this path variable, type
 
 
 > 1) Start   
@@ -56,25 +55,25 @@ The next is tree, which shows all the files in the repo.
 ```
 pyver tree
 
-./.archive 
-|  ./20160125210812 
+./.archive
+|  ./20160125210812
 |   |     pyver.py  
 |   |     README.md  
 |   |     pyver.bat  
 |     pyver.log  
-|  ./20160125210814 
+|  ./20160125210814
 |   |     pyver.py  
 |   |     README.md  
 |   |     pyver.bat  
-|  ./20160125210817 
+|  ./20160125210817
 |   |     pyver.py  
 |   |     README.md  
 |   |     pyver.bat  
-|  ./20160125210854 
+|  ./20160125210854
 |   |     pyver.py  
 |   |     README.md  
 |   |     pyver.bat  
-|  ./20160125210912 
+|  ./20160125210912
 |   |     pyver.py  
   pyver.py  
   README.md  
@@ -88,7 +87,7 @@ We also have some flags we can use to customize our commits. This commit adds on
 pyver -f "file1.txt|file2.docx" -c "making a comment for this commit"
 ```
 
-We can also use wildcards to add groups of files rather than listing each individual file. 
+We can also use wildcards to add groups of files rather than listing each individual file.
 ```
 pyver -f "*.txt|*.docx" -c "I added all the txt and docx files to my archive"
 ```
