@@ -10,9 +10,9 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-#SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
+SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
 #SITEURL = 'http://nagordon.github.io'
-SITEURL = 'http://ifcuriousthenlearn.com'
+#SITEURL = 'http://ifcuriousthenlearn.com'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'

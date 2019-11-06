@@ -5,15 +5,15 @@ import os
 
 ################# DEVELOPMENT SETTINGS ###########################
 RELATIVE_URLS = False   # when deploying site
-#RELATIVE_URLS = True    # developing site 
+#RELATIVE_URLS = True    # developing site
 
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
 ################# SITE SETTINGS ###########################
 AUTHOR = 'Neal Gordon'
 SITENAME = 'if curious: then learn'
-#SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
-SITEURL = 'http://ifcuriousthenlearn.com'
+SITEURL = 'http://nagordon.github.io/ifcuriousthenlearn' 
+#SITEURL = 'http://ifcuriousthenlearn.com'
 HIDE_SITENAME = False
 
 ################# Pelican SETTINGS ###########################
@@ -36,10 +36,10 @@ DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search')
 IPYNB_USE_META_SUMMARY = True
 MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['liquid_tags.img', 
-           'liquid_tags.youtube', 
-           'liquid_tags.include_code', 
-	       'liquid_tags.notebook',	
+PLUGINS = ['liquid_tags.img',
+           'liquid_tags.youtube',
+           'liquid_tags.include_code',
+	       'liquid_tags.notebook',
 		   'ipynb']
 
 SUMMARY_MAX_LENGTH = 200
@@ -85,6 +85,8 @@ ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
 EMAIL = 'nealagordon@gmail.com'
+
+
 
 TIMEZONE = 'America/New_York'
 DATE_FORMATS = {'en': '%Y-%m-%d'}
