@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>An investigation of the Brick Stacking Problem - if curious: then learn</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="http://nagordon.github.io/ifcuriousthenlearn/images/earth.png" rel="icon">
+
+<link rel="canonical" href="http://nagordon.github.io/ifcuriousthenlearn/blog/2017/05/29/brick-stacking/">
+
+        <meta name="author" content="Neal Gordon" />
+        <meta name="keywords" content="tutorial,python,engineering" />
+        <meta name="description" content="Another fun example of using math and python to investigate and solve a statics puzzle of brick stacking" />
+
+        <meta property="og:site_name" content="if curious: then learn" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="An investigation of the Brick Stacking Problem"/>
+        <meta property="og:url" content="http://nagordon.github.io/ifcuriousthenlearn/blog/2017/05/29/brick-stacking/"/>
+        <meta property="og:description" content="Another fun example of using math and python to investigate and solve a statics puzzle of brick stacking"/>
+        <meta property="article:published_time" content="2017-05-29" />
+            <meta property="article:section" content="Engineering" />
+            <meta property="article:tag" content="tutorial" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="engineering" />
+            <meta property="article:author" content="Neal Gordon" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://nagordon.github.io/ifcuriousthenlearn/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://nagordon.github.io/ifcuriousthenlearn/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://nagordon.github.io/ifcuriousthenlearn/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://nagordon.github.io/ifcuriousthenlearn/theme/css/style.css" type="text/css"/>
+
+        <link href="http://nagordon.github.io/ifcuriousthenlearn/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="if curious: then learn ATOM Feed"/>
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://nagordon.github.io/ifcuriousthenlearn/" class="navbar-brand">
+if curious: then learn            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="http://nagordon.github.io/ifcuriousthenlearn/pages/about-me.html">
+                             About me
+                          </a></li>
+                        <li >
+                            <a href="http://nagordon.github.io/ifcuriousthenlearn/category/aviation.html">Aviation</a>
+                        </li>
+                        <li >
+                            <a href="http://nagordon.github.io/ifcuriousthenlearn/category/computing.html">Computing</a>
+                        </li>
+                        <li class="active">
+                            <a href="http://nagordon.github.io/ifcuriousthenlearn/category/engineering.html">Engineering</a>
+                        </li>
+                        <li >
+                            <a href="http://nagordon.github.io/ifcuriousthenlearn/category/tools.html">Tools</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2017/05/29/brick-stacking/"
+                       rel="bookmark"
+                       title="Permalink to An investigation of the Brick Stacking Problem">
+                        An investigation of the Brick Stacking Problem
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-05-29T00:00:00-07:00"> 2017-05-29</time>
+    </span>
+
+
+            <span class="label label-default">By</span>
+            <a href="http://nagordon.github.io/ifcuriousthenlearn/author/neal-gordon.html"><i class="fa fa-user"></i> Neal Gordon</a>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://nagordon.github.io/ifcuriousthenlearn/tag/tutorial.html">tutorial</a>
+        /
+	<a href="http://nagordon.github.io/ifcuriousthenlearn/tag/python.html">python</a>
+        /
+	<a href="http://nagordon.github.io/ifcuriousthenlearn/tag/engineering.html">engineering</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph > img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?</p>
+<p>I pondered the problem and deliberately avoided finding solutions. I struggled through a few hand-calculations and hacked out a bit of python code to visualize my solution.</p>
+<p>The math of the problem is seemingly simple, just basic statics, but it becomes tricky as the problem is worked. We eventually find that the bricks stack according to a harmonic series!</p>
+<p>$ overhang = \sum_{i=1}^{n} \frac{1}{2i} $</p>
+<p>OK, lets get started. First run the code to create the <code>brick_balance</code> function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">brick_balance</span><span class="p">(</span><span class="n">ntot</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This program calcuates bricks stacked on one another to maximize overhang</span>
+<span class="sd">    </span>
+<span class="sd">    # number of bricks, minimum 2</span>
+<span class="sd">    ntot = 7</span>
+<span class="sd">    </span>
+<span class="sd">    # length of brick</span>
+<span class="sd">    L = 1</span>
+<span class="sd">    </span>
+<span class="sd">    # thickness of brick</span>
+<span class="sd">    t = 0.15</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># force variables to be integers and floats</span>
+    <span class="n">ntot</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ntot</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+    
+    <span class="c1">#overhang</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntot</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="c1">#print(&#39;overhang=&#39;,v)</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">([</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ntot</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="c1">#print(&#39;x location = &#39;,x)</span>
+         
+    <span class="n">x</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x1</span><span class="o">*</span><span class="n">L</span> <span class="k">for</span> <span class="n">x1</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    
+    <span class="c1">#y = arange(t/2,(ntot+1)*t,t)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">z</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">t</span><span class="o">/</span><span class="mi">2</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntot</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    
+    <span class="c1"># center of gravity</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">/</span><span class="p">(</span><span class="n">ntot</span><span class="p">)</span>
+    
+    <span class="n">maxoverhang</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">C</span> 
+    
+    <span class="c1"># plotting</span>
+    <span class="n">fig2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">xi</span><span class="p">,</span><span class="n">yi</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">xi</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">yi</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="n">L</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;-o&#39;</span><span class="p">,[</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)],</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;n=</span><span class="si">{}</span><span class="s1">, L=</span><span class="si">{}</span><span class="s1">&quot;, t=</span><span class="si">{}</span><span class="s1">&quot;, max overhang=</span><span class="si">{:0.2f}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ntot</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">maxoverhang</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;height, in&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    
+    <span class="c1">## can use as a command line tool by uncommenting out the following 2 lines</span>
+    <span class="c1">#user_args = sys.argv[1:]</span>
+    <span class="c1">#n,L,t = user_args</span>
+    
+    
+    <span class="c1">#brick_balance(ntot=4,L=1,t=0.1)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;brick_balance function created&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>brick_balance function created
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The simplest example is 2 bricks. Adults and children know that you cannot go more than half-way the length before the brick will topple off. For a brick of length 1 inch, the max overhang is 0.5 inches</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">brick_balance</span><span class="p">(</span><span class="n">ntot</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+hoh4hOwT9rJ890nDZ1VFxM/JjivdRbbr5gngq4Xab5P05cJL7siX7RhgZv78T3tbey98BviapI3A
+35EFQLdLgZURcWVEvEJ2evYlkvarnElELMmnfwd4Fvgg8MGI2FxodgNwPG9sbXQ7m+wf/mKyv+FP
+gb17szARsRH463w5nicLwlkJszifbFfQ08APydaDV3pRSo/rZPeWd0XbpWS7n64DLouIaxuZ1/aq
++ywH245IuoPsYOPDZdfSG5JGkJ39dGhEvFp2PSnyXT0/iYhjyq5lMJD0dbKD7ufUbWz9xsFhZgNG
+vntqBNlZZO8mOz7yyYi4pdTCBpmB8i1PMzPIjvn8mOwssbVkZ5LdWmpFg5C3OMzMLIkPjpuZWZLt
+clfV2LFjY/LkyWWXYWY2YMybN+/ZiGjo4ozbZXBMnjyZuXPnll2GmdmAIWlF/VYZ76oyM7MkDg4z
+M0tSanBIOknZ3dWWSrqwhzZTJD2UX4PmV62u0czMtlXaMQ5lN4K5guwSzquAOZJmRcTiQpsxwHfJ
+LoP9pKS3VJ+bmZm1SplbHEeSXbN/WX69nBuBaRVtzgBu7r5AXUQ80+IazcysQpnB0cG219JfxRv3
+Bui2P7BbfrXReZLOxszMStXup+MOA94FHEd2S8r/lnRffinjbUiaAcwA6OzsrJxsZmb9pMwtjtVs
+exOWCbxxU5luq4DbI+KliHgW+DXb3oTndRExMyK6IqJr3LiGvsNiZma9UGZwzAH2k7RPfhnt03nz
+dflvBY6VNEzSKOAoYEBeKtzMbHtR2q6qiNgi6XyymxANBa6OiEWSuu/SdVVEPCzp58B8YCvw/YhY
+WFbNZma2nV4dt6urK3zJETOzxkmaFxFdjbT1N8fNzCyJg8PMzJI4OMzMLImDw8zMkjg4zMwsiYPD
+zMySODjMzCyJg8PMzJI4OMzMLImDw8zMkjg4zMwsiYPDzMySODjMzCyJg8PMzJI4OMzMLImDw8zM
+kjg4zMwsiYPDzMySODjMzCyJg8PMzJI4OMzMLImDw8zMkjg4zMwsiYPDzMySODjMzCyJg8PMzJI4
+OMzMLImDw8zMkjg4zMwsiYPDzMySODjMzCyJg8PMzJKUGhySTpK0RNJSSRfWaPduSVskndbK+szM
+7M1KCw5JQ4ErgJOBA4GPSjqwh3ZfB+5obYVmZlZNmVscRwJLI2JZRGwGbgSmVWn3WeAm4JlWFmdm
+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
+JU2vzga1Uw/vcFC0q/v/lU93+XTcwarWrqpu/wpcBLwKEBHzyb4EaGaD1aJb+B8HOTgGq0aCY1T3
+dzgKvJFqZjZINRIcz0ral/x6VZJOA9b0R+eSTpK0RNJSSRdWmS5J386nz5d0RLX5mJlZ6zTyBcC/
+AmYCb5e0GngC6POlRiQNBa4ATgBWAXMkzYqIxYVmJwP75Y+jyI61HNXXvs3MrPca+QLgMuD4/Jvi
+QyJiYz/1fSSwNJ8/km4EppHd27zbNOC6yK5zfp+kMZL2joh+2eIxM7N0jZxVtQPwEWAyMKzwBcCv
+9bHvDmBlYXgVb96aqNamgyq7yiTNAGYAdHZ29rqoSZMmDYz7W5uVbNKkSSwvuwgrRSO7qm4lu//G
+PNr4vuMRMZNslxpdXV29vlHA8uXL+6skM7PtUiPBMSEiTmpC36uBicV+8nGpbczMrIUaOavqXkmH
+NKHvOcB+kvaRNILsuyGV9zafBZydn111NLDBxzfMzMpV6yKH3beMHQZMl7SMbFeVgIiIQ/vScURs
+kXQ+cDvZ/T2ujohFks7Lp18FzAamAkuBl4HpfenTzMz6rtauqg80u/OImE0WDsVxVxWeB9npwGZm
+1iZqXeRwRSsLMTOzgaGRYxxmZmavc3CYmVkSB4eZmSVxcJiZWRIHh5mZJXFwmJlZEgeHmZklcXCY
+mVkSB4eZmSVxcJiZWRIHh5mZJXFwmJlZEgeHmZklcXCYmVkSB4eZmSVxcJiZWRIHh5mZJXFwmJlZ
+EgeHmZklcXCYmVkSB4eZmSVxcJiZWRIHh5mZJXFwmJlZEgeHmZklcXCYmVkSB4eZmSVxcJiZWRIH
+h5mZJXFwmJlZEgeHmZklKSU4JO0u6ReSHst/7lalzURJd0laLGmRpAvKqNXMzLZV1hbHhcCdEbEf
+cGc+XGkL8PmIOBA4GvgrSQe2sEYzM6uirOCYBlybP78WOLWyQUSsiYgH8ucbgYeBjpZVaGZmVZUV
+HHtGxJr8+dPAnrUaS5oMHA78rkabGZLmSpq7bt26/qrTzMwqDGvWjCX9EtiryqSvFAciIiRFjfns
+DNwE/E1EvNhTu4iYCcwE6Orq6nF+ZmbWN00Ljog4vqdpktZK2jsi1kjaG3imh3bDyULj+oi4uUml
+mplZgrJ2Vc0CzsmfnwPcWtlAkoAfAA9HxD+1sDYzM6uhrOC4DDhB0mPA8fkwksZLmp23eQ/wMeD9
+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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So far so good. Now lets see if we can answer our question of if it is possible to allow the top brick to clear the bottom brick. After playing around the the total bricks, we arrive at 4 bricks. This solution is independent of brick length, thickness and weight! I thought this was very interesting!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">brick_balance</span><span class="p">(</span><span class="n">ntot</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAY4AAAEICAYAAABI7RO5AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xm8HGWd7/HPNxsEsrGGLCQBDCi7eAQuw2gY9iiC48zI
+ogRcIiqo1w3QO4rKvcqgjsugGJEBFWRUGAhMWIQBFb1gDhgISUBCzL4aIAQSyPabP6oOFp0+farO
+6e46y/f9evWra3mq6lfddc6vn+epfloRgZmZWV79yg7AzMx6FicOMzMrxInDzMwKceIwM7NCnDjM
+zKwQJw4zMyvEicPM6krSeZIeLDsOaxwnjh5O0hckhaQTCmwTkl7XhWOOkjRd0vJ0XxM6KD9B0v2S
+Nkh6Mhtr+k/murTMwpzHnyRpaRfi/9+SVkp6QdK1knaoUXaapKckbZN0XsW6y9LHJEkPdDYeaz5J
+X5E0W9IWSZd1UFaSrpC0Nn1cIUlVyr01/Xu4PLOs8PXdEzhx9GCS9gP+EVjR5ENvA+4C3pWz/M+A
+PwK7AZ8HfilpjwbFVpOkk4FLgOOB8cC+wJdqbPIY8BHg0cZH1/NJGlB2DDnNBz4L/FeOslOBM4DD
+gEOB04APZQtIGgh8G3i4vmF2T04cTSZpoaRPS3pc0jpJ/yFpx07u7irgYmBTHUPsUESsiojvATM7
+Kitpf+AI4IsRsTEibgYeJ3/SqdzfzsCdwGhJL6aP0QV2MQX4UUTMiYjngC8D57VXOCKuioj7gJc7
+E2+l9BPo7yT9q6TnJS2QdEy6fImk1ZKmZMq/TdIf09rRkuynY0nvlvRnScPS+VPTmlTVpCzpHZLm
+pMd9QNIb0uUXS/plRdlvS/pOOj1c0o8krZC0TNLlkvpXOZ+1QDa+r0t6Lo3x1Mzy8yXNk7Q+Pf8P
+ZdZNkrRU0qfS12KFpPMz63eTdHv6esxMYyncLBYR10fEncD6HMWnAN+IiKURsQz4OttfM58C7gGe
+LBpLjxQRfjTxASwE/gCMBnYF5gEXpOvGAc/XeJyd2c8/Ardl9nlCgRgCeF2V5cd2cPxjK8oPSPc1
+ocax3gnMq1j2XeC7XXgNJwFLK5ad3UHs49JyjwHvzmy3W3oOu3VwzAeB8+rw/p8HbAHOB/oDlwOL
+ST4E7ACcRPLPbEjmXA8h+ZB3KLAKOCOzvxuA69LzWA68vZ3j7g+8BJwIDCT5tD0fGERS89oADE3L
+9iepxR6dzv8n8ANgZ2DP9Pr9UMX5XJReD4PTZZuBD6b7+nAam9Jt3gbsBwh4a3rsIzLnu4UkoQ8E
+Jqfrd0nX35Q+dgIOBJYAD2bO8/Ea18D3qrwuPwUu6+A9WwcclZl/E7A+Mz8e+BMwJH0vLm/0/5Gy
+H6UH0NceJP/k35OZ/xfg6oL7GAo8TfoPmzoljk6cS57E8V7goYpl/xe4rgvHnURF4iiw7TPAKZn5
+gR2dQ1qunonj6cz8IenxR2aWrQUOb2f7bwH/mpkfQZJ4ZgM/qHHcfwZ+npnvBywDJmXO79x0+kTg
+mXR6JPAKMDiz7VnA/ZnzWVzlHOdn5ndKz3GvdmK7Ffh45r3dCAzIrF8NHE2ShDYDB2TWXU4mcXTi
+/ciTOLYCr8/MT0zPpy0R3kb6YaSvJA43VZVjZWZ6A8knlSIuA34SEQvrFVADvQgMq1g2nHxNBI1Q
+Gc/w9LmZ8azKTG+EpPmvYtkQAElHpTcWrJG0DrgA2L2tYEQ8D/wCOBj4Ro1jjgYWZbbbRvJpfUy6
+6EaShABJ7e3GdHo8SXJdkTZxPU9S+9gzs+8lVY736jUeERvSybZzOlXSQ5KeTfc3OXtOwNqI2JKZ
+b/sb2YPkw0r2eNWOXW/VrpkXIyIknUZSU/uPJsTRbThxdCOSxmXa7as9zkmLHg98LG3PXgnsDfxc
+0sVdPP7fdnD8v+3EbucA+0oamll2WLq8s7Yb0lnSOR3EPi4Tz2EVsayKiLVdiKeRbgSmA3tHxHDg
+apImHgAkHQ68j+QGhO/U2M9ykiTQtp1Irptl6aJfAJMkjSVpXmxLHEtIahy7R8SI9DEsIg7K7Dv3
+ENtK7mC7maSfYGREjABmZM+phjUkzVhjM8v2rtj/nBrXwNV546xQ7Zppu36PB1oyf4vvBj4h6bZO
+HqtHcOLoRiJicUQMqfG4IS16PMknzMPTx3KSuzyuglc7LBd2cLhBknbMPPpHxG87OP5v2zZW0qHf
+dhvrDmqngz8i/gTMAr6YHufvSZpnbq4VnJJbGK9rZ/UqYDdJbbUFIuKGDmJfnBb9MfB+SQdK2oWk
+Cae94yBpUHpuAgam51Dz7ybteL6sVpkChgLPRsTLko4kqQ20HWdHkqaWz5H0mYyR9JF29vNz4G2S
+jldyB9CnSBLC7wEiYg3wAPDvwJ8jYl66fAVJp+83JA2T1E/SfpLe2snzGURy3awBtqSd5ifl2TAi
+tgK3AJdJ2knS64FzK8ocVOMauKCtnKSB6evXDxjQ9jfQzqF/DHxS0hhJY0heu+vSdf9M0n/U9rc4
+HfghyfvRazlx9EARsTYiVrY9SNpgn4uIF9MiewO/62A3c0iaRNoeRS/0jSRVeEjuJNnYtkLS1RWf
+7s4EWoDngK8C/5D+o6ql3XOIiCdJPmEvSJtPct9VFRF3kfQr3U/SdPNn4IuZ2O+U9LnMJvek53YM
+MC2dfktnY++EjwBflrQe+AJJAmjzVWBJRHw/Il4B3gNcLmli5U4i4ql0/XeBv5DcUnpaRGTvyLsR
+OIG/1jbanEvyD38uyXv4S2BUZ04mItYDH0vP4zmSRDi9wC4uJGkqWgn8hOQ6eKUTofyQ5L08i+QW
+8Y0k/XGv1rwzZX8A3E7SjzQbuCNdRkSsr/hb3Ai8FBHPdiKmHqOtc8d6EUn3kHQ2zis7ls6QNIjk
+7qdDI2Jz2fEUkTb1/Dwijik7lr5A0hUkne5TOixsdePEYWY9Rto8NYjkk/+bSfpHPhARt5YaWB/T
+U77laWYGSZ/Pz0juEltFcidZr+6I7o5c4zAzs0LcOW5mZoX0yqaq3XffPSZMmFB2GGZmPcYjjzzy
+l4jINfhor0wcEyZMoLW1tewwzMx6DEmLOi6VcFOVmZkV4sRhZmaFOHGYmVkhThxmZlaIE4eZmRXi
+xGFmZoU4cZiZWSFOHGZmVogTh5mZFeLEYWZmhThxmJlZIU4cZmZWiBOHmZkV4sRhZmaFOHGYmVkh
+ThxmZlaIE4eZmRXixGFmZoU4cZiZWSFOHGZmVogTh5mZFeLEYWZmhZSaOCSdIukpSfMlXVJl/XBJ
+t0t6TNIcSeeXEaeZmf1VaYlDUn/gKuBU4EDgLEkHVhT7KDA3Ig4DJgHfkDSoqYGamdlrlFnjOBKY
+HxELImITcBNwekWZAIZKEjAEeBbY0twwzcwsq8zEMQZYkplfmi7L+jfgDcByYDbw8YjYVm1nkqZK
+apXUumbNmkbEa2ZmdP/O8ZOBWcBo4HDg3yQNq1YwIqZFREtEtOyxxx7NjNHMrE8pM3EsA/bOzI9N
+l2WdD9wSifnAn4HXNyk+MzOroszEMROYKGmftMP7TGB6RZnFwPEAkkYCBwALmhqlmZm9xoCyDhwR
+WyRdCNwN9AeujYg5ki5I118NfAW4TtJsQMDFEfGXsmI2M7MSEwdARMwAZlQsuzozvRw4qdlxmZlZ
++7p757iZmXUzThxmZlaIE4eZmRXixGFmZoU4cZiZWSFOHGZmVogTh5mZFeLEYWZmhThxmJlZIU4c
+ZmZWiBOHmZkV4sRhZmaFOHGYmVkhThxmZlaIE4eZmRXixGFmZoU4cZiZWSFOHGZmVogTh5mZFeLE
+YWZmhThxmJlZIaUmDkmnSHpK0nxJl7RTZpKkWZLmSPp1s2M0M7PXGlDWgSX1B64CTgSWAjMlTY+I
+uZkyI4DvAadExGJJe5YTrZmZtSmzxnEkMD8iFkTEJuAm4PSKMmcDt0TEYoCIWN3kGM3MrEKZiWMM
+sCQzvzRdlrU/sIukByQ9Iunc9nYmaaqkVkmta9asaUC4ZmYG3b9zfADwJuBtwMnAP0vav1rBiJgW
+ES0R0bLHHns0M0Yzsz6ltD4OYBmwd2Z+bLosaymwNiJeAl6S9BvgMOBPzQnRzMwqlVnjmAlMlLSP
+pEHAmcD0ijK3AcdKGiBpJ+AoYF6T4zQzs4zSahwRsUXShcDdQH/g2oiYI+mCdP3VETFP0l3A48A2
+4JqIeKKsmM3MDBQRZcdQdy0tLdHa2lp2GGZmPYakRyKiJU/Z7t45bmZm3YwTh5mZFeLEYWZmhThx
+mJlZIU4cZmZWiBOHmZkV4sRhZmaFOHGYmVkhThxmZlZImYMcmvVpEyZMYNGiRWWHYb3I+PHjWbhw
+YcOP48RhVpJFixbRG4f8sfJIaspx3FRlZmaFOHGYmVkhbqoys27r1j8u48q7n2L58xsZPWIwnzn5
+AM54Y+UvTFuzOXGYWbd06x+Xcekts9m4eSsAy57fyKW3zAZw8iiZm6rMrFu64q4nX00abTZu3sqV
+dz9VUkTWxjUOs0b697clz+f/V7lxdHPPvrSJ2cvWMXvp88xeto4nlr3AinUvVy27/PmNTY7OKjlx
+mFlTVUsSyzLJYJ/dd+aI8buw/uXNvPDylu22Hz1icDPDtSqcOMysYfImiSnHjOeQMSM4aMwwhu04
+ENi+jwNg8MD+fObkA5p+HvZaThxmjXTMhWVH0DRdSRLVtHWA+66q7ke98ZurLS0t0draWnYYZjVJ
+6rHfHM+TJA4eM5xDxgzLlSSsPrpyTUl6JCJa8pQttcYh6RTg20B/4JqI+Fo75d4M/H/gzIj4ZRND
+NOuavzydPO8+sdw4uqDeNQnr+UpLHJL6A1cBJwJLgZmSpkfE3CrlrgDuaX6UZl10+yeS5x5yV1WR
+JHHwmOEcPGa4k0QfVGaN40hgfkQsAJB0E3A6MLei3EXAzcCbmxueWe/mJGGdVWbiGAMsycwvBY7K
+FpA0BngncBwdJA5JU4GpAOPGjatroFaMhwv/q/un7ATAce+rPmpp00YzHTyMQXu9jkF7vY4dRibP
+A4bv+er6zc8uY9PK+WxaNZ9XVs5n08pnWLRpAw80JTqrl/HjxzflOB0mDkl7AB8EJmTLR8T7GhfW
+q74FXBwR2zr6A4uIacA0SDrHmxCbtcPDhWekXwCM65rXVFWk47qn1CR68o0EvVGeGsdtwG+Be4Gt
+HZQtYhmwd2Z+bLosqwW4KU0auwOTJW2JiFvrGIdZj+XmJitDnsSxU0Rc3IBjzwQmStqHJGGcCZyd
+LRAR+7RNS7oOuMNJw3qUt3y6brtykrDuIk/iuEPS5IiYUc8DR8QWSRcCd5PcjnttRMyRdEG6/up6
+Hs+sFPsdt92iPEOFO0lYd9bhFwAlrQd2Bl4BNgMCIiKGNT68zvEXAMvl9uiMFY8nz6MOBaoPo7Hj
+wH5MOWYCQ3cY0Gv6JOrN11Tj1fULgBExtOshmfVRd12aPKff47jy7qe2Gyr85c3b+MGvFwCuSVjP
+0G7ikPT6iHhS0hHV1kfEo40Ly6x3iQgeX7ruNTWJLAGPXXaSk4T1CLVqHJ8k+V7EN6qsC+DvGhKR
+WS+yZds21r64ifO/8yBzV7yQtPNWKTd6xGAnDesx2k0cETE1fd6+d8/M2tVWu/jZHxbz94ufZ1sE
+sRt85YyDGdAPvnz7PA8Vbj2ah1U3q5P1L2/mtlnLufHhxcxd8QKDB/bng0MHMXLYjsz40LGvfkt8
+8MABHircejQnDrMuyNYupj+2nA2btvKGUcP4yhkHc/rhoxm2epekYGbkgzPeOMaJwno0Jw6zTqhW
+uzjtsFGcfdR4Dhs7/K9jUI07qvaOzHqgwolD0ijg2Yh4pQHxmHVbHdYuqnVuL344eXYCsV6kMzWO
+nwD7Sbo5Iuo3noJZN5W7dlHNfV9OnnvI73GY5VE4cUTECUr+Ug5sQDxWQHcevrxZw4U30qC9JjLk
+8FPY+Q1vod+gwWxatYD1s+7kpbm/5slNG7gyxz46Glbd8mnWcOGWT55h1X8SEe+tWPzjKsusyTx8
+ef1Vq12847DRnHXUOA4bOxnpomI7LGFY9a7w0B6WR54ax0HZGUkDgDc1Jhyz5utU34VZH1ZryJFL
+gc8BgyW90LYY2ET6g0lmPVnt2kUHfRdmfVitb45/FfiqpK9GxKVNjMmsbiqHMP/0Sfuz7x5Dmle7
+OOWr9d2fWTfQ4bDq8Opvf4/ntT8d+5sGxtUlfWVYdbdH11ZtCPO2saJcu6jO11TfVddh1SV9jeTX
++eby15+ODaDbJg4zqD6EeQDDBw/ktxcf15y+i2fuT56r/KCTWU+Vp3P8ncAB/sKf9SRbt0W7Q5i/
+sHFz8zq8f/P15NmJw3qRfjnKLAB8W4n1GI8ufo7Tr3qw3fWjRwxuYjRmvU+tu6q+S1Kz3wDMknQf
+yc/HAhARH2t8eGb5rX3xFa6460l+3rqUkcN24Nz/NZ5ftC5h4+Ztr5bxEOZmXVerqaqtd/kRYHoT
+YjHrlK3bghv/sJgr73qSDZu28qG37MtFx09kyA4DOGLcLh7C3KzOat2Oe32jDy7pFODbQH/gmoj4
+WsX6c4CLSW6GWQ98OCIea3Rc1nM8uvg5vnDbEzyx7AWO2W83vvSOg5g4cuir6z2EuVn95bmrajbb
+/9rlOpIayeURsbYzB5bUH7gKOBFYCsyUND0i5maK/Rl4a0Q8J+lUki8eephR265Z6rtnvZG3Hzqq
++91We9q3yo7ArO7y3FV1J8ltuDem82cCOwErgeuA0zp57COB+RGxAEDSTcDpJLf9AhARv8+UfwgY
+28ljWS+xdVtw48OLuPLup7ZrluqWdp9YdgRmdZfnr+2EiDgiMz9b0qMRcYSk93Th2GOAJZn5pdSu
+TbyfJIlZH9VRs1S39FR6yR5warlxmNVRnsTRX9KREfEHAElvJumTANjSsMgyJB1HkjiOrVFmKjAV
+YNy4cc0Iq6ZmDXne7ZpmGqDf4GHsMuk8hhx6ElvWr+W5/76Gnz35W342tezIOvbqsOrXbyg5knw8
+fLnlkSdxfAC4VtIQkk7qF4APSNoZ6MpAPMuAvTPzY9NlryHpUOAa4NRa/SkRMY108MWWlpbSx0zw
+kOddV9ks9f5j9+Gi409myA7nlh1afnUeVt1Dglh30GHiiIiZwCGShqfz6zKrf96FY88EJkrahyRh
+nAmcnS0gaRxwC/DeiPhTF45lPUyPbJYy6yNqfQHwPRHxU0mfrFgOQER8sysHjogtki4E7iZp+ro2
+IuZIuiBdfzXwBWA34HvpcbfkHYTLeqYec7eUWR9Wq8axc/rcsI95ETEDmFGx7OrM9AdImsqsF8oO
+eT5qxI4cs+9u3DN3Vc+4W8qsD8s1rHpP0x2GVXdbdG3VhjwHmLjnznzvnDf1nmapdUuT5+H1uZPc
+15U1SpFh1Tsc5FDS/pLuk/REOn+opP/T1SCtb6s25DnAhk1be0/SgCRh1ClpmHUXeUbH/SFwKbAZ
+ICIeJ+nINuu05e0Meb78+ZebHEmDPXFz8jDrRfI0IO8UEX+o6Jxsyvc3rHdqXfgsElRrcel1Q57P
+vDZ5Pvhd5cZhVkd5ahx/kbQf6XhVkv4BWNHQqKxXigh++tAizvrhQ+y600B2GPDay89Dnpv1DHlq
+HB8l+WLd6yUtIxl4sCtDjVgf9MqWrXzxtjncNHMJkw7Yg2+/+43c/9RqD3lu1gPl+QLgAuCE9Jvi
+/SJifePDst5k5bqXueCnjzBryfN89Lj9+OSJB9C/nzzkuVkPlWdY9R2AdwETgAGZLwB+uaGRWa/Q
+uvBZPnzDo7z0yha+f84RnHrIqLJDMrMuytNUdRvJ7288QuanY81qiQhueHgxX7p9DmNGDOaGDxzF
+/r3pNtu8/unHZUdgVnd5EsfYiDil4ZF0E/Uc1bbPDpPRfwC7nvhhhh52MhufaWXB7VdywGdfKjuq
+XsGj11p3kCdx/F7SIRExu+HRdAMe1bZrtuvP+H+T6d/vi2WHVZ4/3sB555/PdbM2lR2JWd3UGuSw
+7SdjBwDnS1pA0lQlICLi0OaEaD2F+zOqmHUj5x0+sOwozOqqVo3j7U2Lwno092eY9S3tJo6IaPzP
+11mPV+37GcN38idss97MY1ZbIdmh0EcO25FBA8TiZze+5vsZZta7OXFYbpVDoa98IRmQ8PxjxvOZ
+k19fZmhm1kR5xqoyA9ofCv2euatLiKaHOOcXTL5hQ9lRmNWVE4fl1v5Q6NWXGzBoJzZ6LGnrZZw4
+LLf2hjzvdUOh19MffsiHW3yzgPUuThyW22dOPoDBA/u/ZpmHQu/AnFv5p4OcOKx3cee45dY2kq2H
+Qjfr20pNHJJOAb4N9AeuiYivVaxXun4ysAE4LyIebXqg9ioPhW5mpTVVSeoPXAWcChwInCXpwIpi
+pwIT08dU4PtNDdLMzLZTZh/HkcD8iFgQEZuAm4DTK8qcDvw4Eg8BIyR5ACQzsxKV2VQ1BliSmV8K
+HJWjzBiq/Oa5pKkktRLGjRvX6aDGjx/fd4dDt4YYP348C8sOwqyOek3neERMI/ltdFpaWjo9LvrC
+hQvrFZKZWa9UZlPVMmDvzPzYdFnRMmZm1kRlJo6ZwERJ+0gaBJwJTK8oMx04V4mjgXURsV0zlZmZ
+NU9pTVURsUXShcDdJLfjXhsRcyRdkK6/GphBcivufJLbcc8vK14zM0uU2scRETNIkkN22dWZ6QA+
+2uy4zMysfR5yxMzMCnHiMDOzQpw4zMysECcOMzMrxInDzMwKceIwM7NCnDjMzKwQJw4zMyvEicPM
+zApx4jAzs0KcOMzMrBAnDjMzK8SJw8zMCnHiMDOzQpw4zMysECcOMzMrxInDzMwKceIwM7NCnDjM
+zKwQJw4zMyvEicPMzAopJXFI2lXSryQ9nT7vUqXM3pLulzRX0hxJHy8jVjMze62yahyXAPdFxETg
+vnS+0hbgUxFxIHA08FFJBzYxRjMzq6KsxHE6cH06fT1wRmWBiFgREY+m0+uBecCYpkVoZmZVlZU4
+RkbEinR6JTCyVmFJE4A3Ag/XKDNVUquk1jVr1tQrTjMzqzCgUTuWdC+wV5VVn8/ORERIihr7GQLc
+DHwiIl5or1xETAOmAbS0tLS7PzMz65qGJY6IOKG9dZJWSRoVESskjQJWt1NuIEnSuCEibmlQqGZm
+VkBZTVXTgSnp9BTgtsoCkgT8CJgXEd9sYmxmZlZDWYnja8CJkp4GTkjnkTRa0oy0zN8A7wX+TtKs
+9DG5nHDNzKxNw5qqaomItcDxVZYvByan0w8CanJoZmbWAX9z3MzMCnHiMDOzQpw4zMysECcOMzMr
+xInDzMwKceIwM7NCnDjMzKwQJw4zMyvEicPMzApx4jAzs0KcOMzMrBAnDjMzK8SJw8zMCnHiMDOz
+Qpw4zMysECcOMzMrxInDzMwKceIwM7NCnDjMzKwQJw4zMyvEicPMzAopJXFI2lXSryQ9nT7vUqNs
+f0l/lHRHM2M0M7PqyqpxXALcFxETgfvS+fZ8HJjXlKjMzKxDZSWO04Hr0+nrgTOqFZI0FngbcE2T
+4jIzsw6UlThGRsSKdHolMLKdct8CPgts62iHkqZKapXUumbNmjqFaWZmlQY0aseS7gX2qrLq89mZ
+iAhJUWX7twOrI+IRSZM6Ol5ETAOmAbS0tGy3PzMzq4+GJY6IOKG9dZJWSRoVESskjQJWVyn2N8A7
+JE0GdgSGSfppRLynQSGbmVkOZTVVTQempNNTgNsqC0TEpRExNiImAGcC/+2kYWZWvrISx9eAEyU9
+DZyQziNptKQZJcVkZmY5NKypqpaIWAscX2X5cmByleUPAA80PDAzM+uQvzluZmaFOHGYmVkhThxm
+ZlaIE4eZmRXixGFmZoU4cZiZWSGK6H2jc0haAyzq5Oa7A3+pYzj14Jjy645xOaZ8umNM0D3jakRM
+4yNijzwFe2Xi6ApJrRHRUnYcWY4pv+4Yl2PKpzvGBN0zrrJjclOVmZkV4sRhZmaFOHFsb1rZAVTh
+mPLrjnE5pny6Y0zQPeMqNSb3cZiZWSGucZiZWSFOHGZmVkifTBySdpX0K0lPp8+7tFNuoaTZkmZJ
+ai26fb1jkrS3pPslzZU0R9LHM+suk7QsjXVW+suJnY3lFElPSZov6ZIq6yXpO+n6xyUdkXfbBsZ0
+ThrLbEm/l3RYZl3V97EJMU2StC7znnwh77YNjuszmZiekLRV0q7purq/VpKulbRa0hPtrG/69ZQz
+rjKuqY5iKuWa2k5E9LkH8C/AJen0JcAV7ZRbCOze2e3rHRMwCjginR4K/Ak4MJ2/DPh0HeLoDzwD
+7AsMAh5rO0amzGTgTkDA0cDDebdtYEzHALuk06e2xVTrfWxCTJOAOzqzbSPjqih/GsmvazbytXoL
+cATwRDvrm3o9FYirqddUzpiafk1Ve/TJGgdwOnB9On09cEaTt+/UPiNiRUQ8mk6vB+YBY+pw7Kwj
+gfkRsSAiNgE3pbFVxvrjSDwEjFDy2/F5tm1ITBHx+4h4Lp19CBhbh+N2KaYGbVvvfZ8F/KxOx64q
+In4DPFujSLOvp1xxlXBN5Xmt2tPQ16pSX00cIyNiRTq9EhjZTrkA7pX0iKSpndi+ETEBIGkC8Ebg
+4czii9Kq9bVdaD4bAyzJzC9l++TUXpk82zYqpqz3k3yCbdPe+9iMmI5J35M7JR1UcNtGxoWknYBT
+gJszixvxWnWk2ddTZzTjmsqr2dfUdkr56dhmkHQvsFeVVZ/PzkRESGrvnuRjI2KZpD2BX0l6Mv1E
+kHf7RsSEpCEkf+yfiIgX0sXfB75CckF/BfgG8L48cfUmko4j+SM/NrO4w/exQR4FxkXEi2mf063A
+xCYcN6/TgN9FRPYTblmvVbfla2p7vTZxRMQJ7a2TtErSqIhYkVaJV7ezj2Xp82pJ/0lSHfwNkGv7
+RsQkaSBJ0rghIm7J7HtVpswPgTvyxFTFMmDvzPzYdFmeMgNzbNuomJB0KHANcGokv2sP1HwfGxpT
+JqkTETMkfU/S7nnPp1FxZZxJRTNVg16rjjT7esqtyddUh0q6prbTV5uqpgNT0ukpwG2VBSTtLGlo
+2zRwEvCXXNVUAAABPklEQVRE3u0bFJOAHwHzIuKbFetGZWbfmYm1qJnAREn7SBpE8s9lepVYz03v
+hjkaWJc2s+XZtiExSRoH3AK8NyL+lFle631sdEx7pe8Zko4k+Xtbm2fbRsaVxjMceCuZ66yBr1VH
+mn095VLCNZUnpjKuqe01qte9Oz+A3YD7gKeBe4Fd0+WjgRnp9L4kdyY8BswBPt/R9k2I6ViSpqjH
+gVnpY3K67ifA7HTddGBUF2KZTHLH1jNt5w1cAFyQTgu4Kl0/G2iptW2d3rOOYroGeC7zurR29D42
+IaYL02M+RtK5ekyjX6c8caXz5wE3VWzXkNeKpFazAthM0vb+/rKvp5xxlXFNdRRTKddU5cNDjpiZ
+WSF9tanKzMw6yYnDzMwKceIwM7NCnDjMzKwQJw4zMyvEicPMzApx4jAzs0L+BxQrQ0PGW/knAAAA
+AElFTkSuQmCC
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lastly, I was curious about how far you could theoretically overhang a deck of cards. Simply enter the parameters for a deck of cards, and voila, an overhang of nearly  8 inches! That was a bit mind-blowing.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">brick_balance</span><span class="p">(</span><span class="n">ntot</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.0115</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The python code was a handy was to explore this puzzle once the initial math was figured out, and once the plotting is figured out, can help debug the math and create neat visuals. Once I got the answer (and tried a few real blocks stacked and measured and compared to my calculated results), I started searching online and here are some resources I found.</p>
+<p>Quanta has a great article here about the problem <a href="https://www.quantamagazine.org/20161117-overhang-insights-puzzle/">https://www.quantamagazine.org/20161117-overhang-insights-puzzle/</a> with solution <a href="https://www.quantamagazine.org/20161202-overhang-puzzle-solution/">https://www.quantamagazine.org/20161202-overhang-puzzle-solution/</a></p>
+<p>Another explanation can be found here
+<a href="http://datagenetics.com/blog/may32013/index.html">http://datagenetics.com/blog/may32013/index.html</a> and <a href="http://mathworld.wolfram.com/BookStackingProblem.html">http://mathworld.wolfram.com/BookStackingProblem.html</a></p>
+<p>For more fun math puzzles, check out <a href="http://mathworld.wolfram.com/topics/Puzzles.html">http://mathworld.wolfram.com/topics/Puzzles.html</a></p>
+<p>Stay Curious!</p>
+
+</div>
+</div>
+</div>
+ 
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'brick-stacking';
+                var disqus_url = 'http://nagordon.github.io/ifcuriousthenlearn/blog/2017/05/29/brick-stacking/';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+    <li class="list-group-item"><a href="https://github.com/nagordon"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+    <li class="list-group-item"><a href="http://stackoverflow.com/users/2438993/nagordon"><i class="fa fa-stackoverflow-square fa-lg"></i> StackOverflow</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2017/05/29/brick-stacking/">An investigation of the Brick Stacking Problem</a></li>
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/08/20/pythoncode-vs-excel/">Calculations with Python Code or Excel Spreadsheets</a></li>
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/08/14/logical-indexing-with-python-excel/">Logical Indexing with Python and Excel</a></li>
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/06/05/sage-embed/">Sage Math Tool</a></li>
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/05/07/what-open-source-means/">Understanding and using technology</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
+<!-- Sidebar/Categories -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4>
+  <ul class="list-group" id="categories">
+    <li class="list-group-item">
+      <a href="http://nagordon.github.io/ifcuriousthenlearn/category/aviation.html"><i class="fa fa-folder-open fa-lg"></i>Aviation</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://nagordon.github.io/ifcuriousthenlearn/category/computing.html"><i class="fa fa-folder-open fa-lg"></i>computing</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://nagordon.github.io/ifcuriousthenlearn/category/engineering.html"><i class="fa fa-folder-open fa-lg"></i>Engineering</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://nagordon.github.io/ifcuriousthenlearn/category/tools.html"><i class="fa fa-folder-open fa-lg"></i>Tools</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Categories -->
+
+<!-- Sidebar/Github -->
+<li class="list-group-item">
+  <h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+  <div id="gh_repos">
+    <p class="list-group-item">Status updating...</p>
+  </div>
+</li>
+<!-- End Sidebar/Github -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.scipy.org/" target="_blank">Scipy.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Neal Gordon
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/respond.min.js"></script>
+
+    <script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/bodypadding.js"></script>
+
+<!-- GitHub JS Code -->
+<script type="text/javascript">
+$(document).ready(function () {
+  if (!window.jXHR) {
+    var jxhr = document.createElement('script');
+    jxhr.type = 'text/javascript';
+    jxhr.src = 'http://nagordon.github.io/ifcuriousthenlearn/theme/js/jXHR.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(jxhr, s);
+  }
+
+  github.showRepos({
+    user: 'nagordon',
+    count: 5,
+    skip_forks: false,
+    target: '#gh_repos'
+  });
+});
+</script>
+<script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/github.js" type="text/javascript"></script>
+<!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65272251-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>

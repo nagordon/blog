@@ -8,7 +8,7 @@ Summary: My review of a book The Catherdral and Bazaar, some thoughts, and how y
 
 The book [The Cathedral and the Bazaar](http://www.catb.org/~esr/)
 
-![cathedralandbazaar]({filename}/fig/cathedralandbazaar.jpg)
+![cathedralandbazaar]({static}/fig/cathedralandbazaar.jpg)
 
 # What open-source means to me
 The ideas expressed in this article are generally not my own, however, all the opinions are. And, those opinions are mostly a response from the book/manifesto of open-source, called The Cathedral and the Bazaar, by Eric Raymond.

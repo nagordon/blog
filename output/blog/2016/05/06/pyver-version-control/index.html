@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Pyver, Version Control For Dummies - if curious: then learn</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="http://nagordon.github.io/ifcuriousthenlearn/images/earth.png" rel="icon">
+
+<link rel="canonical" href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/05/06/pyver-version-control/">
+
+        <meta name="author" content="Neal Gordon" />
+        <meta name="keywords" content="Computing" />
+        <meta name="description" content="My simple version control system for storing binary files" />
+
+        <meta property="og:site_name" content="if curious: then learn" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Pyver, Version Control For Dummies"/>
+        <meta property="og:url" content="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/05/06/pyver-version-control/"/>
+        <meta property="og:description" content="My simple version control system for storing binary files"/>
+        <meta property="article:published_time" content="2016-05-06" />
+            <meta property="article:section" content="Computing" />
+            <meta property="article:tag" content="Computing" />
+            <meta property="article:author" content="Neal Gordon" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://nagordon.github.io/ifcuriousthenlearn/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://nagordon.github.io/ifcuriousthenlearn/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://nagordon.github.io/ifcuriousthenlearn/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://nagordon.github.io/ifcuriousthenlearn/theme/css/style.css" type="text/css"/>
+
+        <link href="http://nagordon.github.io/ifcuriousthenlearn/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="if curious: then learn ATOM Feed"/>
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://nagordon.github.io/ifcuriousthenlearn/" class="navbar-brand">
+if curious: then learn            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="http://nagordon.github.io/ifcuriousthenlearn/pages/about-me.html">
+                             About me
+                          </a></li>
+                        <li >
+                            <a href="http://nagordon.github.io/ifcuriousthenlearn/category/aviation.html">Aviation</a>
+                        </li>
+                        <li class="active">
+                            <a href="http://nagordon.github.io/ifcuriousthenlearn/category/computing.html">Computing</a>
+                        </li>
+                        <li >
+                            <a href="http://nagordon.github.io/ifcuriousthenlearn/category/engineering.html">Engineering</a>
+                        </li>
+                        <li >
+                            <a href="http://nagordon.github.io/ifcuriousthenlearn/category/tools.html">Tools</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/05/06/pyver-version-control/"
+                       rel="bookmark"
+                       title="Permalink to Pyver, Version Control For Dummies">
+                        Pyver, Version Control For Dummies
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-05-06T00:00:00-07:00"> 2016-05-06</time>
+    </span>
+
+
+            <span class="label label-default">By</span>
+            <a href="http://nagordon.github.io/ifcuriousthenlearn/author/neal-gordon.html"><i class="fa fa-user"></i> Neal Gordon</a>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://nagordon.github.io/ifcuriousthenlearn/tag/computing.html">Computing</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2>Why pyver?</h2>
+<p>The movtiation behind pyver, which is to creating a version control method which is very, very simple to track the history of files. The work-flow of pyver is something I do anyway when working on something simple that uses binary files, especially ones that are linked through the software that is required to read them (eg CAD designs). I will create multiple directories, eg v1, v2 and copy the entire contents of my in-progress files in it that I want to preserve the history. The issue with this is that when file names are changed, it can break links to dependent files, so keeping a file identical is important for tracking files. It was also a goal to use this tool over a network drive where multiple users can archive files as they wish
+There are a couple of other excellent options, but have a steep learning curve and some do not perform well with large binary files. Also, most version control systems are designed for code or text files, not large binanry files, like word documents or cad files. If you need more functionality, I'd recommend checking out these programs in order os simplicity. <a href="https://bitbucket.org/mats_ekberg/boar/wiki/Home">boar VCS</a>, <a href="https://www.mercurial-scm.org/">mercurial SCM</a>, <a href="https://git-scm.com/">git</a> with the <a href="https://git-lfs.github.com/">large file extension</a></p>
+<h2>The basic operation of this program goes like this</h2>
+<p>1) create some files<br>
+2) run pyver and make a copy of your files<br>
+3) make as many revisions as you want<br>
+4) if you want to revert back to an older revision, grab files out of the dated .archive directories and put them in your current directory  </p>
+<h3>Criteria for design</h3>
+<ul>
+<li>Simplicity is your friend, obscurity is your enemy</li>
+<li>It is unacceptable to rename files to track versions. This accomplishes this by putting the files in different directories and keep your current file with the desired, persistent filename</li>
+<li>Can be used over a network drive. Does not require a central server.</li>
+<li>Be OS agnostic (written in Python)</li>
+<li>know when the changes were made, with a comment and who did it</li>
+</ul>
+<h1>Tutorial</h1>
+<p>To get started, lets do a quick demo in windows. Brace yourself, you are going to have to use the command line. In your current directory with the pyver.py file, open a command line with <code>shift+right_click</code> and in the menu select <code>Open command window here</code>. Another way to get a command window in your current directory is to type <code>alt+D</code> and type <code>powershell</code> or <code>cmd</code>.
+Now type</p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>Done. That's it. We have created a pyver repository and made a backup of all the files in our current directory in an archive naming year-month-day-hour-minute-second. Anytime we need to make another backup, just repeat the last step.</p>
+<p>OK, lets add a bit more work upfront to save us some typing for years to come. I would recommend having a windows folder that is added to the user PATH system variable where you can keep test or production scripts that you want to access from the command line. For example, I have <code>C:\Users\Neal\bin</code> that is in the system PATH variable which I can dump python scripts with the *.bat file. Now, all we have to type is <code>pyver</code> to get the same result as <code>python pyver.py</code>
+To add this path variable, type</p>
+<blockquote>
+<p>1) Start <br>
+2) search "variables" and select "Edit Enviornmental variables for your account"<br>
+3) Add PATH variable or append with the path to the folder with your scripts    </p>
+</blockquote>
+<p>There are a few built in commands to interrogate the repository. The first is log, which shows the contents of a text file that keeps track of the commits that are made</p>
+<div class="highlight"><pre><span></span><span class="nv">pyver</span> <span class="nv">log</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210812</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210814</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210817</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210854</span> , <span class="mi">7</span><span class="nv">kb</span> , <span class="nv">making</span> <span class="nv">a</span> <span class="nv">comment</span> <span class="k">for</span> <span class="nv">this</span> <span class="nv">commit</span> , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210912</span> , <span class="mi">4</span><span class="nv">kb</span> , <span class="nv">only</span> <span class="nv">adding</span> <span class="nv">one</span> <span class="nv">file</span> , <span class="nv">pyver</span>.<span class="nv">py</span>
+</pre></div>
+
+
+<p>The next is tree, which shows all the files in the repo.</p>
+<div class="highlight"><pre><span></span><span class="n">pyver</span> <span class="n">tree</span>
+
+<span class="p">.</span><span class="o">/</span><span class="p">.</span><span class="n">archive</span>
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210812</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+<span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">log</span>  
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210814</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210817</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210854</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210912</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+  <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+  <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+  <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+</pre></div>
+
+
+<p>We also have some flags we can use to customize our commits. This commit adds only the files file1.txt and file2.docx and adds a comment. Note-none of the flag inputs can have spaces, so files are seperated by <code>|</code> and comments are written without spaces using <code>-</code></p>
+<div class="highlight"><pre><span></span><span class="nv">pyver</span> <span class="o">-</span><span class="nv">f</span> <span class="s2">&quot;</span><span class="s">file1.txt|file2.docx</span><span class="s2">&quot;</span> <span class="o">-</span><span class="nv">c</span> <span class="s2">&quot;</span><span class="s">making a comment for this commit</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>We can also use wildcards to add groups of files rather than listing each individual file.</p>
+<div class="highlight"><pre><span></span><span class="n">pyver</span> <span class="o">-</span><span class="n">f</span> <span class="ss">&quot;*.txt|*.docx&quot;</span> <span class="o">-</span><span class="k">c</span> <span class="ss">&quot;I added all the txt and docx files to my archive&quot;</span>
+</pre></div>
+
+
+<p>Also, by default, pyver will skip all files and directories that start with . and ~. These files are typically temporary, backup, or configuration files.</p>
+<p>I used pyinstaller to build my own windows executable</p>
+<div class="highlight"><pre><span></span><span class="n">pyinstaller</span> <span class="n">pyver</span><span class="p">.</span><span class="n">py</span> <span class="c1">--onefile</span>
+</pre></div>
+
+
+<p>There you have it. The worlds easiest version control system that multiple users can use over a network, retrieving your old files is trivial, and now you don't have to change your file names to all the silly things people come up with.</p>
+<p>You can find the source code here. <a href="https://github.com/nagordon/pyver">https://github.com/nagordon/pyver</a></p>
+<p>This was a fun project to learn more about file manipulation with python and in the end, I now have a handy tool!</p>
+<p>Stay Curious!</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'pyver-version-control';
+                var disqus_url = 'http://nagordon.github.io/ifcuriousthenlearn/blog/2016/05/06/pyver-version-control/';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+    <li class="list-group-item"><a href="https://github.com/nagordon"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+    <li class="list-group-item"><a href="http://stackoverflow.com/users/2438993/nagordon"><i class="fa fa-stackoverflow-square fa-lg"></i> StackOverflow</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2017/05/29/brick-stacking/">An investigation of the Brick Stacking Problem</a></li>
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/08/20/pythoncode-vs-excel/">Calculations with Python Code or Excel Spreadsheets</a></li>
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/08/14/logical-indexing-with-python-excel/">Logical Indexing with Python and Excel</a></li>
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/06/05/sage-embed/">Sage Math Tool</a></li>
+    <li class="list-group-item"><a href="http://nagordon.github.io/ifcuriousthenlearn/blog/2016/05/07/what-open-source-means/">Understanding and using technology</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
+<!-- Sidebar/Categories -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4>
+  <ul class="list-group" id="categories">
+    <li class="list-group-item">
+      <a href="http://nagordon.github.io/ifcuriousthenlearn/category/aviation.html"><i class="fa fa-folder-open fa-lg"></i>Aviation</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://nagordon.github.io/ifcuriousthenlearn/category/computing.html"><i class="fa fa-folder-open fa-lg"></i>computing</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://nagordon.github.io/ifcuriousthenlearn/category/engineering.html"><i class="fa fa-folder-open fa-lg"></i>Engineering</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://nagordon.github.io/ifcuriousthenlearn/category/tools.html"><i class="fa fa-folder-open fa-lg"></i>Tools</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Categories -->
+
+<!-- Sidebar/Github -->
+<li class="list-group-item">
+  <h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+  <div id="gh_repos">
+    <p class="list-group-item">Status updating...</p>
+  </div>
+</li>
+<!-- End Sidebar/Github -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.scipy.org/" target="_blank">Scipy.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Neal Gordon
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/respond.min.js"></script>
+
+    <script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/bodypadding.js"></script>
+
+<!-- GitHub JS Code -->
+<script type="text/javascript">
+$(document).ready(function () {
+  if (!window.jXHR) {
+    var jxhr = document.createElement('script');
+    jxhr.type = 'text/javascript';
+    jxhr.src = 'http://nagordon.github.io/ifcuriousthenlearn/theme/js/jXHR.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(jxhr, s);
+  }
+
+  github.showRepos({
+    user: 'nagordon',
+    count: 5,
+    skip_forks: false,
+    target: '#gh_repos'
+  });
+});
+</script>
+<script src="http://nagordon.github.io/ifcuriousthenlearn/theme/js/github.js" type="text/javascript"></script>
+<!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'nagordon-github'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65272251-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>

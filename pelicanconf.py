@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 import os
 
 ################# DEVELOPMENT SETTINGS ###########################
-RELATIVE_URLS = False   # when deploying site
-#RELATIVE_URLS = True    # developing site
+#RELATIVE_URLS = False   # when deploying site
+RELATIVE_URLS = True    # developing site
 
 # when changing settings set this to false
 LOAD_CONTENT_CACHE = False
@@ -22,32 +22,29 @@ TAG_CLOUD_STEPS = 7
 TAG_CLOUD_MAX_ITEMS = 15
 DISPLAY_ARTICLE_INFO_ON_INDEX = True
 PATH = 'content'
-STATIC_PATHS = ['images', 'code','fig', 'notebooks', 'extra/CNAME']
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
-#PAGE_PATHS = ['notebooks']
-#ARTICLE_PATHS = ['notebooks']
+STATIC_PATHS = ['images', 'code','fig', 'notebooks']
 NOTEBOOK_DIR = 'notebooks'
-#ARTICLE_PATHS = ['content']
 USE_FOLDER_AS_CATEGORY = False
-THEME = "themes/pelican-bootstrap3" # 'notmyidea'
+THEME = "themes/pelican-bootstrap3"
 DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search')
 
 # ipynb settings
 IPYNB_USE_META_SUMMARY = True
 MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['liquid_tags.img',
-           'liquid_tags.youtube',
-           'liquid_tags.include_code',
-	       'liquid_tags.notebook',
-		   'ipynb']
+PLUGINS = ['ipynb.markup',
+           'i18n_subsites', ]
+
+TIMEZONE = 'America/Los_Angeles'
+JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n'],}
+
+IGNORE_FILES = [".ipynb_checkpoints"]
 
 SUMMARY_MAX_LENGTH = 200
 USE_FOLDER_AS_CATEGORY = False
 #CUSTOM_CSS = 'static/custom.css'
 
 DISQUS_SITENAME = 'nagordon-github'
-
 
 ################# BOOTSTRAP SETTINGS ###########################
 BANNER = 'images/banner.jpg'
@@ -86,9 +83,6 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
 EMAIL = 'nealagordon@gmail.com'
 
-
-
-TIMEZONE = 'America/New_York'
 DATE_FORMATS = {'en': '%Y-%m-%d'}
 DEFAULT_LANG = u'en'
 
@@ -108,6 +102,4 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 # Social widget
 SOCIAL = (('LinkedIn', 'https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile'),
           ('GitHub', 'https://github.com/nagordon'),
-		  ('Reddit','http://www.reddit.com/user/nagordon'),
-		  ('Instructables','http://www.instructables.com/member/nagordon'),
 		  ('StackOverflow','http://stackoverflow.com/users/2438993/nagordon'),)

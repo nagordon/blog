@@ -1,9 +1,24 @@
-# run with git bash on windows
+'''
+# find python interpreter
+import sys
+print(sys.executable)
+
+# python server
+cd output
+python -m http.server
+
+'''# run with git bash on windows
 
 ### use
 # bash make_site.sh
 
-# create a styled html file
+# local build
+# pelican content -s pelicanconf.py
+
+# preview site and rebuild when changes occur
+pelican --autoreload --listen
+http://localhost:8000/
+
 
 pelican content -s publishconf.py
 
